@@ -71,11 +71,11 @@ export const handleShare = (link: string) => {
   const baseUrl = window.location.origin;
   const referralPath = link;
   const fullUrl = `${baseUrl}/${referralPath}`;
-  const shareText = `🎉 Join me on ArcPay and get started with smarter banking! Use my referral link to sign up and enjoy exclusive benefits: 👉 ${fullUrl}`;
+  const shareText = `🎉 Join me on Krypt Kard and get started with smarter banking! Use my referral link to sign up and enjoy exclusive benefits: 👉 ${fullUrl}`;
 
   if (navigator.share) {
     navigator.share({
-      title: "Join ArcPay",
+      title: "Join Krypt Kard",
       text: shareText,
       url: fullUrl,
     });

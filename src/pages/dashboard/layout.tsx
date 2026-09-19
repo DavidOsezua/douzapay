@@ -48,7 +48,7 @@ const DashboardLayout = () => {
                 <div className="flex flex-col items-center gap-4">
                   <img
                     src="/images/full-logo-dark.svg"
-                    alt="ArcPay"
+                    alt="Krypt Kard"
                     className="h-10 w-auto"
                   />
                   <Loader2 className="size-7 animate-spin text-[#3FD8E8]" />

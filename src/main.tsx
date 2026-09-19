@@ -4,7 +4,7 @@ Sentry.init({
   dsn: import.meta.env.VITE_SENTRY_DSN,
   sendDefaultPii: true,
 });
-Sentry.setTag("whitelabel", "ArcPay");
+Sentry.setTag("whitelabel", "kryptkard");
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";

@@ -45,7 +45,7 @@ const Transfer = ({ closeModal }: { closeModal: () => void }) => {
           className={`flex h-12 cursor-pointer items-center justify-between gap-4 rounded-lg px-2.5 py-2 text-sm ${option == "internal" ? "bg-[#181818B2] text-white border border-dark-primary-main" : "border-[#6EF7FF2E] border"}`}
         >
           <div className="flex flex-col gap-0.5">
-            <span>Transfer to ArcPay users</span>
+            <span>Transfer to Krypt Kard users</span>
             <span className="text-xs font-light opacity-70">
               Send via email, instantly and free
             </span>
