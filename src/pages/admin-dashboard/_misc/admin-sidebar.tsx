@@ -14,19 +14,19 @@ const items = [
     title: "Dashboard",
     url: "/admin-dashboard",
     icon: "/icons/dashboard-neutral.svg",
-    activeIcon: "/icons/dashboard-active.svg",
+    activeIcon: "/icons/dashboard-active-admin.svg",
   },
   {
     title: "User Management",
     url: "/admin-dashboard/users",
     icon: "/icons/users.svg",
-    activeIcon: "/icons/wallet-active.svg",
+    activeIcon: "/icons/wallet-active-admin.svg",
   },
   {
     title: "My Cards",
     url: "/admin-dashboard/cards",
     icon: "/icons/card-neutral.svg",
-    activeIcon: "/icons/card-active.svg",
+    activeIcon: "/icons/card-active-admin.svg",
   },
   {
     title: "Transactions",
@@ -60,7 +60,7 @@ const AdminSidebar = () => {
               <img
                 src="/images/full-logo-dark.svg"
                 className="w-16"
-                alt="ArcPay Logo"
+                alt="Krypt Kard Logo"
               />
             </div>
             <p className="pl-4 text-xl uppercase">Admin Dashboard</p>
