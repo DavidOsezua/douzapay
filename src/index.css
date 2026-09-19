@@ -1,0 +1,471 @@
+@import url("https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --gradient-light-blue: 123.04deg, #3a436d 1.64%, #4d698b 98.52%;
+
+  --gradient-card:
+    104.01deg, rgba(22, 27, 51, 0.95) 2.88%, rgba(35, 41, 70, 0.95) 99.58%;
+  --color-primary-bg: #e3e8ff;
+  --color-primary-50: #81869d;
+  --color-primary-70: #d0d6f5;
+  --color-primary-neutral: #7f818b;
+  --color-primary-green: #2bc155;
+  --color-primary-blue: #0d3389;
+  --color-primary-red: #ff3e3e;
+  --color-primary-brown: #be7f00;
+  --color-primary-purple: #001788;
+  --color-bg-card: #161b33f2;
+
+  /* v2 color vars */
+  --color-bg-primary: #0f1326;
+  --color-primary-600: #202641;
+  --color-primary-500: #150e1f;
+  --color-primary-100: #f4e7ff;
+  --color-primary-100-hover: #a0d8f0;
+  --color-text-neutral: #c6ccda;
+  --color-border-neutral: #dae1ea;
+
+  /* Dark Background Colors */
+  /* --color-dark-background-main: #f1f5f5;
+  --color-dark-background-light: #6e6e6e0d;
+  --color-dark-background-secondary: #283968; */
+
+  /* Dark Card Colors */
+  /* --color-dark-card-3: #fff; */
+
+  /* Dark Error Colors */
+  /* --color-dark-error-300: #ff6366; */
+
+  /* Dark Grey Colors */
+  /* --color-dark-grey-50: #eeeff8;
+  --color-dark-grey-200: #e3e8ff;
+  --color-dark-grey-300: #d4d7e7; */
+
+  /* Dark Link Colors */
+  /* --color-dark-link-4: #173a91; */
+
+  /* Dark Primary Colors */
+  /* --color-dark-primary-50: #f4e7ff;
+  --color-dark-primary-100: #d0b3e7;
+  --color-dark-primary-200: #bde9fb;
+  --color-dark-primary-300: #ab7acf;
+  --color-dark-primary-400: #714790;
+  --color-dark-primary-main: #cb9ce0; */
+
+  /* Dark Stroke Colors */
+  /* --color-dark-stroke-3: #e1e5eb;
+  --color-dark-stroke-4: #3d69c580; */
+  /* Dark Success Colors */
+  /* --color-dark-success-200: #4ed79d; */
+
+  /* Dark Warning Colors */
+  /* --color-dark-warning-400: #ffbd4c; */
+
+  /* Dark Alternate Background Colors */
+  /* --color-dark-alternate-1: #454C6F;
+  --color-dark-alternate-2: #5F6895; */
+
+  /* Dark Text Colors */
+  /* --color-dark-text-100: #161b33;
+  --color-dark-text-300: #696969;
+  --color-dark-text-400: #150e1f; */
+
+  /* Dark Selection Colors */
+  /* --color-dark-selected-3: #2f363b80;
+  --background-image-dark-selected-2: linear-gradient(
+    130deg,
+    rgba(142, 202, 236, 0.5) 15.55%,
+    rgba(119, 121, 197, 0.5) 84.45%
+  ); */
+
+  /* Line */
+  /* --color-dark-line: #d4d7e7; */
+
+  /* Input background color */
+  /* --color-dark-input: #f7fdffe5;
+  --color-dark-input-100: #f7fdff; */
+
+
+
+  /* Gradient Background Images */
+  /* --background-image-dark-auxiliary-3: linear-gradient(
+    129deg,
+    #93cdfd 11.02%,
+    #4d6aae 93.11%
+  );
+  --background-image-dark-card-4: linear-gradient(
+    104deg,
+    rgba(22, 27, 51, 0.95) 2.88%,
+    rgba(22, 27, 51, 0.95) 99.58%
+  );
+  --background-image-dark-selected-1: linear-gradient(
+    90deg,
+    rgba(180, 234, 255, 0.16) 0%,
+    rgba(22, 27, 51, 0.16) 100%
+  );
+  --background-image-dark-stroke-1: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.5) 15.55%,
+    rgba(0, 2, 136, 0) 84.45%
+  );
+
+  --background-image-dark-account: linear-gradient(
+    129deg,
+    #f4e7ff 11.02%,
+    #cbb3e6 93.11%
+  ); */
+
+  /* Dark Background Colors */
+  --color-dark-background-main: #080808;
+  --color-dark-background-light: #6e6e6e0d;
+  --color-dark-background-secondary: #283968;
+
+  /* ArcPay gradients */
+  --gradient-cyan-btn: 360deg, #6ef7ff 0%, #3fd8e8 100%;
+  --gradient-pink-card: 123.04deg, #ffaee6 1.64%, #ebe8f3 98.52%;
+
+  /* Dark Card Colors */
+  --color-dark-card-3: #121212;
+
+  /* Dark Error Colors */
+  --color-dark-error-300: #ff6366;
+
+  /* Dark Grey Colors */
+  --color-dark-grey-50: #eeeff8;
+  --color-dark-grey-200: #e3e8ff;
+  --color-dark-grey-300: #d4d7e7;
+
+  /* Dark Link Colors */
+  --color-dark-link-4: #3fd8e8;
+
+  /* Dark Primary Colors (ArcPay cyan) */
+  --color-dark-primary-50: #e3fdff;
+  --color-dark-primary-100: #b8f5fb;
+  --color-dark-primary-200: #6ef7ff;
+  --color-dark-primary-300: #3fd8e8;
+  --color-dark-primary-400: #1faab8;
+  --color-dark-primary-main: #3fd8e8;
+
+  /* Dark Stroke Colors */
+  --color-dark-stroke-3: #1a1a1a;
+
+  /* Dark Success Colors */
+  --color-dark-success-200: #4ed79d;
+
+  /* Dark Alternate Background Colors */
+  --color-dark-alternate-1: #454C6F;
+  --color-dark-alternate-2: #5F6895;
+
+  /* Dark Text Colors */
+  --color-dark-text-50: #ffffff;
+  --color-dark-text-100: #161b33;
+  --color-dark-text-300: #696969;
+  --color-dark-text-400: #150e1f;
+
+  /* Dark Selection Colors */
+  --color-dark-selected-3: #2f363b80;
+
+    /* Input background color */
+  --color-dark-input: #f7fdffe5;
+  --color-dark-input-100: #f7fdff;
+
+    /* Commission */
+  --color-dark-commision: #555D66;
+
+  /* Gradient Background Images */
+  --background-image-dark-auxiliary-3: linear-gradient(
+    129deg,
+    #93cdfd 11.02%,
+    #4d6aae 93.11%
+  );
+  --background-image-dark-card-4: linear-gradient(
+    104deg,
+    rgba(22, 27, 51, 0.95) 2.88%,
+    rgba(22, 27, 51, 0.95) 99.58%
+  );
+  --background-image-dark-selected-1: linear-gradient(
+    90deg,
+    rgba(180, 234, 255, 0.16) 0%,
+    rgba(22, 27, 51, 0.16) 100%
+  );
+  --background-image-dark-stroke-1: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.5) 15.55%,
+    rgba(0, 2, 136, 0) 84.45%
+  );
+
+  --font-mont: "Montserrat", sans-serif;
+  --font-dm-sans: "DM Sans", sans-serif;
+  --font-darker: "Darker Grotesque", sans-serif;
+  --animate-loading-line: loadingLine 2s ease-in-out infinite;
+
+  @keyframes loadingLine {
+    0% {
+      left: -70%;
+    }
+    50%,
+    100% {
+      left: 100%;
+    }
+  }
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.87 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.87 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer utilities {
+  .preserve-3d {
+    /* transform-style: preserve-3d; */
+    perspective: 1000px;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "DM Sans", sans-serif;
+  }
+}
+
+.glassy-card {
+  display: flex;
+  gap: 0.7em;
+
+  padding: 0.5em;
+  border-radius: 1em;
+
+  border: 3px solid hsl(0, 0%, 100%, 0.3);
+  background: hsl(0, 0%, 100%, 0.2);
+  backdrop-filter: blur(2px);
+
+  box-shadow: inset 0 0 8px 1px hsl(0, 0%, 0%, 0.3);
+}
+
+.gradient-button {
+  background: linear-gradient(var(--gradient-cyan-btn));
+  border-radius: 9999px;
+  color: #0a0a0a;
+  height: 44px;
+}
+
+.gradient-bg {
+  background: linear-gradient(
+    104.01deg,
+    rgba(22, 27, 51, 0.95) 2.88%,
+    rgba(35, 41, 70, 0.95) 99.58%
+  );
+}
+
+.gradient-pink-card {
+  background: linear-gradient(var(--gradient-pink-card));
+}
+
+.dashboard-card {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(110, 247, 255, 0.0483) 0%,
+      rgba(235, 232, 243, 0.0138) 100%
+    ),
+    #121212;
+  border: 1px solid #6ef7ff24;
+}
+
+.recent-transactions-card {
+  background: #0f0f0f;
+  backdrop-filter: blur(8px);
+}
+
+.share-link-btn {
+  background: linear-gradient(
+    93.72deg,
+    rgba(255, 90, 205, 0.1) 2.3%,
+    rgba(153, 54, 123, 0.1) 98.99%
+  );
+  border: 1px solid #080808;
+}
+
+.card-gradient-border {
+  position: relative;
+}
+
+.card-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--card-border-gradient);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.thin-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #888 transparent; /* Firefox */
+}
+
+.thin-scrollbar::-webkit-scrollbar {
+  width: 6px; /* Chrome, Safari, Edge */
+  height: 6px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 404 page: gentle float/tilt for the CSS-drawn card */
+@keyframes notfound-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-4deg);
+  }
+}
+
+.notfound-float {
+  animation: notfound-float 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .notfound-float {
+    animation: none;
+    transform: rotate(-6deg);
+  }
+}
