@@ -63,7 +63,7 @@ const AddContact = ({
             <Input
               onChange={(e) => setContact(e.target.value)}
               value={contact}
-              className="bg-dark-input border-dark-primary-200 text-dark-text-400 rounded border pr-20 pl-4 text-xs placeholder:text-xs"
+              className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] text-white rounded pr-20 pl-4 text-xs placeholder:text-xs placeholder:text-white/50"
               type="text"
               placeholder={
                 platform === "whatsapp"

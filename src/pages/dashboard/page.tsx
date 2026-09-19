@@ -88,7 +88,7 @@ const Dashboard = () => {
                 return (
                   <div
                     key={asset.id}
-                    className="border-[#6EF7FF2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
+                    className="border-[#CECECE2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
                   >
                     <div className="flex items-center gap-1.5">
                       <p className="text-[#A5ACB6] text-[10px]">{label}</p>
@@ -112,12 +112,12 @@ const Dashboard = () => {
             </div>
             {/* MY CARDS */}
             <div
-              className={`thin-scrollbar dashboard-card relative h-full overflow-hidden overflow-x-auto rounded-2xl p-4 lg:col-span-2`}
+              className={`thin-scrollbar dashboard-card relative h-full overflow-hidden overflow-x-auto rounded-2xl border border-[#6EF7FF24] p-4 lg:col-span-2`}
             >
               <div className="text-white mb-4 flex items-center justify-between">
                 <span>My Cards</span>
                 <button className="bg-[linear-gradient(128.62deg,rgba(227,247,255,0.4)_11.02%,rgba(211,187,241,0.4)_93.11%)] flex size-6 items-center justify-center rounded-full">
-                  <ArrowUpRight className="text-[#3FD8E8] size-3" />
+                  <ArrowUpRight className="text-[#E1E1E1] size-3" />
                 </button>
               </div>
 
@@ -164,7 +164,7 @@ const Dashboard = () => {
             {/* END OF MY CARDS */}
             {/* WALLET */}
             <div className="col-start-1 row-end-2 flex flex-col lg:col-span-2 lg:col-start-3 lg:space-y-2">
-              <div className="dashboard-card font-dm-sans text-white relative flex w-full flex-col gap-3 rounded-2xl p-4 lg:h-full lg:justify-between">
+              <div className="dashboard-card font-dm-sans text-white relative flex w-full flex-col gap-3 rounded-2xl border border-[#E3F7FF40] p-4 lg:h-full lg:justify-between">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-2">
@@ -193,7 +193,7 @@ const Dashboard = () => {
                     className="bg-[linear-gradient(128.62deg,rgba(227,247,255,0.4)_11.02%,rgba(211,187,241,0.4)_93.11%)] hidden size-6 items-center justify-center rounded-full lg:flex"
                   >
                     <span className="relative z-10">
-                      <ArrowUpRight className="text-[#3FD8E8] size-3" />
+                      <ArrowUpRight className="text-[#E1E1E1] size-3" />
                     </span>
                   </button>
                 </div>
@@ -216,7 +216,7 @@ const Dashboard = () => {
                     return (
                       <div
                         key={asset.id}
-                        className="border-[#6EF7FF2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
+                        className="border-[#CECECE2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
                       >
                         <div className="flex items-center gap-1.5">
                           <p className="text-[#A5ACB6] text-[10px]">
@@ -242,30 +242,30 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="dashboard-card font-dm-sans hidden justify-between space-x-1.5 rounded-2xl px-3 py-3 *:grow lg:flex">
+              <div className="dashboard-card font-dm-sans hidden justify-between space-x-1.5 rounded-2xl border border-[#E3F7FF40] px-3 py-3 *:grow lg:flex">
                 <Button
                   onClick={() => openModal("walletAutoDeposit")}
-                  className="border border-transparent hover:border-[#3FD8E8] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
+                  className="border border-transparent hover:border-[#E1E1E1] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
                 >
-                  <div className="text-[#181818] bg-dark-primary-main flex size-7 items-center justify-center rounded-full border">
+                  <div className="text-[#242424] flex size-7 items-center justify-center rounded-full border bg-[#E1E1E1]">
                     <ArrowDownLeft className="size-4" strokeWidth={1.5} />
                   </div>
                   <p className="text-white text-xs font-medium">Deposit</p>
                 </Button>
                 <Button
                   onClick={() => openSheet("withdraw", 2)}
-                  className="border border-transparent hover:border-[#3FD8E8] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
+                  className="border border-transparent hover:border-[#E1E1E1] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
                 >
-                  <div className="text-[#181818] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
+                  <div className="text-[#242424] flex size-7 items-center justify-center rounded-full bg-[#E1E1E1]">
                     <ArrowUpRight className="size-4" strokeWidth={1.5} />
                   </div>
                   <p className="text-white text-xs font-medium">Withdraw</p>
                 </Button>
                 <Button
                   onClick={() => openModal("transfer")}
-                  className="border border-transparent hover:border-[#3FD8E8] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
+                  className="border border-transparent hover:border-[#E1E1E1] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
                 >
-                  <div className="text-[#181818] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
+                  <div className="text-[#242424] flex size-7 items-center justify-center rounded-full bg-[#E1E1E1]">
                     <ArrowUpDown
                       className="size-4 rotate-45"
                       strokeWidth={1.5}
@@ -310,7 +310,7 @@ const Dashboard = () => {
                 <div className="mt-4 flex items-center gap-2.5 *:w-1/2">
                   <div
                     className={
-                      "bg-[#080808] text-white flex h-10 items-center justify-between rounded-md px-2.5"
+                      "bg-[#000000] text-white flex h-10 items-center justify-between rounded-md px-2.5"
                     }
                   >
                     <span className="w-5/6 overflow-hidden text-ellipsis whitespace-nowrap">
@@ -321,40 +321,40 @@ const Dashboard = () => {
                   <Button
                     onClick={() => handleShare(`signup?ref=${user?.id}`)}
                     className={
-                      "share-link-btn text-[#080808] flex h-10 cursor-pointer items-center justify-center gap-1 rounded-md"
+                      "share-link-btn text-black flex h-10 cursor-pointer items-center justify-center gap-1 rounded-md"
                     }
                   >
-                    <Share2 className="text-[#080808] size-4" />
+                    <Share2 className="text-black size-4" />
                     <span>Share Your Link</span>
                   </Button>
                 </div>
               </div>
             </div>
           )}
-          <div className="dashboard-card font-dm-sans col-span-2 flex w-full justify-between space-x-1.5 rounded-2xl px-3 py-2 *:grow lg:hidden">
+          <div className="dashboard-card font-dm-sans col-span-2 flex w-full justify-between space-x-1.5 rounded-2xl border border-[#E3F7FF40] px-3 py-2 *:grow lg:hidden">
             <Button
               onClick={() => openModal("walletAutoDeposit")}
-              className="border border-transparent hover:border-[#3FD8E8] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
+              className="border border-transparent hover:border-[#E1E1E1] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
             >
-              <div className="text-[#181818] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
+              <div className="text-[#242424] flex size-7 items-center justify-center rounded-full bg-[#E1E1E1]">
                 <ArrowDownLeft className="size-4" strokeWidth={1.5} />
               </div>
               <p className="text-white text-xs font-medium">Deposit</p>
             </Button>
             <Button
               onClick={() => openSheet("withdraw", 2)}
-              className="border border-transparent hover:border-[#3FD8E8] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
+              className="border border-transparent hover:border-[#E1E1E1] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
             >
-              <div className="text-[#181818] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
+              <div className="text-[#242424] flex size-7 items-center justify-center rounded-full bg-[#E1E1E1]">
                 <ArrowUpRight className="size-4" strokeWidth={1.5} />
               </div>
               <p className="text-white text-xs font-medium">Withdraw</p>
             </Button>
             <Button
               onClick={() => openModal("transfer")}
-              className="border border-transparent hover:border-[#3FD8E8] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
+              className="border border-transparent hover:border-[#E1E1E1] text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
             >
-              <div className="text-[#181818] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
+              <div className="text-[#242424] flex size-7 items-center justify-center rounded-full bg-[#E1E1E1]">
                 <ArrowUpDown className="size-4 rotate-45" strokeWidth={1.5} />
               </div>
               <p className="text-white text-xs font-medium">Transfer</p>
@@ -363,12 +363,12 @@ const Dashboard = () => {
         </div>
 
         <div className="recent-transactions-card text-white mt-4 rounded-2xl">
-          <div className="bg-dark-background-light rounded-tl-2xl rounded-tr-2xl p-4">
+          <div className="rounded-tl-2xl rounded-tr-2xl p-4">
             <div className="flex items-center justify-between">
               <h2 className="text-sm font-medium">Recent Transactions</h2>
               <Link
                 to="/dashboard/transactions"
-                className="text-primary-100 text-xs hover:underline"
+                className="text-white text-xs hover:underline"
               >
                 See All
               </Link>
@@ -383,16 +383,16 @@ const Dashboard = () => {
               value={tab}
               className="bg-transparent py-4"
             >
-              <TabsList className="border-dark-stroke-3 bg-dark-background-light w-full border p-0 lg:w-fit">
+              <TabsList className="border-dark-stroke-3 bg-[#EBE8F308] w-full border p-0 lg:w-fit">
                 <TabsTrigger
                   value="wallet"
-                  className="data-[state=active]:text-[#0F1326] dark:data-[state=active]:text-[#0F1326] text-[#B9BCCC] bg-[#EBE8F308] data-[state=active]:bg-[linear-gradient(360deg,#6EF7FF_0%,#3FD8E8_100%)] rounded-l-lg rounded-r-none px-6"
+                  className="dark:!text-[#E1E1E1] !text-[#E1E1E1] dark:data-[state=active]:!text-[#242424] data-[state=active]:!text-[#242424] !bg-[#EBE8F308] dark:data-[state=active]:!bg-[#E1E1E1] data-[state=active]:!bg-[#E1E1E1] rounded-l-lg rounded-r-none px-6"
                 >
                   Wallet
                 </TabsTrigger>
                 <TabsTrigger
                   value="cards"
-                  className="data-[state=active]:text-[#0F1326] dark:data-[state=active]:text-[#0F1326] text-[#B9BCCC] bg-[#EBE8F308] data-[state=active]:bg-[linear-gradient(360deg,#6EF7FF_0%,#3FD8E8_100%)] rounded-l-none rounded-r-lg px-6"
+                  className="dark:!text-[#E1E1E1] !text-[#E1E1E1] dark:data-[state=active]:!text-[#242424] data-[state=active]:!text-[#242424] !bg-[#EBE8F308] dark:data-[state=active]:!bg-[#E1E1E1] data-[state=active]:!bg-[#E1E1E1] rounded-l-none rounded-r-lg px-6"
                 >
                   Cards
                 </TabsTrigger>

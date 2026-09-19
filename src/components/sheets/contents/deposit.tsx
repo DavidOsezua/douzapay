@@ -151,7 +151,7 @@ const Deposit = ({
 
               <Button
                 onClick={() => setStep(2)}
-                className="text-[#080808] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-8 w-full font-semibold"
+                className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-8 w-full font-semibold"
               >
                 Continue
               </Button>
@@ -171,7 +171,7 @@ const Deposit = ({
             value={txId}
             onChange={(e) => setTxId(e.target.value)}
             placeholder="Enter Transaction hash"
-            className="bg-dark-input text-dark-text-400 border-dark-stroke-3 mt-1 h-11 border lg:text-xs lg:placeholder:text-xs"
+            className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] text-white mt-1 h-11 lg:text-xs lg:placeholder:text-xs"
           />
           <div className="bg-dark-input text-dark-text-400 mt-4 rounded-lg px-4 py-2 text-[14px]">
             <h6>NOTE</h6>

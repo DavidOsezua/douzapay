@@ -74,7 +74,7 @@ const EditProfile = ({
                         </FormLabel>
                         <FormControl>
                           <Input
-                            className="h-11 rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white placeholder:text-white/50"
+                            className="h-11 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white placeholder:text-white/50"
                             {...field}
                           />
                         </FormControl>
@@ -92,7 +92,7 @@ const EditProfile = ({
                         </FormLabel>
                         <FormControl>
                           <Input
-                            className="h-11 rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white placeholder:text-white/50"
+                            className="h-11 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white placeholder:text-white/50"
                             {...field}
                           />
                         </FormControl>
@@ -111,7 +111,7 @@ const EditProfile = ({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="h-11 rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white placeholder:text-white/50"
+                          className="h-11 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white placeholder:text-white/50"
                           {...field}
                           onChange={(e) => {
                             const cleaned = e.target.value
@@ -137,7 +137,7 @@ const EditProfile = ({
                         <div className="relative">
                           <Input
                             type={showPassword ? "text" : "password"}
-                            className="h-11 rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white placeholder:text-white/50 pr-4"
+                            className="h-11 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white placeholder:text-white/50 pr-4"
                             placeholder="••••••••"
                             {...field}
                           />
@@ -170,7 +170,7 @@ const EditProfile = ({
                   });
                   setStep(2);
                 }}
-                className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-8 w-full font-medium text-[#080808]"
+                className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-8 w-full font-medium text-[#242424]"
                 isLoading={isGettingOtp}
               >
                 Continue
@@ -219,7 +219,7 @@ const EditProfile = ({
 
                 <Button
                   disabled={isUpdating}
-                  className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 w-full text-[#080808]"
+                  className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 w-full text-[#242424]"
                   type="submit"
                   isLoading={isUpdating}
                 >

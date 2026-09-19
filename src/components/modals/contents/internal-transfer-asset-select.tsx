@@ -78,7 +78,7 @@ const InternalTransferAssetSelect = ({
                     : "#434861",
                   border: isSelected
                     ? "1.5px solid #3FD8E8"
-                    : "1.5px solid #2C7B7F",
+                    : "1.5px solid #CECECE2E",
                   cursor: "pointer",
                   textAlign: "left",
                 }}
@@ -155,7 +155,7 @@ const InternalTransferAssetSelect = ({
       <Button
         disabled={selectedId == null}
         onClick={handleContinue}
-        className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-6 h-11 w-full font-semibold text-[#080808] disabled:opacity-50"
+        className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-6 h-11 w-full font-semibold text-[#242424] disabled:opacity-50"
       >
         Continue
       </Button>

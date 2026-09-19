@@ -30,10 +30,10 @@ const SAPPHIRE_BIN = "537100";
 const SAPPHIRE_PRICE = 25;
 
 const inputClass =
-  "h-11 rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white placeholder:text-white/50";
+  "h-11 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white placeholder:text-white/50";
 
 const selectClass =
-  "!h-11 w-full overflow-hidden rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white";
+  "!h-11 w-full overflow-hidden rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white";
 
 const createCardSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -264,7 +264,7 @@ const CreateSapphireCard = ({
                       <FormControl>
                         <div className="space-y-2">
                           <CountryCodeSelect
-                            className="bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white h-11 w-full rounded-xl border border-[#2C7B7F]"
+                            className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white h-11 w-full rounded-xl border border-[#CECECE2E]"
                             onSelect={setCountryCode}
                           />
                           <Input
@@ -292,7 +292,7 @@ const CreateSapphireCard = ({
                         <div className="w-full overflow-hidden">
                           <input
                             type="date"
-                            className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] h-11 w-full max-w-full min-w-0 rounded-xl border border-[#2C7B7F] px-3 text-sm focus:outline-none"
+                            className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] h-11 w-full max-w-full min-w-0 rounded-xl border border-[#CECECE2E] px-3 text-sm focus:outline-none"
                             value={field.value || ""}
                             onChange={field.onChange}
                             max={(() => {
@@ -612,7 +612,7 @@ const CreateSapphireCard = ({
                       <FormLabel className="text-white text-xs leading-5 font-normal">
                         I certify that the information I have provided is
                         accurate and that I will abide by all the rules and
-                        requirements related to ArcPay Spend Card.
+                        requirements related to Krypt Kard Spend Card.
                       </FormLabel>
                     </FormItem>
                   )}
@@ -630,7 +630,7 @@ const CreateSapphireCard = ({
                         />
                       </FormControl>
                       <FormLabel className="text-white text-xs leading-5 font-normal">
-                        I acknowledge that using the ArcPay Spend Card does not
+                        I acknowledge that using the Krypt Kard Spend Card does not
                         constitute unauthorized solicitation.
                       </FormLabel>
                     </FormItem>
@@ -647,7 +647,7 @@ const CreateSapphireCard = ({
                     !form.watch("esign") ||
                     !form.watch("spendCard")
                   }
-                  className="bg-dark-primary-main hover:bg-dark-primary-main/80 text-[#080808] flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
+                  className="bg-dark-primary-main hover:bg-dark-primary-main/80 text-[#242424] flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   BUY NOW · ${cardPrice.toFixed(2)}
                 </button>

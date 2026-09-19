@@ -77,7 +77,7 @@ const SelectDeposit = ({ closeModal }: { closeModal: () => void }) => {
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
           placeholder={`Enter amount in ${preferredCurrency}`}
-          className="bg-dark-input border-dark-stroke-3 mt-2 h-11 lg:text-xs lg:placeholder:text-xs"
+          className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] text-white mt-2 h-11 lg:text-xs lg:placeholder:text-xs"
         />
         {amount && parseFloat(amount) > 0 && (
           <p className="mt-1 text-xs">≈ {formatAmount(usdtAmount)} USDT</p>

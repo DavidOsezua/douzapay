@@ -60,7 +60,7 @@ const FreezeCard = ({
               freezeCard();
             }
           }}
-          className="text-[#080808] bg-dark-primary-main/80 hover:bg-dark-primary-main/60 grow rounded-md"
+          className="text-[#242424] bg-dark-primary-main/80 hover:bg-dark-primary-main/60 grow rounded-md"
         >
           {isFreezing || isUnfreezing ? (
             <Throbber />

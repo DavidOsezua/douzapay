@@ -50,13 +50,13 @@ const DOC_TYPE_MAP: Record<string, string> = {
 };
 
 const inputClass =
-  "h-11 rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white placeholder:text-white/50";
+  "h-11 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white placeholder:text-white/50";
 
 const selectClass =
-  "!h-11 w-full overflow-hidden rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white data-[placeholder]:text-white/50";
+  "!h-11 w-full overflow-hidden rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white data-[placeholder]:text-white/50";
 
 const dateClass =
-  "h-11 w-full max-w-full min-w-0 rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] px-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#6C95F6]";
+  "h-11 w-full max-w-full min-w-0 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] px-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#6C95F6]";
 
 const ACTIVE_BG = "#6C95F6";
 
@@ -496,7 +496,7 @@ const CreateCardholder = ({
                       <FormControl>
                         <div className="space-y-2">
                           <CountryCodeSelect
-                            className="text-white h-11 w-full rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)]"
+                            className="text-white h-11 w-full rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)]"
                             onSelect={setCountryCode}
                           />
                           <Input

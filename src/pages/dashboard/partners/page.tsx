@@ -89,7 +89,7 @@ const Partners = () => {
             <Search className="absolute bottom-1/2 left-4 z-9 size-3.5 translate-y-1/2" />
             <Input
               type="search"
-              className="h-11 w-full border border-[#2D3351] bg-white/10 pl-10 backdrop-blur-xs placeholder:font-light placeholder:text-dark-text-300"
+              className="h-11 w-full border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] pl-10 backdrop-blur-xs text-white placeholder:font-light placeholder:text-white/50"
               placeholder="Search partners"
             />
           </div>
@@ -137,7 +137,7 @@ const PartnerCard = ({ partner }: { partner: Partner }) => {
         className="flex h-12 items-center px-4 text-sm text-white backdrop-blur-sm lg:text-base"
         style={{
           background:
-            "linear-gradient(123.04deg, rgba(44, 123, 127, 0.4) 1.64%, rgba(23, 154, 161, 0.4) 98.52%)",
+            "linear-gradient(123.04deg, rgba(167, 167, 167, 0.4) 1.64%, rgba(206, 206, 206, 0.4) 98.52%)",
         }}
       >
         Get up to {partner.percentDiscount}% OFF

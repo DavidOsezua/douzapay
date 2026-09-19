@@ -211,7 +211,7 @@ const Signup = () => {
                             </FormLabel>
                             <FormControl>
                               <Input
-                                className="rounded placeholder:text-[10px]"
+                                className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
                                 {...field}
                                 placeholder="Enter first name"
                               />
@@ -230,7 +230,7 @@ const Signup = () => {
                             </FormLabel>
                             <FormControl>
                               <Input
-                                className="rounded placeholder:text-[10px]"
+                                className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
                                 {...field}
                                 placeholder="Enter you email last name"
                               />
@@ -250,7 +250,7 @@ const Signup = () => {
                           </FormLabel>
                           <FormControl>
                             <Input
-                              className="rounded placeholder:text-[10px]"
+                              className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
                               {...field}
                               onChange={(e) => {
                                 const cleaned = e.target.value
@@ -275,7 +275,7 @@ const Signup = () => {
                           <FormControl>
                             <div className="relative">
                               <Input
-                                className="rounded placeholder:text-[10px]"
+                                className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
                                 type={showPassword ? "text" : "password"}
                                 {...field}
                                 placeholder="Enter your password"
@@ -305,7 +305,7 @@ const Signup = () => {
                           <FormControl>
                             <div className="relative">
                               <Input
-                                className="rounded placeholder:text-[10px]"
+                                className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
                                 type={showConfirmPassword ? "text" : "password"}
                                 {...field}
                                 placeholder="Confirm you password"
@@ -337,7 +337,7 @@ const Signup = () => {
                           <FormControl>
                             <Input
                               disabled={refBy !== ""}
-                              className="rounded placeholder:text-[10px]"
+                              className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
                               placeholder="Enter your referral code"
                               {...field}
                               onChange={(e) => {

@@ -123,10 +123,10 @@ const InternalTransfer = ({ step }: { step: number }) => {
             <p className="text-xs text-white/50">{confirmedPayee.email}</p>
           </div>
           <div
-            className="flex size-10 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-[#3FD8E8]"
+            className="text-white flex size-10 shrink-0 items-center justify-center rounded-full border border-[#CECECE] text-sm font-semibold"
             style={{
               background:
-                "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+                "linear-gradient(129.49deg, rgba(42, 42, 42, 0.5) 3.6%, rgba(28, 28, 28, 0.5) 100%)",
             }}
           >
             {initials}
@@ -204,7 +204,7 @@ const InternalTransfer = ({ step }: { step: number }) => {
         <div
           className="mt-5 rounded-xl border px-6 py-2 text-sm"
           style={{
-            borderColor: "#2C7B7F",
+            borderColor: "#CECECE2E",
             background:
               "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
           }}
@@ -246,7 +246,7 @@ const InternalTransfer = ({ step }: { step: number }) => {
           <Button
             onClick={handleContinueStep2}
             disabled={!amount || parseFloat(amount) <= 0 || overBalance}
-            className="bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 w-full font-semibold text-[#080808] disabled:opacity-40"
+            className="bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 w-full font-semibold text-[#242424] disabled:opacity-40"
           >
             Continue
           </Button>
@@ -258,7 +258,7 @@ const InternalTransfer = ({ step }: { step: number }) => {
   // Step 1
   return (
     <div className="mt-4 px-2 text-white">
-      <h2 className="font-semibold">Send to ArcPay User</h2>
+      <h2 className="font-semibold">Send to Krypt Kard User</h2>
 
       <div className="mt-6 space-y-4">
         <div>
@@ -267,8 +267,8 @@ const InternalTransfer = ({ step }: { step: number }) => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="ArcPay user email"
-            className="h-11 rounded-xl border border-[#2C7B7F] bg-[#434861] text-white placeholder:text-white/50 lg:text-xs lg:placeholder:text-xs"
+            placeholder="Krypt Kard user email"
+            className="h-11 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white placeholder:text-white/50 lg:text-xs lg:placeholder:text-xs"
           />
         </div>
 
@@ -278,7 +278,7 @@ const InternalTransfer = ({ step }: { step: number }) => {
             <Input
               readOnly
               value={payeeName}
-              className="h-11 rounded-xl border border-[#2C7B7F] bg-[#434861] text-white lg:text-xs"
+              className="h-11 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white lg:text-xs"
             />
           </div>
         )}
@@ -301,7 +301,7 @@ const InternalTransfer = ({ step }: { step: number }) => {
         onClick={handleContinueStep1}
         disabled={!validPayee || isLooking || isSelf}
         isLoading={isLooking}
-        className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 h-11 w-full font-semibold text-[#080808] disabled:opacity-40"
+        className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 h-11 w-full font-semibold text-[#242424] disabled:opacity-40"
       >
         Continue
       </Button>
@@ -321,7 +321,7 @@ const InternalTransfer = ({ step }: { step: number }) => {
           <div className="flex flex-col items-center justify-center py-12 text-center">
             <p className="text-lg font-bold">No Transfers Yet</p>
             <p className="mt-2 max-w-[220px] text-sm font-light text-[#8C8C8C]">
-              You haven&apos;t sent money to any ArcPay user yet. Your
+              You haven&apos;t sent money to any Krypt Kard user yet. Your
               transfers will appear here once you send money.
             </p>
           </div>
@@ -347,10 +347,10 @@ const InternalTransfer = ({ step }: { step: number }) => {
                   className="flex cursor-pointer items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition hover:bg-white/5"
                 >
                   <div
-                    className="flex size-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold text-[#3FD8E8]"
+                    className="text-white flex size-9 shrink-0 items-center justify-center rounded-full border border-[#CECECE] text-xs font-semibold"
                     style={{
                       background:
-                        "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+                        "linear-gradient(129.49deg, rgba(42, 42, 42, 0.5) 3.6%, rgba(28, 28, 28, 0.5) 100%)",
                     }}
                   >
                     {initials}

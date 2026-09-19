@@ -52,7 +52,7 @@ const FundWallet = ({
           }
         }}
         placeholder="Enter amount"
-        className="border-[#6EF7FF2E] text-white placeholder:text-[#B9BCCC] relative mt-2 h-11 lg:text-xs lg:placeholder:text-xs"
+        className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] text-white placeholder:text-[#B9BCCC] relative mt-2 h-11 lg:text-xs lg:placeholder:text-xs"
         tabIndex={0}
       />
       {error && <p className="mt-1 text-xs text-red-500">{error}</p>}

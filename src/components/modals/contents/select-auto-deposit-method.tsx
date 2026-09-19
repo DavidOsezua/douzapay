@@ -46,7 +46,7 @@ const SelectAutoDeposit = ({ closeModal }: { closeModal: () => void }) => {
         isLoading={isGettingWallet}
         onClick={handleSubmit}
         disabled={!activeOption || isGettingWallet}
-        className="text-[#080808] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 h-11 w-full rounded-md"
+        className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 h-11 w-full rounded-md"
       >
         Continue
       </Button>
@@ -82,7 +82,7 @@ export const SelectPaymentMethod = ({
           onClick={() => setActiveOption(token)}
           className={`rounded-md py-4 hover:cursor-pointer ${
             activeOption?.id === token.id
-              ? "text-[#080808] bg-[linear-gradient(360deg,#6EF7FF_0%,#3FD8E8_100%)]"
+              ? "text-[#242424] bg-[linear-gradient(360deg,#6EF7FF_0%,#3FD8E8_100%)]"
               : "bg-[#181818B2] text-white"
           }`}
         >

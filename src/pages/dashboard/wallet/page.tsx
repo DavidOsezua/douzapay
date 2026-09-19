@@ -47,7 +47,7 @@ const Wallet = () => {
         <div className="relative p-4">
           <div className="grid grid-cols-1 gap-2.5 lg:grid-cols-10">
             {/* MY WALLET */}
-            <div className="font-dm-sans dashboard-card text-white relative box-border flex w-full flex-col justify-between gap-y-4 rounded-2xl border border-[#8ECAEC50] p-4 lg:col-span-4 lg:h-full">
+            <div className="font-dm-sans dashboard-card text-white relative box-border flex w-full flex-col justify-between gap-y-4 rounded-2xl border border-[#E3F7FF40] p-4 lg:col-span-4 lg:h-full">
               <div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-medium lg:text-sm">
@@ -87,7 +87,7 @@ const Wallet = () => {
                   return (
                     <div
                       key={asset.id}
-                      className="border-[#6EF7FF2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
+                      className="border-[#CECECE2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
                     >
                       <div className="flex items-center gap-1.5">
                         <p className="text-[#A5ACB6] text-[10px]">
@@ -119,32 +119,32 @@ const Wallet = () => {
                     className="lg:bg-dark-primary-main lg:hover:bg-dark-primary-main/70 flex h-12 items-center justify-center gap-1 rounded-md px-2 py-2.5 transition-all duration-300 active:scale-95"
                   >
                     <PlusCircle
-                      className="size-6 text-[#181818]"
+                      className="size-6 text-[#242424]"
                       strokeWidth={1.5}
                     />
-                    <p className="text-sm font-medium text-[#080808]">Deposit</p>
+                    <p className="text-sm font-medium text-[#242424]">Deposit</p>
                   </button>
                   <button
                     onClick={() => openSheet("withdraw", 2)}
                     className="lg:bg-dark-primary-main lg:hover:bg-dark-primary-main/70 flex h-12 items-center justify-center gap-1 rounded-md px-2 py-2.5 transition-all duration-300 active:scale-95"
                   >
                     <ArrowUpCircle
-                      className="size-6 rotate-45 text-[#181818]"
+                      className="size-6 rotate-45 text-[#242424]"
                       strokeWidth={1.5}
                     />
-                    <p className="text-sm font-medium text-[#080808]">Withdraw</p>
+                    <p className="text-sm font-medium text-[#242424]">Withdraw</p>
                   </button>
                   <button
                     onClick={() => openModal("transfer")}
                     className="lg:bg-dark-primary-main lg:hover:bg-dark-primary-main/70 flex h-12 cursor-pointer items-center justify-center gap-1 rounded-md px-2 py-2.5 transition-all duration-300 active:scale-95"
                   >
-                    <div className="flex size-6 items-center justify-center rounded-full border-[1.5px] border-[#181818]">
+                    <div className="flex size-6 items-center justify-center rounded-full border-[1.5px] border-[#242424]">
                       <ArrowUpDown
-                        className="size-3.5 rotate-45 text-[#181818]"
+                        className="size-3.5 rotate-45 text-[#242424]"
                         strokeWidth={1.5}
                       />
                     </div>
-                    <p className="text-sm font-medium text-[#080808]">Transfer</p>
+                    <p className="text-sm font-medium text-[#242424]">Transfer</p>
                   </button>
                 </div>
               </div>
@@ -168,7 +168,7 @@ const Wallet = () => {
                 return (
                   <div
                     key={asset.id}
-                    className="border-[#6EF7FF2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
+                    className="border-[#CECECE2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
                   >
                     <div className="flex items-center gap-1.5">
                       <p className="text-[#A5ACB6] text-[10px]">{label}</p>
@@ -192,14 +192,14 @@ const Wallet = () => {
             </div>
 
             <div className="flex flex-col gap-2.5 *:grow lg:col-span-3">
-              <div className="dashboard-card font-dm-sans relative hidden h-29 min-w-1/2 flex-col justify-center space-x-1.5 rounded-2xl p-4 lg:flex">
+              <div className="dashboard-card font-dm-sans relative hidden h-29 min-w-1/2 flex-col justify-center space-x-1.5 rounded-2xl border border-[#6EF7FF24] p-4 lg:flex">
                 <p className="text-white text-sm">Pending balance</p>
                 <p className="text-white mt-2 text-2xl font-medium">
                   {formatAmount(user?.pendingBalance)}
                 </p>
               </div>
-              <div className="dashboard-card font-dm-sans relative min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl p-4 *:grow lg:h-29">
-                <div className="bg-[linear-gradient(123.04deg,#FFAEE6_1.64%,#EBE8F3_98.52%)] text-[#181818] absolute top-0 -right-2 px-2.5 py-2 text-[10px] font-light uppercase">
+              <div className="dashboard-card font-dm-sans relative min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl border border-[#6EF7FF24] p-4 *:grow lg:h-29">
+                <div className="bg-[linear-gradient(123.04deg,#DFF4FF_1.64%,#A3D9D9_98.52%)] text-[#242424] absolute top-0 -right-2 px-2.5 py-2 text-[10px] font-light uppercase">
                   Coming soon
                 </div>
                 <div className="opacity-30">
@@ -214,12 +214,12 @@ const Wallet = () => {
               </div>
             </div>
 
-            <div className="font-dm-sans dashboard-card relative flex w-full justify-between space-x-1.5 rounded-2xl border px-3 py-2 *:grow lg:col-span-2 lg:hidden">
+            <div className="font-dm-sans dashboard-card relative flex w-full justify-between space-x-1.5 rounded-2xl border border-[#E3F7FF40] px-3 py-2 *:grow lg:col-span-2 lg:hidden">
               <Button
                 onClick={() => openModal("walletAutoDeposit")}
                 className="border border-transparent hover:border-dark-primary-main text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
               >
-                <div className="text-[#181818] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
+                <div className="text-[#242424] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
                   <ArrowDownLeft className="size-4" strokeWidth={1.5} />
                 </div>
                 <p className="text-white text-xs font-medium">Deposit</p>
@@ -228,7 +228,7 @@ const Wallet = () => {
                 onClick={() => openSheet("withdraw", 2)}
                 className="border border-transparent hover:border-dark-primary-main text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
               >
-                <div className="text-[#181818] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
+                <div className="text-[#242424] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
                   <ArrowUpRight className="size-4" strokeWidth={1.5} />
                 </div>
                 <p className="text-white text-xs font-medium">Withdraw</p>
@@ -237,7 +237,7 @@ const Wallet = () => {
                 onClick={() => openModal("transfer")}
                 className="border border-transparent hover:border-dark-primary-main text-white flex h-auto flex-col items-center justify-between rounded-md bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
               >
-                <div className="text-[#181818] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
+                <div className="text-[#242424] bg-dark-primary-main flex size-7 items-center justify-center rounded-full">
                   <ArrowUpDown className="size-4 rotate-45" strokeWidth={1.5} />
                 </div>
                 <p className="text-white text-xs font-medium">Transfer</p>
@@ -276,7 +276,7 @@ const Wallet = () => {
                   <div className="text-white mt-4 flex items-center gap-2.5 *:w-1/2">
                     <div
                       className={
-                        "bg-[#080808] flex h-10 items-center justify-between rounded-md px-2.5"
+                        "bg-[#000000] flex h-10 items-center justify-between rounded-md px-2.5"
                       }
                     >
                       <span className="w-5/6 overflow-hidden text-ellipsis whitespace-nowrap">
@@ -291,10 +291,10 @@ const Wallet = () => {
                     <Button
                       onClick={() => handleShare(`signup?ref=${user?.id}`)}
                       className={
-                        "share-link-btn text-[#080808] flex h-10 items-center justify-center gap-1 rounded-md hover:cursor-pointer"
+                        "share-link-btn text-black flex h-10 items-center justify-center gap-1 rounded-md hover:cursor-pointer"
                       }
                     >
-                      <Share2 className="text-[#080808] size-4" />
+                      <Share2 className="text-black size-4" />
                       <span>Share Your Link</span>
                     </Button>
                   </div>
@@ -304,14 +304,14 @@ const Wallet = () => {
           </div>
 
           <div className="recent-transactions-card text-white mt-4 rounded-2xl lg:row-start-auto">
-            <div className="bg-dark-background-light rounded-tl-2xl rounded-tr-2xl p-4">
+            <div className="rounded-tl-2xl rounded-tr-2xl p-4">
               <div className="flex items-center justify-between">
                 <h2 className="text-white text-sm font-medium">
                   Recent Transactions
                 </h2>
                 <Link
                   to="/dashboard/transactions"
-                  className="text-primary-100 text-xs hover:underline"
+                  className="text-white text-xs hover:underline"
                 >
                   See All
                 </Link>

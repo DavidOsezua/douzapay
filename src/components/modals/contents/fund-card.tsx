@@ -106,13 +106,13 @@ const FundCard = ({ cardData }: { cardData: Card }) => {
                   )}
                 </div>
                 <p
-                  className={`text-[10px] leading-tight ${isSelected ? "text-[#080808]" : "text-white"}`}
+                  className={`text-[10px] leading-tight ${isSelected ? "text-[#242424]" : "text-white"}`}
                 >
                   {label}
                 </p>
               </div>
               <p
-                className={`text-sm font-medium ${isSelected ? "text-[#080808]" : "text-white"}`}
+                className={`text-sm font-medium ${isSelected ? "text-[#242424]" : "text-white"}`}
               >
                 {Number(asset.balance).toFixed(2)}
               </p>
@@ -136,7 +136,7 @@ const FundCard = ({ cardData }: { cardData: Card }) => {
           }
         }}
         placeholder="Enter amount"
-        className="border-[#6EF7FF2E] text-white placeholder:text-[#B9BCCC] relative mt-2 h-11 lg:text-xs lg:placeholder:text-xs"
+        className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] text-white placeholder:text-[#B9BCCC] relative mt-2 h-11 lg:text-xs lg:placeholder:text-xs"
       />
       {error && <p className="mt-1 text-xs text-red-500">{error}</p>}
 
@@ -159,7 +159,7 @@ const FundCard = ({ cardData }: { cardData: Card }) => {
           Number(amount) > selectedBalance ||
           isTransferPending
         }
-        className="text-[#080808] bg-dark-primary-main hover:bg-dark-primary-100 mt-4 h-11 w-full rounded-md"
+        className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-100 mt-4 h-11 w-full rounded-md"
       >
         Continue
       </Button>

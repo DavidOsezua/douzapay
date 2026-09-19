@@ -80,16 +80,16 @@ const Transactions = () => {
         value={tab}
         className="font-poppins px-4 py-4 lg:bg-transparent"
       >
-        <TabsList className="border-dark-stroke-3 bg-dark-background-light w-full border p-0 lg:w-fit">
+        <TabsList className="border-dark-stroke-3 bg-[#EBE8F308] w-full border p-0 lg:w-fit">
           <TabsTrigger
             value="wallet"
-            className="text-[#B9BCCC] bg-[#EBE8F308] data-[state=active]:bg-[linear-gradient(360deg,#6EF7FF_0%,#3FD8E8_100%)] data-[state=active]:text-[#0F1326] dark:data-[state=active]:text-[#0F1326] rounded-l-lg rounded-r-none px-6"
+            className="dark:!text-[#E1E1E1] !text-[#E1E1E1] dark:data-[state=active]:!text-[#242424] data-[state=active]:!text-[#242424] !bg-[#EBE8F308] dark:data-[state=active]:!bg-[#E1E1E1] data-[state=active]:!bg-[#E1E1E1] rounded-l-lg rounded-r-none px-6"
           >
             Wallet
           </TabsTrigger>
           <TabsTrigger
             value="cards"
-            className="text-[#B9BCCC] bg-[#EBE8F308] data-[state=active]:bg-[linear-gradient(360deg,#6EF7FF_0%,#3FD8E8_100%)] data-[state=active]:text-[#0F1326] dark:data-[state=active]:text-[#0F1326] rounded-l-none rounded-r-lg px-6"
+            className="dark:!text-[#E1E1E1] !text-[#E1E1E1] dark:data-[state=active]:!text-[#242424] data-[state=active]:!text-[#242424] !bg-[#EBE8F308] dark:data-[state=active]:!bg-[#E1E1E1] data-[state=active]:!bg-[#E1E1E1] rounded-l-none rounded-r-lg px-6"
           >
             Cards
           </TabsTrigger>

@@ -69,7 +69,7 @@ const AppSidebar = () => {
       <div className="bg-dark-background-main border-[#6EF7FF2E] flex size-full flex-col overflow-hidden border-r">
         <SidebarHeader>
           <div className="text-primary-100 flex items-center justify-center px-4 py-2">
-            <img src="/images/full-logo.svg" alt="mpay logo" />
+            <img src="/images/full-logo.svg" alt="Krypt Kard logo" />
           </div>
         </SidebarHeader>
 
@@ -143,10 +143,10 @@ const AppSidebar = () => {
                   <NavLink end={item.url === "/dashboard"} to={item.url}>
                     {({ isActive }) => (
                       <SidebarMenuButton
-                        className={`hover:bg-primary-100/15 hover:text-dark-primary-main relative h-auto rounded-r-none px-4 ${
+                        className={`hover:bg-primary-100/15 hover:text-[#E1E1E1] relative h-auto rounded-r-none px-4 ${
                           isActive
-                            ? "text-dark-primary-main bg-dark-selected-1"
-                            : "text-white"
+                            ? "text-[#E1E1E1] bg-dark-selected-1"
+                            : "text-[#E3E8FF]"
                         }`}
                         asChild
                       >
@@ -158,7 +158,7 @@ const AppSidebar = () => {
                           />
                           <span className="leading-6">{item.title}</span>
                           {isActive && (
-                            <div className="bg-dark-primary-300 absolute inset-y-0 right-0 w-1 rounded-l" />
+                            <div className="bg-[#E1E1E1] absolute inset-y-0 right-0 w-1 rounded-l" />
                           )}
                         </div>
                       </SidebarMenuButton>

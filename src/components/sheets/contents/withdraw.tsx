@@ -144,7 +144,7 @@ const Withdraw = ({
             value={withdrawalAddress}
             onChange={(e) => setWithdrawalAddress(e.target.value)}
             placeholder="Enter wallet address"
-            className="text-white border border-[#6EF7FF2E] mt-2 h-11 lg:text-xs lg:placeholder:text-xs"
+            className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] mt-2 h-11 lg:text-xs lg:placeholder:text-xs"
           />
           <p className="mt-1 text-[10px] leading-2.5 font-light">
             Please enter the address your funds withdrawn to, according to
@@ -158,7 +158,7 @@ const Withdraw = ({
               type="number"
               onChange={(e) => setAmount(e.target.value)}
               placeholder={`Enter Amount in ${preferredCurrency}`}
-              className="text-white border border-[#6EF7FF2E] mt-2 h-11 lg:text-xs lg:placeholder:text-xs"
+              className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] mt-2 h-11 lg:text-xs lg:placeholder:text-xs"
             />
             {amount && parseFloat(amount) > 0 && (
               <p className="text-muted-foreground mt-1 text-xs">
@@ -179,7 +179,7 @@ const Withdraw = ({
           >
             <h6>Note</h6>
             <p className="mt-2 font-light">
-              For your security withdrawal from your ArcPay Wallet to your
+              For your security withdrawal from your Krypt Kard Wallet to your
               external wallet are processed manually and can take 24 hours.
               Please contact the support team with your account details and
               screenshot of your pending withdrawal to have it confirmed
@@ -200,7 +200,7 @@ const Withdraw = ({
             disabled={
               isGettingOtp || !withdrawalAddress || !amount || !selectedAsset
             }
-            className="text-[#080808] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-8 w-full font-semibold"
+            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-8 w-full font-semibold"
           >
             Continue
           </Button>
@@ -292,7 +292,7 @@ const Withdraw = ({
               disabled={!otp || isWithdrawing}
               isLoading={isWithdrawing}
               onClick={() => onSubmit()}
-              className="text-[#080808] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-8 w-full font-semibold"
+              className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-8 w-full font-semibold"
             >
               Authorize Payment
             </Button>

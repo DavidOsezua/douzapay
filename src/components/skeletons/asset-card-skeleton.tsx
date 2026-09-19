@@ -31,8 +31,8 @@ export const AssetCardSelectSkeleton = () => (
       gap: "8px",
       borderRadius: "14px",
       padding: "12px",
-      background: "#434861",
-      border: "1.5px solid #2C7B7F",
+      background: "#121212",
+      border: "1.5px solid #E1E1E1",
     }}
   >
     <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>

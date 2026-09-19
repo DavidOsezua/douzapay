@@ -50,7 +50,7 @@ const Cards = () => {
           className={`relative mt-4 grid w-full grid-cols-1 gap-4 lg:grid-cols-9`}
         >
           <div
-            className="dashboard-card relative col-span-1 row-start-2 h-full min-h-60 overflow-hidden rounded-2xl p-4 pb-0 lg:col-span-4 lg:row-start-auto"
+            className="dashboard-card relative col-span-1 row-start-2 h-full min-h-60 overflow-hidden rounded-2xl border border-[#6EF7FF24] p-4 pb-0 lg:col-span-4 lg:row-start-auto"
             style={{
               backdropFilter: "blur(50px)",
               boxShadow: "0px 4px 17px -1px #BDE9FB33",
@@ -85,7 +85,7 @@ const Cards = () => {
             )}
           </div>
           <div className="text-white flex flex-row gap-2.5 *:grow lg:col-span-3 lg:flex-col">
-            <div className="dashboard-card rounded-xl p-4 backdrop-blur-sm">
+            <div className="dashboard-card rounded-xl border border-[#6EF7FF24] p-4 backdrop-blur-sm">
               <div className="flex items-center justify-between text-[10px]">
                 <img className="size-6" src="/icons/gradient-card.svg" alt="" />
                 <div className="flex gap-2">
@@ -113,8 +113,8 @@ const Cards = () => {
             </div>
             <div className="flex w-1/2 flex-col space-y-2.5 lg:w-full">
               <div className="dashboard-card font-dm-sans relative min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl p-2 px-4 *:grow lg:hidden lg:w-auto lg:p-4">
-                <DottedBorderBox strokeColor={"#8ECAEC75"} strokeWidth={0.5} />
-                <div className="bg-[linear-gradient(123.04deg,#FFAEE6_1.64%,#EBE8F3_98.52%)] text-[#181818] absolute top-0 -right-2 px-2.5 py-2 text-[10px] font-light uppercase">
+                <DottedBorderBox strokeColor={"#CECECE2E"} strokeWidth={0.5} />
+                <div className="bg-[linear-gradient(123.04deg,#DFF4FF_1.64%,#A3D9D9_98.52%)] text-[#242424] absolute top-0 -right-2 px-2.5 py-2 text-[10px] font-light uppercase">
                   Coming soon
                 </div>
                 <div className="opacity-30">
@@ -132,10 +132,10 @@ const Cards = () => {
                 </div>
               </div>
               <div className="font-dm-sans text-white relative box-border flex justify-between gap-y-4 rounded-2xl p-1.5 lg:h-full lg:w-full lg:p-3">
-                <DottedBorderBox strokeColor={"#8ECAEC75"} strokeWidth={0.5} />
+                <DottedBorderBox strokeColor={"#CECECE2E"} strokeWidth={0.5} />
                 <Button
                   onClick={() => navigate("/dashboard/shop")}
-                  className="text-[#080808] bg-dark-primary-main hover:bg-dark-primary-main/80 h-10 w-full py-2 font-semibold lg:h-12"
+                  className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 h-10 w-full py-2 font-semibold lg:h-12"
                 >
                   <PlusCircle strokeWidth={2} className="size-5" />
                   <span>Buy Card</span>
@@ -145,8 +145,8 @@ const Cards = () => {
           </div>
           <div className="text-white hidden flex-col gap-2.5 lg:col-span-2 lg:flex">
             <div className="dashboard-card font-dm-sans relative h-29 min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl p-4 *:grow">
-              <DottedBorderBox strokeColor={"#8ECAEC75"} strokeWidth={0.5} />
-              <div className="bg-[linear-gradient(123.04deg,#FFAEE6_1.64%,#EBE8F3_98.52%)] text-[#181818] absolute top-0 -right-2 px-2.5 py-2 text-[10px] font-light uppercase">
+              <DottedBorderBox strokeColor={"#CECECE2E"} strokeWidth={0.5} />
+              <div className="bg-[linear-gradient(123.04deg,#DFF4FF_1.64%,#A3D9D9_98.52%)] text-[#242424] absolute top-0 -right-2 px-2.5 py-2 text-[10px] font-light uppercase">
                 Coming soon
               </div>
               <div className="opacity-30">
@@ -160,7 +160,7 @@ const Cards = () => {
               </div>
             </div>
             <div className="dashboard-card font-dm-sans relative h-29 min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl p-4 *:grow">
-              <DottedBorderBox strokeColor={"#8ECAEC75"} strokeWidth={0.5} />
+              <DottedBorderBox strokeColor={"#CECECE2E"} strokeWidth={0.5} />
 
               <div>
                 <div className="flex items-center gap-4">
@@ -180,7 +180,7 @@ const Cards = () => {
                 </p>
                 <Button
                   onClick={() => openSheet("pendingCards", 2, {}, false)}
-                  className="text-[#080808] hover:bg-dark-primary-main/80 bg-dark-primary-main mt-2 w-full py-2 lg:h-9"
+                  className="text-[#242424] hover:bg-dark-primary-main/80 bg-dark-primary-main mt-2 w-full py-2 lg:h-9"
                 >
                   See Details
                 </Button>
@@ -188,7 +188,7 @@ const Cards = () => {
             </div>
           </div>
           <div className="flex items-center gap-2.5 lg:hidden">
-            <div className="dashboard-card min-w-1/2 rounded-2xl p-4">
+            <div className="dashboard-card min-w-1/2 rounded-2xl border border-[#6EF7FF24] p-4">
               <div className="text-white flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <img
@@ -209,10 +209,10 @@ const Cards = () => {
               </p>
             </div>
             <div className="dashboard-card font-dm-sans relative flex h-full min-w-1/2 items-center justify-center space-x-1.5 overflow-hidden rounded-2xl p-4 *:grow">
-              <DottedBorderBox strokeColor={"#8ECAEC75"} strokeWidth={0.5} />
+              <DottedBorderBox strokeColor={"#CECECE2E"} strokeWidth={0.5} />
               <Button
                 onClick={() => openSheet("pendingCards", 2, {}, false)}
-                className="text-[#080808] hover:bg-dark-primary-main/80 bg-dark-primary-main w-full py-2 lg:h-9"
+                className="text-[#242424] hover:bg-dark-primary-main/80 bg-dark-primary-main w-full py-2 lg:h-9"
               >
                 See Details
               </Button>
@@ -220,7 +220,7 @@ const Cards = () => {
           </div>
         </div>
         <div className="text-white recent-transactions-card mt-6 rounded-xl">
-          <div className="bg-dark-background-light">
+          <div>
             <div className="flex h-12 items-center justify-between px-4">
               <h1>Recent Transactions</h1>
               <Link

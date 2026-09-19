@@ -61,7 +61,7 @@ const TermsAndConditions = () => {
               onClick={() => setActiveTab(tab)}
               className={`h-8 flex-1 rounded-full text-xs font-medium transition-colors ${
                 activeTab === tab
-                  ? "bg-dark-primary-main text-[#080808]"
+                  ? "bg-dark-primary-main text-[#242424]"
                   : "text-dark-text-300"
               }`}
             >
@@ -136,7 +136,7 @@ const TermsAndConditions = () => {
               <span className="font-medium">Card Currency:</span> Card currency
               refers to the currency type or unit associated with infinity
               cards. it plays a crucial role in determining the currency used
-              for payment and settlement when utilising ArcPay cards. It is
+              for payment and settlement when utilising Krypt Kard cards. It is
               highly recommended to utilise cards that align with the currency
               of the purchase order to mitigate the potential incurring of FX
               fees.

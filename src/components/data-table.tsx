@@ -96,7 +96,7 @@ export function DataTable<TData, TValue>({
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow
-                className="border-b border-b-[#999999]"
+                className="border-b border-b-white/10"
                 key={headerGroup.id}
               >
                 {headerGroup.headers.map((header) => {
@@ -118,7 +118,7 @@ export function DataTable<TData, TValue>({
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
-                  className="border-b border-b-[#999999] hover:bg-white/5"
+                  className="border-b border-b-white/10 hover:bg-white/5"
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
                 >

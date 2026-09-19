@@ -34,7 +34,7 @@ const ConfirmPassword = ({
   return (
     <div className="mx-auto flex flex-col items-center text-center">
       <div className="bg-dark-primary-main flex size-16 items-center justify-center rounded-full border">
-        <Info className="size-6 text-[#181818]" strokeWidth={1.5} />
+        <Info className="size-6 text-[#242424]" strokeWidth={1.5} />
       </div>
       <p className="text-white mt-4 text-2xl font-medium">
         Card Details
@@ -51,7 +51,7 @@ const ConfirmPassword = ({
               <FormItem className={"mt-4"}>
                 <FormControl>
                   <Input
-                    className="placeholder:text-dark-text-300 text-white"
+                    className="placeholder:text-white/50 text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
                     type="password"
                     placeholder="Enter Password"
                     {...field}
@@ -65,7 +65,7 @@ const ConfirmPassword = ({
             <Button
               isLoading={IsSubmittingPassword}
               type="submit"
-              className="text-[#080808] bg-dark-primary-main/80 hover:bg-dark-primary-main/60 mx-auto h-10 w-full rounded-md"
+              className="text-[#242424] bg-dark-primary-main/80 hover:bg-dark-primary-main/60 mx-auto h-10 w-full rounded-md"
             >
               {IsSubmittingPassword ? <Throbber /> : "Confirm"}
             </Button>

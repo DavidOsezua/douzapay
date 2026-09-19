@@ -57,7 +57,7 @@ const platinumSchema = z.object({
 });
 
 const inputClass =
-  "h-11 rounded-xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white placeholder:text-white/50";
+  "h-11 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white placeholder:text-white/50";
 
 const CreatePlatinumCard = ({
   closeSheet,
@@ -276,7 +276,7 @@ const CreatePlatinumCard = ({
                               <button
                                 key={option.value}
                                 type="button"
-                                className="text-white h-8 grow rounded-full border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] px-1 text-xs hover:opacity-80"
+                                className="text-white h-8 grow rounded-full border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] px-1 text-xs hover:opacity-80"
                                 onClick={() =>
                                   form.setValue("cost", option.value)
                                 }
@@ -334,7 +334,7 @@ const CreatePlatinumCard = ({
                 </div>
 
                 {/* Pricing summary */}
-                <div className="mt-4 space-y-3 rounded-2xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] p-4">
+                <div className="mt-4 space-y-3 rounded-2xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] p-4">
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-white text-sm font-medium">
@@ -361,7 +361,7 @@ const CreatePlatinumCard = ({
                       ${(costPerCard * quantity).toFixed(2)}
                     </p>
                   </div>
-                  <div className="border-t border-[#2C7B7F]" />
+                  <div className="border-t border-[#CECECE2E]" />
                   <div className="flex items-center justify-between">
                     <div>
                       <p className="text-white text-sm font-semibold">
@@ -510,7 +510,7 @@ const CreatePlatinumCard = ({
                         <FormLabel className="text-white text-xs leading-5 font-normal">
                           I certify that the information I have provided is
                           accurate and that I will abide by all the rules and
-                          requirements related to my ArcPay Spend Card.
+                          requirements related to my Krypt Kard Spend Card.
                         </FormLabel>
                       </FormItem>
                     )}
@@ -528,7 +528,7 @@ const CreatePlatinumCard = ({
                           />
                         </FormControl>
                         <FormLabel className="text-white text-xs leading-5 font-normal">
-                          I acknowledge that using the ArcPay Spend Card does
+                          I acknowledge that using the Krypt Kard Spend Card does
                           not constitute unauthorized solicitation.
                         </FormLabel>
                       </FormItem>
@@ -743,7 +743,7 @@ const CreatePlatinumCard = ({
               {customStep === 2 && selectedCardholder && (
                 <>
                   {/* Selected cardholder summary */}
-                  <div className="mb-5 flex items-center gap-3 rounded-2xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] px-4 py-3">
+                  <div className="mb-5 flex items-center gap-3 rounded-2xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] px-4 py-3">
                     <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#6C95F6]/20 text-sm font-bold text-[#6C95F6]">
                       {`${selectedCardholder.firstName?.[0] ?? ""}${selectedCardholder.lastName?.[0] ?? ""}`.toUpperCase()}
                     </div>
@@ -774,7 +774,7 @@ const CreatePlatinumCard = ({
                         setCustomStep(1);
                         setSelectedCardholder(null);
                       }}
-                      className="text-white shrink-0 rounded-full border border-[#2C7B7F] px-3 py-1 text-xs"
+                      className="text-white shrink-0 rounded-full border border-[#CECECE2E] px-3 py-1 text-xs"
                     >
                       Change
                     </button>
@@ -833,7 +833,7 @@ const CreatePlatinumCard = ({
                                     <button
                                       key={v}
                                       type="button"
-                                      className="text-white h-8 grow rounded-full border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-xs hover:opacity-80"
+                                      className="text-white h-8 grow rounded-full border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-xs hover:opacity-80"
                                       onClick={() =>
                                         form.setValue("customCost", v)
                                       }
@@ -895,7 +895,7 @@ const CreatePlatinumCard = ({
                           Number(form.watch("customCost")) || 0;
                         const customTotal = (cardPrice + customCost) * quantity;
                         return (
-                          <div className="mt-4 space-y-3 rounded-2xl border border-[#2C7B7F] bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] p-4">
+                          <div className="mt-4 space-y-3 rounded-2xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] p-4">
                             <div className="flex items-center justify-between">
                               <div>
                                 <p className="text-white text-sm font-medium">
@@ -922,7 +922,7 @@ const CreatePlatinumCard = ({
                                 ${(customCost * quantity).toFixed(2)}
                               </p>
                             </div>
-                            <div className="border-t border-[#2C7B7F]" />
+                            <div className="border-t border-[#CECECE2E]" />
                             <div className="flex items-center justify-between">
                               <div>
                                 <p className="text-white text-sm font-semibold">
@@ -1004,7 +1004,7 @@ const CreatePlatinumCard = ({
                               <FormLabel className="text-white text-xs leading-5 font-normal">
                                 I certify that the information I have provided
                                 is accurate and that I will abide by all the
-                                rules and requirements related to my ArcPay
+                                rules and requirements related to my Krypt Kard
                                 Spend Card.
                               </FormLabel>
                             </FormItem>
@@ -1023,7 +1023,7 @@ const CreatePlatinumCard = ({
                                 />
                               </FormControl>
                               <FormLabel className="text-white text-xs leading-5 font-normal">
-                                I acknowledge that using the ArcPay Spend Card
+                                I acknowledge that using the Krypt Kard Spend Card
                                 does not constitute unauthorized solicitation.
                               </FormLabel>
                             </FormItem>

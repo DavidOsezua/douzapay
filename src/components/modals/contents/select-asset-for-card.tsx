@@ -90,13 +90,13 @@ const SelectAssetForCard = ({
                   )}
                 </div>
                 <p
-                  className={`text-[10px] leading-tight ${isSelected ? "text-[#080808]" : "text-white"}`}
+                  className={`text-[10px] leading-tight ${isSelected ? "text-[#242424]" : "text-white"}`}
                 >
                   {label}
                 </p>
               </div>
               <p
-                className={`text-sm font-medium ${isSelected ? "text-[#080808]" : "text-white"}`}
+                className={`text-sm font-medium ${isSelected ? "text-[#242424]" : "text-white"}`}
               >
                 {Number(asset.balance).toFixed(2)}
               </p>
@@ -109,7 +109,7 @@ const SelectAssetForCard = ({
         type="button"
         onClick={onSubmit}
         disabled={!effectiveAsset?.tokenId || isCreating}
-        className="bg-dark-primary-main mt-6 flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-[#080808] disabled:cursor-not-allowed disabled:opacity-50"
+        className="bg-dark-primary-main mt-6 flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-[#242424] disabled:cursor-not-allowed disabled:opacity-50"
       >
         {isCreating ? <Throbber /> : <>BUY NOW · ${total.toFixed(2)}</>}
       </button>

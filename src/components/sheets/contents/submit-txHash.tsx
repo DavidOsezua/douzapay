@@ -52,7 +52,7 @@ const SubmitTxHash = ({
           value={txId}
           onChange={(e) => setTxId(e.target.value)}
           placeholder="Enter Transaction Hash"
-          className="bg-primary-500/60 border-border-neutral/30 mt-1 h-11 text-xs text-white placeholder:text-xs placeholder:text-white"
+          className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] mt-1 h-11 text-xs text-white placeholder:text-xs placeholder:text-white/50"
         />
         <div
           className="mt-4 rounded-lg px-4 py-2 text-[14px]"

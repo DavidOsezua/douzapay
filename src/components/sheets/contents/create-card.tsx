@@ -188,7 +188,7 @@ const CreateCard = ({
                         </FormLabel>
                         <FormControl>
                           <Input
-                            className="bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white border border-[#2C7B7F] rounded lg:text-xs lg:placeholder:text-[10px]"
+                            className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white border border-[#CECECE2E] rounded lg:text-xs lg:placeholder:text-[10px]"
                             {...field}
                             placeholder="e.g. John"
                           />
@@ -207,7 +207,7 @@ const CreateCard = ({
                         </FormLabel>
                         <FormControl>
                           <Input
-                            className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] border border-[#2C7B7F] rounded lg:text-xs lg:placeholder:text-[10px]"
+                            className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] rounded lg:text-xs lg:placeholder:text-[10px]"
                             {...field}
                             placeholder="e.g. Doe"
                           />
@@ -227,7 +227,7 @@ const CreateCard = ({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] border border-[#2C7B7F] rounded lg:text-xs lg:placeholder:text-[10px]"
+                          className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] rounded lg:text-xs lg:placeholder:text-[10px]"
                           type={"email"}
                           {...field}
                           placeholder="e.g. johndoe@example.com"
@@ -248,11 +248,11 @@ const CreateCard = ({
                       <FormControl>
                         <div className="flex gap-2 *:grow">
                           <CountryCodeSelect
-                            className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] rounded border-[#2C7B7F]"
+                            className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] rounded border-[#CECECE2E]"
                             onSelect={setCountryCode}
                           />
                           <Input
-                            className="bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white border border-[#2C7B7F] rounded pl-16 lg:text-[10px] lg:placeholder:text-[10px]"
+                            className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white border border-[#CECECE2E] rounded pl-16 lg:text-[10px] lg:placeholder:text-[10px]"
                             type={"tel"}
                             {...field}
                             placeholder="e.g. 000 000 000"
@@ -286,7 +286,7 @@ const CreateCard = ({
                             return (
                               <input
                                 type="date"
-                                className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] h-9 w-full max-w-xs rounded border border-[#2C7B7F] focus:outline-none [&>svg]:fill-white"
+                                className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] h-9 w-full max-w-xs rounded border border-[#CECECE2E] focus:outline-none [&>svg]:fill-white"
                                 value={field.value || ""}
                                 onChange={field.onChange}
                                 max={maxDateStr}
@@ -312,7 +312,7 @@ const CreateCard = ({
                             value={field.value}
                             onValueChange={field.onChange}
                           >
-                            <SelectTrigger className="bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white border border-[#2C7B7F] w-full rounded lg:text-[10px]">
+                            <SelectTrigger className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white border border-[#CECECE2E] w-full rounded lg:text-[10px]">
                               <SelectValue placeholder="Select Nationality" />
                             </SelectTrigger>
                             <SelectContent>
@@ -405,7 +405,7 @@ const CreateCard = ({
                             </FormLabel>
                             <FormControl>
                               <Input
-                                className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] placeholder:text-white/50 h-10 rounded border-[#2C7B7F]"
+                                className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] placeholder:text-white/50 h-10 rounded border-[#CECECE2E]"
                                 {...field}
                                 placeholder="Enter address"
                               />
@@ -424,7 +424,7 @@ const CreateCard = ({
                             </FormLabel>
                             <FormControl>
                               <Input
-                                className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] placeholder:text-white/50 h-10 rounded border-[#2C7B7F]"
+                                className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] placeholder:text-white/50 h-10 rounded border-[#CECECE2E]"
                                 {...field}
                                 placeholder="Enter address"
                               />
@@ -443,7 +443,7 @@ const CreateCard = ({
                             </FormLabel>
                             <FormControl>
                               <Input
-                                className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] placeholder:text-white/50 h-10 rounded border-[#2C7B7F]"
+                                className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] placeholder:text-white/50 h-10 rounded border-[#CECECE2E]"
                                 {...field}
                                 placeholder="Enter city"
                               />
@@ -462,7 +462,7 @@ const CreateCard = ({
                             </FormLabel>
                             <FormControl>
                               <Input
-                                className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] placeholder:text-white/50 h-10 rounded border-[#2C7B7F]"
+                                className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] placeholder:text-white/50 h-10 rounded border-[#CECECE2E]"
                                 {...field}
                                 placeholder="Enter state"
                               />
@@ -485,7 +485,7 @@ const CreateCard = ({
                                 value={field.value}
                                 onValueChange={field.onChange}
                               >
-                                <SelectTrigger className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] placeholder:text-white/50 !h-10 w-full rounded border-[#2C7B7F]">
+                                <SelectTrigger className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] placeholder:text-white/50 !h-10 w-full rounded border-[#CECECE2E]">
                                   <SelectValue placeholder="Select Country" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -523,7 +523,7 @@ const CreateCard = ({
                             </FormLabel>
                             <FormControl>
                               <Input
-                                className="text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] placeholder:text-white/50 h-10 rounded border-[#2C7B7F]"
+                                className="text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] placeholder:text-white/50 h-10 rounded border-[#CECECE2E]"
                                 {...field}
                                 placeholder="Enter postal code"
                               />
@@ -546,7 +546,7 @@ const CreateCard = ({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="placeholder:text-white/50 text-white bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] h-10 rounded border-[#2C7B7F]"
+                          className="placeholder:text-white/50 text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] h-10 rounded border-[#CECECE2E]"
                           type={"text"}
                           {...field}
                           placeholder="e.g. Online Transactions"
@@ -558,7 +558,7 @@ const CreateCard = ({
                 />
               </div>
 
-              <div className="bg-[linear-gradient(129.49deg,rgba(67,72,97,0.1)_3.6%,rgba(95,104,149,0.1)_100%)] text-white mt-4 rounded-lg px-3 py-4 text-[10px]">
+              <div className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white mt-4 rounded-lg px-3 py-4 text-[10px]">
                 <FormField
                   control={form.control}
                   name="esign"
@@ -638,7 +638,7 @@ const CreateCard = ({
                       <FormLabel className="text-white text-[10px] font-light">
                         I certify that the information I have provided is
                         accurate and that i will abide by all the rules and
-                        requirements related to ArcPay Spend Card.
+                        requirements related to Krypt Kard Spend Card.
                       </FormLabel>
                       <FormMessage />
                     </FormItem>
@@ -658,7 +658,7 @@ const CreateCard = ({
                         />
                       </FormControl>
                       <FormLabel className="text-[10px] font-light">
-                        I acknowledge that using the ArcPay Spend Card does not
+                        I acknowledge that using the Krypt Kard Spend Card does not
                         constitute unauthorized solicitation.
                       </FormLabel>
                       <FormMessage />
@@ -685,7 +685,7 @@ const CreateCard = ({
                     !form.watch("spendCard")
                   }
                   className={
-                    "bg-dark-primary-main disabled:bg-dark-primary-main/50 hover:bg-dark-primary-main-hover text-[#080808] mb-6 rounded font-semibold disabled:cursor-not-allowed"
+                    "bg-dark-primary-main disabled:bg-dark-primary-main/50 hover:bg-dark-primary-main-hover text-[#242424] mb-6 rounded font-semibold disabled:cursor-not-allowed"
                   }
                   type="submit"
                 >
@@ -761,7 +761,7 @@ const CreateCard = ({
             <span className="font-medium">Card Currency:</span> Card currency
             refers to the currency type or unit associated with infinity cards.
             it plays a crucial role in determining the currency used for payment
-            and settlement when utilising ArcPay cards. It is highly recommended
+            and settlement when utilising Krypt Kard cards. It is highly recommended
             to utilise cards that align with the currency of the purchase order
             to mitigate the potential incurring of FX fees.
           </p>

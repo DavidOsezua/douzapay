@@ -75,7 +75,7 @@ const TopBar = ({
             className="flex size-8 items-center justify-center rounded-full text-white hover:cursor-pointer hover:opacity-80 active:scale-95 md:size-9 lg:hidden"
             style={{
               background:
-                "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+                "linear-gradient(123.04deg, rgba(167, 167, 167, 0.4) 1.64%, rgba(206, 206, 206, 0.4) 98.52%)",
             }}
           >
             <MessageCircleMore className="text-white size-4.5 md:size-6" />
@@ -85,7 +85,7 @@ const TopBar = ({
             className="hidden size-8 items-center justify-center rounded-full text-white hover:cursor-pointer hover:opacity-80 active:scale-95 md:size-9 lg:flex"
             style={{
               background:
-                "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+                "linear-gradient(123.04deg, rgba(167, 167, 167, 0.4) 1.64%, rgba(206, 206, 206, 0.4) 98.52%)",
             }}
           >
             <MessageCircleMore className="text-white size-4.5 md:size-6" />
@@ -104,10 +104,10 @@ const TopBar = ({
               role="button"
               aria-label="Toggle user menu"
               aria-expanded={optionIsOpen}
-              className="flex size-8 cursor-pointer items-center justify-center rounded-full border border-white/20 text-[#3FD8E8] transition-all hover:opacity-80 active:scale-90 md:size-9"
+              className="text-white flex size-8 cursor-pointer items-center justify-center rounded-full border border-[#CECECE] transition-all hover:opacity-80 active:scale-90 md:size-9"
               style={{
                 background:
-                  "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+                  "linear-gradient(129.49deg, rgba(42, 42, 42, 0.5) 3.6%, rgba(28, 28, 28, 0.5) 100%)",
               }}
             >
               <span className="flex h-8 w-8 items-center justify-center rounded-full text-xl font-medium uppercase lg:text-2xl">
@@ -123,10 +123,10 @@ const TopBar = ({
                   className="flex items-center gap-2"
                 >
                   <span
-                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[#3FD8E8]"
+                    className="text-white flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#CECECE]"
                     style={{
                       background:
-                        "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+                        "linear-gradient(129.49deg, rgba(42, 42, 42, 0.5) 3.6%, rgba(28, 28, 28, 0.5) 100%)",
                     }}
                   >
                     {user?.firstName?.charAt(0)}

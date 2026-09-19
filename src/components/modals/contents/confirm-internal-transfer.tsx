@@ -54,10 +54,10 @@ const ConfirmInternalTransfer = ({
 
       <div className="mt-4 flex items-center gap-3">
         <div
-          className="flex size-10 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-[#3FD8E8]"
+          className="text-white flex size-10 shrink-0 items-center justify-center rounded-full border border-[#CECECE] text-sm font-semibold"
           style={{
             background:
-              "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+              "linear-gradient(129.49deg, rgba(42, 42, 42, 0.5) 3.6%, rgba(28, 28, 28, 0.5) 100%)",
           }}
         >
           {initials}
@@ -71,7 +71,7 @@ const ConfirmInternalTransfer = ({
       <div
         className="mt-4 rounded-xl border px-6 py-2 text-sm"
         style={{
-          borderColor: "#2C7B7F",
+          borderColor: "#CECECE2E",
           background:
             "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
         }}
@@ -94,7 +94,7 @@ const ConfirmInternalTransfer = ({
       <div
         className="mt-2 flex items-center justify-between rounded-xl border px-6 py-4 text-sm"
         style={{
-          borderColor: "#2C7B7F",
+          borderColor: "#CECECE2E",
           background:
             "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
         }}
@@ -115,7 +115,7 @@ const ConfirmInternalTransfer = ({
         }
         isLoading={isPending}
         disabled={isPending || !user?.email}
-        className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-2 h-11 w-full font-semibold text-[#080808]"
+        className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-2 h-11 w-full font-semibold text-[#242424]"
       >
         Continue
       </Button>

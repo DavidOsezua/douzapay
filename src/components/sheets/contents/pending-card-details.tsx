@@ -64,7 +64,7 @@ const PendingCardDetails = ({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="placeholder:text-dark-text-300 text-dark-text-300 bg-dark-input rounded text-xs placeholder:text-[10px]"
+                          className="placeholder:text-white/50 text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] rounded text-xs placeholder:text-[10px]"
                           {...field}
                           readOnly
                           placeholder="Enter First Name"
@@ -84,7 +84,7 @@ const PendingCardDetails = ({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="placeholder:text-dark-text-300 text-dark-text-300 bg-dark-input rounded text-xs placeholder:text-[10px]"
+                          className="placeholder:text-white/50 text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] rounded text-xs placeholder:text-[10px]"
                           {...field}
                           readOnly
                           placeholder="Enter Last Name"
@@ -106,7 +106,7 @@ const PendingCardDetails = ({
                     </FormLabel>
                     <FormControl>
                       <Input
-                        className="placeholder:text-dark-text-300 text-dark-text-300 bg-dark-input rounded text-xs placeholder:text-[10px]"
+                        className="placeholder:text-white/50 text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] rounded text-xs placeholder:text-[10px]"
                         type={"email"}
                         {...field}
                         readOnly
@@ -141,7 +141,7 @@ const PendingCardDetails = ({
                             />
                           </div>
                           <Input
-                            className="bg-dark-input text-dark-text-300 rounded pl-16 text-[10px] placeholder:text-[10px]"
+                            className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] text-white rounded pl-16 text-[10px] placeholder:text-[10px]"
                             type={"tel"}
                             {...field}
                             readOnly
@@ -163,7 +163,7 @@ const PendingCardDetails = ({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="placeholder:text-dark-text-300 text-dark-text-300 bg-dark-input rounded text-xs placeholder:text-[10px]"
+                          className="placeholder:text-white/50 text-white bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] rounded text-xs placeholder:text-[10px]"
                           type={"text"}
                           {...field}
                           readOnly
@@ -186,7 +186,7 @@ const PendingCardDetails = ({
                       </FormLabel>
                       <FormControl>
                         <Input
-                          className="rounded bg-dark-input text-xs placeholder:text-[10px] placeholder:text-dark-text-300 text-dark-text-300"
+                          className="rounded bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] text-xs placeholder:text-[10px] placeholder:text-white/50 text-white"
                           {...field} readOnly
                           placeholder="Enter the amount you want to credit to your card."
                         />
@@ -208,7 +208,7 @@ const PendingCardDetails = ({
               <Button
                 onClick={closeSheet}
                 className={
-                  "bg-dark-primary-main disabled:bg-primary-100/50 hover:bg-primary-100-hover text-[#080808] mb-6 rounded font-semibold disabled:cursor-not-allowed"
+                  "bg-dark-primary-main disabled:bg-primary-100/50 hover:bg-primary-100-hover text-[#242424] mb-6 rounded font-semibold disabled:cursor-not-allowed"
                 }
                 type="button"
               >

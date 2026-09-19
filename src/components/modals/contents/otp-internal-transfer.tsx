@@ -52,10 +52,10 @@ const OtpInternalTransfer = ({
 
       <div className="mt-4 flex items-center gap-3">
         <div
-          className="flex size-10 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-[#3FD8E8]"
+          className="text-white flex size-10 shrink-0 items-center justify-center rounded-full border border-[#CECECE] text-sm font-semibold"
           style={{
             background:
-              "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+              "linear-gradient(129.49deg, rgba(42, 42, 42, 0.5) 3.6%, rgba(28, 28, 28, 0.5) 100%)",
           }}
         >
           {initials}
@@ -97,7 +97,7 @@ const OtpInternalTransfer = ({
         onClick={() => sendTransfer({ amount, toUserId, assetId, otp })}
         isLoading={isPending}
         disabled={isPending || otp.length < 6}
-        className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-2 h-11 w-full font-semibold text-[#080808]"
+        className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-2 h-11 w-full font-semibold text-[#242424]"
       >
         Complete Transfer
       </Button>

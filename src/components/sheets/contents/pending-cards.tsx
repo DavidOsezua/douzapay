@@ -84,7 +84,7 @@ const PendingCards = ({ closeSheet }: { closeSheet: () => void }) => {
             <div className="mt-6">
               <Button
                 onClick={closeSheet}
-                className="text-[#080808] bg-dark-primary-main/80 hover:bg-dark-primary-main/60 h-10 w-full"
+                className="text-[#242424] bg-dark-primary-main/80 hover:bg-dark-primary-main/60 h-10 w-full"
               >
                 Close
               </Button>

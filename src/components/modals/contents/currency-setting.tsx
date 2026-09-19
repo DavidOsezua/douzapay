@@ -50,7 +50,7 @@ const CurrencySetting = ({ closeModal }: { closeModal: () => void }) => {
         isLoading={isUpdatingUser || isLoadingRate}
         onClick={handleSubmit}
         disabled={!activeOption || isUpdatingUser || isLoadingRate}
-        className="text-[#080808] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 h-11 w-full rounded-md"
+        className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 h-11 w-full rounded-md"
       >
         {isLoadingRate ? "Loading Rate..." : "Update setting"}
       </Button>
@@ -82,7 +82,7 @@ export const SelectPreferredCurrency = ({
           onClick={() => setActiveOption(currency)}
           className={`rounded-md border py-4 hover:cursor-pointer ${
             activeOption?.id === currency.id
-              ? "bg-dark-primary-main text-[#080808]"
+              ? "bg-dark-primary-main text-[#242424]"
               : "text-white bg-[#181818B2] border-[#8F9DB066]"
           }`}
         >

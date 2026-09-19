@@ -273,7 +273,7 @@ const NotWhitelisted = () => {
   if (submitted) return <ApplicationStatus />;
 
   const approvalCriteria = [
-    "You have an active ArcPay account in good standing",
+    "You have an active Krypt Kard account in good standing",
     "You have an audience or network you can refer (community, newsletter, social, business)",
     "You agree to our promotion guidelines and won't spam or misrepresent the product",
   ];
@@ -351,7 +351,7 @@ const NotWhitelisted = () => {
                   referral <span style={{ color: "#62D1F3" }}>forever</span>.
                 </h2>
                 <p className="mt-2 text-[11px] leading-relaxed text-white/60">
-                  The ArcPay referral program is invitation-based. Apply
+                  The Krypt Kard referral program is invitation-based. Apply
                   below and our team will review your fit within 2–3 business
                   days.
                 </p>
@@ -438,7 +438,7 @@ const NotWhitelisted = () => {
           style={{
             background:
               "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
-            borderColor: "#2C7B7F",
+            borderColor: "#CECECE2E",
           }}
         >
           <h3 className="text-base font-semibold text-white">Who we approve</h3>
@@ -468,7 +468,7 @@ const NotWhitelisted = () => {
           style={{
             background:
               "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
-            borderColor: "#2C7B7F",
+            borderColor: "#CECECE2E",
           }}
         >
           <label className="flex cursor-pointer items-start gap-3">
@@ -517,12 +517,12 @@ const NotWhitelisted = () => {
           style={{
             background:
               "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
-            borderColor: "#2C7B7F",
+            borderColor: "#CECECE2E",
           }}
         >
           <Info className="mt-0.5 size-3.5 shrink-0 text-white/30" />
           <p className="text-[11px] leading-relaxed text-white/40">
-            Approval is at ArcPay&apos;s discretion. We typically respond within
+            Approval is at Krypt Kard&apos;s discretion. We typically respond within
             2–3 business days. Approved partners get instant access to their
             referral dashboard and code.
           </p>

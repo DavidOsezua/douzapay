@@ -31,9 +31,9 @@ const MyAccount = () => {
 
   return (
     <div className="text-white">
-      <div className="bg-dark-account p-4">
+      <div className="bg-dark-account text-[#0F1326] mt-4 mx-4 rounded-3xl p-4">
         <div className="flex items-center gap-4">
-          <div className="flex size-9 items-center justify-center gap-2 rounded-full bg-[#D8F4FF] font-medium text-[#36A9D6]">
+          <div className="flex size-9 items-center justify-center gap-2 rounded-full bg-[#B4EAFF] font-medium text-[#242424]">
             <span>{user?.firstName?.substring(0, 1)}</span>{" "}
           </div>
           <p className="text-lg font-medium">{`Hello, ${user?.firstName} ${user?.lastName}`}</p>
@@ -62,7 +62,7 @@ const MyAccount = () => {
               </div>
               <ChevronRight size={20} />
             </button>
-            <div className="border-t border-[#283968]" />
+            <div className="border-t border-white/10" />
             <button
               onClick={() => openSheet("referral")}
               className="flex w-full cursor-pointer items-center justify-between py-4 text-sm"
@@ -133,7 +133,7 @@ const MyAccount = () => {
               </div>
               <ChevronRight size={20} />
             </button>
-            <div className="border-t border-[#283968]" />
+            <div className="border-t border-white/10" />
             <button
               onClick={() => {
                 openSheet("termsCondition");
@@ -157,7 +157,7 @@ const MyAccount = () => {
                 toast.success("Logout successful");
                 navigate("/login");
               }}
-              className="text-white hover:bg-dark-primary-main/80 flex h-auto w-full items-center justify-between bg-transparent !px-0 py-4 text-sm hover:text-[#181818]"
+              className="text-white hover:bg-dark-primary-main/80 flex h-auto w-full items-center justify-between bg-transparent !px-0 py-4 text-sm hover:text-[#242424]"
             >
               <div className="flex items-center gap-4">
                 <img className="size-6" src="/icons/logout.svg" alt="Logout" />
