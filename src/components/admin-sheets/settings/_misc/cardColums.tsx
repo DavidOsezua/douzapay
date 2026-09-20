@@ -48,7 +48,7 @@ export const cardColumns: ColumnDef<CardItem>[] = [
     cell: ({ row }) => {
       return (
         <div className="text-xs">
-          ${formatAmount(row.original.balance.available)}
+          ${formatAmount(row.original.balance?.available)}
         </div>
       );
     },

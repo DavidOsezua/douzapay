@@ -1,3 +1,4 @@
+import { classifyCardIdProvider } from "@/lib/helper";
 import {
   getAdminBins,
   getAdminStats,
@@ -282,11 +283,22 @@ export const useGetCardPurchases = ({
   });
 };
 
-export const useGetCardBalance = (id: string) => {
-  return useQuery({
-    queryKey: ["cardBalance", id],
-    queryFn: () => getCardBalance(id),
+// Returns a card's balance. Interlace ("int") cards ship without an inline
+// `balance` and must be resolved via GET /cards/balance/:cardId; every other
+// provider carries `card.balance` inline.
+export const useCardBalance = (card?: Card) => {
+  const provider =
+    card?.provider ?? (card?.id ? classifyCardIdProvider(card.id) : undefined);
+  const needsFetch = provider === "int" && !!card?.id && !card.balance;
+  const query = useQuery({
+    queryKey: ["cardBalance", card?.id],
+    queryFn: () => getCardBalance(card!.id),
+    enabled: needsFetch,
   });
+  return {
+    balance: card?.balance ?? query.data,
+    isLoading: needsFetch && query.isLoading,
+  };
 };
 
 export const useGetAllDeposits = (filters: {

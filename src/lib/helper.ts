@@ -1,5 +1,14 @@
 import { toast } from "sonner";
 
+export const classifyCardIdProvider = (
+  cardId?: string | null,
+): "wsb" | "int" | "ptp" => {
+  const id = (cardId ?? "").toLowerCase();
+  if (id.startsWith("wb") || id.startsWith("wc")) return "wsb";
+  if (id.includes("-")) return "int";
+  return "ptp";
+};
+
 export function getFromLocalStorage(key) {
   if (typeof localStorage !== "undefined") {
     return localStorage.getItem(key);

@@ -160,18 +160,22 @@ type Referrals = {
 
 type Card = {
   id: string;
+  provider?: string;
   accountId: string;
   type: "PrepaidCard";
   bin: string;
   last4: string;
-  network: "MasterCard" | "VISA" | "Visa";
+  // Absent on Interlace ("int") cards; casing from the API is "Visa", not "VISA".
+  network?: "MasterCard" | "VISA" | "Visa";
   firstName: string;
   lastName: string;
-  label: string;
+  label?: string;
   ipr: boolean;
   status: "Active" | "Inactive" | "Frozen";
   createTime: string;
   cardholderId: null | string;
+  // Interlace cards reference their balance record instead of inlining it.
+  balanceId?: string;
   billingAddress: {
     addressLine1: string;
     addressLine2: string;
@@ -179,13 +183,18 @@ type Card = {
     country: string;
     postalCode: string;
     state: string;
-  };
-  balance: {
-    available: string;
-    pending: string;
-    frozen: string;
-    currency: "USD";
-  };
+  } | null;
+  // Optional since Interlace v3 — cards without it are resolved via
+  // GET /cards/balance/:cardId (see useCardBalance).
+  balance?: CardBalance;
+};
+
+type CardBalance = {
+  // string on inline `card.balance` (wsb/ptp), number from /cards/balance/:id (int).
+  available: string | number;
+  currency: string;
+  pending?: string | number;
+  frozen?: string | number;
 };
 
 // Card enriched with fields the admin endpoints join in (user email, the
