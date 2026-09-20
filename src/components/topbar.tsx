@@ -128,7 +128,7 @@ const TopBar = ({
                     transition: { duration: 0.15 },
                   }}
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  className="options-menu absolute top-[calc(100%+8px)] right-0 z-20 w-60 origin-top-right overflow-hidden rounded-xl border border-white/[0.14] bg-white/10 p-[10px] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.28),inset_1px_0_0_0_rgba(255,255,255,0.12),inset_0_-1px_0_0_rgba(255,255,255,0.05),0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-[7px] backdrop-saturate-[1.6]"
+                  className="options-menu absolute top-[calc(100%+8px)] right-0 z-20 w-60 origin-top-right overflow-hidden rounded-xl border border-white/[0.14] bg-[#242424]/40 p-[10px] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.28),inset_1px_0_0_0_rgba(255,255,255,0.12),inset_0_-1px_0_0_rgba(255,255,255,0.05),0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-[7px] backdrop-saturate-[1.6]"
                 >
                   <div ref={menuRef} role="menu" className="flex flex-col">
                     <motion.div
