@@ -97,33 +97,11 @@ const Card = ({
       role="button"
       onClick={() => setSelectedCard(cardData)}
       tabIndex={0}
-      className={`relative overflow-hidden rounded-xl border border-[#4D698B] p-4 transition-all hover:cursor-pointer active:scale-x-98 ${
+      className={`relative overflow-hidden rounded-xl border border-[#CECECE2E] p-4 transition-all hover:cursor-pointer active:scale-x-98 ${
         isActive ? "" : "opacity-50"
       }`}
       style={{ background: style.background }}
     >
-      {style.blBlurImage && (
-        <img
-          className="absolute bottom-0 left-0"
-          src={style.blBlurImage}
-          alt=""
-        />
-      )}
-      {style.tlBlurImage && (
-        <img className="absolute top-0 left-0" src={style.tlBlurImage} alt="" />
-      )}
-      {style.trBlurImage && (
-        <img
-          className="absolute top-0 right-0"
-          src={style.trBlurImage}
-          alt=""
-        />
-      )}
-      <img
-        className="absolute top-0 right-0 z-10"
-        src={style.linesImage ?? "/images/card-lines.svg"}
-        alt=""
-      />
       {isActive && (
         <div className="bg-primary-100 absolute top-2 right-2 z-20 size-3 rounded-full" />
       )}

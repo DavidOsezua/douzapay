@@ -25,13 +25,8 @@ export type BinCardData = {
   minDepositAmount: number;
   maxDepositAmount: number;
   topUpFee: number;
-  linesImage?: string;
-  blBlurImage?: string;
-  tlBlurImage?: string;
-  trBlurImage?: string;
   background?: string;
   cardBorder?: string;
-  noiseImage?: string;
 };
 
 // ── Style presets ────────────────────────────────────────────────────────────
@@ -40,31 +35,23 @@ const sapphireStyle = {
   logoImage: "/images/sapphire-logo.svg",
   payBadgeBackground:
     "linear-gradient(90deg, rgba(180, 234, 255, 0.16) 0%, rgba(22, 27, 51, 0.16) 100%)",
-  background: "linear-gradient(#6060600D, #6060600D)",
-  linesImage: "/images/sapphire-card-lines.svg",
-  blBlurImage: "/images/sapphire-bl-blur.svg",
-  trBlurImage: "/images/sapphire-tr-blur.svg",
-  noiseImage: "/images/card-noise.svg",
+  background: "url('/images/sapphire-card-bg.png') center / cover no-repeat",
 };
 
 const platinumVisaStyle = {
   logoImage: "/images/platinum-visa-logo.svg",
   payBadgeBackground:
     "linear-gradient(90deg, rgba(240, 229, 255, 0.16) 0%, rgba(102, 22, 167, 0.16) 100%)",
-  linesImage: "/images/platinum-visa-card-lines.svg",
-  tlBlurImage: "/images/platinum-visa-tl-blur.svg",
-  background: "linear-gradient(#6060600D, #6060600D)",
-  noiseImage: "/images/card-noise.svg",
+  background:
+    "url('/images/platinum-visa-card-bg.png') center / cover no-repeat",
 };
 
 const platinumMastercardStyle = {
   logoImage: "/images/platinum-mastercard-logo.svg",
   payBadgeBackground:
     " linear-gradient(155.06deg, rgba(136, 97, 48, 0.3) -8.11%, rgba(93, 52, 1, 0.3) 37.06%, rgba(23, 14, 0, 0.3) 93.93%)",
-  linesImage: "/images/platinum-mastercard-card-lines.svg",
-  tlBlurImage: "/images/platinum-mastercard-tl-blur.svg",
-  background: "linear-gradient(#6060600D, #6060600D)",
-  noiseImage: "/images/card-noise.svg",
+  background:
+    "url('/images/platinum-mastercard-card-bg.png') center / cover no-repeat",
 };
 
 // Exported for use by other sheets (create-platinum-card, pending-cards, etc.)
@@ -129,17 +116,12 @@ type CardStyle = {
   cardBorder?: string;
   logoImage?: string;
   payBadgeBackground?: string;
-  linesImage?: string;
-  blBlurImage?: string;
-  tlBlurImage?: string;
-  trBlurImage?: string;
-  noiseImage?: string;
 };
 
 // Single source of truth for card styling: it's a function of (provider, network)
 // only. `provider === "int"` is the sapphire family; everything else is a platinum
 // card distinguished by network.
-function cardStyle(provider: string, network: string): CardStyle {
+function cardStyle(provider: string, network?: string): CardStyle {
   if (provider === "int") return sapphireStyle;
   if (network === "VISA" || network === "Visa") return platinumVisaStyle;
   return platinumMastercardStyle;
@@ -158,7 +140,7 @@ function providerForBin(bin: string | undefined): string {
 }
 
 // Resolves style for a real card from its BIN prefix + network.
-export function resolveCardStyle(bin: string, network: string): CardStyle {
+export function resolveCardStyle(bin: string, network?: string): CardStyle {
   return cardStyle(providerForBin(bin), network);
 }
 

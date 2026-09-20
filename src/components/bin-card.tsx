@@ -14,14 +14,9 @@ type BinCardShape = {
   needCardHolder?: boolean;
   minDepositAmount?: number;
   maxDepositAmount?: number;
-  linesImage?: string;
-  noiseImage?: string;
   background?: string;
   cardBorder?: string;
   logoImage?: string;
-  blBlurImage?: string;
-  tlBlurImage?: string;
-  trBlurImage?: string;
   payBadgeBackground?: string;
 };
 
@@ -50,29 +45,6 @@ const BinCard: FC<BinCardProp> = ({ card, className }) => {
       }}
     >
       <div className="relative h-full shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]">
-        {/* Background layers */}
-        <div className="absolute inset-0 z-0">
-          <img
-            className="absolute inset-0 z-10 h-full w-full object-cover opacity-40 mix-blend-overlay"
-            src={card.noiseImage ?? undefined}
-            alt=""
-          />{" "}
-          {card.blBlurImage && (
-            <img className="absolute bottom-0 left-0" src={card.blBlurImage} />
-          )}
-          {card.tlBlurImage && (
-            <img className="absolute top-0 left-0" src={card.tlBlurImage} />
-          )}
-          {card.trBlurImage && (
-            <img className="absolute top-0 right-0" src={card.trBlurImage} />
-          )}
-          <img
-            className="absolute top-0 right-0 z-[1]"
-            src={card.linesImage ?? "/images/card-lines.svg"}
-            alt=""
-          />
-        </div>
-
         <div className="relative z-10 flex h-2/3 flex-col justify-between px-4 pt-4">
           <div className="flex justify-end">
             <img

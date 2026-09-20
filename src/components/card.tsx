@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { FC, useState } from "react";
 import { useFormatAmountWithCurrency } from "@/hooks/use-format-with-currency";
 import { resolveCardStyle } from "@/pages/dashboard/shop/page";
+import { useCardBalance } from "@/hooks/use-queries";
 
 type CardProps = {
   className?: string;
@@ -15,6 +16,7 @@ type CardProps = {
 const Card: FC<CardProps> = ({ className, card, showCta = true }) => {
   const navigate = useNavigate();
   const formatAmount = useFormatAmountWithCurrency();
+  const { balance } = useCardBalance(card);
   const [showAmount, setShowAmount] = useState(true);
   const isFrozen = card?.status === "Frozen";
   const style = resolveCardStyle(card?.bin, card?.network);
@@ -63,39 +65,14 @@ const Card: FC<CardProps> = ({ className, card, showCta = true }) => {
         }}
       >
         <div className="group shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]} relative h-full">
-          <div className="absolute inset-0 z-0">
-            <img
-              className="absolute inset-0 z-10 h-full w-full object-cover opacity-40 mix-blend-overlay"
-              src={style.noiseImage ?? undefined}
-              alt=""
-            />
-            {isFrozen && (
+          {isFrozen && (
+            <div className="absolute inset-0 z-0">
               <img
                 className="absolute inset-0 z-10 h-full w-full object-cover opacity-20 bg-blend-overlay"
                 src="/images/card-noise.png"
               />
-            )}
-            {style.blBlurImage && (
-              <img
-                className="absolute bottom-0 left-0"
-                src={style.blBlurImage}
-              />
-            )}
-            {style.tlBlurImage && (
-              <img className="absolute top-0 left-0" src={style.tlBlurImage} />
-            )}
-            {style.trBlurImage && (
-              <img
-                className="absolute top-0 right-0"
-                src={style.trBlurImage}
-              />
-            )}
-            <img
-              className="absolute top-0 right-0 z-20"
-              src={style.linesImage ?? "/images/card-lines.svg"}
-              alt=""
-            />
-          </div>
+            </div>
+          )}
           <div
             className={`relative z-10 flex h-full flex-col justify-between p-4 ${isFrozen ? "pointer-events-none opacity-50" : ""}`}
           >
@@ -107,9 +84,7 @@ const Card: FC<CardProps> = ({ className, card, showCta = true }) => {
             <div className="text-white">
               <div className="flex items-center gap-2 font-semibold">
                 <span>
-                  {showAmount
-                    ? `${formatAmount(card?.balance.available)}`
-                    : "****"}
+                  {showAmount ? formatAmount(balance?.available) : "****"}
                 </span>
                 <Button
                   variant={"ghost"}

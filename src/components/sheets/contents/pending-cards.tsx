@@ -156,33 +156,6 @@ const PlatinumHolderCard = ({
       className="relative overflow-hidden rounded-xl p-4"
       style={{ background: style.background }}
     >
-      {style.blBlurImage && (
-        <img
-          className="absolute bottom-0 left-0 z-10"
-          src={style.blBlurImage}
-          alt=""
-        />
-      )}
-      {style.tlBlurImage && (
-        <img
-          className="absolute top-0 left-0 z-10"
-          src={style.tlBlurImage}
-          alt=""
-        />
-      )}
-      {style.trBlurImage && (
-        <img
-          className="absolute top-0 right-0 z-10"
-          src={style.trBlurImage}
-          alt=""
-        />
-      )}
-      <img
-        className="absolute top-0 right-0 z-[11]"
-        src={style.linesImage ?? "/images/card-lines.svg"}
-        alt=""
-      />
-
       <div className="relative z-20 flex justify-between">
         <div>
           <img
@@ -224,7 +197,7 @@ const RegularCard = ({ cardData }: { cardData: PendingCard }) => {
       role="button"
       onClick={() => openSheet("pendingCardDetails", null, { cardData })}
       tabIndex={0}
-      className="relative overflow-hidden rounded-xl border border-[#4D698B] p-4 transition-all hover:cursor-pointer active:scale-x-98"
+      className="relative overflow-hidden rounded-xl border border-[#CECECE2E] p-4 transition-all hover:cursor-pointer active:scale-x-98"
       style={{
         background:
           "linear-gradient(11.41deg, #161A2E80 5.95%, #15161C80 102.98%)",

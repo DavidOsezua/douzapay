@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { useGetCards } from "@/hooks/use-queries";
+import { useGetCards, useCardBalance } from "@/hooks/use-queries";
 import { formatAmount } from "@/lib/utils";
 import { useModalStore } from "@/zustand/modalStore";
 import { resolveCardStyle } from "@/pages/dashboard/shop/page";
@@ -93,39 +93,18 @@ const Card = ({
   setSelectedCard: (card: Card) => void;
 }) => {
   const isActive = selectedCard?.id === cardData.id;
+  const { balance } = useCardBalance(cardData);
   const style = resolveCardStyle(cardData.bin, cardData.network);
   return (
     <div
       role="button"
       onClick={() => setSelectedCard(cardData)}
       tabIndex={0}
-      className={`relative overflow-hidden rounded-xl border border-[#4D698B] px-4 py-2.5 transition-all hover:cursor-pointer active:scale-x-98 ${
+      className={`relative overflow-hidden rounded-xl border border-[#CECECE2E] px-4 py-2.5 transition-all hover:cursor-pointer active:scale-x-98 ${
         isActive ? "" : "opacity-50"
       }`}
       style={{ background: style.background }}
     >
-      {style.blBlurImage && (
-        <img
-          className="absolute bottom-0 left-0"
-          src={style.blBlurImage}
-          alt=""
-        />
-      )}
-      {style.tlBlurImage && (
-        <img className="absolute top-0 left-0" src={style.tlBlurImage} alt="" />
-      )}
-      {style.trBlurImage && (
-        <img
-          className="absolute top-0 right-0"
-          src={style.trBlurImage}
-          alt=""
-        />
-      )}
-      <img
-        className="absolute top-0 right-0 z-10"
-        src={style.linesImage ?? "/images/card-lines.svg"}
-        alt=""
-      />
       {isActive && (
         <div className="bg-primary-100 absolute top-2 right-2 z-20 size-3 rounded-full" />
       )}
@@ -137,7 +116,7 @@ const Card = ({
             alt="logo"
           />
           <p className="font-medium text-white">
-            ${formatAmount(cardData?.balance.available)}
+            ${formatAmount(balance?.available)}
           </p>
           <Button
             variant={"ghost"}
