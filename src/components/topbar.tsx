@@ -3,6 +3,7 @@ import { ArrowLeft, LogOut, MessageCircleMore } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { useSheetStore } from "@/zustand/sheetStore";
 import { useModalStore } from "@/zustand/modalStore";
@@ -115,43 +116,77 @@ const TopBar = ({
               </span>
             </div>
 
-            {optionIsOpen && (
-              <div className="options-menu bg-dark-card-3 absolute top-[calc(100%+20px)] right-0 z-20 w-60 overflow-hidden rounded-xl border border-white/10 px-4 pt-4">
-                <div
-                  ref={menuRef}
-                  role="menu"
-                  className="flex items-center gap-2"
-                >
-                  <span
-                    className="text-white flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#CECECE]"
-                    style={{
-                      background:
-                        "linear-gradient(129.49deg, rgba(42, 42, 42, 0.5) 3.6%, rgba(28, 28, 28, 0.5) 100%)",
-                    }}
-                  >
-                    {user?.firstName?.charAt(0)}
-                  </span>
-                  <p className="text-white text-sm">
-                    {user?.firstName} {user?.lastName}
-                  </p>
-                </div>
-                <p className="text-[#B9BCCC] mt-2 text-xs">{user?.email}</p>
-
-                <div className="my-2 h-[1px] bg-white/10" />
-
-                <div
-                  onClick={() => {
-                    useUser.setState({ user: undefined });
-                    localStorage.removeItem("token");
-                    toast.success("Logout successful");
-                    navigate("/login");
+            <AnimatePresence>
+              {optionIsOpen && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.96, y: -8 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{
+                    opacity: 0,
+                    scale: 0.96,
+                    y: -8,
+                    transition: { duration: 0.15 },
                   }}
-                  className="text-white hover:bg-white/10 -mx-4 flex items-center gap-2 px-4 py-2 text-base font-medium"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  className="options-menu absolute top-[calc(100%+8px)] right-0 z-20 w-60 origin-top-right overflow-hidden rounded-xl border border-white/[0.14] bg-white/10 p-[10px] shadow-[inset_0_1px_0_0_rgba(255,255,255,0.28),inset_1px_0_0_0_rgba(255,255,255,0.12),inset_0_-1px_0_0_rgba(255,255,255,0.05),0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-[7px] backdrop-saturate-[1.6]"
                 >
-                  <span>Logout</span> <LogOut className="size-4" />
-                </div>
-              </div>
-            )}
+                  <div ref={menuRef} role="menu" className="flex flex-col">
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 28,
+                      }}
+                      className="flex items-center gap-2 px-[12px] py-[6px]"
+                    >
+                      <span
+                        className="text-white flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#CECECE] uppercase"
+                        style={{
+                          background:
+                            "linear-gradient(129.49deg, rgba(42, 42, 42, 0.5) 3.6%, rgba(28, 28, 28, 0.5) 100%)",
+                        }}
+                      >
+                        {user?.firstName?.charAt(0)}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-medium text-white capitalize">
+                          {user?.firstName} {user?.lastName}
+                        </p>
+                        <p className="truncate text-xs text-white/60">
+                          {user?.email}
+                        </p>
+                      </div>
+                    </motion.div>
+
+                    <div className="mx-[6px] my-[4px] h-px bg-white/10" />
+
+                    <motion.div
+                      onClick={() => {
+                        useUser.setState({ user: undefined });
+                        localStorage.removeItem("token");
+                        toast.success("Logout successful");
+                        navigate("/login");
+                      }}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 28,
+                        delay: 0.03,
+                      }}
+                      whileHover={{ scale: 1.01 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="flex w-full items-center justify-between rounded-lg px-[12px] py-[10px] text-left text-sm text-white hover:cursor-pointer hover:bg-white/5"
+                    >
+                      <span>Logout</span> <LogOut className="size-4" />
+                    </motion.div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </nav>
