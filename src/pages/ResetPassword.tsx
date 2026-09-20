@@ -101,6 +101,11 @@ const ResetPassword = () => {
             className="h-full w-auto"
             alt="Save money in fractional digital gold."
           />
+          <img
+            src="/images/auth-icons.svg"
+            className="absolute bottom-10 left-8 z-10 w-40"
+            alt=""
+          />
         </div>
         <div
           className="fixed inset-y-0 left-0 hidden h-screen lg:block"
@@ -116,7 +121,7 @@ const ResetPassword = () => {
         </div>
         <div className="invisible hidden h-screen lg:block">
           <img
-            src="/images/auth-img.svg"
+            src="/images/auth-img.png"
             className="h-full w-auto"
             alt="Save money in fractional digital gold."
           />

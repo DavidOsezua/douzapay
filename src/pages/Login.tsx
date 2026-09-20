@@ -79,11 +79,11 @@ const Login = () => {
         <div className="absolute inset-0 z-10 lg:hidden">
           <LoginBg />
           <div className="absolute right-6 bottom-10">
-            <div className="absolute right-1/2 bottom-1/2 size-18 translate-x-1/2 translate-y-1/2 animate-ping rounded-full bg-[#3FD8E840]" />
+            <div className="absolute right-1/2 bottom-1/2 size-18 translate-x-1/2 translate-y-1/2 animate-ping rounded-full bg-[#E1E1E140]" />
             <Button
               onClick={() => setOnboardingIsOpen(false)}
               variant="default"
-              className="text-primary-500 bg-dark-primary-50 hover:bg-dark-primary-50-hover relative z-10 size-14 rounded-full"
+              className="text-[#242424] bg-[#E1E1E1] hover:bg-[#E1E1E1]/80 relative z-10 size-14 rounded-full"
             >
               <ArrowRight size={25} />
             </Button>
@@ -96,6 +96,11 @@ const Login = () => {
             src="/images/auth-img.png"
             className="h-full w-auto"
             alt="Save money in fractional digital gold."
+          />
+          <img
+            src="/images/auth-icons.svg"
+            className="absolute bottom-10 left-8 z-10 w-40"
+            alt=""
           />
         </div>
 
