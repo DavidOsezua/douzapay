@@ -669,7 +669,7 @@ const CreateCard = ({
               <div className="text-center">
                 <button
                   onClick={() => setStep(2)}
-                  className="text-dark-primary-400 bg-dark-primary-50 mx-auto my-4 rounded-full px-4 py-2 text-center text-[10px] font-medium hover:bg-white/15"
+                  className="text-[#242424] bg-[#E1E1E1] mx-auto my-4 rounded-full px-4 py-2 text-center text-[10px] font-medium hover:bg-[#E1E1E1]/80"
                 >
                   Please kindly read the fees and terms before purchasing card
                 </button>

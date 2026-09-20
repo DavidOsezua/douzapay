@@ -654,7 +654,7 @@ const CreateSapphireCard = ({
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="text-dark-primary-400 bg-dark-primary-50 w-full rounded-2xl py-3 text-xs"
+                  className="text-[#242424] bg-[#E1E1E1] w-full rounded-2xl py-3 text-xs"
                 >
                   Please kindly read the fees and terms before purchasing card
                 </button>

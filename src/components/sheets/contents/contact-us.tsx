@@ -15,7 +15,7 @@ const ContactUs = () => {
   };
   return (
     <div>
-      <h3 className="text-dark-primary-400 text-2xl">
+      <h3 className="text-[#E1E1E1] text-2xl">
         Hello {user?.firstName}, 👋🏻
       </h3>
       <h3 className="text-white text-2xl">How can we help you?</h3>

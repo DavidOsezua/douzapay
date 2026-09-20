@@ -63,7 +63,7 @@ const TopBar = ({
               className="size-8"
               variant={"ghost"}
             >
-              <ArrowLeft className="text-dark-primary-400" />
+              <ArrowLeft className="text-[#E1E1E1]" />
             </Button>
           )}
           <p className="text-white text-lg leading-3 font-semibold lg:text-2xl">

@@ -70,7 +70,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
 
           <button
             onClick={() => window.history.back()}
-            className="text-primary-50 hover:text-dark-primary-400 mt-4 flex items-center gap-1 text-xs transition-colors"
+            className="text-primary-50 hover:text-[#E1E1E1] mt-4 flex items-center gap-1 text-xs transition-colors"
           >
             <ArrowLeft className="size-3" />
             Go back
