@@ -72,7 +72,7 @@ const ChangePassword = ({ closeModal }: { closeModal: () => void }) => {
     try {
       await getOtp({
         emailAddress: user?.email,
-        purpose: "change-password",
+        purpose: "update",
       });
       setStep(2);
     } catch (error) {
