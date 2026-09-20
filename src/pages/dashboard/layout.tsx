@@ -51,7 +51,7 @@ const DashboardLayout = () => {
                     alt="Krypt Kard"
                     className="h-10 w-auto"
                   />
-                  <Loader2 className="size-7 animate-spin text-[#3FD8E8]" />
+                  <Loader2 className="size-7 animate-spin text-[#E1E1E1]" />
                 </div>
               </motion.div>
             ) : (

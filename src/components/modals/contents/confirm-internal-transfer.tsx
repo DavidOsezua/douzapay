@@ -73,7 +73,7 @@ const ConfirmInternalTransfer = ({
         style={{
           borderColor: "#CECECE2E",
           background:
-            "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
+            "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
         }}
       >
         <div className="flex items-center justify-between py-3">
@@ -96,7 +96,7 @@ const ConfirmInternalTransfer = ({
         style={{
           borderColor: "#CECECE2E",
           background:
-            "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
+            "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
         }}
       >
         <span className="font-light text-white/60">Method</span>

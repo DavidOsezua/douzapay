@@ -46,19 +46,22 @@ const CardDetails = ({ cardData }: { cardData: Card }) => {
           <DetailRow
             label={`Address`}
             value={
-              cardData.billingAddress.addressLine1 +
-              ", " +
-              cardData.billingAddress.city +
-              ", " +
-              cardData.billingAddress.state +
-              ", " +
-              cardData.billingAddress.country
+              cardData.billingAddress
+                ? [
+                    cardData.billingAddress.addressLine1,
+                    cardData.billingAddress.city,
+                    cardData.billingAddress.state,
+                    cardData.billingAddress.country,
+                  ]
+                    .filter(Boolean)
+                    .join(", ")
+                : undefined
             }
           />
 
           <DetailRow
             label="Zip Code"
-            value={cardData.billingAddress.postalCode}
+            value={cardData.billingAddress?.postalCode}
           />
         </div>
       </div>

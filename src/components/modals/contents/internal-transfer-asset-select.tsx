@@ -74,7 +74,7 @@ const InternalTransferAssetSelect = ({
                   borderRadius: "14px",
                   padding: "12px",
                   background: isSelected
-                    ? "linear-gradient(360deg, #6EF7FF 0%, #3FD8E8 100%)"
+                    ? "#E1E1E1"
                     : "#434861",
                   border: isSelected
                     ? "1.5px solid #3FD8E8"

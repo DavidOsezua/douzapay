@@ -332,7 +332,7 @@ const TransactionType = ({ type }: { type: WalletTxType }) => {
         className="flex size-8 items-center justify-center rounded-full"
         style={{
           background:
-            "linear-gradient(128.62deg, rgba(147,205,253,0.4) 11.02%, rgba(77,134,174,0.4) 93.11%)",
+            "linear-gradient(128.62deg, rgba(227,247,255,0.4) 11.02%, rgba(211,187,241,0.4) 93.11%)",
         }}
       >
         <img className="size-4" src={entry.icon} alt={entry.title} />

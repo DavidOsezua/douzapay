@@ -55,10 +55,10 @@ const SubmitTxHash = ({
           className="bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E] mt-1 h-11 text-xs text-white placeholder:text-xs placeholder:text-white/50"
         />
         <div
-          className="mt-4 rounded-lg px-4 py-2 text-[14px]"
+          className="mt-4 rounded-lg border border-[#CECECE2E] px-4 py-2 text-[14px]"
           style={{
             background:
-              "linear-gradient(129.49deg, #2D3351 3.6%, #434A6D 100%)",
+              "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
           }}
         >
           <h6>NOTE</h6>

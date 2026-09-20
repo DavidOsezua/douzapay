@@ -219,7 +219,7 @@ const CreatePlatinumCard = ({
                 role="tab"
                 className={`h-full w-full rounded-full text-xs capitalize transition-colors ${
                   activeTab === tab
-                    ? "bg-[linear-gradient(100.47deg,#6EF7FF_9.36%,#3FD8E8_100%)] text-dark-text-400"
+                    ? "bg-[#E1E1E1] text-dark-text-400"
                     : "text-dark-text-300"
                 }`}
                 onClick={() => setActiveTab(tab)}
@@ -593,7 +593,7 @@ const CreatePlatinumCard = ({
                       borderColor: "#62D1F3",
                       borderStyle: "dashed",
                       background:
-                        "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
+                        "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
                     }}
                   >
                     <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#F0FBFF]">

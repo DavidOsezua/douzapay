@@ -24,7 +24,7 @@ const MoreCardOptions = ({ cardData }: { cardData: Card }) => {
             className="border-primary-100 text-primary-100 flex size-8 items-center justify-center rounded-full border opacity-50"
             style={{
               background:
-                " linear-gradient(100.47deg, #5778C7 9.36%, #545A93 100%)",
+                " linear-gradient(100.47deg, #E1E1E1 9.36%, #999999 100%)",
             }}
           >
             <WithdrawIcon className="size-3" />
@@ -47,7 +47,7 @@ const MoreCardOptions = ({ cardData }: { cardData: Card }) => {
             className="border-primary-100 text-primary-100 flex size-8 items-center justify-center rounded-full border"
             style={{
               background:
-                " linear-gradient(100.47deg, #5778C7 9.36%, #545A93 100%)",
+                " linear-gradient(100.47deg, #E1E1E1 9.36%, #999999 100%)",
             }}
           >
             <img src="/icons/report.svg" className="size-3" alt="Report icon" />

@@ -91,13 +91,17 @@ const AutoDeposit = ({
             </div>
             <div className="mt-2.5 flex gap-2">
               <Button
-                className="text-bg-primary hover:bg-primary-500-hover w-1/2 rounded bg-[#E9F9FF] py-2.5"
+                className="text-white w-1/2 rounded border border-[#CECECE2E] py-2.5"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+                }}
                 onClick={() => handleShare(wallet?.address as string)}
               >
                 Share
               </Button>
               <Button
-                className="hover:bg-primary-100 text-white w-1/2 rounded bg-[#E9F9FF] py-2.5"
+                className="text-white w-1/2 rounded border border-[#CECECE2E] py-2.5"
                 style={{
                   background:
                     "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",

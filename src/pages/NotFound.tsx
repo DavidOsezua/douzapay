@@ -12,12 +12,12 @@ const CardChip = () => (
       height="27"
       rx="5.5"
       fill="url(#chip-grad)"
-      stroke="#3FD8E8"
+      stroke="#E1E1E1"
       strokeOpacity="0.4"
     />
     <path
       d="M13 0.5V10.5C13 12.5 11.5 14 9.5 14H0.5M13 27.5V17.5C13 15.5 11.5 14 9.5 14M25 0.5V10.5C25 12.5 26.5 14 28.5 14H37.5M25 27.5V17.5C25 15.5 26.5 14 28.5 14"
-      stroke="#3FD8E8"
+      stroke="#E1E1E1"
       strokeOpacity="0.45"
     />
     <defs>
@@ -29,8 +29,8 @@ const CardChip = () => (
         y2="28"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stopColor="#6EF7FF" stopOpacity="0.45" />
-        <stop offset="1" stopColor="#3FD8E8" stopOpacity="0.35" />
+        <stop stopColor="#CECECE" stopOpacity="0.45" />
+        <stop offset="1" stopColor="#E1E1E1" stopOpacity="0.35" />
       </linearGradient>
     </defs>
   </svg>
@@ -67,17 +67,17 @@ const NotFound = () => {
             className="absolute top-1/2 left-1/2 h-40 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 blur-3xl"
             style={{
               background:
-                "radial-gradient(closest-side, #3FD8E8 0%, transparent 100%)",
+                "radial-gradient(closest-side, #E1E1E1 0%, transparent 100%)",
             }}
             aria-hidden="true"
           />
 
           <div className="notfound-float relative h-44 w-72 sm:h-48 sm:w-80">
             <div
-              className="relative h-full w-full overflow-hidden rounded-2xl border border-[#6EF7FF2E] shadow-[0_24px_48px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(110,247,255,0.15)] backdrop-blur-sm"
+              className="relative h-full w-full overflow-hidden rounded-2xl border border-[#CECECE2E] shadow-[0_24px_48px_-12px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(225,225,225,0.15)] backdrop-blur-sm"
               style={{
                 background:
-                  "linear-gradient(129.49deg, rgba(67, 72, 97, 0.35) 3.6%, rgba(24, 24, 24, 0.95) 100%)",
+                  "linear-gradient(129.49deg, rgba(140, 140, 140, 0.35) 3.6%, rgba(24, 24, 24, 0.95) 100%)",
               }}
             >
               {/* diagonal sheen */}
@@ -85,14 +85,14 @@ const NotFound = () => {
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(115deg, transparent 30%, rgba(110, 247, 255, 0.1) 45%, rgba(110, 247, 255, 0.03) 55%, transparent 70%)",
+                    "linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.1) 45%, rgba(255, 255, 255, 0.03) 55%, transparent 70%)",
                 }}
                 aria-hidden="true"
               />
               {/* faint corner orb */}
               <div
                 className="pointer-events-none absolute -top-10 -right-10 size-32 rounded-full opacity-30 blur-2xl"
-                style={{ background: "#3FD8E8" }}
+                style={{ background: "#E1E1E1" }}
                 aria-hidden="true"
               />
 
@@ -102,7 +102,7 @@ const NotFound = () => {
                   <ContactlessIcon />
                 </div>
 
-                <p className="font-mont text-lg font-semibold tracking-[0.2em] text-[#B8F5FB] [text-shadow:0_1px_2px_rgba(0,0,0,0.4)] sm:text-xl">
+                <p className="font-mont text-lg font-semibold tracking-[0.2em] text-[#E1E1E1] [text-shadow:0_1px_2px_rgba(0,0,0,0.4)] sm:text-xl">
                   4040 0404 4040
                 </p>
 
@@ -111,14 +111,14 @@ const NotFound = () => {
                     <p className="text-[10px] tracking-[0.25em] text-[#B9BCCC]/60 uppercase">
                       Cardholder
                     </p>
-                    <p className="text-xs font-medium tracking-widest text-[#B8F5FB]/90 uppercase">
+                    <p className="text-xs font-medium tracking-widest text-[#E1E1E1]/90 uppercase">
                       Page Not Found
                     </p>
                   </div>
                   {/* overlapping network circles */}
                   <div className="flex" aria-hidden="true">
-                    <span className="size-6 rounded-full bg-[#3FD8E8]/40" />
-                    <span className="-ml-2.5 size-6 rounded-full bg-[#6EF7FF]/25" />
+                    <span className="size-6 rounded-full bg-[#E1E1E1]/40" />
+                    <span className="-ml-2.5 size-6 rounded-full bg-[#CECECE]/25" />
                   </div>
                 </div>
               </div>
@@ -127,7 +127,7 @@ const NotFound = () => {
         </div>
 
         <div className="text-center text-white">
-          <p className="mb-2 text-xs font-medium tracking-[0.3em] text-[#3FD8E8]/70 uppercase">
+          <p className="mb-2 text-xs font-medium tracking-[0.3em] text-[#E1E1E1]/70 uppercase">
             Error 404
           </p>
           <h1 className="mb-3 text-2xl font-semibold sm:text-3xl">
@@ -143,7 +143,7 @@ const NotFound = () => {
               onClick={() => navigate(-1)}
               variant="ghost"
               size="sm"
-              className="w-full justify-center border border-[#6EF7FF2E] text-white hover:bg-white/10 sm:w-auto"
+              className="w-full justify-center border border-[#CECECE2E] text-white hover:bg-white/10 sm:w-auto"
             >
               <ArrowLeft className="size-4" />
               Go Back
@@ -151,7 +151,7 @@ const NotFound = () => {
             <Button asChild variant="ghost" size="sm">
               <Link
                 to="/dashboard"
-                className="w-full justify-center border border-[#6EF7FF2E] text-white hover:bg-white/10 sm:w-auto"
+                className="w-full justify-center border border-[#CECECE2E] text-white hover:bg-white/10 sm:w-auto"
               >
                 Go to Dashboard
               </Link>

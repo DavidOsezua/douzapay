@@ -71,8 +71,8 @@ const ApplicationStatus = ({ submittedAt }: { submittedAt?: string }) => {
 
   const cardStyle = {
     background:
-      "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
-    borderColor: "#4D698B",
+      "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+    borderColor: "#CECECE2E",
   } as const;
 
   return (
@@ -234,7 +234,7 @@ const ApplicationStatus = ({ submittedAt }: { submittedAt?: string }) => {
                 border: "1px solid rgba(63, 216, 232, 0.2)",
               }}
             >
-              <Mail className="size-5" style={{ color: "#3FD8E8" }} />
+              <Mail className="size-5" style={{ color: "#E1E1E1" }} />
             </div>
             <div className="min-w-0 flex-1">
               <p className="text-sm font-semibold text-white">
@@ -245,7 +245,7 @@ const ApplicationStatus = ({ submittedAt }: { submittedAt?: string }) => {
                 <a
                   href="mailto:support@arcpay.co.uk"
                   className="font-medium"
-                  style={{ color: "#3FD8E8" }}
+                  style={{ color: "#E1E1E1" }}
                 >
                   support@arcpay.co.uk
                 </a>{" "}
@@ -321,7 +321,7 @@ const NotWhitelisted = () => {
           style={{
             background:
               "linear-gradient(135deg, rgba(24, 24, 24, 0.5) 0%, rgba(64, 64, 64, 0.5) 50%, rgba(24, 24, 24, 0.5) 100%)",
-            borderColor: "#3FD8E826",
+            borderColor: "#CECECE2E",
           }}
         >
           <div className="relative z-10">
@@ -348,7 +348,7 @@ const NotWhitelisted = () => {
                 <h2 className="text-[22px] leading-tight font-bold text-white">
                   Earn 25% on every,
                   <br />
-                  referral <span style={{ color: "#62D1F3" }}>forever</span>.
+                  referral <span style={{ color: "#E1E1E1" }}>forever</span>.
                 </h2>
                 <p className="mt-2 text-[11px] leading-relaxed text-white/60">
                   The Krypt Kard referral program is invitation-based. Apply
@@ -437,7 +437,7 @@ const NotWhitelisted = () => {
           className="mt-4 rounded-2xl border p-4"
           style={{
             background:
-              "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
+              "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
             borderColor: "#CECECE2E",
           }}
         >
@@ -467,7 +467,7 @@ const NotWhitelisted = () => {
           className="mt-3 rounded-2xl border p-4"
           style={{
             background:
-              "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
+              "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
             borderColor: "#CECECE2E",
           }}
         >
@@ -482,7 +482,7 @@ const NotWhitelisted = () => {
               <div
                 className="flex size-5 items-center justify-center rounded"
                 style={{
-                  background: agreed ? "#62D1F3" : "rgba(255,255,255,0.08)",
+                  background: agreed ? "#E1E1E1" : "rgba(255,255,255,0.08)",
                   border: agreed ? "none" : "1.5px solid rgba(255,255,255,0.2)",
                 }}
               >
@@ -495,14 +495,14 @@ const NotWhitelisted = () => {
               I agree to the{" "}
               <span
                 className="cursor-pointer font-medium"
-                style={{ color: "#3FD8E8" }}
+                style={{ color: "#E1E1E1" }}
               >
                 Partner Terms
               </span>{" "}
               and the{" "}
               <span
                 className="cursor-pointer font-medium"
-                style={{ color: "#3FD8E8" }}
+                style={{ color: "#E1E1E1" }}
               >
                 Promotion Guidelines
               </span>
@@ -516,7 +516,7 @@ const NotWhitelisted = () => {
           className="mt-3 flex items-start gap-2.5 rounded-2xl border p-4"
           style={{
             background:
-              "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
+              "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
             borderColor: "#CECECE2E",
           }}
         >
@@ -537,7 +537,7 @@ const NotWhitelisted = () => {
           onClick={() => applyForReferral()}
           className="flex h-[44px] w-full items-center justify-center gap-2 text-sm font-semibold transition-opacity active:opacity-80"
           style={{
-            background: "linear-gradient(360deg, #6EF7FF 0%, #3FD8E8 100%)",
+            background: "#E1E1E1",
             color: "#0f1326",
             opacity: agreed && !isPending ? 1 : 0.4,
             borderRadius: 12,
@@ -641,7 +641,7 @@ const Referral = () => {
           style={{
             background:
               "linear-gradient(135deg, rgba(24, 24, 24, 0.5) 0%, rgba(64, 64, 64, 0.5) 50%, rgba(24, 24, 24, 0.5) 100%)",
-            borderColor: "#3FD8E826",
+            borderColor: "#CECECE2E",
           }}
         >
           {/* Side-by-side layout */}
@@ -653,16 +653,16 @@ const Referral = () => {
                 className="inline-flex items-center gap-1 rounded-full px-2.5 py-1"
                 style={{
                   background:
-                    "linear-gradient(129.49deg, #2D3351 3.6%, #434A6D 100%)",
+                    "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
                 }}
               >
                 <Zap
                   className="size-3"
-                  style={{ fill: "#62D1F3", color: "#62D1F3" }}
+                  style={{ fill: "#E1E1E1", color: "#E1E1E1" }}
                 />
                 <span
                   className="text-[9px] font-bold tracking-wide"
-                  style={{ color: "#62D1F3" }}
+                  style={{ color: "#E1E1E1" }}
                 >
                   EARN {feePercent}% ON DEPOSIT FEE
                 </span>
@@ -672,7 +672,7 @@ const Referral = () => {
               <h2 className="mt-2 text-[22px] leading-tight font-bold text-white">
                 Invite friends,
                 <br />
-                earn <span style={{ color: "#62D1F3" }}>forever.</span>
+                earn <span style={{ color: "#E1E1E1" }}>forever.</span>
               </h2>
 
               {/* Description */}
@@ -740,7 +740,7 @@ const Referral = () => {
           >
             <div
               className="flex size-8 items-center justify-center rounded-[5px]"
-              style={{ background: "#3FD8E81F" }}
+              style={{ background: "#E1E1E11F" }}
             >
               <img src="/icons/gradient-users.svg" className="size-4" alt="" />
             </div>
@@ -762,7 +762,7 @@ const Referral = () => {
           >
             <div
               className="flex size-8 items-center justify-center rounded-[5px]"
-              style={{ background: "#3FD8E81F" }}
+              style={{ background: "#E1E1E11F" }}
             >
               <img src="/icons/gradient-wallet.svg" className="size-4" alt="" />
             </div>
@@ -918,7 +918,7 @@ const Referral = () => {
                     className="flex items-center gap-3 rounded-xl p-3"
                     style={{
                       background:
-                        "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
+                        "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
                       border: "1px solid #3A436D",
                     }}
                   >
@@ -927,9 +927,9 @@ const Referral = () => {
                       className="flex size-9 shrink-0 items-center justify-center rounded-full text-xs font-bold"
                       style={{
                         background:
-                          "linear-gradient(129.49deg, #2D3351 3.6%, #434A6D 100%)",
+                          "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
                         border: "1px solid #545A93",
-                        color: "#3FD8E8",
+                        color: "#E1E1E1",
                       }}
                     >
                       {initials}
@@ -946,8 +946,8 @@ const Referral = () => {
                             className="shrink-0 rounded-full px-2 py-0.5 text-[8px] font-medium tracking-wide"
                             style={{
                               background:
-                                "linear-gradient(129.49deg, #2D3351 3.6%, #434A6D 100%)",
-                              color: "#3FD8E8",
+                                "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+                              color: "#E1E1E1",
                             }}
                           >
                             TOP EARNER
@@ -964,7 +964,7 @@ const Referral = () => {
                     {/* Earnings */}
                     <span
                       className="shrink-0 text-xs font-semibold"
-                      style={{ color: "#3FD8E8" }}
+                      style={{ color: "#E1E1E1" }}
                     >
                       {r.earnedAmount > 0
                         ? `+$${formatAmount(r.earnedAmount)}`
@@ -1013,8 +1013,8 @@ const Referral = () => {
           className="mt-6 rounded-2xl border p-4"
           style={{
             background:
-              "linear-gradient(129.49deg, rgba(67, 72, 97, 0.1) 3.6%, rgba(95, 104, 149, 0.1) 100%)",
-            borderColor: "#4D698B",
+              "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
+            borderColor: "#CECECE2E",
           }}
         >
           <h3 className="text-base font-medium text-white">How it works</h3>
@@ -1043,7 +1043,7 @@ const Referral = () => {
                     className="flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
                     style={{
                       background:
-                        "linear-gradient(135deg, #6EF7FF 0%, #3FD8E8 100%)",
+                        "#E1E1E1",
                     }}
                   >
                     {step.n}
@@ -1070,7 +1070,7 @@ const Referral = () => {
           onClick={() => handleShare(`signup?ref=${referralCode}`)}
           className="flex w-full items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold text-[#0f1326] transition-opacity active:opacity-80"
           style={{
-            background: "linear-gradient(360deg, #6EF7FF 0%, #3FD8E8 100%)",
+            background: "#E1E1E1",
           }}
         >
           <Share2 className="size-4" />

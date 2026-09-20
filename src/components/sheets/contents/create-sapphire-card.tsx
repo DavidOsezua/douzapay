@@ -398,7 +398,7 @@ const CreateSapphireCard = ({
                           addressMode === mode
                             ? {
                                 background:
-                                  "linear-gradient(100.47deg, #6EF7FF 9.36%, #3FD8E8 100%)",
+                                  "#E1E1E1",
                               }
                             : { background: "transparent" }
                         }

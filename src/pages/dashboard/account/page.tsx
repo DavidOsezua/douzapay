@@ -84,12 +84,16 @@ const MyAccount = () => {
           <h3 className="font-bold">Settings</h3>
           <div className="mt-4">
             <button
-              onClick={() => openSheet("twoFactor")}
+              onClick={() => navigate("/dashboard/account/security")}
               className="flex w-full items-center justify-between py-4 text-sm"
             >
               <div className="flex items-center gap-4">
-                <img className="size-7" src="/icons/2fa-shaded.svg" alt="2fa" />
-                <span>Two-Factor Authentication</span>
+                <img
+                  className="size-7"
+                  src="/icons/2fa-shaded.svg"
+                  alt="Security"
+                />
+                <span>Security</span>
               </div>
               <ChevronRight size={20} />
             </button>

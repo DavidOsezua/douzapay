@@ -17,18 +17,18 @@ const DepositIcon = (_props: IconProps) => {
         cx="25"
         cy="25"
         r="24.5"
-        fill="#D5EAFF"
-        stroke="#D5EAFF"
+        fill="#E1E1E1"
+        stroke="#E1E1E1"
       />
       <path
         d="M28.4277 35.2861H18.142"
-        stroke="#215589"
+        stroke="#242424"
         strokeWidth="2.5"
         strokeLinecap="round"
       />
       <path
         d="M31.1825 18.3339L18.4546 31.0618M17.8485 21.9704L17.8485 31.6679L27.546 31.6679"
-        stroke="#215589"
+        stroke="#242424"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"

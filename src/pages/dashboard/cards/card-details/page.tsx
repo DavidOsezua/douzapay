@@ -70,7 +70,7 @@ const CardDetails = () => {
           className="flex justify-center rounded-lg py-6 backdrop-blur-md"
           style={{
             background:
-              "linear-gradient(129.49deg, rgba(69, 76, 111, 0.2) 3.6%, rgba(95, 104, 149, 0.2) 100%)",
+              "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
           }}
         >
           <div>
@@ -83,7 +83,7 @@ const CardDetails = () => {
                 disabled={isCardDataLoading}
                 className="group text-white flex h-auto flex-col items-center justify-between gap-1 rounded-md border border-transparent bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
               >
-                <div className="text-primary-500 bg-dark-primary-main flex size-11 items-center justify-center rounded-full border transition-all group-hover:scale-105">
+                <div className="text-[#242424] bg-[#E1E1E1] flex size-11 items-center justify-center rounded-full border transition-all group-hover:scale-105">
                   <InfoIcon className="size-4" strokeWidth={1.5} />
                 </div>
                 <p className="text-xs font-medium">Details</p>
@@ -93,7 +93,7 @@ const CardDetails = () => {
                 disabled={isCardDataLoading}
                 className="group text-white flex h-auto flex-col items-center justify-between gap-1 rounded-md border border-transparent bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
               >
-                <div className="text-primary-500 flex size-11 items-center justify-center rounded-full border bg-[#E9F9FF] transition-all group-hover:scale-105">
+                <div className="text-[#242424] flex size-11 items-center justify-center rounded-full border bg-[#E1E1E1] transition-all group-hover:scale-105">
                   <Plus className="size-4" strokeWidth={1.5} />
                 </div>
                 <p className="text-xs font-medium">Add Money</p>
@@ -103,7 +103,7 @@ const CardDetails = () => {
                 disabled={isCardDataLoading}
                 className="group text-white flex h-auto flex-col items-center justify-between gap-1 rounded-md border border-transparent bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
               >
-                <div className="text-primary-500 flex size-11 items-center justify-center rounded-full border bg-[#E9F9FF] transition-all group-hover:scale-105">
+                <div className="text-[#242424] flex size-11 items-center justify-center rounded-full border bg-[#E1E1E1] transition-all group-hover:scale-105">
                   <img
                     src="/icons/freeze.svg"
                     className="size-4"
@@ -122,7 +122,7 @@ const CardDetails = () => {
                 disabled={isCardDataLoading}
                 className="group text-white flex h-auto flex-col items-center justify-between gap-1 rounded-md border border-transparent bg-transparent px-2 py-1.5 transition-all duration-300 hover:bg-transparent"
               >
-                <div className="text-primary-500 flex size-11 items-center justify-center rounded-full border bg-white transition-all group-hover:scale-105">
+                <div className="text-[#242424] flex size-11 items-center justify-center rounded-full border bg-[#E1E1E1] transition-all group-hover:scale-105">
                   <Ellipsis className="size-5" strokeWidth={2} />
                 </div>
                 <p className="text-xs font-medium">More</p>
@@ -133,7 +133,7 @@ const CardDetails = () => {
       </div>
 
       <div className="bg-dark-card-3 text-white mx-4 mt-4 rounded-2xl backdrop-blur-sm lg:row-start-auto">
-        <div className="bg-dark-background-light">
+        <div>
           <div className="flex items-center justify-between p-4">
             <h2 className="text-sm font-medium">Card Transactions</h2>
           </div>

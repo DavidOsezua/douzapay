@@ -82,7 +82,7 @@ export const SelectPaymentMethod = ({
           onClick={() => setActiveOption(token)}
           className={`rounded-md py-4 hover:cursor-pointer ${
             activeOption?.id === token.id
-              ? "text-[#242424] bg-[linear-gradient(360deg,#6EF7FF_0%,#3FD8E8_100%)]"
+              ? "text-[#242424] bg-[#E1E1E1]"
               : "bg-[#181818B2] text-white"
           }`}
         >

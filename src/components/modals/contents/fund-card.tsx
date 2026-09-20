@@ -90,7 +90,7 @@ const FundCard = ({ cardData }: { cardData: Card }) => {
               }}
               className={`flex flex-1 flex-col gap-1 rounded-xl border border-dark-primary-main p-2.5 text-left transition-all ${
                 isSelected
-                  ? "bg-[linear-gradient(360deg,#6EF7FF_0%,#3FD8E8_100%)]"
+                  ? "bg-[#E1E1E1]"
                   : "bg-[#181818B2]"
               }`}
             >

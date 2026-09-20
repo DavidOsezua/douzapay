@@ -59,7 +59,7 @@ const FundWallet = ({
       <div className="mt-6">
         <h4 className="text-xl font-semibold">Transfer to wallet</h4>
       </div>
-      <p className="mt-3 text-xs" style={{ color: "#3A9DBF" }}>
+      <p className="mt-3 text-xs" style={{ color: "#E1E1E1" }}>
         ⚠️ Withdrawals exceeding $5,000 may take longer than usual to process
         due to additional security and compliance checks.
       </p>

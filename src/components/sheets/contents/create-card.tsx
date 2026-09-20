@@ -365,7 +365,7 @@ const CreateCard = ({
                         addressMode === "default"
                           ? {
                               background:
-                                "linear-gradient(100.47deg, #6EF7FF 9.36%, #3FD8E8 100%)",
+                                "#E1E1E1",
                             }
                           : { background: "transparent" }
                       }
@@ -384,7 +384,7 @@ const CreateCard = ({
                         addressMode === "custom"
                           ? {
                               background:
-                                "linear-gradient(100.47deg, #6EF7FF 9.36%, #3FD8E8 100%)",
+                                "#E1E1E1",
                             }
                           : { background: "transparent" }
                       }

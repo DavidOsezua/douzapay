@@ -27,7 +27,7 @@ const SuccessNotice = ({
           className="border-primary-100 flex size-16 items-center justify-center rounded-full border"
           style={{
             background:
-              "linear-gradient(100.47deg, #5778C766 9.36%, #545A9366 100%)",
+              "linear-gradient(100.47deg, #E1E1E166 9.36%, #99999966 100%)",
           }}
         >
           <DepositIcon  />
@@ -161,7 +161,7 @@ const SuccessNotice = ({
           className="border-primary-100 flex size-16 items-center justify-center rounded-full border"
           style={{
             background:
-              "linear-gradient(100.47deg, #5778C766 9.36%, #545A9366 100%)",
+              "linear-gradient(100.47deg, #E1E1E166 9.36%, #99999966 100%)",
           }}
         >
           <Check className="text-primary-100" />
