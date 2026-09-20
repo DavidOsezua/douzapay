@@ -285,11 +285,11 @@ export const CountryCodeSelect: FC<CountryCodeSelectProps> = ({
   }, [defaultCountry, onSelect]);
 
   // Function to convert country code to flag emoji
-  const getFlagEmoji = (countryCode) => {
+  const getFlagEmoji = (countryCode: string) => {
     const codePoints = countryCode
       .toUpperCase()
       .split("")
-      .map((char) => 127397 + char.charCodeAt(0));
+      .map((char: string) => 127397 + char.charCodeAt(0));
     return String.fromCodePoint(...codePoints);
   };
 

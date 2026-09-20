@@ -197,7 +197,7 @@ const SideSheet: FC<SideSheetProps> = (props) => {
   // Push history state only when advancing steps (forward)
   useEffect(() => {
     if (!activeSheet || !isOpen) return;
-    if (step > prevStepRef.current) {
+    if (step != null && prevStepRef.current != null && step > prevStepRef.current) {
       window.history.pushState({ sheet: activeSheet, step }, "");
       prevStepRef.current = step;
     } else {

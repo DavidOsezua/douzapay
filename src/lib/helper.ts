@@ -1,5 +1,20 @@
 import { toast } from "sonner";
 
+/** Shape of the errors returned by the API (Axios error + backend payload). */
+export interface ApiError {
+  code?: string;
+  response?: {
+    status?: number;
+    data?: {
+      detail?: string;
+      error?: string;
+      message?: string;
+    };
+  };
+}
+
+const asApiError = (error: unknown): ApiError => (error ?? {}) as ApiError;
+
 export const classifyCardIdProvider = (
   cardId?: string | null,
 ): "wsb" | "int" | "ptp" => {
@@ -9,20 +24,21 @@ export const classifyCardIdProvider = (
   return "ptp";
 };
 
-export function getFromLocalStorage(key) {
+export function getFromLocalStorage(key: string) {
   if (typeof localStorage !== "undefined") {
     return localStorage.getItem(key);
   }
   return null;
 }
 
-export function handleError(error) {
-  if (error.code === "ERR_NETWORK") {
+export function handleError(error: unknown) {
+  const err = asApiError(error);
+  if (err.code === "ERR_NETWORK") {
     toast.error("Network Error");
     return;
   }
   if (
-    error?.response?.status === 401 &&
+    err.response?.status === 401 &&
     window.location.pathname.split("/")[1] === "admin-dashboard"
   ) {
     localStorage.removeItem("token");
@@ -30,7 +46,7 @@ export function handleError(error) {
     window.location.href = "/admin-login";
     return;
   } else if (
-    error?.response?.status === 401 &&
+    err.response?.status === 401 &&
     window.location.pathname.split("/")[1] === "dashboard"
   ) {
     localStorage.removeItem("token");
@@ -38,19 +54,22 @@ export function handleError(error) {
     window.location.href = "/login";
     return;
   }
-  const { detail, error: err, message } = error?.response?.data ?? {};
+  const { detail, error: errMsg, message } = err.response?.data ?? {};
   toast.error(
     detail ??
-      (typeof err === "string"
-        ? err
+      (typeof errMsg === "string"
+        ? errMsg
         : typeof message === "string"
           ? message
           : "An error occurred, Please try again"),
   );
 }
 
-const convertToCSV = (objArray) => {
-  const array = typeof objArray !== "object" ? JSON.parse(objArray) : objArray;
+const convertToCSV = (objArray: unknown) => {
+  const array: any[] =
+    typeof objArray !== "object"
+      ? JSON.parse(objArray as string)
+      : (objArray as any[]);
   let str = "";
 
   for (let i = 0; i < array.length; i++) {
@@ -65,7 +84,7 @@ const convertToCSV = (objArray) => {
   return str;
 };
 
-export const downloadCSV = (data, fileName) => {
+export const downloadCSV = (data: unknown, fileName: string) => {
   const csvData = new Blob([convertToCSV(data)], { type: "text/csv" });
   const csvURL = URL.createObjectURL(csvData);
   const link = document.createElement("a");

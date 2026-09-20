@@ -61,7 +61,7 @@ const AutoDeposit = ({
           Deposit {wallet?.token?.symbol} ({wallet?.token?.type})
         </p>
         <p className="text-[#B9BCCC] text-xs uppercase">
-          Deposit Fee ({user.depositFee}%)
+          Deposit Fee ({user?.depositFee}%)
         </p>
         <p className="text-[#B9BCCC] text-xs">
           Only send {wallet?.token?.symbol} on the {wallet?.token?.type} network

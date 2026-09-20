@@ -6,7 +6,7 @@ import { resolveCardStyle } from "@/pages/dashboard/shop/page";
 import { Eye } from "lucide-react";
 import { useState } from "react";
 
-const Transfer2Wallet = ({ closeSheet }) => {
+const Transfer2Wallet = ({ closeSheet }: { closeSheet: () => void }) => {
   const { data: cards, isLoading: cardIsLoading } = useGetCards();
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
   const { openModal } = useModalStore();

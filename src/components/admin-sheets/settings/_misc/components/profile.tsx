@@ -70,7 +70,7 @@ export default function Profile({
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: z.infer<typeof registrationSchema>) => {
     updateUser(data);
   };
   return (

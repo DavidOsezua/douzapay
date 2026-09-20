@@ -9,7 +9,7 @@ import { walletColumns } from "../_misc/column";
 const WhitelistWallet = () => {
   const { user } = useUser();
   const { data: wallets, isLoading } = useGetWallets({
-    whiteLabelId: user.whiteLabelId,
+    whiteLabelId: user?.whiteLabelId,
   });
 
   return (

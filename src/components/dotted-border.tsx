@@ -4,6 +4,12 @@ export const DottedBorderBox = ({
   strokeWidth = 1,
   dashArray = "8 6",
   borderRadius = 12,
+}: {
+  theme?: string;
+  strokeColor?: string;
+  strokeWidth?: number;
+  dashArray?: string;
+  borderRadius?: number;
 }) => {
   const resolvedStroke =
     strokeColor || (theme === "dark" ? "#3A3B3E" : "#E9E9E9");

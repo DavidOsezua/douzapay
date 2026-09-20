@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import LoginBg from "@/components/login-bg";
-import { handleError } from "@/lib/helper";
+import { handleError, type ApiError } from "@/lib/helper";
 
 const schema = z.object({
   email: z.string().email("Invalid email address").min(1, "Email is required"),
@@ -252,16 +252,16 @@ const Login = () => {
 
                           setStep(2);
                         } catch (error) {
-                          if (
-                            error.response.data.error === "Incorrect password"
-                          ) {
+                          const errorMsg = (error as ApiError)?.response?.data
+                            ?.error;
+                          if (errorMsg === "Incorrect password") {
                             form.setError("password", {
                               type: "required",
                               message: "Incorrect Password",
                             });
                           }
                           if (
-                            error.response.data.error ===
+                            errorMsg ===
                             "No account with the provided email found"
                           ) {
                             form.setError("email", {

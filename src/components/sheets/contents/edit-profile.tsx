@@ -37,7 +37,7 @@ const EditProfile = ({
       firstName: user?.firstName,
       lastName: user?.lastName,
       email: user?.email,
-      contact: user.contact,
+      contact: user?.contact,
       otp: "",
     },
   });

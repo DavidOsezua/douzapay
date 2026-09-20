@@ -25,11 +25,19 @@ const Card = ({ userData }: { userData: any }) => {
           <div className="flex items-center gap-1 text-[10px] leading-3">
             <div>
               <p className="text-[#ABBBE3]">Frozen</p>
-              <p>{cards?.filter((card) => card.status === "Frozen").length}</p>
+              <p>
+                {cards?.filter((card: Card) => card.status === "Frozen").length}
+              </p>
             </div>
             <div>
               <p className="text-[#FF6366]">Expired</p>
-              <p>{cards?.filter((card) => card.status === "expired").length}</p>
+              {/* TODO: verify API status value for expired cards — "expired" may be wrong casing or not a real status; count is always 0 */}
+              <p>
+                {
+                  cards?.filter((card: Card) => (card.status as string) === "expired")
+                    .length
+                }
+              </p>
             </div>
           </div>
         </div>
@@ -43,7 +51,10 @@ const Card = ({ userData }: { userData: any }) => {
             <img className="size-6" src="/icons/pending-card2.svg" alt="" />
             <span className="text-[#FFBD4C]">Pending Cards</span>
             <span>
-              {cards?.filter((card) => card.status === "pending").length}
+              {
+                cards?.filter((card: Card) => (card.status as string) === "pending")
+                  .length
+              }
             </span>
           </div>
           <p className="text-primary-500">Card creation in progress</p>

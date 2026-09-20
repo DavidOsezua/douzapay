@@ -36,7 +36,7 @@ const Referral = ({ userData }: { userData: User }) => {
     },
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: { referralFee: number }) => {
     updateUser({
       referralFeePercent: Number(data.referralFee),
     });

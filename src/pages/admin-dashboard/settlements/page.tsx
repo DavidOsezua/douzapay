@@ -80,7 +80,12 @@ const Settlements = () => {
             <span className="text-primary-500 text-sm font-semibold">
               Deposit Fees
             </span>
-            <Select value={depositFilter} onValueChange={setDepositFilter}>
+            <Select
+              value={depositFilter}
+              onValueChange={(v) =>
+                setDepositFilter(v as "total" | "pending" | "paid")
+              }
+            >
               <SelectTrigger className="size-fit !h-6 items-center border-0 p-0 shadow-none [&_svg]:mt-0.5">
                 <SelectValue />
               </SelectTrigger>
@@ -130,7 +135,9 @@ const Settlements = () => {
             </span>
             <Select
               defaultValue={withdrawalFilter}
-              onValueChange={setWithdrawalFilter}
+              onValueChange={(v) =>
+                setWithdrawalFilter(v as "total" | "pending" | "paid")
+              }
             >
               <SelectTrigger className="size-fit !h-6 items-center border-0 p-0 shadow-none [&_svg]:mt-0.5">
                 <SelectValue />
@@ -179,7 +186,12 @@ const Settlements = () => {
             <span className="text-primary-500 text-sm font-semibold">
               Card Purchase Fees
             </span>
-            <Select defaultValue={cardFilter} onValueChange={setCardFilter}>
+            <Select
+              defaultValue={cardFilter}
+              onValueChange={(v) =>
+                setCardFilter(v as "total" | "pending" | "paid")
+              }
+            >
               <SelectTrigger className="size-fit !h-6 items-center border-0 p-0 shadow-none [&_svg]:mt-0.5">
                 <SelectValue />
               </SelectTrigger>
@@ -229,7 +241,9 @@ const Settlements = () => {
             </span>
             <Select
               defaultValue={referralFilter}
-              onValueChange={setReferralFilter}
+              onValueChange={(v) =>
+                setReferralFilter(v as "total" | "pending" | "paid")
+              }
             >
               <SelectTrigger className="size-fit !h-6 items-center border-0 p-0 shadow-none [&_svg]:mt-0.5">
                 <SelectValue />

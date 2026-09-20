@@ -4,7 +4,7 @@ import { useModalStore } from "@/zustand/modalStore";
 import { resolveCardStyle } from "@/pages/dashboard/shop/page";
 import { useState } from "react";
 
-const Transfer2Card = ({ closeSheet }) => {
+const Transfer2Card = ({ closeSheet }: { closeSheet: () => void }) => {
   const { data: cards, isLoading: cardIsLoading } = useGetCards();
   const [selectedCard, setSelectedCard] = useState<Card | null>(null);
   const { openModal } = useModalStore();

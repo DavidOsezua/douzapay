@@ -148,7 +148,7 @@ const Dashboard = () => {
                   <div
                     className={`thin-scrollbar relative flex w-full gap-4 overflow-x-auto pb-2 ${cards?.data.length === 1 ? "justify-center" : ""}`}
                   >
-                    {cards?.data.map((_, index) => (
+                    {cards?.data.map((_: unknown, index: number) => (
                       <Card
                         className={
                           "inset-0 h-[160px] shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] hover:cursor-pointer hover:backdrop-blur-sm"
@@ -377,8 +377,8 @@ const Dashboard = () => {
 
           <div className="p-4">
             <Tabs
-              onValueChange={(value: "wallet" | "cards") => {
-                setTab(value);
+              onValueChange={(value) => {
+                setTab(value as "wallet" | "cards");
               }}
               value={tab}
               className="bg-transparent py-4"

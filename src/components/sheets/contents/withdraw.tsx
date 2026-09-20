@@ -189,7 +189,7 @@ const Withdraw = ({
           <Button
             onClick={async () => {
               await getOtp({
-                emailAddress: user.email,
+                emailAddress: user?.email,
                 purpose: "withdrawal",
                 address: withdrawalAddress,
                 amount: usdtAmount,
@@ -217,7 +217,7 @@ const Withdraw = ({
                 <div className="text-[10px] text-[#B9BCCC]">Payment Method</div>
                 <div className="mt-0.5 flex items-center gap-2">
                   <img
-                    src={iconMap[selectedAsset?.token?.symbol] ?? "/icons/usdt.svg"}
+                    src={iconMap[selectedAsset?.token?.symbol ?? ""] ?? "/icons/usdt.svg"}
                     alt={selectedAsset?.token?.symbol}
                     className="size-4"
                   />
@@ -240,11 +240,11 @@ const Withdraw = ({
               </div>
               <div className="text-right">
                 <div className="text-[10px] text-[#B9BCCC]">
-                  Fee({user.withdrawalFee}%)
+                  Fee({user?.withdrawalFee}%)
                 </div>
                 <div className="mt-0.5 text-white">
                   {formatAmountUtil(
-                    usdtAmount * ((user.withdrawalFee || 0) / 100),
+                    usdtAmount * ((user?.withdrawalFee || 0) / 100),
                   )}{" "}
                   {selectedAsset?.token?.symbol}
                 </div>
@@ -255,7 +255,7 @@ const Withdraw = ({
                 </div>
                 <div className="mt-0.5 text-white">
                   {formatAmountUtil(
-                    usdtAmount - (usdtAmount * (user.withdrawalFee || 0)) / 100,
+                    usdtAmount - (usdtAmount * (user?.withdrawalFee || 0)) / 100,
                   )}{" "}
                   {selectedAsset?.token?.symbol}
                 </div>
