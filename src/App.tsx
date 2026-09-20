@@ -33,6 +33,7 @@ import CardDetails from "./pages/dashboard/cards/card-details/page";
 import Partners from "./pages/dashboard/partners/page";
 import Transactions from "./pages/dashboard/transactions/page";
 import MyAccount from "./pages/dashboard/account/page";
+import Security from "./pages/dashboard/account/security/page";
 import Settlements from "./pages/admin-dashboard/settlements/page";
 
 const router = createBrowserRouter(
@@ -61,6 +62,7 @@ const router = createBrowserRouter(
         <Route path="transactions" element={<Transactions />} />
         <Route path="shop" element={<Shop />} />
         <Route path="account" element={<MyAccount />} />
+        <Route path="account/security" element={<Security />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Route>,

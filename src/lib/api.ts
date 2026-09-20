@@ -293,6 +293,56 @@ export const changePassword = async (data: ChangePasswordPayload) => {
   return response.data;
 };
 
+export const updateEmail = async (data: UpdateEmailPayload) => {
+  const response = await authorizedInstance.put("/users/email", data);
+  return response.data;
+};
+
+export const verifyEmailChangeOtp = async (
+  data: VerifyEmailChangeOtpPayload,
+) => {
+  const response = await authorizedInstance.post("/users/email/verify", data);
+  return response.data;
+};
+
+export const setupAuthenticator = async (
+  data: AuthenticatorSetupPayload = {},
+): Promise<AuthenticatorSetupResponse> => {
+  // Regenerating (update + otp) verifies an authenticator code — first-time
+  // setup sends a blank body and has no otp to attach a method to.
+  const payload = data.otp
+    ? { ...data, otpMethod: "authenticator" as const }
+    : data;
+  const response = await authorizedInstance.post(
+    "/users/2fa/authenticator/setup",
+    payload,
+  );
+  return response.data;
+};
+
+export const verifyAuthenticator = async (data: AuthenticatorVerifyPayload) => {
+  const response = await authorizedInstance.post(
+    "/users/2fa/authenticator/verify",
+    { ...data, otpMethod: "authenticator" },
+  );
+  return response.data;
+};
+
+export const updateTwoFactorMethod = async (
+  data: UpdateTwoFactorMethodPayload,
+) => {
+  const response = await authorizedInstance.put("/users/2fa/method", data);
+  return response.data;
+};
+
+export const disableAuthenticator = async (data: AuthenticatorVerifyPayload) => {
+  const response = await authorizedInstance.delete(
+    "/users/2fa/disabled2fa/authenticator",
+    { data: { ...data, otpMethod: "authenticator" } },
+  );
+  return response.data;
+};
+
 // admin apis
 export const getAdminStats = async () => {
   const response = await authorizedInstance.get("/admin/stats");
@@ -443,9 +493,14 @@ export const getCardPurchases = async (
   return response.data.data;
 };
 
-export const getCardBalance = async (id: string) => {
-  const response = await authorizedInstance.get("/admin/cards/balance/" + id);
-  return response.data;
+// Interlace ("int" / Sapphire) cards ship without an inline `balance`.
+// Response shape: { success, data: { available, frozen, pending, currency } }.
+export const getCardBalance = async (
+  cardId: string,
+): Promise<CardBalance | undefined> => {
+  const response = await authorizedInstance.get(`/cards/balance/${cardId}`);
+  const body = response.data;
+  return (body?.data ?? body) as CardBalance | undefined;
 };
 
 export const assignCardAdmin = async (

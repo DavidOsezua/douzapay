@@ -1,5 +1,6 @@
 import type { ComponentType, FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { FocusScope } from "@radix-ui/react-focus-scope";
 import { X } from "lucide-react";
 import { ModalBackdrop } from "./modal-backdrop";
 import { useModalStore } from "@/zustand/modalStore";
@@ -20,6 +21,11 @@ import SelectAssetForCard from "./contents/select-asset-for-card";
 import InternalTransferAssetSelect from "./contents/internal-transfer-asset-select";
 import ConfirmInternalTransfer from "./contents/confirm-internal-transfer";
 import OtpInternalTransfer from "./contents/otp-internal-transfer";
+import ChangePassword from "./contents/change-password";
+import VerifyEmailOtp from "./contents/verify-email-otp";
+import ChangeEmail from "./contents/change-email";
+import AuthenticatorSetup from "./contents/authenticator-setup";
+import DisableAuthenticator from "./contents/disable-authenticator";
 
 export type ModalPayload = {
   walletDeposit: {
@@ -84,6 +90,13 @@ export type ModalPayload = {
     amount: number;
     tokenSymbol: string;
   };
+  changePassword: {};
+  verifyEmailOtp: {};
+  changeEmail: {};
+  authenticatorSetup: {
+    mode?: "setup" | "regenerate";
+  };
+  disableAuthenticator: {};
 };
 
 type ModalType = keyof ModalPayload;
@@ -159,6 +172,26 @@ const modalContentMap: Partial<Record<ModalType, ModalContentConfig>> = {
     component: OtpInternalTransfer as any,
     props: {},
   },
+  changePassword: {
+    component: ChangePassword as any,
+    props: {},
+  },
+  verifyEmailOtp: {
+    component: VerifyEmailOtp as any,
+    props: {},
+  },
+  changeEmail: {
+    component: ChangeEmail as any,
+    props: {},
+  },
+  authenticatorSetup: {
+    component: AuthenticatorSetup as any,
+    props: {},
+  },
+  disableAuthenticator: {
+    component: DisableAuthenticator as any,
+    props: {},
+  },
 };
 
 const Modal: FC = () => {
@@ -230,38 +263,40 @@ const Modal: FC = () => {
           style={isFundModal ? { pointerEvents: "auto" } : undefined}
           onClose={closeModal}
         >
-          <motion.div
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            variants={isMobile ? modalVariants.mobile : modalVariants.desktop}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className={`font-urbanist fixed bottom-0 h-auto w-full max-w-full rounded-t-2xl border-t border-t-white/25 px-4 py-4 text-white backdrop-blur-md md:max-w-[400px] md:rounded-2xl lg:static lg:bottom-auto lg:max-w-110 lg:rounded-2xl lg:pb-6 ${zIndexClass}"`}
-            style={{
-              pointerEvents: isFundModal ? "auto" : undefined,
-              background:
-                "linear-gradient(129.49deg, rgba(58, 58, 58, 0.2) 3.6%, rgba(94, 91, 91, 0.2) 100%)",
-            }}
-          >
-            <div className="absolute top-2 right-1/2 block h-1 w-20 translate-x-1/2 rounded-full bg-[#C4C6C8] lg:hidden" />
-            <div className="relative mx-auto text-lg">
-              <button
-                onClick={closeModal}
-                className="-top-24 right-1/2 mb-6 flex items-center justify-center text-white transition-all hover:cursor-pointer hover:shadow-[inset_2px_2px_6px_rgba(255,255,255,0.2),inset_-2px_-2px_6px_rgba(0,0,0,0.5)] active:scale-90 lg:absolute lg:mb-0 lg:size-10 lg:translate-x-1/2 lg:rounded-full lg:border lg:border-white/20 lg:bg-white/5 lg:shadow-[inset_2px_2px_6px_rgba(255,255,255,0.2),inset_-2px_-2px_6px_rgba(0,0,0,0.5)] lg:backdrop-blur-md"
-              >
-                <img
-                  src="/images/glass-rounded.png"
-                  alt=""
-                  className="absolute inset-0 hidden lg:inline"
-                />
-                <X className="size-6" />
-              </button>
+          <FocusScope asChild trapped loop>
+            <motion.div
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              variants={isMobile ? modalVariants.mobile : modalVariants.desktop}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              className={`font-urbanist fixed bottom-0 h-auto w-full max-w-full rounded-t-2xl border-t border-t-white/25 px-4 py-4 text-white backdrop-blur-md md:max-w-[400px] md:rounded-2xl lg:static lg:bottom-auto lg:max-w-110 lg:rounded-2xl lg:pb-6 ${zIndexClass}"`}
+              style={{
+                pointerEvents: isFundModal ? "auto" : undefined,
+                background:
+                  "linear-gradient(129.49deg, rgba(58, 58, 58, 0.2) 3.6%, rgba(94, 91, 91, 0.2) 100%)",
+              }}
+            >
+              <div className="absolute top-2 right-1/2 block h-1 w-20 translate-x-1/2 rounded-full bg-[#C4C6C8] lg:hidden" />
+              <div className="relative mx-auto text-lg">
+                <button
+                  onClick={closeModal}
+                  className="-top-24 right-1/2 mb-6 flex items-center justify-center text-white transition-all hover:cursor-pointer hover:shadow-[inset_2px_2px_6px_rgba(255,255,255,0.2),inset_-2px_-2px_6px_rgba(0,0,0,0.5)] active:scale-90 lg:absolute lg:mb-0 lg:size-10 lg:translate-x-1/2 lg:rounded-full lg:border lg:border-white/20 lg:bg-white/5 lg:shadow-[inset_2px_2px_6px_rgba(255,255,255,0.2),inset_-2px_-2px_6px_rgba(0,0,0,0.5)] lg:backdrop-blur-md"
+                >
+                  <img
+                    src="/images/glass-rounded.png"
+                    alt=""
+                    className="absolute inset-0 hidden lg:inline"
+                  />
+                  <X className="size-6" />
+                </button>
 
-              <ContentComponent {...contentProps} />
-            </div>
-          </motion.div>
+                <ContentComponent {...contentProps} />
+              </div>
+            </motion.div>
+          </FocusScope>
         </ModalBackdrop>
       )}
     </AnimatePresence>

@@ -622,6 +622,41 @@ type ChangePasswordPayload = {
   otp: string;
 };
 
+// PUT /users/email — `otp` is the code sent to the NEW address via
+// useGetAuthorizedOTP({ purpose: "change-email", emailAddress: <new email> }).
+type UpdateEmailPayload = {
+  email: string;
+  otp: string;
+};
+
+// POST /users/email/verify — identity gate shown before the Change Email
+// modal; verifies the CURRENT account via email or authenticator OTP.
+type VerifyEmailChangeOtpPayload = {
+  otp: string;
+  otpMethod: "email" | "authenticator";
+};
+
+// POST /users/2fa/authenticator/setup — `{}` for first-time setup; `update` +
+// `otp` (current authenticator code) when regenerating an existing one.
+type AuthenticatorSetupPayload = {
+  update?: boolean;
+  otp?: string;
+};
+
+type AuthenticatorSetupResponse = {
+  secret: string;
+  otpauthUrl: string;
+};
+
+type AuthenticatorVerifyPayload = { otp: string };
+
+type TwoFactorMethod = "authenticator" | "email";
+
+type UpdateTwoFactorMethodPayload = {
+  method: TwoFactorMethod;
+  otp: string;
+};
+
 // ── Admin mutation payload types ───────────────────────────────────────────
 
 type AssignCardAdminPayload = {

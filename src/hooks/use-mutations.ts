@@ -5,6 +5,12 @@ import {
   assignCardAdmin,
   buyCard,
   changePassword,
+  updateEmail,
+  verifyEmailChangeOtp,
+  setupAuthenticator,
+  verifyAuthenticator,
+  updateTwoFactorMethod,
+  disableAuthenticator,
   confirmDeposit,
   confirmPassword,
   confirmWithdraw,
@@ -330,6 +336,93 @@ export const useChangePassword = ({ onSuccess }: CbR) =>
       handleError(error);
     },
   });
+
+export const useUpdateEmail = ({ onSuccess }: Cb = {}) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data: UpdateEmailPayload) => updateEmail(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      onSuccess?.();
+    },
+    onError: (error: any) => {
+      handleError(error);
+    },
+  });
+};
+
+export const useVerifyEmailChangeOtp = ({ onSuccess }: Cb = {}) =>
+  useMutation({
+    mutationFn: (data: VerifyEmailChangeOtpPayload) =>
+      verifyEmailChangeOtp(data),
+    onSuccess: () => {
+      onSuccess?.();
+    },
+    onError: (error: any) => {
+      handleError(error);
+    },
+  });
+
+// 2FA / Authenticator
+export const useSetupAuthenticator = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data: AuthenticatorSetupPayload = {}) =>
+      setupAuthenticator(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+    },
+    onError: (error: any) => {
+      handleError(error);
+    },
+  });
+};
+
+export const useVerifyAuthenticator = ({ onSuccess }: Cb = {}) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data: AuthenticatorVerifyPayload) => verifyAuthenticator(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      onSuccess?.();
+    },
+    onError: (error: any) => {
+      handleError(error);
+    },
+  });
+};
+
+// Not wired to any UI yet — plumbing for a future switch-method setting.
+export const useUpdateTwoFactorMethod = ({ onSuccess }: Cb = {}) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data: UpdateTwoFactorMethodPayload) =>
+      updateTwoFactorMethod(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      onSuccess?.();
+      toast.success("2FA method updated");
+    },
+    onError: (error: any) => {
+      handleError(error);
+    },
+  });
+};
+
+export const useDisableAuthenticator = ({ onSuccess }: Cb = {}) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data: AuthenticatorVerifyPayload) => disableAuthenticator(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["user"] });
+      onSuccess?.();
+      toast.success("Authenticator app disabled");
+    },
+    onError: (error: any) => {
+      handleError(error);
+    },
+  });
+};
 
 export const useConfirmPassword = ({ onSuccess }: CbR) =>
   useMutation({

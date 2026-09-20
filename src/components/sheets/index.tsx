@@ -18,7 +18,7 @@ import CreateCardholder from "./contents/create-cardholder";
 import EditProfile from "./contents/edit-profile";
 import Referral from "./contents/referral";
 import TermsAndConditions from "./contents/terms-conditions";
-import TwoFactor from "./contents/2fa";
+import AuthenticatorVerification from "./contents/authenticator-verification";
 import AddContact from "./contents/add-contact";
 import ContactUs from "./contents/contact-us";
 import SubmitTxHash from "./contents/submit-txHash";
@@ -153,7 +153,7 @@ const sheetContentMap: Record<Exclude<SheetType, null>, SheetContentConfig> = {
     props: {},
   },
   twoFactor: {
-    component: TwoFactor as any,
+    component: AuthenticatorVerification as any,
     props: {},
   },
   addContact: {
