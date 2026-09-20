@@ -82,7 +82,7 @@ const ApplicationStatus = ({ submittedAt }: { submittedAt?: string }) => {
         className="pointer-events-none absolute z-0"
         style={{
           background:
-            "radial-gradient(50% 50% at 50% 50%, rgba(63, 216, 232, 0.2) 0%, rgba(63, 216, 232, 0) 100%)",
+            "radial-gradient(50% 50% at 50% 50%, rgba(206, 206, 206, 0.2) 0%, rgba(206, 206, 206, 0) 100%)",
           width: 440,
           height: 396,
           top: -143,
@@ -96,7 +96,7 @@ const ApplicationStatus = ({ submittedAt }: { submittedAt?: string }) => {
           className="pointer-events-none absolute inset-x-0 z-0 blur-md"
           style={{
             background:
-              "radial-gradient(350px 350px at 100% 50%, rgba(255, 174, 230, 0.15) 0%, rgba(255, 174, 230, 0) 100%)",
+              "radial-gradient(50% 50% at 50% 50%, rgba(241, 255, 171, 0.15) 0%, rgba(206, 206, 206, 0) 100%)",
             height: 400,
             top: 180,
           }}
@@ -285,7 +285,7 @@ const NotWhitelisted = () => {
         className="pointer-events-none absolute z-0"
         style={{
           background:
-            "radial-gradient(50% 50% at 50% 50%, rgba(63, 216, 232, 0.2) 0%, rgba(63, 216, 232, 0) 100%)",
+            "radial-gradient(50% 50% at 50% 50%, rgba(206, 206, 206, 0.2) 0%, rgba(206, 206, 206, 0) 100%)",
           width: 440,
           height: 396,
           top: -143,
@@ -299,7 +299,7 @@ const NotWhitelisted = () => {
           className="pointer-events-none absolute inset-x-0 z-0"
           style={{
             background:
-              "radial-gradient(350px 350px at 100% 50%, rgba(255, 174, 230, 0.15) 0%, rgba(255, 174, 230, 0) 100%)",
+              "radial-gradient(50% 50% at 50% 50%, rgba(241, 255, 171, 0.15) 0%, rgba(206, 206, 206, 0) 100%)",
             height: 400,
             top: 180,
           }}
@@ -606,7 +606,7 @@ const Referral = () => {
         className="pointer-events-none absolute z-0"
         style={{
           background:
-            "radial-gradient(50% 50% at 50% 50%, rgba(63, 216, 232, 0.2) 0%, rgba(63, 216, 232, 0) 100%)",
+            "radial-gradient(50% 50% at 50% 50%, rgba(206, 206, 206, 0.2) 0%, rgba(206, 206, 206, 0) 100%)",
           width: 440,
           height: 396,
           top: -143,
@@ -619,7 +619,7 @@ const Referral = () => {
           className="pointer-events-none absolute inset-x-0 z-0"
           style={{
             background:
-              "radial-gradient(350px 350px at 100% 50%, rgba(255, 174, 230, 0.15) 0%, rgba(255, 174, 230, 0) 100%)",
+              "radial-gradient(50% 50% at 50% 50%, rgba(241, 255, 171, 0.15) 0%, rgba(206, 206, 206, 0) 100%)",
             height: 400,
             top: 225,
           }}
@@ -1040,7 +1040,7 @@ const Referral = () => {
               <div key={step.n} className="flex gap-3">
                 <div className="flex flex-col items-center">
                   <div
-                    className="flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold text-white"
+                    className="flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-bold text-[#242424]"
                     style={{
                       background:
                         "#E1E1E1",
