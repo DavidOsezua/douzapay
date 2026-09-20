@@ -175,21 +175,21 @@ const AppSidebar = () => {
             <span className="block text-sm font-light">
               Email:{" "}
               <a
-                href="mailto:support@arcpay.co.uk"
+                href="mailto:support@kryptkard.com"
                 className="text-primary-100 underline hover:no-underline"
               >
-                support@arcpay.co.uk
+                support@kryptkard.com
               </a>
             </span>
             <span className="block text-sm font-light">
               Telegram:{" "}
               <a
-                href="https://t.me/arcpaysupp"
+                href="https://t.me/kryptkardsupport"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary-100 underline hover:no-underline"
               >
-                @arcpaysupp
+                @kryptkardsupport
               </a>
             </span>
           </span>

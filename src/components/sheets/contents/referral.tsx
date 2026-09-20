@@ -243,11 +243,11 @@ const ApplicationStatus = ({ submittedAt }: { submittedAt?: string }) => {
               <p className="mt-1 text-[11px] leading-relaxed text-white/55">
                 Email us at{" "}
                 <a
-                  href="mailto:support@arcpay.co.uk"
+                  href="mailto:support@kryptkard.com"
                   className="font-medium"
                   style={{ color: "#E1E1E1" }}
                 >
-                  support@arcpay.co.uk
+                  support@kryptkard.com
                 </a>{" "}
                 within 24 hours and we&apos;ll work it in before review.
               </p>

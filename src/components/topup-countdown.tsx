@@ -35,7 +35,7 @@ const TopupCountdown = ({
   const reportText = encodeURIComponent(
     `Hi, I have a pending card top-up that hasn't been credited.\n\nTransaction ID: ${transactionId}\nAmount: $${formatAmount(amount)}\nDate: ${moment(createdAt).format("DD MMM YYYY, hh:mm A")}\n\nPlease check the status.`,
   );
-  const telegramUrl = `https://t.me/arcpaysupp?text=${reportText}`;
+  const telegramUrl = `https://t.me/kryptkardsupport?text=${reportText}`;
 
   if (phase1Remaining > 0) {
     return (

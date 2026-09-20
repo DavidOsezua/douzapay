@@ -4,11 +4,11 @@ import { ChevronRight } from "lucide-react";
 const ContactUs = () => {
   const { user } = useUser();
   const openTelegram = () => {
-    window.open("https://t.me/arcpaysupp", "_blank", "noopener,noreferrer");
+    window.open("https://t.me/kryptkardsupport", "_blank", "noopener,noreferrer");
   };
   const openEmail = () => {
     window.open(
-      "mailto:support@arcpay.co.uk",
+      "mailto:support@kryptkard.com",
       "_blank",
       "noopener,noreferrer",
     );

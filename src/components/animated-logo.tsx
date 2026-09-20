@@ -196,7 +196,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-export default function MpayLogoLoader() {
+export default function KryptKardLogoLoader() {
   const pathRefs = useRef<(SVGPathElement | null)[]>([]);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const isMobile = useIsMobile();
