@@ -5,8 +5,7 @@ import {
   useGetPendingHolders,
 } from "@/hooks/use-queries";
 import { useSheetStore } from "@/zustand/sheetStore";
-import moment from "moment";
-import { resolveCardStyle } from "@/pages/dashboard/shop/page";
+import { resolveCardStyle, type CardStyle } from "@/pages/dashboard/shop/page";
 
 // Shape we rely on from GET /cards/bins (see shop/page.tsx for the full object).
 type BackendBin = {
@@ -78,7 +77,11 @@ const PendingCards = ({ closeSheet }: { closeSheet: () => void }) => {
                 />
               ))}
               {cards?.data?.map((card: PendingCard) => (
-                <RegularCard cardData={card} key={card.id} />
+                <RegularCard
+                  cardData={card}
+                  bins={(bins ?? []) as BackendBin[]}
+                  key={card.id}
+                />
               ))}
             </div>
             <div className="mt-6">
@@ -111,23 +114,16 @@ const CardSkeleton = () => (
   <div className="h-18 w-full max-w-lg animate-pulse overflow-hidden rounded-xl bg-gray-700 shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]" />
 );
 
-const PlatinumHolderCard = ({
-  holder,
-  bins,
-}: {
-  holder: PendingHolder;
-  bins: BackendBin[];
-}) => {
-  const holderBin = digitsOnly(holder.bin);
-
-  // `holder.bin` is the value submitted at creation (a BIN id / prefix). Match
-  // it back to the live BIN list so the network + PAN prefix come from the
-  // backend, not a hardcoded table.
+// `rawBin` is the value submitted at creation (a BIN id / prefix). Match it
+// back to the live BIN list so the network + PAN prefix come from the
+// backend, not a hardcoded table.
+function resolveBinNetwork(rawBin: string | number, bins: BackendBin[]) {
+  const bin = digitsOnly(rawBin);
   const matchedBin = bins.find(
     (b) =>
-      String(b.id) === String(holder.bin) ||
-      digitsOnly(b.bin) === holderBin ||
-      (holderBin.length >= 4 && digitsOnly(b.bin).startsWith(holderBin)),
+      String(b.id) === String(rawBin) ||
+      digitsOnly(b.bin) === bin ||
+      (bin.length >= 4 && digitsOnly(b.bin).startsWith(bin)),
   );
 
   // Prefer the backend's network; fall back to the ISO/IEC 7812 major-industry
@@ -137,13 +133,80 @@ const PlatinumHolderCard = ({
     ? "Visa"
     : /master/i.test(rawNetwork)
       ? "MasterCard"
-      : holderBin.startsWith("4")
+      : bin.startsWith("4")
         ? "Visa"
         : "MasterCard";
 
-  const pan = digitsOnly(matchedBin?.bin) || holderBin;
+  const pan = digitsOnly(matchedBin?.bin) || bin;
   const binDisplay = `${pan.slice(0, 4).padEnd(4, "*")} **** **** ****`;
 
+  return { network, pan, binDisplay };
+}
+
+// Shared art for both pending-card variants: tier label + K-mark, network
+// logo, masked PAN, and cardholder name over the tier's backdrop.
+const PendingCardArt = ({
+  style,
+  network,
+  binDisplay,
+  holderName,
+  onClick,
+}: {
+  style: CardStyle;
+  network: string;
+  binDisplay: string;
+  holderName: string;
+  onClick?: () => void;
+}) => (
+  <div
+    role={onClick ? "button" : undefined}
+    onClick={onClick}
+    tabIndex={onClick ? 0 : undefined}
+    className={`relative overflow-hidden rounded-xl p-4 ${onClick ? "transition-all hover:cursor-pointer active:scale-x-98" : ""}`}
+    style={{ background: style.background }}
+  >
+    <div className="relative z-20 flex items-center justify-between">
+      <div className="flex items-center gap-1.5">
+        <img
+          src="/images/bg-logo.svg"
+          alt=""
+          className="h-3.5 w-auto object-contain"
+        />
+        <span className="text-sm font-medium text-white">
+          {style.tierLabel}
+        </span>
+      </div>
+      {network === "MasterCard" ? (
+        <img
+          src="/images/mastercard-logo.svg"
+          alt="Mastercard"
+          className="h-6 object-contain"
+        />
+      ) : (
+        <img
+          src="/images/visa-white.png"
+          alt="Visa"
+          className="h-4 object-contain"
+        />
+      )}
+    </div>
+    <p className="relative z-20 mt-4 text-base font-medium tracking-widest text-white">
+      {binDisplay}
+    </p>
+    <p className="relative z-20 mt-1 text-sm font-semibold capitalize text-white">
+      {holderName}
+    </p>
+  </div>
+);
+
+const PlatinumHolderCard = ({
+  holder,
+  bins,
+}: {
+  holder: PendingHolder;
+  bins: BackendBin[];
+}) => {
+  const { network, pan, binDisplay } = resolveBinNetwork(holder.bin, bins);
   const style = resolveCardStyle(pan, network);
 
   const holderName =
@@ -152,92 +215,37 @@ const PlatinumHolderCard = ({
     "Cardholder";
 
   return (
-    <div
-      className="relative overflow-hidden rounded-xl p-4"
-      style={{ background: style.background }}
-    >
-      <div className="relative z-20 flex justify-between">
-        <div>
-          <img
-            src={style.logoImage}
-            className="h-3.5 w-auto object-contain"
-            alt="logo"
-          />
-          <p className="mt-3 text-sm font-medium tracking-widest text-white">
-            {binDisplay}
-          </p>
-          <p className="mt-1 text-sm font-semibold capitalize text-white">
-            {holderName}
-          </p>
-        </div>
-        <div className="flex items-end">
-          {network === "MasterCard" ? (
-            <img
-              src="/images/mastercard-logo.svg"
-              alt="Mastercard"
-              className="h-6 object-contain"
-            />
-          ) : (
-            <img
-              src="/images/visa-white.png"
-              alt="Visa"
-              className="h-4 object-contain"
-            />
-          )}
-        </div>
-      </div>
-    </div>
+    <PendingCardArt
+      style={style}
+      network={network}
+      binDisplay={binDisplay}
+      holderName={holderName}
+    />
   );
 };
 
-const RegularCard = ({ cardData }: { cardData: PendingCard }) => {
+const RegularCard = ({
+  cardData,
+  bins,
+}: {
+  cardData: PendingCard;
+  bins: BackendBin[];
+}) => {
   const { openSheet } = useSheetStore();
-  return (
-    <div
-      role="button"
-      onClick={() => openSheet("pendingCardDetails", null, { cardData })}
-      tabIndex={0}
-      className="relative overflow-hidden rounded-xl border border-[#CECECE2E] p-4 transition-all hover:cursor-pointer active:scale-x-98"
-      style={{
-        background:
-          "linear-gradient(11.41deg, #161A2E80 5.95%, #15161C80 102.98%)",
-      }}
-    >
-      <div className="absolute inset-0 z-0 bg-[#6060600D] backdrop-blur-sm" />
-      <img
-        className="absolute right-0 bottom-0 w-30"
-        src="/images/card-lines.svg"
-        alt=""
-      />
-      <img
-        className="absolute bottom-0 left-0 h-full"
-        src="/images/card-blur2.svg"
-        alt=""
-      />
+  const { network, pan, binDisplay } = resolveBinNetwork(cardData.bin, bins);
+  const style = resolveCardStyle(pan, network);
 
-      <div className="relative flex h-full w-full items-center justify-between">
-        <div>
-          <p>
-            {cardData.firstName} {cardData.lastName}
-          </p>
-          <p className="text-xs">{cardData.email}</p>
-        </div>
-        <div>
-          <p className="text-xs">Created Date:</p>
-          <p>
-            {cardData.createdAt
-              ? moment(cardData.createdAt).isSame(moment(), "day")
-                ? "Today"
-                : moment(cardData.createdAt).isSame(
-                      moment().subtract(1, "day"),
-                      "day",
-                    )
-                  ? "Yesterday"
-                  : moment(cardData.createdAt).fromNow()
-              : "-"}
-          </p>
-        </div>
-      </div>
-    </div>
+  const holderName =
+    `${cardData.firstName ?? ""} ${cardData.lastName ?? ""}`.trim() ||
+    "Default";
+
+  return (
+    <PendingCardArt
+      style={style}
+      network={network}
+      binDisplay={binDisplay}
+      holderName={holderName}
+      onClick={() => openSheet("pendingCardDetails", null, { cardData })}
+    />
   );
 };

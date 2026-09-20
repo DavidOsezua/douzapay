@@ -110,11 +110,6 @@ const Card = ({
       )}
       <div className="relative z-10 h-full w-full">
         <div className="mb-2 flex items-center gap-2">
-          <img
-            src={style.logoImage ?? "/images/logo-transparent-light.svg"}
-            className="h-3 w-auto object-contain"
-            alt="logo"
-          />
           <p className="font-medium text-white">
             ${formatAmount(balance?.available)}
           </p>

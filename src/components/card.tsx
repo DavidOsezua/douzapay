@@ -74,13 +74,8 @@ const Card: FC<CardProps> = ({ className, card, showCta = true }) => {
             </div>
           )}
           <div
-            className={`relative z-10 flex h-full flex-col justify-between p-4 ${isFrozen ? "pointer-events-none opacity-50" : ""}`}
+            className={`relative z-10 flex h-full flex-col justify-end p-4 ${isFrozen ? "pointer-events-none opacity-50" : ""}`}
           >
-            <img
-              src={style.logoImage ?? "/images/logo-transparent-light.svg"}
-              className="h-3.5 w-auto self-start object-contain"
-              alt="card logo"
-            />
             <div className="text-white">
               <div className="flex items-center gap-2 font-semibold">
                 <span>

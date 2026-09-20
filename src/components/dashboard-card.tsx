@@ -26,12 +26,7 @@ const Card: FC<CardProps> = ({ className, card }) => {
       onClick={() => navigate(`/dashboard/cards/${card?.id}`)}
     >
       <div className="group shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]} relative h-full">
-        <div className="relative z-10 flex h-full flex-col justify-between p-4">
-          <img
-            src={cardStyle.logoImage ?? "/images/logo-transparent-light.svg"}
-            className="h-3.5 w-auto self-start object-contain"
-            alt="card logo"
-          />
+        <div className="relative z-10 flex h-full flex-col justify-end p-4">
           <div className="text-white">
             <div className="flex items-center gap-2 font-semibold">
               <span>{`${showAmount ? "****" : formatAmount(balance?.available)} `}</span>

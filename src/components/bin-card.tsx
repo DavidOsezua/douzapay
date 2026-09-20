@@ -16,7 +16,6 @@ type BinCardShape = {
   maxDepositAmount?: number;
   background?: string;
   cardBorder?: string;
-  logoImage?: string;
   payBadgeBackground?: string;
 };
 
@@ -45,14 +44,7 @@ const BinCard: FC<BinCardProp> = ({ card, className }) => {
       }}
     >
       <div className="relative h-full shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]">
-        <div className="relative z-10 flex h-2/3 flex-col justify-between px-4 pt-4">
-          <div className="flex justify-end">
-            <img
-              src={card.logoImage ?? "/images/logo-transparent-light.svg"}
-              className="h-3.5 w-auto object-contain"
-              alt="logo"
-            />
-          </div>
+        <div className="relative z-10 flex h-2/3 flex-col justify-end px-4 pt-4">
           <div className="flex flex-col">
             <span className="text-xl font-semibold text-white">
               {card.defaultPrice != null && card.defaultPrice !== card.price

@@ -107,11 +107,6 @@ const Card = ({
       )}
       <div className="relative z-10 flex h-full w-full items-center justify-between">
         <div>
-          <img
-            src={style.logoImage ?? "/images/logo-transparent-light.svg"}
-            className="mb-2 h-3 w-auto object-contain"
-            alt="logo"
-          />
           <p className="text-sm text-white">**** **** **** {cardData.last4}</p>
           <p className="text-[10px] text-white/70">
             {cardData.firstName} {cardData.lastName}

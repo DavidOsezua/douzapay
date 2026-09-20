@@ -15,7 +15,7 @@ export type BinCardData = {
   defaultPrice?: number;
   bin: string;
   binValue: string;
-  logoImage?: string;
+  tierLabel?: string;
   payBadgeBackground?: string;
   network: string;
   cardType: string;
@@ -30,35 +30,34 @@ export type BinCardData = {
 };
 
 // ── Style presets ────────────────────────────────────────────────────────────
+// Backdrops already bake in the "krypkard" wordmark and K-mark — no logo overlay needed.
 
 const sapphireStyle = {
-  logoImage: "/images/sapphire-logo.svg",
+  tierLabel: "Infinite",
   payBadgeBackground:
     "linear-gradient(90deg, rgba(180, 234, 255, 0.16) 0%, rgba(22, 27, 51, 0.16) 100%)",
-  background: "url('/images/sapphire-card-bg.png') center / cover no-repeat",
+  background: "url('/images/infinite-card-bg.png') left center / cover no-repeat",
 };
 
 const platinumVisaStyle = {
-  logoImage: "/images/platinum-visa-logo.svg",
+  tierLabel: "Platinum",
   payBadgeBackground:
     "linear-gradient(90deg, rgba(240, 229, 255, 0.16) 0%, rgba(102, 22, 167, 0.16) 100%)",
-  background:
-    "url('/images/platinum-visa-card-bg.png') center / cover no-repeat",
+  background: "url('/images/platinum-card-bg.png') left center / cover no-repeat",
 };
 
 const platinumMastercardStyle = {
-  logoImage: "/images/platinum-mastercard-logo.svg",
+  tierLabel: "Gold",
   payBadgeBackground:
     " linear-gradient(155.06deg, rgba(136, 97, 48, 0.3) -8.11%, rgba(93, 52, 1, 0.3) 37.06%, rgba(23, 14, 0, 0.3) 93.93%)",
-  background:
-    "url('/images/platinum-mastercard-card-bg.png') center / cover no-repeat",
+  background: "url('/images/gold-card-bg.png') left center / cover no-repeat",
 };
 
 // Exported for use by other sheets (create-platinum-card, pending-cards, etc.)
 export const binCards = {
   sapphire: {
     id: 537100,
-    name: "Sapphire Card",
+    name: "Infinite Card",
     image: "",
     price: 26,
     bin: "5371 0000 0000 0000",
@@ -75,7 +74,7 @@ export const binCards = {
   },
   platinum: {
     id: 111068,
-    name: "Platinum Visa",
+    name: "Platinum Card",
     image: "",
     price: 40,
     bin: "4938 7519 0000 0000",
@@ -92,7 +91,7 @@ export const binCards = {
   },
   platinumBasic: {
     id: 111078,
-    name: "Platinum MC",
+    name: "Gold Card",
     image: "",
     price: 35,
     bin: "5240 1300 0000 0000",
@@ -111,10 +110,10 @@ export const binCards = {
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-type CardStyle = {
+export type CardStyle = {
   background: string;
   cardBorder?: string;
-  logoImage?: string;
+  tierLabel?: string;
   payBadgeBackground?: string;
 };
 
@@ -146,7 +145,7 @@ export function resolveCardStyle(bin: string, network?: string): CardStyle {
 
 function supportText(provider: string) {
   const hi = (text: string) => (
-    <strong style={{ color: "#3A9DBF" }}>{text}</strong>
+    <strong style={{ color: "#E1E1E1" }}>{text}</strong>
   );
   if (provider === "int")
     return {

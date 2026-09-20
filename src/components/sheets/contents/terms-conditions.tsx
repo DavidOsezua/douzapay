@@ -2,7 +2,7 @@ import { useState } from "react";
 import { binCards } from "@/pages/dashboard/shop/page";
 import { useGetBIN } from "@/hooks/use-queries";
 
-const tabs = ["Sapphire Card", "Platinum Card"] as const;
+const tabs = ["Infinite Card", "Platinum Card"] as const;
 
 const formatRange = (min: number, max: number, suffix = "") =>
   min === max ? `${min}${suffix}` : `${min}${suffix} - ${max}${suffix}`;
@@ -70,7 +70,7 @@ const TermsAndConditions = () => {
           ))}
         </div>
 
-        {activeTab === "Sapphire Card" && (
+        {activeTab === "Infinite Card" && (
           <>
             <h4 className="mt-6 text-xs font-semibold lg:mt-4">
               Supported Usage Scenarios
