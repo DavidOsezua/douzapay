@@ -278,10 +278,7 @@ const Shop = () => {
                             "linear-gradient(129.49deg, rgba(27, 31, 53, 0.2) 3.6%, rgba(22, 25, 44, 0.2) 100%)",
                         }}
                       >
-                        <BinCard
-                          card={card}
-                          className="!h-[180px] rounded-2xl"
-                        />
+                        <BinCard card={card} className="rounded-2xl" />
                         <div className="mt-3 space-y-1.5">
                           <p className="text-[11px] text-[#9CA3AF]">
                             {supportTitle}

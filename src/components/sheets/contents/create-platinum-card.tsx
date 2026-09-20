@@ -230,7 +230,7 @@ const CreatePlatinumCard = ({
           </div>
           <div className="mt-4">
             <BinCard
-              className="!h-[200px] w-full"
+              className="w-full"
               card={{
                 ...style,
                 id: bin.id,

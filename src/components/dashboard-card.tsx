@@ -21,7 +21,7 @@ const Card: FC<CardProps> = ({ className, card }) => {
 
   return (
     <div
-      className={`group font-dm-sans max-w-70 min-w-68 overflow-hidden rounded-xl ${className}`}
+      className={`group font-dm-sans aspect-[1.586/1] max-w-70 min-w-68 overflow-hidden rounded-xl ${className}`}
       style={{ background: cardStyle.background }}
       onClick={() => navigate(`/dashboard/cards/${card?.id}`)}
     >

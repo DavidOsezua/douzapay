@@ -151,7 +151,7 @@ const Dashboard = () => {
                     {cards?.data.map((_: unknown, index: number) => (
                       <Card
                         className={
-                          "inset-0 h-[160px] shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] hover:cursor-pointer hover:backdrop-blur-sm"
+                          "inset-0 shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] hover:cursor-pointer hover:backdrop-blur-sm"
                         }
                         key={index}
                         card={cards?.data[index]}

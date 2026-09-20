@@ -31,7 +31,7 @@ const BinCard: FC<BinCardProp> = ({ card, className }) => {
 
   return (
     <div
-      className={`group font-dm-sans h-[160px] overflow-hidden rounded-xl ${
+      className={`group font-dm-sans aspect-[1.586/1] overflow-hidden rounded-xl ${
         card.cardBorder ? "card-gradient-border" : ""
       } ${className}`}
       style={{

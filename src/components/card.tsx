@@ -57,7 +57,7 @@ const Card: FC<CardProps> = ({ className, card, showCta = true }) => {
         </motion.div>
       )}
       <div
-        className={`group font-dm-sans h-[160px] max-w-70 min-w-68 overflow-hidden rounded-xl ${className}`}
+        className={`group font-dm-sans aspect-[1.586/1] max-w-70 min-w-68 overflow-hidden rounded-xl ${className}`}
         style={{
           background: isFrozen
             ? "linear-gradient(11.41deg, #797979 5.95%, #15161C 102.98%)"
