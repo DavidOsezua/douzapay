@@ -59,7 +59,7 @@ const AdminSidebar = () => {
             <div className="text-primary-500 flex items-center gap-2.5 px-4 pt-2">
               <img
                 src="/images/full-logo-dark.svg"
-                className="w-16"
+                className="w-24"
                 alt="Krypt Kard Logo"
               />
             </div>

@@ -130,7 +130,7 @@ const Login = () => {
           >
             <img
               src="/images/full-logo-dark.svg"
-              className="w-20"
+              className="w-28"
               alt="for all you card needs"
             />
 

@@ -173,7 +173,7 @@ const Signup = () => {
           >
             <img
               src="/images/full-logo-dark.svg"
-              className="w-20"
+              className="w-28"
               alt="for all you card needs"
             />
             <div className="bg-dark-background-light mt-4 inline-flex gap-2 rounded p-0.5">
