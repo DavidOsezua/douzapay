@@ -40,7 +40,7 @@ export type ModalPayload = {
       | "register"
       | "card-withdrawal"
       | "internal-transfer"
-      | "register";
+      | "password-reset";
     transaction?: {
       id: number | string;
       amount: string | number;

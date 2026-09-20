@@ -98,7 +98,11 @@ const Security = () => {
 
   return (
     <div className="min-h-dvh bg-[#242424] text-white">
-      <TopBar title="Security" backTo="/dashboard/account" />
+      <TopBar
+        title="Security"
+        backTo="/dashboard/account"
+        className="!bg-[#242424]"
+      />
 
       <div className="p-4">
         <h3 className="font-bold">Two-Factor Authentication (2FA)</h3>

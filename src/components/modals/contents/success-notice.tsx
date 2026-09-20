@@ -16,7 +16,8 @@ const SuccessNotice = ({
     | "card-withdrawal"
     | "internal-transfer"
     | "add-contact"
-    | "register";
+    | "register"
+    | "password-reset";
   transaction?: { id: number | string; amount: string | number; createdAt: string };
   closeModal: () => void;
 }) => {
@@ -183,16 +184,36 @@ const SuccessNotice = ({
   if (type === "register")
     return (
       <div className="my-4 flex w-full flex-col items-center gap-4">
-        <div className="border-dark-primary-main bg-dark-primary-50 flex size-16 items-center justify-center rounded-full border">
-          <Check className="text-dark-primary-main" />
+        <div className="bg-[#3A3A3A] flex size-16 items-center justify-center rounded-full">
+          <Check className="text-white" />
         </div>
-        <div className="mt-2 text-2xl font-medium">
+        <div className="mt-2 text-center text-2xl font-medium">
           Account created successfully
         </div>
         <div className="mt-4 flex w-full items-center gap-2">
           <Button
             onClick={() => (window.location.href = "/login")}
-            className="text-dark-text-400 bg-dark-primary-main hover:bg-dark-primary-100 h-11 grow"
+            className="text-[#242424] bg-[#E1E1E1] hover:bg-[#E1E1E1]/80 h-11 grow"
+          >
+            Continue to Login
+          </Button>
+        </div>
+      </div>
+    );
+
+  if (type === "password-reset")
+    return (
+      <div className="my-4 flex w-full flex-col items-center gap-4">
+        <div className="bg-[#3A3A3A] flex size-16 items-center justify-center rounded-full">
+          <Check className="text-white" />
+        </div>
+        <div className="mt-2 text-center text-2xl font-medium">
+          Password reset Successfully
+        </div>
+        <div className="mt-4 flex w-full items-center gap-2">
+          <Button
+            onClick={() => (window.location.href = "/login")}
+            className="text-[#242424] bg-[#E1E1E1] hover:bg-[#E1E1E1]/80 h-11 grow"
           >
             Continue to Login
           </Button>

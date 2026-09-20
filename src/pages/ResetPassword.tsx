@@ -27,6 +27,8 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
+import { useModalStore } from "@/zustand/modalStore";
+import Modal from "@/components/modals";
 
 const schema = z
   .object({
@@ -51,6 +53,7 @@ const ResetPassword = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
+  const { openModal } = useModalStore();
   const form = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -64,7 +67,7 @@ const ResetPassword = () => {
   const { mutateAsync: resetPassword, isPending: isResetting } =
     useResetPassword({
       onSuccess: () => {
-        navigate("/login");
+        openModal("success", { type: "password-reset" });
       },
     });
 
@@ -367,6 +370,7 @@ const ResetPassword = () => {
           </form>
         </div>
       </div>
+      <Modal />
     </div>
   );
 };
