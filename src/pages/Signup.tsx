@@ -25,6 +25,7 @@ import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { toast } from "sonner";
 import { useModalStore } from "@/zustand/modalStore";
 import Modal from "@/components/modals";
+import ResendOtpButton from "@/components/resend-otp-button";
 
 const schema = z
   .object({
@@ -366,7 +367,7 @@ const Signup = () => {
                     <p className="mt-4 text-center text-xs font-medium text-[#2B2A30]">
                       Already have an account?{" "}
                       <Link
-                        className="hover:text-primary-500/80 text-dark-link-4"
+                        className="hover:text-[#3B4A90]/80 text-[#3B4A90]"
                         to="/login"
                       >
                         Sign In
@@ -428,9 +429,19 @@ const Signup = () => {
                         )}
                       />
 
+                      <ResendOtpButton
+                        mode="light"
+                        onResend={() =>
+                          getOtp({
+                            emailAddress: form.getValues("email"),
+                            purpose: "register",
+                          })
+                        }
+                      />
+
                       <Button
                         disabled={isRegistering}
-                        className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-4 w-full"
+                        className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-4 h-11 w-full"
                         type="submit"
                       >
                         {isRegistering ? <Throbber /> : "Verify"}

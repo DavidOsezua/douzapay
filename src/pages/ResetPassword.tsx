@@ -28,6 +28,7 @@ import {
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import { useModalStore } from "@/zustand/modalStore";
 import Modal from "@/components/modals";
+import ResendOtpButton from "@/components/resend-otp-button";
 
 const schema = z
   .object({
@@ -354,9 +355,19 @@ const ResetPassword = () => {
                         )}
                       />
 
+                      <ResendOtpButton
+                        mode="light"
+                        onResend={() =>
+                          getOtp({
+                            emailAddress: form.getValues("email"),
+                            purpose: "forget-password",
+                          })
+                        }
+                      />
+
                       <Button
                         disabled={isResetting}
-                        className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-4 w-full"
+                        className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-4 h-11 w-full"
                         type="submit"
                       >
                         {isResetting ? <Throbber /> : "Reset"}

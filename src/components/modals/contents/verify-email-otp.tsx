@@ -15,11 +15,12 @@ import { useUser } from "@/zustand/store";
 import { useModalStore } from "@/zustand/modalStore";
 import { useVerifyEmailChangeOtp } from "@/hooks/use-mutations";
 import { getAuthorizedOtp } from "@/lib/api";
+import ResendOtpButton, {
+  otpAltActionBtn,
+} from "@/components/resend-otp-button";
 
 const primaryBtn =
-  "flex w-full items-center justify-center gap-2 rounded-2xl bg-[#E1E1E1] py-3.5 text-sm font-semibold text-[#242424] disabled:cursor-not-allowed disabled:opacity-50";
-const secondaryBtn =
-  "flex w-full items-center justify-center gap-2 rounded-2xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] py-3.5 text-sm font-semibold text-white disabled:cursor-not-allowed disabled:opacity-50";
+  "flex h-11 w-full items-center justify-center gap-2 rounded-2xl bg-[#E1E1E1] text-sm font-semibold text-[#242424] disabled:cursor-not-allowed disabled:opacity-50";
 
 const maskEmailForVerification = (email: string) => {
   const [local, domain] = email.split("@");
@@ -162,6 +163,17 @@ const VerifyEmailOtp = ({ closeModal }: { closeModal: () => void }) => {
             </InputOTP>
           </div>
 
+          {otpMethod === "email" && (
+            <ResendOtpButton
+              onResend={() =>
+                getAuthorizedOtp({
+                  emailAddress: user?.email,
+                  purpose: "verify-email",
+                })
+              }
+            />
+          )}
+
           <button
             type="button"
             onClick={handlePasteFromClipboard}
@@ -188,7 +200,7 @@ const VerifyEmailOtp = ({ closeModal }: { closeModal: () => void }) => {
             type="button"
             onClick={handleSwitchOtpMethod}
             disabled={isSwitchingMethod || isRequestingOtp}
-            className={secondaryBtn}
+            className={otpAltActionBtn}
           >
             {isSwitchingMethod ? (
               <Throbber />
