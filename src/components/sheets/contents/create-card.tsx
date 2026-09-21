@@ -600,7 +600,7 @@ const CreateCard = ({
                       <FormLabel className="text-white inline-block text-[10px] font-light">
                         I accept the {""}
                         <Link
-                          to={"/pdfs/My-pay_Card_Terms.pdf"}
+                          to={"/pdfs/Card_Terms.pdf"}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="font-semibold"
@@ -609,7 +609,7 @@ const CreateCard = ({
                         </Link>{" "}
                         and {""}
                         <Link
-                          to={"/pdfs/My-pay card Privacy Policy.pdf"}
+                          to={"/pdfs/DigitWallet card Privacy Policy.pdf"}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="font-semibold"
