@@ -48,6 +48,7 @@ const EditProfile = ({
       email: user?.email,
       contact: user?.contact,
       otp: "",
+      password: "",
     },
   });
   const { mutateAsync: getOtp, isPending: isGettingOtp } =
