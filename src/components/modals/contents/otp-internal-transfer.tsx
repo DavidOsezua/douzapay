@@ -6,9 +6,17 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
-import { useInternalTransfer } from "@/hooks/use-mutations";
+import {
+  useInternalTransfer,
+  useRequestInternalTransferOtp,
+} from "@/hooks/use-mutations";
 import { useModalStore } from "@/zustand/modalStore";
 import { useSheetStore } from "@/zustand/sheetStore";
+import { useUser } from "@/zustand/store";
+import ResendOtpButton, {
+  otpAltActionBtn,
+} from "@/components/resend-otp-button";
+import Throbber from "@/components/throbber";
 
 const OtpInternalTransfer = ({
   toUserId,
@@ -30,6 +38,33 @@ const OtpInternalTransfer = ({
   const [otp, setOtp] = useState("");
   const { openModal } = useModalStore();
   const { closeSheet } = useSheetStore();
+  const user = useUser((s) => s.user);
+  const isAuthenticatorMethod = user?.twoFactorAuthMethod === "authenticator";
+  const [verificationMethod, setVerificationMethod] = useState<
+    "email" | "authenticator"
+  >(isAuthenticatorMethod ? "authenticator" : "email");
+  const { mutateAsync: requestOtp, isPending: isSwitchingMethod } =
+    useRequestInternalTransferOtp();
+
+  const handleSwitchOtpMethod = async () => {
+    setOtp("");
+    if (verificationMethod === "authenticator") {
+      try {
+        await requestOtp({
+          purpose: "internal-transfer",
+          emailAddress: user?.email ?? "",
+          amount,
+          toUserId,
+          assetId,
+        });
+        setVerificationMethod("email");
+      } catch {
+        // The mutation's own onError already toasts.
+      }
+    } else {
+      setVerificationMethod("authenticator");
+    }
+  };
 
   const initials = payeeName
     .split(" ")
@@ -67,7 +102,9 @@ const OtpInternalTransfer = ({
       </div>
 
       <p className="mt-5 text-sm text-white/60">
-        Enter the OTP sent to your email to complete the transfer of{" "}
+        {verificationMethod === "authenticator"
+          ? "Enter the 6-digit code from your authenticator app to complete the transfer of"
+          : "Enter the OTP sent to your email to complete the transfer of"}{" "}
         <span className="font-semibold text-white">
           {amount} {tokenSymbol}
         </span>
@@ -93,14 +130,53 @@ const OtpInternalTransfer = ({
         </InputOTP>
       </div>
 
+      {verificationMethod === "email" && (
+        <ResendOtpButton
+          onResend={() =>
+            requestOtp({
+              purpose: "internal-transfer",
+              emailAddress: user?.email ?? "",
+              amount,
+              toUserId,
+              assetId,
+            })
+          }
+        />
+      )}
+
       <Button
-        onClick={() => sendTransfer({ amount, toUserId, assetId, otp })}
+        onClick={() =>
+          sendTransfer({
+            amount,
+            toUserId,
+            assetId,
+            otp,
+            otpMethod: verificationMethod,
+          })
+        }
         isLoading={isPending}
         disabled={isPending || otp.length < 6}
         className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-2 h-11 w-full font-semibold text-[#242424]"
       >
         Complete Transfer
       </Button>
+
+      {isAuthenticatorMethod && (
+        <button
+          type="button"
+          onClick={handleSwitchOtpMethod}
+          disabled={isSwitchingMethod}
+          className={`mt-3 ${otpAltActionBtn}`}
+        >
+          {isSwitchingMethod ? (
+            <Throbber />
+          ) : verificationMethod === "authenticator" ? (
+            "Use email OTP instead"
+          ) : (
+            "Use authenticator app instead"
+          )}
+        </button>
+      )}
     </div>
   );
 };

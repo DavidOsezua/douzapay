@@ -18,12 +18,23 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { ClipboardPaste, Eye, EyeOff } from "lucide-react";
+import { toast } from "sonner";
 import Throbber from "@/components/throbber";
-import { handleError } from "@/lib/helper";
 import { useChangePassword, useGetAuthorizedOTP } from "@/hooks/use-mutations";
 import { useUser } from "@/zustand/store";
 import ChangePasswordIcon from "@/components/icons/change-password-icon";
+import ShieldAsteriskIcon from "@/components/icons/shield-asterisk-icon";
+import ResendOtpButton, {
+  otpAltActionBtn,
+} from "@/components/resend-otp-button";
+
+const maskEmailForVerification = (email: string) => {
+  const [local, domain] = email.split("@");
+  if (!domain) return email;
+  if (local.length <= 5) return `${local[0] ?? ""}****@${domain}`;
+  return `${local.slice(0, 2)}****${local.slice(-3)}@${domain}`;
+};
 
 const schema = z
   .object({
@@ -44,10 +55,15 @@ const schema = z
 
 const ChangePassword = ({ closeModal }: { closeModal: () => void }) => {
   const { user } = useUser();
+  const canUseAuthenticator = user?.twoFactorAuthMethod === "authenticator";
   const [step, setStep] = useState<1 | 2>(1);
   const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [otp, setOtp] = useState("");
+  const [otpMethod, setOtpMethod] = useState<"email" | "authenticator">(
+    canUseAuthenticator ? "authenticator" : "email",
+  );
+  const [isSwitchingMethod, setIsSwitchingMethod] = useState(false);
 
   const form = useForm({
     resolver: zodResolver(schema),
@@ -69,33 +85,93 @@ const ChangePassword = ({ closeModal }: { closeModal: () => void }) => {
     newPassword: string;
     confirmNewPassword: string;
   }) => {
+    if (canUseAuthenticator) {
+      // Authenticator codes aren't "sent" — skip the OTP request and let the
+      // user enter a code they've already got from their app.
+      setOtpMethod("authenticator");
+      setStep(2);
+      return;
+    }
     try {
       await getOtp({
         emailAddress: user?.email,
         purpose: "update",
       });
+      setOtpMethod("email");
       setStep(2);
-    } catch (error) {
-      handleError(error);
+    } catch {
+      // The mutation's own onError already toasts.
     }
   };
 
   const handleConfirm = async () => {
     const { password, newPassword } = form.getValues();
-    await changePassword({ password, newPassword, otp });
+    try {
+      await changePassword({ password, newPassword, otp, otpMethod });
+    } catch {
+      // The mutation's own onError already toasts.
+    }
+  };
+
+  const handleSwitchOtpMethod = async () => {
+    setOtp("");
+    if (otpMethod === "authenticator") {
+      setIsSwitchingMethod(true);
+      try {
+        await getOtp({ emailAddress: user?.email, purpose: "update" });
+        setOtpMethod("email");
+      } catch {
+        // The mutation's own onError already toasts.
+      } finally {
+        setIsSwitchingMethod(false);
+      }
+    } else {
+      setOtpMethod("authenticator");
+    }
+  };
+
+  const handlePasteFromClipboard = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      const digits = text.replace(/\D/g, "").slice(0, 6);
+      if (digits.length < 6) {
+        toast.error("Clipboard doesn't contain a valid 6-digit code");
+        return;
+      }
+      setOtp(digits);
+    } catch {
+      toast.error("Couldn't read from clipboard");
+    }
   };
 
   return (
     <div className="text-white">
       <div className="mx-auto flex flex-col items-center text-center">
         <div className="bg-[#E1E1E1] text-[#242424] flex size-16 items-center justify-center rounded-full">
-          <ChangePasswordIcon className="h-[18px] w-[15px]" />
+          {step === 2 && otpMethod === "authenticator" ? (
+            <ShieldAsteriskIcon className="size-6" />
+          ) : (
+            <ChangePasswordIcon className="h-[18px] w-[15px]" />
+          )}
         </div>
-        <p className="mt-4 text-2xl font-medium">Change Password</p>
+        <p className="mt-4 text-2xl font-medium">
+          {step === 2 && otpMethod === "authenticator"
+            ? "2 Factor Authentication"
+            : "Change Password"}
+        </p>
         <p className="text-sm text-white/60">
-          {step === 1
-            ? "Enter your current and new password"
-            : `Enter the OTP sent to ${user?.email}`}
+          {step === 1 ? (
+            "Enter your current and new password"
+          ) : otpMethod === "authenticator" ? (
+            "Enter the 6-digit code from your authenticator app to continue."
+          ) : (
+            <>
+              Enter the code sent to{" "}
+              <span className="font-medium">
+                {maskEmailForVerification(user?.email ?? "")}
+              </span>
+            </>
+          )}
         </p>
       </div>
 
@@ -225,6 +301,23 @@ const ChangePassword = ({ closeModal }: { closeModal: () => void }) => {
             </InputOTP>
           </div>
 
+          {otpMethod === "email" && (
+            <ResendOtpButton
+              onResend={() =>
+                getOtp({ emailAddress: user?.email, purpose: "update" })
+              }
+            />
+          )}
+
+          <button
+            type="button"
+            onClick={handlePasteFromClipboard}
+            className="mx-auto mt-4 flex items-center gap-2 rounded-full border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] px-4 py-2 text-xs text-white"
+          >
+            <ClipboardPaste size={14} />
+            Paste from clipboard
+          </button>
+
           <Button
             isLoading={isChanging}
             disabled={otp.length < 6}
@@ -233,6 +326,23 @@ const ChangePassword = ({ closeModal }: { closeModal: () => void }) => {
           >
             {isChanging ? <Throbber /> : "Confirm"}
           </Button>
+
+          {canUseAuthenticator && (
+            <button
+              type="button"
+              onClick={handleSwitchOtpMethod}
+              disabled={isSwitchingMethod}
+              className={`mt-3 ${otpAltActionBtn}`}
+            >
+              {isSwitchingMethod ? (
+                <Throbber />
+              ) : otpMethod === "authenticator" ? (
+                "Use email OTP instead"
+              ) : (
+                "Use authenticator app instead"
+              )}
+            </button>
+          )}
         </div>
       )}
     </div>

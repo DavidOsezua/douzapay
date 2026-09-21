@@ -47,11 +47,19 @@ export const adminLogin = async (data: LoginPayload) => {
   return response.data;
 };
 
-export const getOtp = async (data: GetOtpPayload) =>
-  apiInstance.post("/auth/otp", data);
+export const getOtp = async (
+  data: GetOtpPayload,
+): Promise<GetOtpResponse> => {
+  const response = await apiInstance.post("/auth/otp", data);
+  return response.data;
+};
 
-export const getAuthorizedOtp = async (data: GetOtpPayload) =>
-  authorizedInstance.post("/auth/otp", data);
+export const getAuthorizedOtp = async (
+  data: GetOtpPayload,
+): Promise<GetOtpResponse> => {
+  const response = await authorizedInstance.post("/auth/otp", data);
+  return response.data;
+};
 
 export const verifyEmail = async (data: { email: string; refBy?: string }) =>
   apiInstance.get("/users/check", {
@@ -813,7 +821,7 @@ export const requestInternalTransferOtp = async (data: {
   amount: number;
   toUserId: string;
   assetId: number;
-}) => {
+}): Promise<GetOtpResponse> => {
   const response = await authorizedInstance.post("/auth/otp", data);
   return response.data;
 };

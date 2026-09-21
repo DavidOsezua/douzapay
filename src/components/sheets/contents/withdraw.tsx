@@ -14,6 +14,10 @@ import { useUser } from "@/zustand/store";
 import { useFormatAmountWithCurrency } from "@/hooks/use-format-with-currency";
 import { formatAmount as formatAmountUtil } from "@/lib/utils";
 import { useGetRate, useGetUserAssets } from "@/hooks/use-queries";
+import ResendOtpButton, {
+  otpAltActionBtn,
+} from "@/components/resend-otp-button";
+import Throbber from "@/components/throbber";
 
 const iconMap: Record<string, string> = {
   USDT: "/icons/usdt.svg",
@@ -36,6 +40,7 @@ const Withdraw = ({
   closeSheet: () => void;
 }) => {
   const { user } = useUser((state) => state);
+  const canUseAuthenticator = user?.twoFactorAuthMethod === "authenticator";
   const { data: userAssets } = useGetUserAssets();
   const totalBalance = (userAssets ?? []).reduce(
     (sum: number, a: any) => sum + Number(a.balance),
@@ -50,6 +55,10 @@ const Withdraw = ({
   const { openModal } = useModalStore();
   const [amount, setAmount] = useState("");
   const [otp, setOtp] = useState("");
+  const [otpMethod, setOtpMethod] = useState<"email" | "authenticator">(
+    "email",
+  );
+  const [isSwitchingMethod, setIsSwitchingMethod] = useState(false);
   const formatAmount = useFormatAmountWithCurrency();
 
   const preferredCurrency = user?.preferredCurrency || "USD";
@@ -88,8 +97,31 @@ const Withdraw = ({
       amount: usdtAmount,
       chain: selectedAsset?.token?.type,
       otp: otp,
+      otpMethod,
       assetId: selectedAsset?.tokenId,
     });
+  };
+
+  const handleSwitchOtpMethod = async () => {
+    setOtp("");
+    if (otpMethod === "authenticator") {
+      setIsSwitchingMethod(true);
+      try {
+        await getOtp({
+          emailAddress: user?.email,
+          purpose: "withdrawal",
+          address: withdrawalAddress,
+          amount: usdtAmount,
+        });
+        setOtpMethod("email");
+      } catch {
+        // The mutation's own onError already toasts.
+      } finally {
+        setIsSwitchingMethod(false);
+      }
+    } else {
+      setOtpMethod("authenticator");
+    }
   };
 
   return (
@@ -188,13 +220,25 @@ const Withdraw = ({
 
           <Button
             onClick={async () => {
-              await getOtp({
-                emailAddress: user?.email,
-                purpose: "withdrawal",
-                address: withdrawalAddress,
-                amount: usdtAmount,
-              });
-              setStep(2);
+              if (canUseAuthenticator) {
+                // Authenticator codes aren't "sent" — skip the OTP request
+                // and let the user enter a code they've already got.
+                setOtpMethod("authenticator");
+                setStep(2);
+                return;
+              }
+              try {
+                const res = await getOtp({
+                  emailAddress: user?.email,
+                  purpose: "withdrawal",
+                  address: withdrawalAddress,
+                  amount: usdtAmount,
+                });
+                setOtpMethod(res.type);
+                setStep(2);
+              } catch {
+                // The mutation's own onError already toasts.
+              }
             }}
             isLoading={isGettingOtp}
             disabled={
@@ -264,11 +308,27 @@ const Withdraw = ({
           </div>
 
           <div className="mt-6">
-            <h1 className="text-2xl font-semibold">Let’s verify your Email</h1>
-            <p className="text-sm leading-3.5 text-[#8C8C8C]">
-              We’ve sent a 6-digit code to your email, enter the code below to
-              verify
-            </p>
+            {otpMethod === "authenticator" ? (
+              <>
+                <h1 className="text-2xl font-semibold">
+                  2 Factor Authentication
+                </h1>
+                <p className="text-sm leading-3.5 text-[#8C8C8C]">
+                  Enter the 6-digit code from your authenticator app to
+                  continue.
+                </p>
+              </>
+            ) : (
+              <>
+                <h1 className="text-2xl font-semibold">
+                  Let’s verify your Email
+                </h1>
+                <p className="text-sm leading-3.5 text-[#8C8C8C]">
+                  We’ve sent a 6-digit code to your email, enter the code
+                  below to verify
+                </p>
+              </>
+            )}
             <InputOTP
               value={otp}
               onChange={(e) => setOtp(e)}
@@ -288,14 +348,44 @@ const Withdraw = ({
               </InputOTPGroup>
             </InputOTP>
 
+            {otpMethod === "email" && (
+              <ResendOtpButton
+                onResend={() =>
+                  getOtp({
+                    emailAddress: user?.email,
+                    purpose: "withdrawal",
+                    address: withdrawalAddress,
+                    amount: usdtAmount,
+                  })
+                }
+              />
+            )}
+
             <Button
               disabled={!otp || isWithdrawing}
               isLoading={isWithdrawing}
               onClick={() => onSubmit()}
-              className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-8 w-full font-semibold"
+              className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-8 h-11 w-full font-semibold"
             >
               Authorize Payment
             </Button>
+
+            {canUseAuthenticator && (
+              <button
+                type="button"
+                onClick={handleSwitchOtpMethod}
+                disabled={isSwitchingMethod}
+                className={otpAltActionBtn}
+              >
+                {isSwitchingMethod ? (
+                  <Throbber />
+                ) : otpMethod === "authenticator" ? (
+                  "Use email OTP instead"
+                ) : (
+                  "Use authenticator app instead"
+                )}
+              </button>
+            )}
           </div>
         </div>
       )}

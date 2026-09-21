@@ -13,6 +13,10 @@ import { useUser } from "@/zustand/store";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useGetAuthorizedOTP, useUpdateUser } from "@/hooks/use-mutations";
+import ResendOtpButton, {
+  otpAltActionBtn,
+} from "@/components/resend-otp-button";
+import Throbber from "@/components/throbber";
 import {
   InputOTP,
   InputOTPGroup,
@@ -32,6 +36,11 @@ const EditProfile = ({
 }) => {
   const queryClient = useQueryClient();
   const { user } = useUser();
+  const canUseAuthenticator = user?.twoFactorAuthMethod === "authenticator";
+  const [otpMethod, setOtpMethod] = useState<"email" | "authenticator">(
+    "email",
+  );
+  const [isSwitchingMethod, setIsSwitchingMethod] = useState(false);
   const form = useForm({
     defaultValues: {
       firstName: user?.firstName,
@@ -48,11 +57,32 @@ const EditProfile = ({
 
   const onSubmit = async (data: any) => {
     try {
-      await updateProfile(data);
+      await updateProfile({ ...data, otpMethod });
       queryClient.invalidateQueries({ queryKey: ["user"] });
       closeSheet();
     } catch {
       // ignore
+    }
+  };
+
+  const handleSwitchOtpMethod = async () => {
+    if (otpMethod === "authenticator") {
+      setIsSwitchingMethod(true);
+      try {
+        await getOtp({
+          emailAddress: form.getValues("email"),
+          purpose: "update",
+        });
+        form.setValue("otp", "");
+        setOtpMethod("email");
+      } catch {
+        // The mutation's own onError already toasts.
+      } finally {
+        setIsSwitchingMethod(false);
+      }
+    } else {
+      form.setValue("otp", "");
+      setOtpMethod("authenticator");
     }
   };
   return (
@@ -164,11 +194,24 @@ const EditProfile = ({
                 disabled={!form.formState.isDirty}
                 type="button"
                 onClick={async () => {
-                  await getOtp({
-                    emailAddress: form.getValues("email"),
-                    purpose: "update",
-                  });
-                  setStep(2);
+                  if (canUseAuthenticator) {
+                    // Authenticator codes aren't "sent" — skip the OTP
+                    // request and let the user enter a code they've
+                    // already got.
+                    setOtpMethod("authenticator");
+                    setStep(2);
+                    return;
+                  }
+                  try {
+                    const res = await getOtp({
+                      emailAddress: form.getValues("email"),
+                      purpose: "update",
+                    });
+                    setOtpMethod(res.type);
+                    setStep(2);
+                  } catch {
+                    // The mutation's own onError already toasts.
+                  }
                 }}
                 className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-8 w-full font-medium text-[#242424]"
                 isLoading={isGettingOtp}
@@ -181,11 +224,27 @@ const EditProfile = ({
           {/* Step 2 */}
           {step === 2 && (
             <>
-              <h1 className="mt-6 text-2xl font-semibold">Verification Code</h1>
-              <p className="text-sm leading-3.5 text-[#8C8C8C]">
-                We’ve sent a 6-digit code to your email, enter the code below to
-                verify
-              </p>
+              {otpMethod === "authenticator" ? (
+                <>
+                  <h1 className="mt-6 text-2xl font-semibold">
+                    2 Factor Authentication
+                  </h1>
+                  <p className="text-sm leading-3.5 text-[#8C8C8C]">
+                    Enter the 6-digit code from your authenticator app to
+                    continue.
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h1 className="mt-6 text-2xl font-semibold">
+                    Verification Code
+                  </h1>
+                  <p className="text-sm leading-3.5 text-[#8C8C8C]">
+                    We’ve sent a 6-digit code to your email, enter the code
+                    below to verify
+                  </p>
+                </>
+              )}
 
               <div className="mt-6 flex w-full flex-col gap-2.5">
                 <FormField
@@ -217,14 +276,42 @@ const EditProfile = ({
                   )}
                 />
 
+                {otpMethod === "email" && (
+                  <ResendOtpButton
+                    onResend={() =>
+                      getOtp({
+                        emailAddress: form.getValues("email"),
+                        purpose: "update",
+                      })
+                    }
+                  />
+                )}
+
                 <Button
                   disabled={isUpdating}
-                  className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 w-full text-[#242424]"
+                  className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 h-11 w-full text-[#242424]"
                   type="submit"
                   isLoading={isUpdating}
                 >
                   Save
                 </Button>
+
+                {canUseAuthenticator && (
+                  <button
+                    type="button"
+                    onClick={handleSwitchOtpMethod}
+                    disabled={isSwitchingMethod}
+                    className={otpAltActionBtn}
+                  >
+                    {isSwitchingMethod ? (
+                      <Throbber />
+                    ) : otpMethod === "authenticator" ? (
+                      "Use email OTP instead"
+                    ) : (
+                      "Use authenticator app instead"
+                    )}
+                  </button>
+                )}
               </div>
             </>
           )}

@@ -27,7 +27,10 @@ import {
 } from "@/components/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
 import LoginBg from "@/components/login-bg";
-import { handleError, type ApiError } from "@/lib/helper";
+import type { ApiError } from "@/lib/helper";
+import ResendOtpButton, {
+  otpAltActionBtnOnLight,
+} from "@/components/resend-otp-button";
 
 const schema = z.object({
   email: z.string().email("Invalid email address").min(1, "Email is required"),
@@ -51,6 +54,10 @@ const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [step, setStep] = useState(1);
+  const [otpMethod, setOtpMethod] = useState<"email" | "authenticator">(
+    "email",
+  );
+  const [isSwitchingMethod, setIsSwitchingMethod] = useState(false);
   const navigate = useNavigate();
   const form = useForm({
     resolver: zodResolver(schema),
@@ -71,7 +78,28 @@ const Login = () => {
     },
   });
   const onSubmit = (data: FormData) => {
-    login(data);
+    login({ ...data, otpMethod });
+  };
+
+  const handleSwitchOtpMethod = async () => {
+    if (otpMethod === "authenticator") {
+      setIsSwitchingMethod(true);
+      try {
+        await getOtp({
+          emailAddress: form.getValues("email"),
+          purpose: "login",
+        });
+        form.setValue("otp", "");
+        setOtpMethod("email");
+      } catch {
+        // The mutation's own onError already toasts.
+      } finally {
+        setIsSwitchingMethod(false);
+      }
+    } else {
+      form.setValue("otp", "");
+      setOtpMethod("authenticator");
+    }
   };
   return (
     <div className="text-primary-500 relative h-full w-full overflow-hidden">
@@ -222,7 +250,7 @@ const Login = () => {
                       )}
                     />
                     <Link
-                      className="hover:text-primary-500/80 -mt-1 text-end text-sm font-medium text-[#173A91]"
+                      className="hover:text-[#3B4A90]/80 -mt-1 text-end text-sm font-medium text-[#3B4A90]"
                       to="/reset-password"
                     >
                       Forgot Password?
@@ -245,11 +273,12 @@ const Login = () => {
                             password: form.getValues("password"),
                           });
                           if (!verifyResponse.data.valid) return;
-                          await getOtp({
+                          const otpResponse = await getOtp({
                             emailAddress: form.getValues("email"),
                             purpose: "login",
                           });
 
+                          setOtpMethod(otpResponse.type);
                           setStep(2);
                         } catch (error) {
                           const errorMsg = (error as ApiError)?.response?.data
@@ -269,7 +298,7 @@ const Login = () => {
                               message: "Email not found",
                             });
                           }
-                          handleError(error);
+                          // The mutation's own onError already toasts.
                         }
                       }}
                     >
@@ -279,7 +308,7 @@ const Login = () => {
                     <p className="mt-4 text-center text-sm">
                       Don&apos;t have an account?{" "}
                       <Link
-                        className="hover:text-primary-500/80 mx-auto text-[#00247E]"
+                        className="hover:text-[#3B4A90]/80 mx-auto text-[#3B4A90]"
                         to="/signup"
                       >
                         Sign up
@@ -299,13 +328,27 @@ const Login = () => {
                     >
                       <ArrowLeft />
                     </Button>
-                    <h1 className="mt-6 text-2xl font-semibold">
-                      Let’s verify your Email
-                    </h1>
-                    <p className="text-sm leading-3.5 text-[#8C8C8C]">
-                      We’ve sent a 6-digit code to your email, enter the code
-                      below to verify
-                    </p>
+                    {otpMethod === "authenticator" ? (
+                      <>
+                        <h1 className="mt-6 text-2xl font-semibold">
+                          2 Factor Authentication
+                        </h1>
+                        <p className="text-sm leading-3.5 text-[#8C8C8C]">
+                          Enter the 6-digit code from your authenticator app
+                          to continue.
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <h1 className="mt-6 text-2xl font-semibold">
+                          Let’s verify your Email
+                        </h1>
+                        <p className="text-sm leading-3.5 text-[#8C8C8C]">
+                          We’ve sent a 6-digit code to your email, enter the
+                          code below to verify
+                        </p>
+                      </>
+                    )}
 
                     <div className="mt-6 flex w-full flex-col gap-2.5">
                       <FormField
@@ -337,13 +380,40 @@ const Login = () => {
                         )}
                       />
 
+                      {otpMethod === "email" && (
+                        <ResendOtpButton
+                          mode="light"
+                          onResend={() =>
+                            getOtp({
+                              emailAddress: form.getValues("email"),
+                              purpose: "login",
+                            })
+                          }
+                        />
+                      )}
+
                       <Button
                         disabled={isLoggingIn}
-                        className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-6 w-full"
+                        className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-6 h-11 w-full"
                         type="submit"
                       >
                         {isLoggingIn ? <Throbber /> : "Login"}
                       </Button>
+
+                      <button
+                        type="button"
+                        onClick={handleSwitchOtpMethod}
+                        disabled={isSwitchingMethod}
+                        className={otpAltActionBtnOnLight}
+                      >
+                        {isSwitchingMethod ? (
+                          <Throbber />
+                        ) : otpMethod === "authenticator" ? (
+                          "Use email OTP instead"
+                        ) : (
+                          "Use authenticator app instead"
+                        )}
+                      </button>
                     </div>
                   </>
                 )}

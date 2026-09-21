@@ -65,8 +65,12 @@ type Id = { id: string };
 export const useGetOTP = () =>
   useMutation({
     mutationFn: (data: GetOtpPayload) => getOtp(data),
-    onSuccess: () => {
-      toast.success("An OTP has been sent to your email address");
+    onSuccess: (data) => {
+      toast.success(
+        data.type === "authenticator"
+          ? "Enter the code from your authenticator app"
+          : "An OTP has been sent to your email address",
+      );
     },
     onError: (error: any) => {
       handleError(error);
@@ -76,8 +80,12 @@ export const useGetOTP = () =>
 export const useGetAuthorizedOTP = () =>
   useMutation({
     mutationFn: (data: GetOtpPayload) => getAuthorizedOtp(data),
-    onSuccess: () => {
-      toast.success("An OTP has been sent to your email address");
+    onSuccess: (data) => {
+      toast.success(
+        data.type === "authenticator"
+          ? "Enter the code from your authenticator app"
+          : "An OTP has been sent to your email address",
+      );
     },
     onError: (error: any) => {
       handleError(error);
@@ -711,6 +719,7 @@ export const useInternalTransfer = ({ onSuccess }: Cb = {}) => {
       toUserId: string;
       assetId: number;
       otp: string;
+      otpMethod?: TwoFactorMethod;
     }) => internalTransfer(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["internalTransferHistory"] });

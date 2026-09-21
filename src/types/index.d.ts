@@ -548,6 +548,7 @@ type LoginPayload = {
   email: string;
   password: string;
   otp: string;
+  otpMethod?: TwoFactorMethod;
 };
 
 type ResetPasswordPayload = {
@@ -564,6 +565,15 @@ type GetOtpPayload = {
   amount?: number;
 };
 
+// The backend picks the delivery method from the account's own 2FA setting —
+// `type` tells the frontend whether a code was actually emailed or whether an
+// existing authenticator code should be used instead.
+type GetOtpResponse = {
+  success: boolean;
+  message: string;
+  type: "email" | "authenticator";
+};
+
 type DepositPayload = {
   amount: string | number;
   currency?: string;
@@ -576,6 +586,7 @@ type UpdateUserPayload = {
   email?: string;
   contact?: string;
   otp?: string;
+  otpMethod?: TwoFactorMethod;
   password?: string;
 };
 
@@ -586,6 +597,7 @@ type WithdrawPayload = {
   chain?: string;
   assetId?: string | number | null;
   otp?: string;
+  otpMethod?: TwoFactorMethod;
 };
 
 type BuyCardPayload = {
@@ -620,6 +632,7 @@ type ChangePasswordPayload = {
   password: string;
   newPassword: string;
   otp: string;
+  otpMethod?: TwoFactorMethod;
 };
 
 // PUT /users/email — `otp` is the code sent to the NEW address via

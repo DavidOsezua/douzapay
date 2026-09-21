@@ -24,6 +24,7 @@ const ConfirmInternalTransfer = ({
 }) => {
   const { openModal } = useModalStore();
   const user = useUser((s) => s.user);
+  const isAuthenticatorMethod = user?.twoFactorAuthMethod === "authenticator";
 
   const initials = payeeName
     .split(" ")
@@ -47,6 +48,30 @@ const ConfirmInternalTransfer = ({
   });
 
   const tokenIcon = ICON_MAP[tokenSymbol] ?? "/icons/usdt.svg";
+
+  const handleContinue = () => {
+    if (isAuthenticatorMethod) {
+      // Authenticator codes aren't "sent" — skip the OTP request and let the
+      // user enter a code they've already got from their app.
+      closeModal();
+      openModal("otpInternalTransfer", {
+        toUserId,
+        payeeName,
+        payeeEmail,
+        assetId,
+        amount,
+        tokenSymbol,
+      });
+      return;
+    }
+    requestOtp({
+      purpose: "internal-transfer",
+      emailAddress: user?.email ?? "",
+      amount,
+      toUserId,
+      assetId,
+    });
+  };
 
   return (
     <div className="text-white">
@@ -104,15 +129,7 @@ const ConfirmInternalTransfer = ({
       </div>
 
       <Button
-        onClick={() =>
-          requestOtp({
-            purpose: "internal-transfer",
-            emailAddress: user?.email ?? "",
-            amount,
-            toUserId,
-            assetId,
-          })
-        }
+        onClick={handleContinue}
         isLoading={isPending}
         disabled={isPending || !user?.email}
         className="bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-2 h-11 w-full font-semibold text-[#242424]"
