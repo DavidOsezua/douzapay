@@ -590,7 +590,7 @@ const CreatePlatinumCard = ({
                     }
                     className="mt-2 flex w-full items-center gap-3 rounded-2xl border px-4 py-3.5"
                     style={{
-                      borderColor: "#62D1F3",
+                      borderColor: "#5F6895",
                       borderStyle: "dashed",
                       background:
                         "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
