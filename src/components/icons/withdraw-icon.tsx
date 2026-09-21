@@ -10,7 +10,7 @@ const WithdrawIcon = (_props: IconProps) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <foreignObject x="0" y="0" width="0" height="0">
-        <div xmlns="http://www.w3.org/1999/xhtml"></div>
+        <div></div>
       </foreignObject>
       <circle
         data-figma-bg-blur-radius="4"
