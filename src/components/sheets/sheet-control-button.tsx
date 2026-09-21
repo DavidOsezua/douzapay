@@ -13,17 +13,11 @@ const SheetControlButton: React.FC<SheetControlButtonProps> = ({
   currentStep = 1,
   setStep,
   closeSheet,
-  sheet,
 }) => {
   const isFirstStep = currentStep === 1;
   const handleClick = () => {
     if (isFirstStep) {
       closeSheet();
-    } else if (
-      sheet === "send-fiat" &&
-      (currentStep === 3 || currentStep === 4)
-    ) {
-      setStep?.(2);
     } else {
       setStep?.((currentStep as number) - 1);
     }
