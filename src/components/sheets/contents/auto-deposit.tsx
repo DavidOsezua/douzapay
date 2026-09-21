@@ -69,10 +69,9 @@ const AutoDeposit = ({
         </p>
         <div className="mt-6 flex flex-col gap-4">
           <div className="mx-auto rounded-xl bg-white p-2 text-center lg:shrink-0">
-            <div className="size-24">
+            <div className="size-52">
               <QrCode className="size-full" value={wallet?.address as string} />
             </div>
-            <span className="text-primary-50 text-[10px]">Scan this</span>
           </div>
           <div>
             <div className="mt-4">
