@@ -190,10 +190,9 @@ const AddWalletModal = () => {
                           type="button"
                           variant="ghost"
                           className="absolute top-1/2 right-1 -translate-y-1/2"
-                          onClick={(event) =>
-                            handlePaste(
-                              (value) => form.setValue("walletAddress", value),
-                              event,
+                          onClick={() =>
+                            handlePaste((value) =>
+                              form.setValue("walletAddress", value),
                             )
                           }
                         >
