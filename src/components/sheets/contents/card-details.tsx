@@ -2,8 +2,7 @@ import Copy from "../../copy";
 import { useGetCardDetails } from "@/hooks/use-queries";
 
 const CardDetails = ({ cardData }: { cardData: Card }) => {
-  const { data: cardDetails }: { data: CardInfo | null; isLoading: boolean } =
-    useGetCardDetails({
+  const { data: cardDetails } = useGetCardDetails({
       id: cardData.id,
       enabled: cardData.id !== null,
     });
