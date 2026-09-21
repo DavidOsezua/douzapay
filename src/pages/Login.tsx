@@ -81,6 +81,40 @@ const Login = () => {
     login({ ...data, otpMethod });
   };
 
+  const handleStep1Continue = async () => {
+    try {
+      const isValid = await form.trigger(["email", "password"]);
+      if (!isValid) return;
+      const verifyResponse = await verify({
+        email: form.getValues("email"),
+        password: form.getValues("password"),
+      });
+      if (!verifyResponse.data.valid) return;
+      const otpResponse = await getOtp({
+        emailAddress: form.getValues("email"),
+        purpose: "login",
+      });
+
+      setOtpMethod(otpResponse.type);
+      setStep(2);
+    } catch (error) {
+      const errorMsg = (error as ApiError)?.response?.data?.error;
+      if (errorMsg === "Incorrect password") {
+        form.setError("password", {
+          type: "required",
+          message: "Incorrect Password",
+        });
+      }
+      if (errorMsg === "No account with the provided email found") {
+        form.setError("email", {
+          type: "required",
+          message: "Email not found",
+        });
+      }
+      // The mutation's own onError already toasts.
+    }
+  };
+
   const handleSwitchOtpMethod = async () => {
     if (otpMethod === "authenticator") {
       setIsSwitchingMethod(true);
@@ -233,6 +267,12 @@ const Login = () => {
                                   form.clearErrors("password");
                                   field.onChange(e.target.value);
                                 }}
+                                onKeyDown={(e) => {
+                                  if (e.key === "Enter") {
+                                    e.preventDefault();
+                                    handleStep1Continue();
+                                  }
+                                }}
                                 placeholder="Enter your password"
                               />
                               <Button
@@ -261,46 +301,7 @@ const Login = () => {
                       type="button"
                       isLoading={isGettingOtp || isVerifying}
                       disabled={isGettingOtp || isVerifying}
-                      onClick={async () => {
-                        try {
-                          const isValid = await form.trigger([
-                            "email",
-                            "password",
-                          ]);
-                          if (!isValid) return;
-                          const verifyResponse = await verify({
-                            email: form.getValues("email"),
-                            password: form.getValues("password"),
-                          });
-                          if (!verifyResponse.data.valid) return;
-                          const otpResponse = await getOtp({
-                            emailAddress: form.getValues("email"),
-                            purpose: "login",
-                          });
-
-                          setOtpMethod(otpResponse.type);
-                          setStep(2);
-                        } catch (error) {
-                          const errorMsg = (error as ApiError)?.response?.data
-                            ?.error;
-                          if (errorMsg === "Incorrect password") {
-                            form.setError("password", {
-                              type: "required",
-                              message: "Incorrect Password",
-                            });
-                          }
-                          if (
-                            errorMsg ===
-                            "No account with the provided email found"
-                          ) {
-                            form.setError("email", {
-                              type: "required",
-                              message: "Email not found",
-                            });
-                          }
-                          // The mutation's own onError already toasts.
-                        }
-                      }}
+                      onClick={handleStep1Continue}
                     >
                       Continue
                     </Button>
