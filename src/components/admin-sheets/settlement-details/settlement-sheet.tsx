@@ -15,7 +15,7 @@ interface SheetContentConfig {
 
 export type SheetPayload = {
   "settlement-details": { settlementData: any | null };
-  "whitelist-wallet": { settlementData: any | null };
+  "whitelist-wallet": { settlementData?: any | null };
 };
 
 const sheetContentMap: Record<Exclude<SheetType, null>, SheetContentConfig> = {
