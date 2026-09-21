@@ -2,7 +2,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { formatAddress, formatAmount } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Text } from "lucide-react";
-import { useSheetStore } from "@/zustand/sheetStore";
+import { useSheetStore } from "@/zustand/settlementSheetStore";
 
 export const transactionColumns: ColumnDef<any>[] = [
   {
@@ -61,9 +61,8 @@ export const transactionColumns: ColumnDef<any>[] = [
       return (
         <Button
           onClick={() =>
-            useSheetStore.getState().openSheet("transaction-details", null, {
-              transactionData: row.original,
-              type: "wallet",
+            useSheetStore.getState().openSheet("settlement-details", null, {
+              settlementData: row.original,
             })
           }
           variant="ghost"
