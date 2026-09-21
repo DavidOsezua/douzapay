@@ -354,7 +354,7 @@ const CreateCardholder = ({
 
   // Shared button styles
   const primaryBtn =
-    "flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-white";
+    "flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-[#242424]";
   const backBtn =
     "flex items-center gap-1.5 rounded-2xl border border-[#E1E5EB] bg-[#FBFBFB] px-5 py-3.5 text-sm font-semibold text-dark-text-400";
 
@@ -666,7 +666,7 @@ const CreateCardholder = ({
                 <button
                   type="submit"
                   className={primaryBtn}
-                  style={{ backgroundColor: "#4A93DB" }}
+                  style={{ backgroundColor: "#E1E1E1" }}
                 >
                   Continue
                   <ChevronRight size={16} />
@@ -895,7 +895,7 @@ const CreateCardholder = ({
                 <button
                   type="submit"
                   className={`${primaryBtn} flex-1`}
-                  style={{ backgroundColor: "#4A93DB" }}
+                  style={{ backgroundColor: "#E1E1E1" }}
                 >
                   Continue
                   <ChevronRight size={16} />
@@ -1094,7 +1094,7 @@ const CreateCardholder = ({
                 <button
                   type="submit"
                   className={`${primaryBtn} flex-1`}
-                  style={{ backgroundColor: "#4A93DB" }}
+                  style={{ backgroundColor: "#E1E1E1" }}
                 >
                   Continue
                   <ChevronRight size={16} />
@@ -1293,7 +1293,7 @@ const CreateCardholder = ({
                     disabled={isUploading || isCreating}
                     className={`${primaryBtn} flex-1 disabled:cursor-not-allowed`}
                     style={{
-                      backgroundColor: "#4A93DB",
+                      backgroundColor: "#E1E1E1",
                       opacity: isUploading || isCreating ? 0.5 : 1,
                     }}
                   >
@@ -1511,8 +1511,8 @@ const CreateCardholder = ({
                       <button
                         type="button"
                         onClick={capturePhoto}
-                        className="flex flex-1 items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-white"
-                        style={{ backgroundColor: "#4A93DB" }}
+                        className="flex flex-1 items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-[#242424]"
+                        style={{ backgroundColor: "#E1E1E1" }}
                       >
                         <svg
                           width="16"
@@ -1567,8 +1567,8 @@ const CreateCardholder = ({
                       <button
                         type="button"
                         onClick={proceedWithCapture}
-                        className="flex flex-1 items-center justify-center rounded-2xl py-3.5 text-sm font-semibold text-white"
-                        style={{ backgroundColor: "#4A93DB" }}
+                        className="flex flex-1 items-center justify-center rounded-2xl py-3.5 text-sm font-semibold text-[#242424]"
+                        style={{ backgroundColor: "#E1E1E1" }}
                       >
                         Use Photo
                       </button>
