@@ -20,6 +20,7 @@ export type CardItem = {
   cardholderId: null | string;
   billingAddress: {
     addressLine1: string;
+    addressLine2: string;
     city: string;
     country: string;
     postalCode: string;
