@@ -226,7 +226,7 @@ const Shop = () => {
         {/* Banner */}
         <div className="bg-dark-card-3 relative overflow-hidden rounded-2xl px-4 py-4 shadow-sm sm:px-5 sm:py-5">
           <p className="text-white text-sm leading-5 sm:text-base sm:leading-6">
-            Buy cards for seamless online and offline use on Krypt Kard.
+            Buy cards for seamless online and offline use on KrypKard.
           </p>
         </div>
 

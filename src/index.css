@@ -125,7 +125,7 @@
   --color-dark-background-light: #6e6e6e0d;
   --color-dark-background-secondary: #283968;
 
-  /* Krypt Kard gradients */
+  /* KrypKard gradients */
   --gradient-pink-card: 123.04deg, #dff4ff 1.64%, #a3d9d9 98.52%;
   --background-image-dark-account: linear-gradient(
     123.04deg,
@@ -147,7 +147,7 @@
   /* Dark Link Colors */
   --color-dark-link-4: #3fd8e8;
 
-  /* Dark Primary Colors (Krypt Kard cyan) */
+  /* Dark Primary Colors (KrypKard cyan) */
   --color-dark-primary-50: #e3fdff;
   --color-dark-primary-100: #b8f5fb;
   --color-dark-primary-200: #6ef7ff;

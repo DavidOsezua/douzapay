@@ -7,7 +7,7 @@ const LoginBg = () => {
       }}
     >
       <h1 className="relative z-10 pr-6 text-[28px] leading-9 font-bold">
-        Welcome to the Krypt Kard Global Payment Ecosystem
+        Welcome to the KrypKard Global Payment Ecosystem
       </h1>
       <p className="relative z-10 mt-4 text-sm leading-relaxed text-white/70">
         Spend across countries and currencies with one flexible payment card

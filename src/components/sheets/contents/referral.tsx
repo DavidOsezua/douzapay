@@ -243,11 +243,11 @@ const ApplicationStatus = ({ submittedAt }: { submittedAt?: string }) => {
               <p className="mt-1 text-[11px] leading-relaxed text-white/55">
                 Email us at{" "}
                 <a
-                  href="mailto:support@kryptkard.com"
+                  href="mailto:support@krypkard.com"
                   className="font-medium"
                   style={{ color: "#E1E1E1" }}
                 >
-                  support@kryptkard.com
+                  support@krypkard.com
                 </a>{" "}
                 within 24 hours and we&apos;ll work it in before review.
               </p>
@@ -273,7 +273,7 @@ const NotWhitelisted = () => {
   if (submitted) return <ApplicationStatus />;
 
   const approvalCriteria = [
-    "You have an active Krypt Kard account in good standing",
+    "You have an active KrypKard account in good standing",
     "You have an audience or network you can refer (community, newsletter, social, business)",
     "You agree to our promotion guidelines and won't spam or misrepresent the product",
   ];
@@ -351,7 +351,7 @@ const NotWhitelisted = () => {
                   referral <span style={{ color: "#E1E1E1" }}>forever</span>.
                 </h2>
                 <p className="mt-2 text-[11px] leading-relaxed text-white/60">
-                  The Krypt Kard referral program is invitation-based. Apply
+                  The KrypKard referral program is invitation-based. Apply
                   below and our team will review your fit within 2–3 business
                   days.
                 </p>
@@ -522,7 +522,7 @@ const NotWhitelisted = () => {
         >
           <Info className="mt-0.5 size-3.5 shrink-0 text-white/30" />
           <p className="text-[11px] leading-relaxed text-white/40">
-            Approval is at Krypt Kard&apos;s discretion. We typically respond within
+            Approval is at KrypKard&apos;s discretion. We typically respond within
             2–3 business days. Approved partners get instant access to their
             referral dashboard and code.
           </p>

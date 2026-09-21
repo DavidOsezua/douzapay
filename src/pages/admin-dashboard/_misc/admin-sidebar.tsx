@@ -60,7 +60,7 @@ const AdminSidebar = () => {
               <img
                 src="/images/full-logo-dark.svg"
                 className="w-24"
-                alt="Krypt Kard Logo"
+                alt="KrypKard Logo"
               />
             </div>
             <p className="pl-4 text-xl uppercase">Admin Dashboard</p>

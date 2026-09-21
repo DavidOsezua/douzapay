@@ -86,7 +86,7 @@ const AdminLogin = () => {
               <img
                 src="/images/full-logo-dark.svg"
                 className="h-auto w-28"
-                alt="Krypt Kard Logo"
+                alt="KrypKard Logo"
               />
             </div>
 

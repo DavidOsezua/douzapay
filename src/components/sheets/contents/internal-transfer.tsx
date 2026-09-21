@@ -258,7 +258,7 @@ const InternalTransfer = ({ step }: { step: number }) => {
   // Step 1
   return (
     <div className="mt-4 px-2 text-white">
-      <h2 className="font-semibold">Send to Krypt Kard User</h2>
+      <h2 className="font-semibold">Send to KrypKard User</h2>
 
       <div className="mt-6 space-y-4">
         <div>
@@ -267,7 +267,7 @@ const InternalTransfer = ({ step }: { step: number }) => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Krypt Kard user email"
+            placeholder="KrypKard user email"
             className="h-11 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] text-white placeholder:text-white/50 lg:text-xs lg:placeholder:text-xs"
           />
         </div>
@@ -321,7 +321,7 @@ const InternalTransfer = ({ step }: { step: number }) => {
           <div className="flex flex-col items-center justify-center py-12 text-center">
             <p className="text-lg font-bold">No Transfers Yet</p>
             <p className="mt-2 max-w-[220px] text-sm font-light text-[#8C8C8C]">
-              You haven&apos;t sent money to any Krypt Kard user yet. Your
+              You haven&apos;t sent money to any KrypKard user yet. Your
               transfers will appear here once you send money.
             </p>
           </div>

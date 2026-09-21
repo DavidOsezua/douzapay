@@ -4,7 +4,7 @@ import ShieldAsteriskIcon from "@/components/icons/shield-asterisk-icon";
 import { useModalStore } from "@/zustand/modalStore";
 import { useUser } from "@/zustand/store";
 
-const APP_ISSUER = "Krypt Kard";
+const APP_ISSUER = "KrypKard";
 
 // Groups a base32 secret into space-separated 4-char chunks for display,
 // e.g. "K7QD 4XM2 9PLB TR8V 9PLB K7QD".

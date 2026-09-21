@@ -638,7 +638,7 @@ const CreateCard = ({
                       <FormLabel className="text-white text-[10px] font-light">
                         I certify that the information I have provided is
                         accurate and that i will abide by all the rules and
-                        requirements related to Krypt Kard Spend Card.
+                        requirements related to KrypKard Spend Card.
                       </FormLabel>
                       <FormMessage />
                     </FormItem>
@@ -658,7 +658,7 @@ const CreateCard = ({
                         />
                       </FormControl>
                       <FormLabel className="text-[10px] font-light">
-                        I acknowledge that using the Krypt Kard Spend Card does not
+                        I acknowledge that using the KrypKard Spend Card does not
                         constitute unauthorized solicitation.
                       </FormLabel>
                       <FormMessage />
@@ -761,7 +761,7 @@ const CreateCard = ({
             <span className="font-medium">Card Currency:</span> Card currency
             refers to the currency type or unit associated with infinity cards.
             it plays a crucial role in determining the currency used for payment
-            and settlement when utilising Krypt Kard cards. It is highly recommended
+            and settlement when utilising KrypKard cards. It is highly recommended
             to utilise cards that align with the currency of the purchase order
             to mitigate the potential incurring of FX fees.
           </p>

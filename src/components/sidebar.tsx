@@ -69,7 +69,7 @@ const AppSidebar = () => {
       <div className="bg-dark-background-main border-[#6EF7FF2E] flex size-full flex-col overflow-hidden border-r">
         <SidebarHeader>
           <div className="text-primary-100 flex items-center justify-center px-4 py-2">
-            <img src="/images/full-logo.svg" alt="Krypt Kard logo" />
+            <img src="/images/full-logo.svg" alt="KrypKard logo" />
           </div>
         </SidebarHeader>
 
@@ -175,21 +175,21 @@ const AppSidebar = () => {
             <span className="block text-sm font-light">
               Email:{" "}
               <a
-                href="mailto:support@kryptkard.com"
+                href="mailto:support@krypkard.com"
                 className="text-primary-100 underline hover:no-underline"
               >
-                support@kryptkard.com
+                support@krypkard.com
               </a>
             </span>
             <span className="block text-sm font-light">
               Telegram:{" "}
               <a
-                href="https://t.me/kryptkardsupport"
+                href="https://t.me/krypkardsupport"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary-100 underline hover:no-underline"
               >
-                @kryptkardsupport
+                @krypkardsupport
               </a>
             </span>
           </span>

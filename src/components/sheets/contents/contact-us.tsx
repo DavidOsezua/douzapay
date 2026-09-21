@@ -4,11 +4,11 @@ import { ChevronRight } from "lucide-react";
 const ContactUs = () => {
   const { user } = useUser();
   const openTelegram = () => {
-    window.open("https://t.me/kryptkardsupport", "_blank", "noopener,noreferrer");
+    window.open("https://t.me/krypkardsupport", "_blank", "noopener,noreferrer");
   };
   const openEmail = () => {
     window.open(
-      "mailto:support@kryptkard.com",
+      "mailto:support@krypkard.com",
       "_blank",
       "noopener,noreferrer",
     );

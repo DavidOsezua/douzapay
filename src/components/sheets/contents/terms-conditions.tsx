@@ -136,7 +136,7 @@ const TermsAndConditions = () => {
               <span className="font-medium">Card Currency:</span> Card currency
               refers to the currency type or unit associated with infinity
               cards. it plays a crucial role in determining the currency used
-              for payment and settlement when utilising Krypt Kard cards. It is
+              for payment and settlement when utilising KrypKard cards. It is
               highly recommended to utilise cards that align with the currency
               of the purchase order to mitigate the potential incurring of FX
               fees.

@@ -612,7 +612,7 @@ const CreateSapphireCard = ({
                       <FormLabel className="text-white text-xs leading-5 font-normal">
                         I certify that the information I have provided is
                         accurate and that I will abide by all the rules and
-                        requirements related to Krypt Kard Spend Card.
+                        requirements related to KrypKard Spend Card.
                       </FormLabel>
                     </FormItem>
                   )}
@@ -630,7 +630,7 @@ const CreateSapphireCard = ({
                         />
                       </FormControl>
                       <FormLabel className="text-white text-xs leading-5 font-normal">
-                        I acknowledge that using the Krypt Kard Spend Card does not
+                        I acknowledge that using the KrypKard Spend Card does not
                         constitute unauthorized solicitation.
                       </FormLabel>
                     </FormItem>
