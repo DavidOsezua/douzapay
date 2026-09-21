@@ -17,6 +17,7 @@ type BinCardShape = {
   background?: string;
   cardBorder?: string;
   payBadgeBackground?: string;
+  tierLabel?: string;
 };
 
 type BinCardProp = {
@@ -44,6 +45,11 @@ const BinCard: FC<BinCardProp> = ({ card, className }) => {
       }}
     >
       <div className="relative h-full shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px]">
+        {card.tierLabel && (
+          <span className="absolute top-4 right-4 z-20 text-xs font-normal tracking-wide text-white">
+            {card.tierLabel}
+          </span>
+        )}
         <div className="relative z-10 flex h-2/3 flex-col justify-end px-4 pt-4">
           <div className="flex flex-col">
             <span className="text-xl font-semibold text-white">
