@@ -22,7 +22,6 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { REGEXP_ONLY_DIGITS } from "input-otp";
-import { handleError } from "@/lib/helper";
 import { toast } from "sonner";
 import { useModalStore } from "@/zustand/modalStore";
 import Modal from "@/components/modals";
@@ -112,13 +111,13 @@ const Signup = () => {
         });
         return;
       }
-      const response = await getOtp({
+      await getOtp({
         emailAddress: partialData.email,
         purpose: "register",
       });
-      if (response.status === 200) setStep(2);
-    } catch (error) {
-      handleError(error);
+      setStep(2);
+    } catch {
+      // The mutation's own onError already toasts.
     }
   };
 
@@ -127,8 +126,8 @@ const Signup = () => {
       await register(data);
       toast.success("Registration successful, please login");
       openModal("success", { type: "register" });
-    } catch (error) {
-      handleError(error);
+    } catch {
+      // The mutation's own onError already toasts.
     }
   };
 

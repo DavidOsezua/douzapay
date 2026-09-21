@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useSheetStore } from "@/zustand/sheetStore";
 import { useState } from "react";
-import { handleError } from "@/lib/helper";
 import { useGetSupportedTokens, useGetUserWallet } from "@/hooks/use-queries";
 import { getCurrencyIconPath } from "@/lib/utils";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -18,8 +17,8 @@ const SelectAutoDeposit = ({ closeModal }: { closeModal: () => void }) => {
       const res = await getUserWallet(activeOption.id);
       closeModal();
       openSheet("autoDeposit", null, { wallet: res });
-    } catch (error) {
-      handleError(error);
+    } catch {
+      // The mutation's own onError already toasts.
     }
   };
 

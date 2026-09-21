@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useMemo, useState } from "react";
-import { handleError } from "@/lib/helper";
 import { useDeposit } from "@/hooks/use-mutations";
 import { useQueryClient } from "@tanstack/react-query";
 import { formatAmount } from "@/lib/utils";
@@ -46,8 +45,8 @@ const SelectDeposit = ({ closeModal }: { closeModal: () => void }) => {
         token: activeOption || "",
         depositOrder: res,
       });
-    } catch (error) {
-      handleError(error);
+    } catch {
+      // The mutation's own onError already toasts.
     }
   };
 

@@ -1,4 +1,4 @@
-import { classifyCardIdProvider } from "@/lib/helper";
+import { classifyCardIdProvider, handleError } from "@/lib/helper";
 import {
   getAdminBins,
   getAdminStats,
@@ -71,6 +71,9 @@ export const useGetSupportedTokens = () => {
 export const useGetUserWallet = () => {
   return useMutation({
     mutationFn: (id: number) => getUserWallet(id),
+    onError: (error: any) => {
+      handleError(error);
+    },
   });
 };
 

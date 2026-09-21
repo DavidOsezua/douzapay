@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useSubmitTransactionHash } from "@/hooks/use-mutations";
-import { handleError } from "@/lib/helper";
 import { useModalStore } from "@/zustand/modalStore";
 import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
@@ -36,8 +35,8 @@ const SubmitTxHash = ({
       });
       openModal("success", { type: "deposit" });
       closeSheet();
-    } catch (error) {
-      handleError(error);
+    } catch {
+      // The mutation's own onError already toasts.
     }
   };
   return (

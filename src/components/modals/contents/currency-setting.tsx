@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { handleError } from "@/lib/helper";
 import { useGetRate } from "@/hooks/use-queries";
 import { getCurrencyFlagPath } from "@/lib/utils";
 import { useUpdatePreferredCurrency } from "@/hooks/use-mutations";
@@ -30,8 +29,8 @@ const CurrencySetting = ({ closeModal }: { closeModal: () => void }) => {
       queryClient.invalidateQueries({ queryKey: ["rate"] });
       toast.success("Currency preference updated successfully");
       closeModal();
-    } catch (error) {
-      handleError(error);
+    } catch {
+      // The mutation's own onError already toasts.
     }
   };
 

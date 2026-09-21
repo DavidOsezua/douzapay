@@ -89,6 +89,9 @@ export const useVerifyCredentials = () =>
     mutationFn: (data: { email: string; password: string }) =>
       verifyCredentials(data),
     onSuccess: () => {},
+    onError: (error: any) => {
+      handleError(error);
+    },
   });
 
 export const useVerifyEmail = () =>

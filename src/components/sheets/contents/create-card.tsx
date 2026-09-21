@@ -28,7 +28,6 @@ import {
 import { Link } from "react-router-dom";
 import Throbber from "@/components/throbber";
 import { Checkbox } from "@/components/ui/checkbox";
-import { handleError } from "@/lib/helper";
 import { useUser } from "@/zustand/store";
 
 export const binCards = [
@@ -162,8 +161,8 @@ const CreateCard = ({
         cost: 10,
       };
       await createCard(formData);
-    } catch (error) {
-      handleError(error);
+    } catch {
+      // The mutation's own onError already toasts.
     }
   };
 

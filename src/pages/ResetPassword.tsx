@@ -19,7 +19,6 @@ import {
 } from "@/hooks/use-mutations";
 import { useState } from "react";
 import Throbber from "@/components/throbber";
-import { handleError } from "@/lib/helper";
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import {
   InputOTP,
@@ -76,8 +75,8 @@ const ResetPassword = () => {
     try {
       await getOtp({ emailAddress, purpose: "forget-password" });
       setStep(3);
-    } catch (error) {
-      handleError(error);
+    } catch {
+      // The mutation's own onError already toasts.
     }
   };
 
