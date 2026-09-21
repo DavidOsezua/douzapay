@@ -29,6 +29,9 @@ export type BinCardData = {
   cardBorder?: string;
 };
 
+// Display order for the shop grid.
+const PROVIDER_ORDER = ["ptp", "wsb", "int"];
+
 // ── Style presets ────────────────────────────────────────────────────────────
 // Backdrops already bake in the "krypkard" wordmark and K-mark — no logo overlay needed.
 
@@ -241,6 +244,11 @@ const Shop = () => {
             <>
               {((bins ?? []) as any[])
                 .filter((b) => b.isActive)
+                .sort(
+                  (a, b) =>
+                    PROVIDER_ORDER.indexOf(a.provider) -
+                    PROVIDER_ORDER.indexOf(b.provider),
+                )
                 .map((bin, i) => {
                   const style = cardStyle(bin.provider, bin.network);
                   const { supportTitle, supportBody } = supportText(
