@@ -42,21 +42,21 @@ const sapphireStyle = {
   tierLabel: "Gold",
   payBadgeBackground:
     " linear-gradient(155.06deg, rgba(136, 97, 48, 0.3) -8.11%, rgba(93, 52, 1, 0.3) 37.06%, rgba(23, 14, 0, 0.3) 93.93%)",
-  background: "url('/images/gold-card-bg.png') left center / cover no-repeat",
+  background: "url('/images/gold-card-bg.webp') left center / cover no-repeat",
 };
 
 const platinumVisaStyle = {
   tierLabel: "Platinum",
   payBadgeBackground:
     "linear-gradient(90deg, rgba(240, 229, 255, 0.16) 0%, rgba(102, 22, 167, 0.16) 100%)",
-  background: "url('/images/platinum-card-bg.png') left center / cover no-repeat",
+  background: "url('/images/platinum-card-bg.webp') left center / cover no-repeat",
 };
 
 const platinumMastercardStyle = {
   tierLabel: "Infinite",
   payBadgeBackground:
     "linear-gradient(90deg, rgba(180, 234, 255, 0.16) 0%, rgba(22, 27, 51, 0.16) 100%)",
-  background: "url('/images/infinite-card-bg.png') left center / cover no-repeat",
+  background: "url('/images/infinite-card-bg.webp') left center / cover no-repeat",
 };
 
 // Exported for use by other sheets (create-platinum-card, pending-cards, etc.)
