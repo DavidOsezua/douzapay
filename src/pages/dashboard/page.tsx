@@ -112,9 +112,9 @@ const Dashboard = () => {
             </div>
             {/* MY CARDS */}
             <div
-              className={`thin-scrollbar dashboard-card relative h-full overflow-hidden overflow-x-auto rounded-2xl border border-[#6EF7FF24] p-4 lg:col-span-2`}
+              className={`thin-scrollbar dashboard-card relative flex h-full flex-col overflow-hidden overflow-x-auto rounded-2xl border border-[#6EF7FF24] p-4 lg:col-span-2`}
             >
-              <div className="text-white mb-4 flex items-center justify-between">
+              <div className="text-white mb-4 flex shrink-0 items-center justify-between">
                 <span>My Cards</span>
                 <button className="bg-[linear-gradient(128.62deg,rgba(227,247,255,0.4)_11.02%,rgba(211,187,241,0.4)_93.11%)] flex size-6 items-center justify-center rounded-full">
                   <ArrowUpRight className="text-[#E1E1E1] size-3" />
@@ -122,27 +122,25 @@ const Dashboard = () => {
               </div>
 
               <div
-                className={`text-white relative mt-4 flex gap-4 ${cards?.data.length === 1 || cards?.data.length === 0 || cards?.data.length == undefined ? "justify-center" : ""}`}
+                className={`text-white relative mt-4 flex flex-1 gap-4 ${cards?.data.length === 1 || cards?.data.length === 0 || cards?.data.length == undefined ? "justify-center" : ""}`}
               >
                 {isLoading ? (
                   <CardSkeleton />
                 ) : cards?.data.length === 0 ? (
-                  <div className="flex items-center justify-center">
-                    <div className="flex flex-col text-center">
+                  <div className="flex h-full flex-col items-center justify-between gap-4 py-2 text-center">
+                    <div>
                       <h2 className="text-2xl font-semibold">No Cards</h2>
-                      <p className="max-w-50 text-sm leading-4 font-normal">
+                      <p className="mx-auto mt-1 max-w-50 text-sm leading-4 font-normal">
                         Instantly create a card to start making transactions
                       </p>
-                      <div className="mt-4">
-                        <Button
-                          className="gradient-button h-11 w-full py-1.5"
-                          onClick={() => navigate("/dashboard/shop")}
-                        >
-                          <PlusCircle className="size-4" />
-                          Buy Card
-                        </Button>
-                      </div>
                     </div>
+                    <Button
+                      className="gradient-button h-11 w-full py-1.5"
+                      onClick={() => navigate("/dashboard/shop")}
+                    >
+                      <PlusCircle className="size-4" />
+                      Buy Card
+                    </Button>
                   </div>
                 ) : (
                   <div
