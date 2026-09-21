@@ -69,7 +69,7 @@ const Card: FC<CardProps> = ({ className, card, showCta = true }) => {
             <div className="absolute inset-0 z-0">
               <img
                 className="absolute inset-0 z-10 h-full w-full object-cover opacity-20 bg-blend-overlay"
-                src="/images/card-noise.png"
+                src="/images/card-noise.webp"
               />
             </div>
           )}

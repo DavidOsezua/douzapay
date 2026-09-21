@@ -100,7 +100,7 @@ const ResetPassword = () => {
       <div className="relative flex min-h-dvh">
         <div className="fixed inset-y-0 left-0 hidden h-screen lg:block">
           <img
-            src="/images/auth-img.png"
+            src="/images/auth-img.webp"
             className="h-full w-auto"
             alt="Save money in fractional digital gold."
           />
@@ -124,7 +124,7 @@ const ResetPassword = () => {
         </div>
         <div className="invisible hidden h-screen lg:block">
           <img
-            src="/images/auth-img.png"
+            src="/images/auth-img.webp"
             className="h-full w-auto"
             alt="Save money in fractional digital gold."
           />
