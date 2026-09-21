@@ -59,6 +59,8 @@ const dateClass =
   "h-11 w-full max-w-full min-w-0 rounded-xl border border-[#CECECE2E] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] px-3 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#6C95F6]";
 
 const ACTIVE_BG = "#6C95F6";
+const STEP_COMPLETE_BG =
+  "linear-gradient(128.62deg, #E3F7FF 11.02%, #D3BBF1 93.11%)";
 
 function UploadButton({
   label,
@@ -389,7 +391,8 @@ const CreateCardholder = ({
               key={i}
               className="h-1 flex-1 rounded-full transition-all duration-300"
               style={{
-                background: i <= innerStep ? ACTIVE_BG : "rgba(0,0,0,0.08)",
+                background:
+                  i <= innerStep ? STEP_COMPLETE_BG : "rgba(0,0,0,0.08)",
               }}
             />
           ))}
