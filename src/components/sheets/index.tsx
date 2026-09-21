@@ -4,6 +4,7 @@ import { Sheet, SheetContent, SheetHeader } from "../ui/sheet";
 import StepIndicator from "./step-indicator";
 import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { useSheetStore, type SheetType } from "@/zustand/sheetStore";
+import { useModalStore } from "@/zustand/modalStore";
 import { useIsMobile } from "@/hooks/use-mobile";
 import TransactionDetails from "./contents/transaction-details";
 import Deposit from "./contents/deposit";
@@ -247,6 +248,17 @@ const SideSheet: FC<SideSheetProps> = (props) => {
           maxWidth: isMobile ? "100%" : "465px",
         }}
         className="sheet-content overflow-y-auto border-none bg-[#181818] px-4 text-white [&>[data-testid='close-button']]:hidden [&>button]:hidden [&>button[aria-label='Close']]:hidden"
+        // A Modal (e.g. authenticatorSetup, disableAuthenticator) can be
+        // stacked on top of this sheet. It renders outside SheetContent's DOM
+        // subtree, so Radix's outside-interaction detection would otherwise
+        // treat clicks/focus on it as "outside" and dismiss the sheet
+        // underneath.
+        onInteractOutside={(e) => {
+          if (useModalStore.getState().isOpen) e.preventDefault();
+        }}
+        onEscapeKeyDown={(e) => {
+          if (useModalStore.getState().isOpen) e.preventDefault();
+        }}
       >
         <SheetHeader />
         <div>

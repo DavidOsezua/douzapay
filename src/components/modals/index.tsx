@@ -245,22 +245,24 @@ const Modal: FC = () => {
       },
     },
   };
-  const isFundModal =
+  const isAboveSheetModal =
     modalType === "fundCard" ||
     modalType === "fundWallet" ||
     modalType === "selectAssetForCard" ||
     modalType === "internalTransferAssetSelect" ||
     modalType === "confirmInternalTransfer" ||
     modalType === "otpInternalTransfer" ||
+    modalType === "authenticatorSetup" ||
+    modalType === "disableAuthenticator" ||
     modalType === "success";
-  const zIndexClass = isFundModal ? "z-[999]" : "";
+  const zIndexClass = isAboveSheetModal ? "z-[999]" : "";
 
   return (
     <AnimatePresence mode="wait">
       {isOpen && (
         <ModalBackdrop
-          className={isFundModal ? "z-[999]" : " "}
-          style={isFundModal ? { pointerEvents: "auto" } : undefined}
+          className={isAboveSheetModal ? "z-[999]" : " "}
+          style={isAboveSheetModal ? { pointerEvents: "auto" } : undefined}
           onClose={closeModal}
         >
           <FocusScope asChild trapped loop>
@@ -274,7 +276,7 @@ const Modal: FC = () => {
               exit="exit"
               className={`font-urbanist fixed bottom-0 h-auto w-full max-w-full rounded-t-2xl border-t border-t-white/25 px-4 py-4 text-white backdrop-blur-md md:max-w-[400px] md:rounded-2xl lg:static lg:bottom-auto lg:max-w-110 lg:rounded-2xl lg:pb-6 ${zIndexClass}"`}
               style={{
-                pointerEvents: isFundModal ? "auto" : undefined,
+                pointerEvents: isAboveSheetModal ? "auto" : undefined,
                 background:
                   "linear-gradient(129.49deg, rgba(58, 58, 58, 0.2) 3.6%, rgba(94, 91, 91, 0.2) 100%)",
               }}
