@@ -32,11 +32,14 @@ export type BinCardData = {
 // ── Style presets ────────────────────────────────────────────────────────────
 // Backdrops already bake in the "krypkard" wordmark and K-mark — no logo overlay needed.
 
+// NOTE: `sapphireStyle` now renders the Gold art, and `platinumMastercardStyle`
+// now renders the Infinite (black) art — the variable names stayed tied to
+// their bin/provider, but the visual identity swapped between them.
 const sapphireStyle = {
-  tierLabel: "Infinite",
+  tierLabel: "Gold",
   payBadgeBackground:
-    "linear-gradient(90deg, rgba(180, 234, 255, 0.16) 0%, rgba(22, 27, 51, 0.16) 100%)",
-  background: "url('/images/infinite-card-bg.png') left center / cover no-repeat",
+    " linear-gradient(155.06deg, rgba(136, 97, 48, 0.3) -8.11%, rgba(93, 52, 1, 0.3) 37.06%, rgba(23, 14, 0, 0.3) 93.93%)",
+  background: "url('/images/gold-card-bg.png') left center / cover no-repeat",
 };
 
 const platinumVisaStyle = {
@@ -47,17 +50,17 @@ const platinumVisaStyle = {
 };
 
 const platinumMastercardStyle = {
-  tierLabel: "Gold",
+  tierLabel: "Infinite",
   payBadgeBackground:
-    " linear-gradient(155.06deg, rgba(136, 97, 48, 0.3) -8.11%, rgba(93, 52, 1, 0.3) 37.06%, rgba(23, 14, 0, 0.3) 93.93%)",
-  background: "url('/images/gold-card-bg.png') left center / cover no-repeat",
+    "linear-gradient(90deg, rgba(180, 234, 255, 0.16) 0%, rgba(22, 27, 51, 0.16) 100%)",
+  background: "url('/images/infinite-card-bg.png') left center / cover no-repeat",
 };
 
 // Exported for use by other sheets (create-platinum-card, pending-cards, etc.)
 export const binCards = {
   sapphire: {
     id: 537100,
-    name: "Infinite Card",
+    name: "Gold Card",
     image: "",
     price: 26,
     bin: "5371 0000 0000 0000",
@@ -91,7 +94,7 @@ export const binCards = {
   },
   platinumBasic: {
     id: 111078,
-    name: "Gold Card",
+    name: "Infinite Card",
     image: "",
     price: 35,
     bin: "5240 1300 0000 0000",
