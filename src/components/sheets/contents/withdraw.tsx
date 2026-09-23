@@ -228,13 +228,13 @@ const Withdraw = ({
                 return;
               }
               try {
-                const res = await getOtp({
+                await getOtp({
                   emailAddress: user?.email,
                   purpose: "withdrawal",
                   address: withdrawalAddress,
                   amount: usdtAmount,
                 });
-                setOtpMethod(res.type);
+                setOtpMethod("email");
                 setStep(2);
               } catch {
                 // The mutation's own onError already toasts.
@@ -365,7 +365,7 @@ const Withdraw = ({
               disabled={!otp || isWithdrawing}
               isLoading={isWithdrawing}
               onClick={() => onSubmit()}
-              className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 mb-8 h-11 w-full font-semibold"
+              className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 h-11 w-full font-semibold"
             >
               Authorize Payment
             </Button>
@@ -375,7 +375,7 @@ const Withdraw = ({
                 type="button"
                 onClick={handleSwitchOtpMethod}
                 disabled={isSwitchingMethod}
-                className={otpAltActionBtn}
+                className={`mt-3 ${otpAltActionBtn}`}
               >
                 {isSwitchingMethod ? (
                   <Throbber />

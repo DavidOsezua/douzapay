@@ -204,11 +204,11 @@ const EditProfile = ({
                     return;
                   }
                   try {
-                    const res = await getOtp({
+                    await getOtp({
                       emailAddress: form.getValues("email"),
                       purpose: "update",
                     });
-                    setOtpMethod(res.type);
+                    setOtpMethod("email");
                     setStep(2);
                   } catch {
                     // The mutation's own onError already toasts.

@@ -118,6 +118,10 @@ const ChangePassword = ({ closeModal }: { closeModal: () => void }) => {
     if (otpMethod === "authenticator") {
       setIsSwitchingMethod(true);
       try {
+        // Every call here only fires when we already know the account is
+        // switching to email (the "back to authenticator" branch below never
+        // hits the network) — trust that intent rather than the response's
+        // `type`, which the backend can report incorrectly for some purposes.
         await getOtp({ emailAddress: user?.email, purpose: "update" });
         setOtpMethod("email");
       } catch {

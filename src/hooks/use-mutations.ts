@@ -77,15 +77,16 @@ export const useGetOTP = () =>
     },
   });
 
+// Every caller of this hook skips the request entirely and sets local state
+// directly whenever the account should use its authenticator instead (an
+// authenticator code isn't "sent") — so a call that reaches here only ever
+// happens when email delivery was intended. The response's own `type` isn't
+// reliable for every purpose the backend supports, so it's not used here.
 export const useGetAuthorizedOTP = () =>
   useMutation({
     mutationFn: (data: GetOtpPayload) => getAuthorizedOtp(data),
-    onSuccess: (data) => {
-      toast.success(
-        data.type === "authenticator"
-          ? "Enter the code from your authenticator app"
-          : "An OTP has been sent to your email address",
-      );
+    onSuccess: () => {
+      toast.success("An OTP has been sent to your email address");
     },
     onError: (error: any) => {
       handleError(error);
@@ -702,6 +703,9 @@ export const useRequestInternalTransferOtp = ({ onSuccess }: Cb = {}) =>
       toUserId: string;
       assetId: number;
     }) => requestInternalTransferOtp(data),
+    // Same as useGetAuthorizedOTP: this is only ever called when email
+    // delivery is intended (the authenticator path never reaches the
+    // network), and the response's `type` isn't reliable enough to trust.
     onSuccess: () => {
       toast.success("An OTP has been sent to your email address");
       onSuccess?.();
