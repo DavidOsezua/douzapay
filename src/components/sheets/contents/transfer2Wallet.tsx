@@ -42,7 +42,7 @@ const Transfer2Wallet = ({ closeSheet }: { closeSheet: () => void }) => {
                   openModal("fundWallet", { cardData: selectedCard });
                   closeSheet();
                 }}
-                className="text-primary-500 bg-dark-primary-main hover:bg-dark-primary-main/80 h-10 w-full"
+                className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 h-10 w-full"
               >
                 Proceed
               </Button>

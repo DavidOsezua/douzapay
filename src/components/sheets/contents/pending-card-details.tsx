@@ -208,7 +208,7 @@ const PendingCardDetails = ({
               <Button
                 onClick={closeSheet}
                 className={
-                  "bg-dark-primary-main disabled:bg-primary-100/50 hover:bg-primary-100-hover text-[#242424] mb-6 rounded font-semibold disabled:cursor-not-allowed"
+                  "bg-dark-primary-main disabled:bg-primary-100/50 hover:bg-dark-primary-main/80 text-[#242424] mb-6 rounded font-semibold disabled:cursor-not-allowed"
                 }
                 type="button"
               >

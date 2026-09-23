@@ -173,7 +173,7 @@ const SuccessNotice = ({
         <div className="mt-4 flex w-full items-center gap-2">
           <Button
             onClick={closeModal}
-            className="text-primary-500 bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 grow"
+            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 grow"
           >
             Close
           </Button>
