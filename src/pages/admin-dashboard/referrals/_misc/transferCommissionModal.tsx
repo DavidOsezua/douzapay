@@ -9,31 +9,31 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { useTransferCommision } from "@/hooks/use-mutations";
+import { useTransferCommission } from "@/hooks/use-mutations";
 import { useAdminModals } from "@/zustand/store";
 import { useQueryClient } from "@tanstack/react-query";
 import { motion } from "framer-motion";
 import { X } from "lucide-react";
 import { useForm } from "react-hook-form";
 
-const TransferCommisionModal = () => {
-  const { transferCommisionData: user } = useAdminModals();
+const TransferCommissionModal = () => {
+  const { transferCommissionData: user } = useAdminModals();
   const queryClient = useQueryClient();
   const form = useForm({
     // resolver: zodResolver(registrationSchema),
   });
-  const { mutate: transferCommision, isPending: isTransferingCommision } =
-    useTransferCommision({
+  const { mutate: transferCommission, isPending: isTransferringCommission } =
+    useTransferCommission({
       id: user!.id!,
       onSuccess: () => {
         form.reset();
-        useAdminModals.setState({ transferCommisionIsOpen: false });
+        useAdminModals.setState({ transferCommissionIsOpen: false });
         queryClient.invalidateQueries({ queryKey: ["referrals"] });
       },
     });
 
   const onSubmit = (data: any) => {
-    transferCommision(data);
+    transferCommission(data);
   };
   return (
     <motion.div
@@ -53,7 +53,7 @@ const TransferCommisionModal = () => {
       >
         <button
           onClick={() => {
-            useAdminModals.setState({ transferCommisionIsOpen: false });
+            useAdminModals.setState({ transferCommissionIsOpen: false });
           }}
           className="hover:text-primary-500 text-primary-50 absolute top-4 right-4"
         >
@@ -88,7 +88,7 @@ const TransferCommisionModal = () => {
             />
 
             <Button className={"mt-6 w-full grow rounded-md"} type="submit">
-              {isTransferingCommision ? <Throbber /> : "Transfer"}
+              {isTransferringCommission ? <Throbber /> : "Transfer"}
             </Button>
           </Form>
         </form>
@@ -97,4 +97,4 @@ const TransferCommisionModal = () => {
   );
 };
 
-export default TransferCommisionModal;
+export default TransferCommissionModal;

@@ -77,8 +77,8 @@ type AdminModalsState = {
   cardSpendingDetailsData: any;
   cardSpendingDetailsIsOpen: boolean;
 
-  transferCommisionIsOpen: boolean;
-  transferCommisionData: Partial<User> | null;
+  transferCommissionIsOpen: boolean;
+  transferCommissionData: Partial<User> | null;
 
   deleteCardIsOpen: boolean;
   deleteCardData: Partial<AdminCard> | null;
@@ -116,8 +116,8 @@ export const useAdminModals = create<AdminModalsState>(() => ({
   cardSpendingDetailsData: null,
   cardSpendingDetailsIsOpen: false,
 
-  transferCommisionIsOpen: false,
-  transferCommisionData: null,
+  transferCommissionIsOpen: false,
+  transferCommissionData: null,
 
   deleteCardIsOpen: false,
   deleteCardData: null,

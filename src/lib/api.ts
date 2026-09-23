@@ -661,9 +661,9 @@ export const deleteUserAdmin = async (id: string) => {
   return response.data;
 };
 
-export const transferCommision = async (
+export const transferCommission = async (
   id: string,
-  data: TransferCommisionPayload,
+  data: TransferCommissionPayload,
 ) => {
   const response = await authorizedInstance.put(
     "/admin/users/ref-commission/" + id,

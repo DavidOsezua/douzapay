@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import DeleteUserModal from "./_misc/modals/delete-user-modal";
 import CardTopupDetails from "./_misc/modals/cardTopupDetails";
 import CardSpendingDetails from "./_misc/modals/cardSpendingDetails";
-import TransferCommisionModal from "./referrals/_misc/transferCommisionModal";
+import TransferCommissionModal from "./referrals/_misc/transferCommissionModal";
 import CardDetails from "./_misc/modals/cardDetails";
 import AssignCardModal from "./_misc/modals/assign-card";
 import SideSheet from "@/components/admin-sheets";
@@ -34,7 +34,7 @@ const DashboardLayout = () => {
     cardSpendingDetailsIsOpen,
     cardDetailsIsOpen,
     deleteUserIsOpen,
-    transferCommisionIsOpen,
+    transferCommissionIsOpen,
     addWalletIsOpen,
     deleteCardIsOpen,
     freezeCardIsOpen,
@@ -75,7 +75,7 @@ const DashboardLayout = () => {
         {freezeCardIsOpen && <FreezeCardModal />}
         {assignCardIsOpen && <AssignCardModal />}
         {deleteUserIsOpen && <DeleteUserModal />}
-        {transferCommisionIsOpen && <TransferCommisionModal />}
+        {transferCommissionIsOpen && <TransferCommissionModal />}
         {addWalletIsOpen && <AddWalletModal />}
       </AnimatePresence>
     </div>

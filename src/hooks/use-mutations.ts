@@ -41,7 +41,7 @@ import {
   toggleUserStatus,
   transfer2Card,
   transfer2Wallet,
-  transferCommision,
+  transferCommission,
   unflagCardAdmin,
   unfreezeCard,
   updateAdminBin,
@@ -622,9 +622,9 @@ export const useRejectWithdraw = ({ onSuccess }: Cb) =>
     },
   });
 
-export const useTransferCommision = ({ id, onSuccess }: Id & Cb) =>
+export const useTransferCommission = ({ id, onSuccess }: Id & Cb) =>
   useMutation({
-    mutationFn: (data: TransferCommisionPayload) => transferCommision(id, data),
+    mutationFn: (data: TransferCommissionPayload) => transferCommission(id, data),
     onSuccess: () => {
       onSuccess?.();
       toast.success("Commission transferred successfully");

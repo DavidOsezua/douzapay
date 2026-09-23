@@ -710,7 +710,7 @@ type UpdateUserAdminPayload = {
   withdrawalFee?: number;
 };
 
-type TransferCommisionPayload = {
+type TransferCommissionPayload = {
   amount: string | number;
 };
 
