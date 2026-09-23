@@ -551,9 +551,8 @@ const CreatePlatinumCard = ({
                       !form.watch("certify") ||
                       !form.watch("spendCard")
                     }
-                    className="flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-white disabled:cursor-not-allowed"
+                    className="bg-dark-primary-main hover:bg-dark-primary-main/80 flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-[#242424] disabled:cursor-not-allowed"
                     style={{
-                      backgroundColor: "#4A93DB",
                       opacity:
                         !form.watch("esign") ||
                         !form.watch("cardTerms") ||
@@ -1040,9 +1039,8 @@ const CreatePlatinumCard = ({
                             !form.watch("c_certify") ||
                             !form.watch("c_spendCard")
                           }
-                          className="flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-white disabled:cursor-not-allowed"
+                          className="bg-dark-primary-main hover:bg-dark-primary-main/80 flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-semibold text-[#242424] disabled:cursor-not-allowed"
                           style={{
-                            backgroundColor: "#4A93DB",
                             opacity:
                               !form.watch("c_esign") ||
                               !form.watch("c_cardTerms") ||
