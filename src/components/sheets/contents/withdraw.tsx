@@ -295,7 +295,7 @@ const Withdraw = ({
               </div>
               <div className="">
                 <div className="text-[10px] text-[#B9BCCC]">
-                  Recipient Will Recieve
+                  Recipient Will Receive
                 </div>
                 <div className="mt-0.5 text-white">
                   {formatAmountUtil(

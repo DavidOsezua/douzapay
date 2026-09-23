@@ -174,7 +174,7 @@ const Signup = () => {
             <img
               src="/images/full-logo-dark.svg"
               className="w-28"
-              alt="for all you card needs"
+              alt="for all your card needs"
             />
             <div className="bg-dark-background-light mt-4 inline-flex gap-2 rounded p-0.5">
               <NavLink
@@ -237,7 +237,7 @@ const Signup = () => {
                               <Input
                                 className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
                                 {...field}
-                                placeholder="Enter you email last name"
+                                placeholder="Enter your last name"
                               />
                             </FormControl>
                             <FormMessage />
@@ -264,7 +264,7 @@ const Signup = () => {
                                 field.onChange(cleaned);
                                 form.clearErrors("email");
                               }}
-                              placeholder="Enter you email address"
+                              placeholder="Enter your email address"
                             />
                           </FormControl>
                           <FormMessage />
@@ -313,7 +313,7 @@ const Signup = () => {
                                 className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
                                 type={showConfirmPassword ? "text" : "password"}
                                 {...field}
-                                placeholder="Confirm you password"
+                                placeholder="Confirm your password"
                               />
                               <Button
                                 type="button"
@@ -474,7 +474,7 @@ const Signup = () => {
                       <Copy text={authSecret?.authCode} />
                     </div>
                     <p className="text-[10px] text-[#8C8C8C]">
-                      Copy the token above and add it to you authenticator app,
+                      Copy the token above and add it to your authenticator app,
                       you’ll be required to use your authenticator code to
                       complete your registration.
                     </p>

@@ -193,7 +193,7 @@ const Login = () => {
             <img
               src="/images/full-logo-dark.svg"
               className="w-28"
-              alt="for all you card needs"
+              alt="for all your card needs"
             />
 
             <div className="bg-dark-background-light mt-4 inline-flex gap-2 rounded p-0.5">
@@ -244,7 +244,7 @@ const Login = () => {
                                 form.clearErrors("email");
                                 field.onChange(cleaned);
                               }}
-                              placeholder="Email you email address"
+                              placeholder="Enter your email address"
                             />
                           </FormControl>
                           <FormMessage />

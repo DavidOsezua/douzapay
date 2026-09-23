@@ -137,7 +137,7 @@ const ResetPassword = () => {
             <img
               src="/images/full-logo-dark.svg"
               className="w-28"
-              alt="for all you card needs"
+              alt="for all your card needs"
             />
 
             <Form {...form}>
@@ -185,7 +185,7 @@ const ResetPassword = () => {
                                 });
                                 field.onBlur();
                               }}
-                              placeholder="Enter you email address"
+                              placeholder="Enter your email address"
                             />
                           </FormControl>
                           <FormMessage />
@@ -274,7 +274,7 @@ const ResetPassword = () => {
                                 className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
                                 type={showConfirmPassword ? "text" : "password"}
                                 {...field}
-                                placeholder="Confirm you password"
+                                placeholder="Confirm your password"
                               />
                               <Button
                                 type="button"
