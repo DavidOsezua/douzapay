@@ -43,12 +43,13 @@ const OtpInternalTransfer = ({
   const [verificationMethod, setVerificationMethod] = useState<
     "email" | "authenticator"
   >(isAuthenticatorMethod ? "authenticator" : "email");
-  const { mutateAsync: requestOtp, isPending: isSwitchingMethod } =
-    useRequestInternalTransferOtp();
+  const { mutateAsync: requestOtp } = useRequestInternalTransferOtp();
+  const [isSwitchingMethod, setIsSwitchingMethod] = useState(false);
 
   const handleSwitchOtpMethod = async () => {
     setOtp("");
     if (verificationMethod === "authenticator") {
+      setIsSwitchingMethod(true);
       try {
         await requestOtp({
           purpose: "internal-transfer",
@@ -60,6 +61,8 @@ const OtpInternalTransfer = ({
         setVerificationMethod("email");
       } catch {
         // The mutation's own onError already toasts.
+      } finally {
+        setIsSwitchingMethod(false);
       }
     } else {
       setVerificationMethod("authenticator");

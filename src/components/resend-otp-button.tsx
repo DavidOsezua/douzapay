@@ -27,15 +27,21 @@ const ResendOtpButton = ({
 
   useEffect(() => {
     if (secondsLeft <= 0) return;
-    const id = setInterval(() => setSecondsLeft((s) => s - 1), 1000);
+    const id = setInterval(() => setSecondsLeft((s) => (s > 0 ? s - 1 : 0)), 1000);
     return () => clearInterval(id);
-  }, [secondsLeft]);
+    // Re-runs only when the countdown crosses the 0 boundary (starts or
+    // stops), not on every tick — avoids both recreating the interval every
+    // second and leaving it running forever once the cooldown ends.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [secondsLeft <= 0]);
 
   const handleClick = async () => {
     setIsResending(true);
     try {
       await onResend();
       setSecondsLeft(RESEND_COOLDOWN_SECONDS);
+    } catch {
+      // The mutation's own onError already toasts.
     } finally {
       setIsResending(false);
     }
