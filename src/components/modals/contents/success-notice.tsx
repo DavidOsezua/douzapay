@@ -37,13 +37,13 @@ const SuccessNotice = ({
         <div className="mt-4 flex w-full items-center gap-2">
           <Button
             onClick={closeModal}
-            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-100 h-11 grow"
+            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 grow"
           >
             Continue
           </Button>
           <Button
             onClick={closeModal}
-            className="border-dark-primary-main hover:bg-dark-primary-100 text-white h-11 grow border bg-transparent"
+            className="border-dark-primary-main hover:bg-dark-primary-main/10 text-white h-11 grow border bg-transparent"
           >
             See Details
           </Button>
@@ -61,13 +61,13 @@ const SuccessNotice = ({
         <div className="mt-4 flex w-full items-center gap-2">
           <Button
             onClick={closeModal}
-            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-100 h-11 grow"
+            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 grow"
           >
             Continue
           </Button>
           <Button
             onClick={closeModal}
-            className="border-dark-primary-main hover:bg-dark-primary-100 text-white h-11 grow border bg-transparent"
+            className="border-dark-primary-main hover:bg-dark-primary-main/10 text-white h-11 grow border bg-transparent"
           >
             See Details
           </Button>
@@ -85,7 +85,7 @@ const SuccessNotice = ({
         <div className="mt-4 flex w-full items-center gap-2">
           <Button
             onClick={closeModal}
-            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-100 h-11 grow"
+            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 grow"
           >
             Done
           </Button>
@@ -121,7 +121,7 @@ const SuccessNotice = ({
         <div className="mt-4">
           <Button
             onClick={closeModal}
-            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-100 h-11 w-full"
+            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 w-full"
           >
             Done
           </Button>
@@ -141,13 +141,13 @@ const SuccessNotice = ({
         <div className="mt-4 flex w-full items-center gap-2">
           <Button
             onClick={closeModal}
-            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-100 h-11 grow"
+            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 grow"
           >
             Continue
           </Button>
           <Button
             onClick={closeModal}
-            className="border-dark-primary-main hover:bg-dark-primary-100 text-white h-11 grow border bg-transparent"
+            className="border-dark-primary-main hover:bg-dark-primary-main/10 text-white h-11 grow border bg-transparent"
           >
             See Details
           </Button>
@@ -173,7 +173,7 @@ const SuccessNotice = ({
         <div className="mt-4 flex w-full items-center gap-2">
           <Button
             onClick={closeModal}
-            className="text-primary-500 bg-dark-primary-main hover:bg-dark-primary-100 h-11 grow"
+            className="text-primary-500 bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 grow"
           >
             Close
           </Button>

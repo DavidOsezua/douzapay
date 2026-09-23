@@ -159,7 +159,7 @@ const FundCard = ({ cardData }: { cardData: Card }) => {
           Number(amount) > selectedBalance ||
           isTransferPending
         }
-        className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-100 mt-4 h-11 w-full rounded-md"
+        className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 mt-4 h-11 w-full rounded-md"
       >
         Continue
       </Button>

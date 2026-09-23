@@ -40,7 +40,7 @@ const Transfer2Card = ({ closeSheet }: { closeSheet: () => void }) => {
                   closeSheet();
                   openModal("fundCard", { cardData: selectedCard });
                 }}
-                className="text-primary-500 bg-dark-primary-main h-10 w-full hover:bg-dark-primary-100"
+                className="text-primary-500 bg-dark-primary-main h-10 w-full hover:bg-dark-primary-main/80"
               >
                 Proceed
               </Button>

@@ -71,7 +71,7 @@ const FundWallet = ({
           Number(amount) > Number(cardData?.balance?.available) ||
           isTransferPending
         }
-        className="text-dark-text-400 bg-dark-primary-main hover:bg-dark-primary-100 mt-4 h-11 w-full rounded-md"
+        className="text-dark-text-400 bg-dark-primary-main hover:bg-dark-primary-main/80 mt-4 h-11 w-full rounded-md"
       >
         Continue
       </Button>

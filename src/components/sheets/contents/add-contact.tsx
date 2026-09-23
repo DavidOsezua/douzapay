@@ -126,7 +126,7 @@ const AddContact = ({
                 closeSheet();
                 openModal("success", { type: "add-contact" });
               }}
-              className="text-dark-text-400 bg-dark-primary-main hover:bg-dark-primary-100 mt-6 h-11 w-full"
+              className="text-dark-text-400 bg-dark-primary-main hover:bg-dark-primary-main/80 mt-6 h-11 w-full"
             >
               Continue
             </Button>
