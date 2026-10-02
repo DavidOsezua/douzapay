@@ -12,6 +12,7 @@ import {
   useGetCards,
   useGetCardTransactions,
   useGetRecentTransactions,
+  useGetSwaps,
   useGetUser,
   useGetUserAssets,
 } from "@/hooks/use-queries";
@@ -22,7 +23,9 @@ import Copy from "@/components/copy";
 import { DataTable } from "@/components/data-table";
 import { columns } from "./_misc/columns";
 import TopBar from "@/components/topbar";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList } from "@/components/ui/tabs";
+import PillTabsTrigger from "@/components/pill-tabs-trigger";
+import { useTabParam } from "@/hooks/use-tab-param";
 import { useEffect, useState } from "react";
 import { useSheetStore } from "@/zustand/sheetStore";
 import { useModalStore } from "@/zustand/modalStore";
@@ -31,6 +34,8 @@ import CardSkeleton from "@/components/skeletons/card-skeleton";
 import { cardColumns } from "./_misc/cardColumns";
 import { handleShare } from "@/lib/helper";
 import { useFormatAmountWithCurrency } from "@/hooks/use-format-with-currency";
+import { swapColumns } from "./_misc/swap/swap-columns";
+import SwapList from "./_misc/swap/swap-list";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -38,7 +43,16 @@ const Dashboard = () => {
   const { openSheet } = useSheetStore();
   const formatAmount = useFormatAmountWithCurrency();
 
-  const [tab, setTab] = useState<"wallet" | "cards">("wallet");
+  // Swap tab is there from the first paint. Only shown to users with swaps.
+  const { data: swaps } = useGetSwaps();
+  const recentSwaps = (swaps ?? []).slice(0, 10);
+  const hasSwaps = recentSwaps.length > 0;
+
+  const [tab, setTab] = useTabParam<"wallet" | "cards" | "swap">(
+    "tab",
+    "wallet",
+    hasSwaps ? ["wallet", "cards", "swap"] : ["wallet", "cards"],
+  );
   useGetUser();
   const { user } = useUser((state) => state);
   const { data: cards, isLoading } = useGetCards();
@@ -376,24 +390,23 @@ const Dashboard = () => {
           <div className="p-4">
             <Tabs
               onValueChange={(value) => {
-                setTab(value as "wallet" | "cards");
+                setTab(value as "wallet" | "cards" | "swap");
               }}
               value={tab}
               className="bg-transparent py-4"
             >
-              <TabsList className="border-dark-stroke-3 bg-[#EBE8F308] w-full border p-0 lg:w-fit">
-                <TabsTrigger
-                  value="wallet"
-                  className="dark:!text-[#E1E1E1] !text-[#E1E1E1] dark:data-[state=active]:!text-[#242424] data-[state=active]:!text-[#242424] !bg-[#EBE8F308] dark:data-[state=active]:!bg-[#E1E1E1] data-[state=active]:!bg-[#E1E1E1] rounded-l-lg rounded-r-none px-6"
-                >
+              <TabsList className="border-dark-stroke-3 h-10 w-fit rounded-full border bg-white/5 p-1">
+                <PillTabsTrigger value="wallet" active={tab === "wallet"}>
                   Wallet
-                </TabsTrigger>
-                <TabsTrigger
-                  value="cards"
-                  className="dark:!text-[#E1E1E1] !text-[#E1E1E1] dark:data-[state=active]:!text-[#242424] data-[state=active]:!text-[#242424] !bg-[#EBE8F308] dark:data-[state=active]:!bg-[#E1E1E1] data-[state=active]:!bg-[#E1E1E1] rounded-l-none rounded-r-lg px-6"
-                >
+                </PillTabsTrigger>
+                <PillTabsTrigger value="cards" active={tab === "cards"}>
                   Cards
-                </TabsTrigger>
+                </PillTabsTrigger>
+                {hasSwaps && (
+                  <PillTabsTrigger value="swap" active={tab === "swap"}>
+                    Swap
+                  </PillTabsTrigger>
+                )}
               </TabsList>
               <TabsContent value="wallet" className="mt-2">
                 <div className="hidden lg:block">
@@ -426,6 +439,16 @@ const Dashboard = () => {
                   />
                 </div>
               </TabsContent>
+              {hasSwaps && (
+                <TabsContent value="swap" className="mt-2">
+                  <div className="hidden lg:block">
+                    <DataTable columns={swapColumns} data={recentSwaps} />
+                  </div>
+                  <div className="lg:hidden">
+                    <SwapList swaps={recentSwaps} />
+                  </div>
+                </TabsContent>
+              )}
             </Tabs>
           </div>
         </div>
