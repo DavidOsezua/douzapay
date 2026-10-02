@@ -4,6 +4,7 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
 @custom-variant dark (&:is(.dark *));
+@custom-variant short (@media (min-width: 64rem) and (max-height: 820px));
 
 @theme {
   --gradient-light-blue: 123.04deg, #3a436d 1.64%, #4d698b 98.52%;
