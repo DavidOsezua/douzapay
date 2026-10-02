@@ -124,6 +124,27 @@ export function getTransactionStatusMeta(status?: string | null): {
   }
 }
 
+// Truncates (never rounds up) to `decimalPlaces`, so a displayed money amount
+// never overstates what the account actually holds — e.g. 1.99974 -> 1.99,
+// not 2.00. Goes through a decimal string rather than `Math.floor(num *
+// 10**n) / 10**n`, since that multiplication can itself introduce floating-
+// point error (1.1 * 100 === 109.99999999999999) and truncate a value that
+// shouldn't be.
+//
+// The buffer `toFixed` is rounded to first has to sit well clear of
+// `decimalPlaces`: `toFixed` itself rounds, and a buffer that's too tight
+// (previously `decimalPlaces + 4`) lets that rounding cascade across the cut
+// point — e.g. 1.999999999999 at a 6-digit buffer rounds to "2.000000"
+// before truncation ever sees it, turning 1.99 into 2.00. A fixed +10 buffer
+// keeps the rounding step comfortably inside the noise floor of ordinary
+// float arithmetic instead of touching digits the truncation cares about.
+function truncateToDecimals(num: number, decimalPlaces: number): number {
+  const buffer = Math.min(decimalPlaces + 10, 100);
+  const [whole, frac = ""] = num.toFixed(buffer).split(".");
+  const truncatedFrac = frac.slice(0, decimalPlaces).padEnd(decimalPlaces, "0");
+  return Number(`${whole}.${truncatedFrac}`);
+}
+
 export function formatAmount(
   amount: number | string | undefined,
   decimalPlaces: number = 2,
@@ -133,7 +154,7 @@ export function formatAmount(
     return "0.00";
   }
 
-  return num.toLocaleString("en-US", {
+  return truncateToDecimals(num, decimalPlaces).toLocaleString("en-US", {
     minimumFractionDigits: decimalPlaces,
     maximumFractionDigits: decimalPlaces,
   });
@@ -150,7 +171,7 @@ export function formatAmountWithRate(
     return "0.00";
   }
 
-  const convertedAmount = num / rate;
+  const convertedAmount = truncateToDecimals(num / rate, decimalPlaces);
 
   const currencySymbols: Record<string, string> = {
     USD: "$",
