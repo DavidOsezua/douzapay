@@ -58,6 +58,10 @@ const Login = () => {
     "email",
   );
   const [isSwitchingMethod, setIsSwitchingMethod] = useState(false);
+  // Whether this account has authenticator 2FA set up at all, from
+  // check-credentials — hides "use alternative method" when there's no
+  // alternative to switch to.
+  const [hasAuthenticator, setHasAuthenticator] = useState(false);
   const navigate = useNavigate();
   const form = useForm({
     resolver: zodResolver(schema),
@@ -90,6 +94,18 @@ const Login = () => {
         password: form.getValues("password"),
       });
       if (!verifyResponse.data.valid) return;
+      // Fail open: only hide the switch option when the backend explicitly
+      // says there's no authenticator to switch to. If it omits the field
+      // (undefined) we can't tell either way, so default to showing it
+      // rather than silently stranding an account that does have one.
+      setHasAuthenticator(verifyResponse.data.twoFactorAuthenticatiorEnabled !== false);
+      // An authenticator account has no email code to send, so go straight to
+      // code entry.
+      if (verifyResponse.data.otpMethod === "authenticator") {
+        setOtpMethod("authenticator");
+        setStep(2);
+        return;
+      }
       const otpResponse = await getOtp({
         emailAddress: form.getValues("email"),
         purpose: "login",
@@ -401,20 +417,22 @@ const Login = () => {
                         {isLoggingIn ? <Throbber /> : "Login"}
                       </Button>
 
-                      <button
-                        type="button"
-                        onClick={handleSwitchOtpMethod}
-                        disabled={isSwitchingMethod}
-                        className={otpAltActionBtnOnLight}
-                      >
-                        {isSwitchingMethod ? (
-                          <Throbber />
-                        ) : otpMethod === "authenticator" ? (
-                          "Use email OTP instead"
-                        ) : (
-                          "Use authenticator app instead"
-                        )}
-                      </button>
+                      {(otpMethod === "authenticator" || hasAuthenticator) && (
+                        <button
+                          type="button"
+                          onClick={handleSwitchOtpMethod}
+                          disabled={isSwitchingMethod}
+                          className={otpAltActionBtnOnLight}
+                        >
+                          {isSwitchingMethod ? (
+                            <Throbber />
+                          ) : otpMethod === "authenticator" ? (
+                            "Use email OTP instead"
+                          ) : (
+                            "Use authenticator app instead"
+                          )}
+                        </button>
+                      )}
                     </div>
                   </>
                 )}
