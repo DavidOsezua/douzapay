@@ -97,7 +97,7 @@ const Deposit = ({
                 <p className="text-xs">
                   Send {tokenOption?.altTitle} to this address
                 </p>
-                <div className="bg-dark-input text-dark-text-400 border-dark-stroke-3 mt-2 flex items-center gap-2 rounded-lg border px-4 py-3 text-sm backdrop-blur-lg">
+                <div className="bg-dark-input text-dark-text-400 border-dark-stroke-3 mt-2 flex items-center justify-center gap-2 rounded-lg border px-4 py-3 text-sm backdrop-blur-lg">
                   <span
                     className="max-w-sm shrink overflow-hidden leading-5.5 font-medium text-ellipsis whitespace-nowrap"
                     title={tokenOption?.address}

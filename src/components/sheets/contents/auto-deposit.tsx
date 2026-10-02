@@ -63,10 +63,6 @@ const AutoDeposit = ({
         <p className="text-[#B9BCCC] text-xs uppercase">
           Deposit Fee ({user?.depositFee}%)
         </p>
-        <p className="text-[#B9BCCC] text-xs">
-          Only send {wallet?.token?.symbol} on the {wallet?.token?.type} network
-          to this address.
-        </p>
         <div className="mt-6 flex flex-col gap-4">
           <div className="mx-auto rounded-xl bg-white p-2 text-center lg:shrink-0">
             <div className="size-52">
@@ -75,17 +71,14 @@ const AutoDeposit = ({
           </div>
           <div>
             <div className="mt-4">
-              <div className="bg-transparent text-white border-[#8F9DB066] mt-2 flex items-center gap-2 rounded-lg border px-4 py-3 text-sm backdrop-blur-lg">
+              <div className="bg-transparent text-white border-[#8F9DB066] mt-2 flex items-center justify-center gap-2 rounded-lg border px-4 py-3 text-sm backdrop-blur-lg">
                 <span
                   className="max-w-sm shrink overflow-hidden leading-5.5 font-medium text-ellipsis whitespace-nowrap"
                   title={wallet?.address as string}
                 >
                   {wallet?.address}
                 </span>
-                <Copy
-                  icon="/icons/copy-light.svg"
-                  text={wallet?.address as string}
-                />
+                <Copy variant="white" text={wallet?.address as string} />
               </div>
             </div>
             <div className="mt-2.5 flex gap-2">
