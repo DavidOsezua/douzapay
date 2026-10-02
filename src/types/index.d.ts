@@ -841,6 +841,29 @@ type DexTransactionsResponse = {
   limit: number;
 };
 
+// GET /admin/dex-transactions: the user shape plus the deposit wallet. No
+// owner name or email comes back, only the userId.
+type AdminDexTransaction = DexTransaction & {
+  wallet?: { address?: string } | null;
+};
+
+type AdminDexTransactionsResponse = {
+  transactions: AdminDexTransaction[];
+  total: number;
+  page: number;
+  limit: number;
+};
+
+// rawStatus is the raw backend status; the mapped `status` (from Swap) merges
+// processing/queued/swapping/refund_pending, which admin views need to tell
+// apart from the raw value.
+type AdminSwap = Swap & {
+  rawStatus: string;
+  userId: string;
+  walletAddress: string | null;
+  isAutomatic: boolean;
+};
+
 type SwapListFilters = {
   status: "all" | "pending" | "processing" | "completed"; // the status pills
   kind: SwapKind | "all";

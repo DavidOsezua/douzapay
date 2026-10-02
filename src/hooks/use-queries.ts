@@ -1,6 +1,7 @@
 import { classifyCardIdProvider, handleError } from "@/lib/helper";
 import {
   getAdminBins,
+  getAdminDexTransactions,
   getAdminStats,
   getUserAssets,
   getUserBins,
@@ -383,6 +384,22 @@ export const useGetCardTransactionsAdmin = (filters: {
     queryKey: ["cardTransactions", { ...filters }],
     queryFn: () => getCardTransactionsAdmin(filters),
     // placeholderData: keepPreviousData,
+  });
+};
+
+export const useGetAdminDexTransactions = (
+  filters: {
+    page: number;
+    limit: number;
+    search?: string;
+  },
+  enabled = true,
+) => {
+  return useQuery({
+    queryKey: ["adminDexTransactions", { ...filters }],
+    queryFn: () => getAdminDexTransactions(filters),
+    placeholderData: keepPreviousData,
+    enabled,
   });
 };
 

@@ -3,6 +3,7 @@ import { DataTable } from "../_misc/data-table";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
+  useGetAdminDexTransactions,
   useGetAdminStats,
   useGetAllDeposits,
   useGetCardTransactionsAdmin,
@@ -12,6 +13,7 @@ import LineLoader from "@/components/line-loader";
 import { useState, useEffect } from "react";
 import { downloadCSV } from "@/lib/helper";
 import { cardWithdrawalColumn } from "./_misc/cardColumn";
+import { swapColumn } from "./_misc/swapColumn";
 import { formatAmount } from "@/lib/utils";
 import { useDebounce } from "@/hooks/use-debounce";
 
@@ -60,6 +62,16 @@ const TransactionsAdmin = () => {
   });
   const { data: adminStats } = useGetAdminStats();
 
+  const isSwapTab = currentTab === "swap";
+  // Matches the user dex endpoint, which is 1-based, unlike the other admin
+  // lists above which send the 0-based pageIndex.
+  const { data: adminSwaps, isLoading: isLoadingSwaps } =
+    useGetAdminDexTransactions({
+      page: paginationParams.pageIndex + 1,
+      limit: paginationParams.pageSize,
+      search: deboucedSearchTerm,
+    });
+
   const handleTabChange = (value: string) => {
     setCurrentTab(value);
     setPaginationParams({
@@ -69,12 +81,19 @@ const TransactionsAdmin = () => {
   };
 
   useEffect(() => {
-    if (currentTab !== "card-withdraw") {
+    if (currentTab !== "card-withdraw" && currentTab !== "swap") {
       setPageCount(allTransactions?.totalPages || 1);
     }
   }, [allTransactions, currentTab]);
 
   useEffect(() => {
+    if (isSwapTab) {
+      setPageCount(adminSwaps?.totalPages || 1);
+    }
+  }, [adminSwaps, isSwapTab]);
+
+  useEffect(() => {
+    if (currentTab === "swap") return;
     if (currentTab === "card-withdraw") {
       refetchCardTransactions();
     } else {
@@ -246,6 +265,7 @@ const TransactionsAdmin = () => {
             <TabsTrigger value="card-top-up">Card TopUp</TabsTrigger>
             <TabsTrigger value="card-withdrawal">Card Withdrawal</TabsTrigger>
             <TabsTrigger value="card-withdraw">Card Purchases</TabsTrigger>
+            <TabsTrigger value="swap">Swap</TabsTrigger>
           </TabsList>
           <div className="flex gap-4">
             <div className="flex grow md:grow-0">
@@ -358,6 +378,22 @@ const TransactionsAdmin = () => {
                 pagination={paginationParams}
                 setPagination={setPaginationParams}
                 pageCount={pageCount}
+              />
+            )}
+          </TabsContent>
+          <TabsContent value="swap">
+            {isLoadingSwaps ? (
+              <div className="h-1">
+                <LineLoader />
+              </div>
+            ) : (
+              <DataTable
+                columns={swapColumn}
+                data={adminSwaps?.data ?? []}
+                pagination={paginationParams}
+                setPagination={setPaginationParams}
+                pageCount={pageCount}
+                noDataText="No swap transactions."
               />
             )}
           </TabsContent>

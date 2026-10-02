@@ -113,3 +113,18 @@ export const mapDexTransaction = (tx: DexTransaction): Swap => {
     updatedAt: tx.updatedAt,
   };
 };
+
+// Whether a (lowercased) backend status belongs to a withdrawal (refund_*),
+// for the admin Type column, which works from the raw status.
+export const isWithdrawalStatus = (status: string) =>
+  ["refund_pending", "refunded", "refund_failed"].includes(status);
+
+export const mapAdminDexTransaction = (
+  tx: AdminDexTransaction,
+): AdminSwap => ({
+  ...mapDexTransaction(tx),
+  rawStatus: tx.status.toLowerCase(),
+  userId: tx.userId,
+  walletAddress: tx.wallet?.address ?? null,
+  isAutomatic: tx.route?.isAutomatic ?? false,
+});

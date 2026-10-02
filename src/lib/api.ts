@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useUser } from "@/zustand/store";
 import * as Sentry from "@sentry/react";
-import { mapDexTransaction } from "@/lib/swap";
+import { mapDexTransaction, mapAdminDexTransaction } from "@/lib/swap";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -619,6 +619,29 @@ export const getCardTransactionsAdmin = async ({
     },
   });
   return response.data;
+};
+
+export const getAdminDexTransactions = async ({
+  page,
+  limit,
+  search,
+}: {
+  page: number;
+  limit: number;
+  search?: string;
+}) => {
+  const response = await authorizedInstance.get<AdminDexTransactionsResponse>(
+    "/admin/dex-transactions",
+    { params: { page, limit, search: search || undefined } },
+  );
+  const body = response.data;
+  return {
+    data: (body.transactions ?? []).map(mapAdminDexTransaction),
+    total: body.total,
+    page: body.page,
+    limit: body.limit,
+    totalPages: Math.ceil(body.total / body.limit) || 1,
+  };
 };
 
 export const confirmDeposit = async (id: string | number) => {
