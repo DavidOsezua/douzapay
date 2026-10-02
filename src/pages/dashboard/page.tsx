@@ -328,7 +328,7 @@ const Dashboard = () => {
                     <span className="w-5/6 overflow-hidden text-ellipsis whitespace-nowrap">
                       {user?.id}
                     </span>
-                    <Copy text={user?.id} icon="/icons/copy2.svg" side="left" />
+                    <Copy text={user?.id} variant="white" side="left" />
                   </div>
                   <Button
                     onClick={() => handleShare(`signup?ref=${user?.id}`)}
