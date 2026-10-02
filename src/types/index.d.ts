@@ -562,6 +562,16 @@ type LoginPayload = {
   otpMethod?: TwoFactorMethod;
 };
 
+// POST /auth/check-credentials response. `twoFactorAuthenticatiorEnabled`
+// (backend's spelling) says whether the account has authenticator 2FA set up
+// at all, regardless of which method the OTP call picks for this login —
+// used to decide whether "use alternative method" has anywhere to switch to.
+type VerifyCredentialsResponse = {
+  valid: boolean;
+  otpMethod?: "email" | "authenticator";
+  twoFactorAuthenticatiorEnabled?: boolean;
+};
+
 type ResetPasswordPayload = {
   email: string;
   password: string;
@@ -735,4 +745,127 @@ type SettleClientPayload = {
   withdrawalFee: number;
   depositFee: number;
   cardCreationFee: number;
+};
+
+// Swap: deposits of a token we can't credit directly (ETH/TRX), which the user
+// can convert to a stablecoin or withdraw back to an external wallet.
+// "refunded" = the user withdrew the deposit instead and it was sent back.
+type SwapStatus =
+  | "pending"
+  | "processing"
+  | "completed"
+  | "refunded"
+  | "failed";
+type SwapKind = "swap" | "withdrawal";
+type SwapChain = "ERC20" | "TRC20";
+
+type Swap = {
+  id: string;
+  kind: SwapKind;
+  status: SwapStatus;
+  fromSymbol: string;
+  fromName: string;
+  fromIcon: string | null; // small network badge over the "from" coin icon
+  fromAmount: number;
+  toSymbol: string;
+  toName: string;
+  toIcon: string | null; // small network badge over the "to" coin icon
+  // Null until the backend reports the swap output.
+  toAmount: number | null;
+  toNetworkLabel: string; // e.g. "Tether (TRC20)"
+  chain: SwapChain;
+  networkLabel: string; // e.g. "Ethereum (ERC20)"
+  // The fields below aren't in /users/dex-transactions yet; null hides them.
+  amountUsd: number | null;
+  exchangeRate: number | null; // 1 <from> = <rate> <to>
+  gasFee: number | null; // in <from> units
+  gasFeeUsd: number | null;
+  // Amount returned if the user withdraws instead of swapping. The API doesn't
+  // send a net amount, so this currently equals fromAmount.
+  withdrawableAmount: number;
+  transactionHash: string | null;
+  withdrawalTxHash: string | null;
+  withdrawalAddress: string | null;
+  createdAt: string;
+  // Last state change; the processing countdown runs from here.
+  updatedAt: string;
+};
+
+// Raw shapes returned by GET /users/dex-transactions.
+type DexRoute = {
+  id: string;
+  // Null on routes the backend hasn't backfilled yet.
+  tokenIn: string | null;
+  tokenOut: string | null;
+  isAutomatic: boolean;
+  route: string; // "uniswapV3" | "sunswapV4" | "cctp"
+  isActive: boolean;
+  isNative: boolean;
+  chainId: string;
+  cregisChainId: string;
+  chainUrl: string;
+  contractAddress: string;
+  destinationChainId: string;
+  destinationRpcUrl: string | null;
+  destinationContractAddress: string;
+  config: Record<string, unknown>;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type DexTransaction = {
+  id: string;
+  userId: string;
+  walletId: string;
+  routeId: string;
+  // "pending" | "processing" | "queued" | "swapping" | "completed" | "failed"
+  // | "refund_pending" | "refunded" | "refund_failed" (refund_* are withdrawals)
+  status: string;
+  transactionHash: string | null; // the incoming deposit
+  amount: string; // decimal string in human units
+  cregisTokenId: string;
+  cregisWithdrawalId: string | null;
+  cctpBurnTxHash: string | null;
+  cctpMintTxHash: string | null;
+  swapTxHash: string | null;
+  swapAmountOut: string | null; // decimal string in human units
+  createdAt: string;
+  updatedAt: string;
+  route: DexRoute;
+};
+
+type DexTransactionsResponse = {
+  transactions: DexTransaction[];
+  total: number;
+  page: number;
+  limit: number;
+};
+
+type SwapListFilters = {
+  status: "all" | "pending" | "processing" | "completed"; // the status pills
+  kind: SwapKind | "all";
+  dateFrom: string; // YYYY-MM-DD | ""
+  dateTo: string; // YYYY-MM-DD | ""
+};
+
+// Filters on the wallet and cards transaction tabs ("all" = no filter).
+type TransactionFilterValues = {
+  type: string;
+  status: string;
+  dateFrom: string; // YYYY-MM-DD
+  dateTo: string; // YYYY-MM-DD
+};
+
+type SwapWithdrawPayload = {
+  swapId: string; // path param, not sent in the body
+  toAddress: string;
+  otp: string;
+  otpMethod?: "authenticator";
+};
+
+// POST /statements/pdf body. Omit cardId entirely for wallet statements.
+type StatementPayload = {
+  cardId?: string;
+  startDate: string; // YYYY-MM-DD
+  endDate: string; // YYYY-MM-DD
 };

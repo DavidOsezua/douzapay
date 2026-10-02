@@ -31,6 +31,7 @@ import {
   getReferrals,
   getSettlements,
   getSupportedTokens,
+  getSwaps,
   getUser,
   getUserCards,
   getUserReferrals,
@@ -40,7 +41,12 @@ import {
   getUserWallet,
   getWallets,
 } from "@/lib/api";
-import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useInfiniteQuery,
+  useMutation,
+  useQuery,
+} from "@tanstack/react-query";
 
 export const useGetUser = () =>
   useQuery({
@@ -77,19 +83,52 @@ export const useGetUserWallet = () => {
   });
 };
 
-export const useGetDeposits = ({
-  page,
-  limit,
-}: {
-  page: number;
-  limit: number;
-}) => {
+export const useGetDeposits = (
+  filters: {
+    page: number;
+    limit: number;
+    status?: string;
+    type?: string;
+    startDate?: string;
+    endDate?: string;
+  },
+  enabled = true,
+) => {
   return useQuery({
-    queryKey: ["deposits", page, limit],
-    queryFn: () => getDeposits({ page, limit }),
+    queryKey: ["deposits", { ...filters }],
+    queryFn: () => getDeposits(filters),
     placeholderData: keepPreviousData,
+    enabled,
   });
 };
+
+// Mobile's scroll-to-load list. Keyed under "deposits" so invalidating that
+// prefix refreshes both this and the paged desktop table.
+export const useGetDepositsInfinite = (
+  filters: {
+    limit: number;
+    status?: string;
+    type?: string;
+    startDate?: string;
+    endDate?: string;
+  },
+  enabled = true,
+) =>
+  useInfiniteQuery({
+    queryKey: ["deposits", "infinite", { ...filters }],
+    queryFn: ({ pageParam }: { pageParam: number }) =>
+      getDeposits({ ...filters, page: pageParam }) as Promise<{
+        data: Transaction[];
+        totalPages: number;
+      }>,
+    initialPageParam: 1,
+    getNextPageParam: (
+      lastPage: { data: Transaction[]; totalPages: number },
+      allPages: unknown[],
+    ) =>
+      allPages.length < lastPage.totalPages ? allPages.length + 1 : undefined,
+    enabled,
+  });
 
 export const useGetCardTransactions = (filters: {
   page: number;
@@ -421,3 +460,28 @@ export const useGetInternalTransferHistory = () =>
     queryKey: ["internalTransferHistory"],
     queryFn: getInternalTransferHistory,
   });
+
+// Without a status or txnType this is every swap (the layout preloads it).
+// With either, the backend filters by it. All share the ["swaps"] prefix, so
+// invalidating it refreshes them all.
+// `pollWhile` (optional) keeps refetching every 15s for as long as it returns
+// true, e.g. while a details sheet shows a swap that hasn't finished.
+export const useGetSwaps = (
+  status?: string,
+  pollWhile?: (swaps?: Swap[]) => boolean,
+  txnType?: SwapKind,
+) =>
+  useQuery({
+    queryKey: status || txnType ? ["swaps", { status, txnType }] : ["swaps"],
+    queryFn: () => getSwaps(status, txnType),
+    retry: 1,
+    refetchInterval: (query) =>
+      pollWhile?.(query.state.data) ? 15_000 : false,
+  });
+
+// The Swap tab only makes sense for users who have deposited a token we can't
+// credit directly (ETH/TRX), i.e. those with at least one swap on record.
+export const useHasSwaps = () => {
+  const { data } = useGetSwaps();
+  return (data?.length ?? 0) > 0;
+};

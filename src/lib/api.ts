@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useUser } from "@/zustand/store";
 import * as Sentry from "@sentry/react";
+import { mapDexTransaction } from "@/lib/swap";
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -72,7 +73,8 @@ export const verifyEmail = async (data: { email: string; refBy?: string }) =>
 export const verifyCredentials = async (data: {
   email: string;
   password: string;
-}) => apiInstance.post("/auth/check-credentials", data);
+}) =>
+  apiInstance.post<VerifyCredentialsResponse>("/auth/check-credentials", data);
 
 export const getContactOtp = async (data: {
   platform: string;
@@ -142,14 +144,26 @@ export const getRate = async (from: string, to: string = "USDT") => {
 export const getDeposits = async ({
   page,
   limit,
+  status,
+  type,
+  startDate,
+  endDate,
 }: {
   page: number;
   limit: number;
+  status?: string;
+  type?: string;
+  startDate?: string;
+  endDate?: string;
 }) => {
   const response = await authorizedInstance.get("/users/deposits", {
     params: {
       page,
       limit,
+      status,
+      type,
+      startDate,
+      endDate,
     },
   });
   return response.data;
@@ -856,3 +870,67 @@ export const getInternalTransferHistory = async () => {
   };
 };
 
+
+// `status` is the raw backend status ("pending", "processing", "completed"...).
+// Paging is done client-side, so ask for a large page.
+export const getSwaps = async (
+  status?: string,
+  txnType?: SwapKind,
+): Promise<Swap[]> => {
+  const response = await authorizedInstance.get<DexTransactionsResponse>(
+    "/users/dex-transactions",
+    { params: { page: 1, limit: 100, status, txnType } },
+  );
+  return (response.data.transactions ?? [])
+    .map(mapDexTransaction)
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    );
+};
+
+// Starts the swap. The response isn't relied on: the swaps query is
+// invalidated afterwards, and the caller gets an optimistic "processing" copy
+// for the confirmation modal in the meantime.
+export const proceedSwap = async (swap: Swap): Promise<Swap> => {
+  await authorizedInstance.post(`/users/dex-transactions/${swap.id}/start`);
+  return { ...swap, status: "processing", updatedAt: new Date().toISOString() };
+};
+
+// Cancels the swap and sends the deposit back to `toAddress`.
+export const withdrawSwap = async ({
+  swapId,
+  ...body
+}: SwapWithdrawPayload) => {
+  const response = await authorizedInstance.post(
+    `/users/dex-transactions/${swapId}/withdraw`,
+    body,
+  );
+  return response.data;
+};
+
+export type StatementResult =
+  | { kind: "blob"; blob: Blob }
+  | { kind: "url"; url: string };
+
+// POST /statements/pdf returns the statement PDF for a date range, optionally
+// scoped to a single card. Requested as a blob; if the backend instead answers
+// with JSON ({ url }) we surface that so the caller can open it.
+export const downloadStatement = async (
+  data: StatementPayload,
+): Promise<StatementResult> => {
+  const response = await authorizedInstance.post("/statements/pdf", data, {
+    responseType: "blob",
+    headers: { Accept: "application/pdf, application/json" },
+  });
+  const contentType = String(response.headers?.["content-type"] ?? "");
+  const blob: Blob = response.data;
+  if (contentType.includes("application/json")) {
+    const json = JSON.parse(await blob.text());
+    if (typeof json?.url === "string") return { kind: "url", url: json.url };
+    throw Object.assign(new Error("Unexpected statement response"), {
+      response: { status: response.status, data: json },
+    });
+  }
+  return { kind: "blob", blob };
+};

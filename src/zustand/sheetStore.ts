@@ -24,6 +24,8 @@ export type SheetType =
   | "addContact"
   | "contactUs"
   | "submitTxHash"
+  | "swap-details"
+  | "statement"
   | null;
 
 interface SheetState {

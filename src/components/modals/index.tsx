@@ -26,6 +26,10 @@ import VerifyEmailOtp from "./contents/verify-email-otp";
 import ChangeEmail from "./contents/change-email";
 import AuthenticatorSetup from "./contents/authenticator-setup";
 import DisableAuthenticator from "./contents/disable-authenticator";
+import SwapDepositReceived from "./contents/swap-deposit-received";
+import SwapProcessing from "./contents/swap-processing";
+import SwapWithdraw from "./contents/swap-withdraw";
+import StatementType from "./contents/statement-type";
 
 export type ModalPayload = {
   walletDeposit: {
@@ -40,7 +44,8 @@ export type ModalPayload = {
       | "register"
       | "card-withdrawal"
       | "internal-transfer"
-      | "password-reset";
+      | "password-reset"
+      | "statement";
     transaction?: {
       id: number | string;
       amount: string | number;
@@ -97,6 +102,10 @@ export type ModalPayload = {
     mode?: "setup" | "regenerate";
   };
   disableAuthenticator: {};
+  swapDepositReceived: { swap: Swap };
+  swapProcessing: { swap: Swap };
+  swapWithdraw: { swap: Swap };
+  statementType: {};
 };
 
 type ModalType = keyof ModalPayload;
@@ -192,6 +201,22 @@ const modalContentMap: Partial<Record<ModalType, ModalContentConfig>> = {
     component: DisableAuthenticator as any,
     props: {},
   },
+  swapDepositReceived: {
+    component: SwapDepositReceived as any,
+    props: {},
+  },
+  swapProcessing: {
+    component: SwapProcessing as any,
+    props: {},
+  },
+  swapWithdraw: {
+    component: SwapWithdraw as any,
+    props: {},
+  },
+  statementType: {
+    component: StatementType as any,
+    props: {},
+  },
 };
 
 const Modal: FC = () => {
@@ -254,8 +279,14 @@ const Modal: FC = () => {
     modalType === "otpInternalTransfer" ||
     modalType === "authenticatorSetup" ||
     modalType === "disableAuthenticator" ||
+    modalType === "swapDepositReceived" ||
+    modalType === "swapProcessing" ||
+    modalType === "swapWithdraw" ||
     modalType === "success";
   const zIndexClass = isAboveSheetModal ? "z-[999]" : "";
+  // On laptop-height screens the swap modals keep their close button in the
+  // corner instead of floating above the card, which would run off the screen.
+  const isSwapModal = modalType?.startsWith("swap") ?? false;
 
   return (
     <AnimatePresence mode="wait">
@@ -285,7 +316,7 @@ const Modal: FC = () => {
               <div className="relative mx-auto text-lg">
                 <button
                   onClick={closeModal}
-                  className="-top-24 right-1/2 mb-6 flex items-center justify-center text-white transition-all hover:cursor-pointer hover:shadow-[inset_2px_2px_6px_rgba(255,255,255,0.2),inset_-2px_-2px_6px_rgba(0,0,0,0.5)] active:scale-90 lg:absolute lg:mb-0 lg:size-10 lg:translate-x-1/2 lg:rounded-full lg:border lg:border-white/20 lg:bg-white/5 lg:shadow-[inset_2px_2px_6px_rgba(255,255,255,0.2),inset_-2px_-2px_6px_rgba(0,0,0,0.5)] lg:backdrop-blur-md"
+                  className={`-top-24 right-1/2 mb-6 flex items-center justify-center text-white transition-all hover:cursor-pointer hover:shadow-[inset_2px_2px_6px_rgba(255,255,255,0.2),inset_-2px_-2px_6px_rgba(0,0,0,0.5)] active:scale-90 lg:absolute lg:mb-0 lg:size-10 lg:translate-x-1/2 lg:rounded-full lg:border lg:border-white/20 lg:bg-white/5 lg:shadow-[inset_2px_2px_6px_rgba(255,255,255,0.2),inset_-2px_-2px_6px_rgba(0,0,0,0.5)] lg:backdrop-blur-md ${isSwapModal ? "lg:short:top-0 lg:short:right-0 lg:short:size-8 lg:short:translate-x-0" : ""}`}
                 >
                   <img
                     src="/images/glass-rounded.png"

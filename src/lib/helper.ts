@@ -95,6 +95,48 @@ export const downloadCSV = (data: unknown, fileName: string) => {
   document.body.removeChild(link);
 };
 
+export const downloadBlob = (blob: Blob, filename: string) => {
+  // Safari treats a blob: URL by its Content-Type, not the `download`
+  // attribute — for application/pdf it can navigate the tab to an inline
+  // preview instead of saving the file, which also takes out the SPA (and
+  // whatever "download complete" UI was meant to follow). Re-wrapping as a
+  // generic binary type stops that; the filename's own extension still
+  // determines what the saved file opens as.
+  const forcedBlob = blob.type.toLowerCase().startsWith("application/pdf")
+    ? new Blob([blob], { type: "application/octet-stream" })
+    : blob;
+  const url = URL.createObjectURL(forcedBlob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  // Belt-and-suspenders: if some browser still decides to navigate instead
+  // of download, this sends that navigation to a new tab so the current one
+  // (and the app state in it) survives.
+  link.target = "_blank";
+  link.rel = "noopener";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  // Deferred so Safari has time to start the download before the URL is freed.
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+
+// axios with `responseType: "blob"` wraps error bodies in a Blob too, so
+// handleError() can't read `detail` off them. Unwrap to a plain object first.
+export async function normalizeBlobError(error: unknown): Promise<unknown> {
+  const err = error as { response?: { data?: unknown } };
+  const data = err?.response?.data;
+  if (!(data instanceof Blob)) return error;
+  const text = await data.text();
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(text);
+  } catch {
+    parsed = { detail: text || undefined };
+  }
+  return { ...(error as object), response: { ...err.response, data: parsed } };
+}
+
 export const handleShare = (link: string) => {
   const baseUrl = window.location.origin;
   const referralPath = link;

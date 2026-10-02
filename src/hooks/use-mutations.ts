@@ -51,8 +51,11 @@ import {
   verifyCredentials,
   verifyEmail,
   withdraw,
+  proceedSwap,
+  withdrawSwap,
+  downloadStatement,
 } from "@/lib/api";
-import { handleError } from "@/lib/helper";
+import { downloadBlob, handleError, normalizeBlobError } from "@/lib/helper";
 import { useUser } from "@/zustand/store";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
@@ -715,6 +718,43 @@ export const useRequestInternalTransferOtp = ({ onSuccess }: Cb = {}) =>
     },
   });
 
+export const useProceedSwap = ({
+  onSuccess,
+}: {
+  onSuccess: (swap: Swap) => void;
+}) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (swap: Swap) => proceedSwap(swap),
+    onSuccess: (swap) => {
+      queryClient.invalidateQueries({ queryKey: ["swaps"] });
+      queryClient.invalidateQueries({ queryKey: ["userAssets"] });
+      queryClient.invalidateQueries({ queryKey: ["recentTransactions"] });
+      onSuccess(swap);
+    },
+    onError: (error: any) => {
+      handleError(error);
+    },
+  });
+};
+
+export const useWithdrawSwap = ({ onSuccess }: CbR) => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: (data: SwapWithdrawPayload) => withdrawSwap(data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["swaps"] });
+      queryClient.invalidateQueries({ queryKey: ["userAssets"] });
+      queryClient.invalidateQueries({ queryKey: ["recentTransactions"] });
+      onSuccess();
+      toast.success("Swap cancelled, your withdrawal is on its way");
+    },
+    onError: (error: any) => {
+      handleError(error);
+    },
+  });
+};
+
 export const useInternalTransfer = ({ onSuccess }: Cb = {}) => {
   const queryClient = useQueryClient();
   return useMutation({
@@ -737,3 +777,27 @@ export const useInternalTransfer = ({ onSuccess }: Cb = {}) => {
     },
   });
 };
+
+export const useDownloadStatement = ({ onSuccess }: Cb = {}) =>
+  useMutation({
+    mutationFn: (vars: StatementPayload & { filename: string }) => {
+      const { filename, ...data } = vars;
+      void filename;
+      return downloadStatement(data);
+    },
+    onSuccess: (result, vars) => {
+      if (result.kind === "blob") {
+        if (result.blob.size === 0) {
+          toast.error("No statement available for the selected period");
+          return;
+        }
+        downloadBlob(result.blob, vars.filename);
+      } else {
+        window.open(result.url, "_blank", "noopener");
+      }
+      onSuccess?.();
+    },
+    onError: async (error: unknown) => {
+      handleError(await normalizeBlobError(error));
+    },
+  });

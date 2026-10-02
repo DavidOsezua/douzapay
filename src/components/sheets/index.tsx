@@ -26,6 +26,8 @@ import SubmitTxHash from "./contents/submit-txHash";
 import PendingCards from "./contents/pending-cards";
 import PendingCardDetails from "./contents/pending-card-details";
 import AutoDeposit from "./contents/auto-deposit";
+import SwapDetails from "./contents/swap-details";
+import Statement from "./contents/statement";
 
 interface SheetContentConfig {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -76,6 +78,8 @@ export type SheetPayload = {
   tutorials: {};
   watchTutorial: { variant: "welcome" | "reminder" };
   submitTxHash: { depositOrderId: number };
+  "swap-details": { swap: Swap };
+  statement: { mode?: "wallet" | "card"; card?: Card };
 };
 
 // Map sheet types to components
@@ -169,6 +173,14 @@ const sheetContentMap: Record<Exclude<SheetType, null>, SheetContentConfig> = {
     component: SubmitTxHash as any,
     props: { depositOrderId: "" },
   },
+  "swap-details": {
+    component: SwapDetails,
+    props: { swap: {} as Swap },
+  },
+  statement: {
+    component: Statement,
+    props: {},
+  },
 };
 
 
@@ -247,7 +259,7 @@ const SideSheet: FC<SideSheetProps> = (props) => {
           width: isMobile ? "100%" : "465px",
           maxWidth: isMobile ? "100%" : "465px",
         }}
-        className="sheet-content overflow-y-auto border-none bg-[#181818] px-4 text-white [&>[data-testid='close-button']]:hidden [&>button]:hidden [&>button[aria-label='Close']]:hidden"
+        className={`sheet-content overflow-y-auto border-none px-4 text-white [&>[data-testid='close-button']]:hidden [&>button]:hidden [&>button[aria-label='Close']]:hidden ${activeSheet === "swap-details" ? "bg-[#242424]" : "bg-[#181818]"}`}
         // A Modal (e.g. authenticatorSetup, disableAuthenticator) can be
         // stacked on top of this sheet. It renders outside SheetContent's DOM
         // subtree, so Radix's outside-interaction detection would otherwise
