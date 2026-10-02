@@ -17,10 +17,38 @@ const SuccessNotice = ({
     | "internal-transfer"
     | "add-contact"
     | "register"
-    | "password-reset";
+    | "password-reset"
+    | "statement";
   transaction?: { id: number | string; amount: string | number; createdAt: string };
   closeModal: () => void;
 }) => {
+  if (type === "statement")
+    return (
+      <div className="my-4 flex w-full flex-col items-center gap-4">
+        <div
+          className="border-primary-100 flex size-16 items-center justify-center rounded-full border"
+          style={{
+            background:
+              "linear-gradient(100.47deg, #E1E1E166 9.36%, #99999966 100%)",
+          }}
+        >
+          <Check className="text-primary-100" />
+        </div>
+        <div className="mt-2 text-2xl font-medium">Statement downloaded</div>
+        <p className="-mt-2 max-w-[80%] text-center text-xs font-light text-white/60">
+          Check your downloads for the PDF file.
+        </p>
+        <div className="mt-4 flex w-full items-center gap-2">
+          <Button
+            onClick={closeModal}
+            className="text-[#242424] bg-dark-primary-main hover:bg-dark-primary-main/80 h-11 grow"
+          >
+            Done
+          </Button>
+        </div>
+      </div>
+    );
+
   if (type === "deposit")
     return (
       <div className="my-4 flex w-full flex-col items-center gap-4">

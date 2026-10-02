@@ -198,11 +198,12 @@ const Wallet = () => {
                   {formatAmount(user?.pendingBalance)}
                 </p>
               </div>
-              <div className="dashboard-card font-dm-sans relative min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl border border-[#6EF7FF24] p-4 *:grow lg:h-29">
-                <div className="bg-[linear-gradient(123.04deg,#DFF4FF_1.64%,#A3D9D9_98.52%)] text-[#242424] absolute top-0 -right-2 px-2.5 py-2 text-[10px] font-light uppercase">
-                  Coming soon
-                </div>
-                <div className="opacity-30">
+              <button
+                type="button"
+                onClick={() => openModal("statementType")}
+                className="dashboard-card font-dm-sans relative min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl border border-[#6EF7FF24] p-4 *:grow lg:h-29"
+              >
+                <div>
                   <img src="/icons/report.svg" alt="Report icon" />
                   <p className="text-white mt-2 text-sm font-medium">
                     Account Statement
@@ -211,7 +212,7 @@ const Wallet = () => {
                     View and track transactions from your wallet
                   </p>
                 </div>
-              </div>
+              </button>
             </div>
 
             <div className="font-dm-sans dashboard-card relative flex w-full justify-between space-x-1.5 rounded-2xl border border-[#E3F7FF40] px-3 py-2 *:grow lg:col-span-2 lg:hidden">

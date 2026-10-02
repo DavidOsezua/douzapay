@@ -111,6 +111,21 @@ const MyAccount = () => {
               </div>
               <ChevronRight size={20} />
             </button>
+            <div className="border-t border-white/10" />
+            <button
+              onClick={() => openModal("statementType")}
+              className="flex w-full items-center justify-between py-4 text-sm"
+            >
+              <div className="flex items-center gap-4">
+                <img
+                  className="size-7"
+                  src="/icons/statement.svg"
+                  alt="Statement"
+                />
+                <span>Account Statement</span>
+              </div>
+              <ChevronRight size={20} />
+            </button>
           </div>
         </div>
 

@@ -112,12 +112,13 @@ const Cards = () => {
               </div>
             </div>
             <div className="flex w-1/2 flex-col space-y-2.5 lg:w-full">
-              <div className="dashboard-card font-dm-sans relative min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl p-2 px-4 *:grow lg:hidden lg:w-auto lg:p-4">
+              <button
+                type="button"
+                onClick={() => openSheet("statement", 2, { mode: "card" }, false)}
+                className="dashboard-card font-dm-sans relative min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl p-2 px-4 *:grow lg:hidden lg:w-auto lg:p-4"
+              >
                 <DottedBorderBox strokeColor={"#CECECE2E"} strokeWidth={0.5} />
-                <div className="bg-[linear-gradient(123.04deg,#DFF4FF_1.64%,#A3D9D9_98.52%)] text-[#242424] absolute top-0 -right-2 px-2.5 py-2 text-[10px] font-light uppercase">
-                  Coming soon
-                </div>
-                <div className="opacity-30">
+                <div>
                   <img
                     className="size-4 lg:size-auto"
                     src="/icons/report.svg"
@@ -130,7 +131,7 @@ const Cards = () => {
                     View and track transactions from your card
                   </p>
                 </div>
-              </div>
+              </button>
               <div className="font-dm-sans text-white relative box-border flex justify-between gap-y-4 rounded-2xl p-1.5 lg:h-full lg:w-full lg:p-3">
                 <DottedBorderBox strokeColor={"#CECECE2E"} strokeWidth={0.5} />
                 <Button
@@ -144,12 +145,13 @@ const Cards = () => {
             </div>
           </div>
           <div className="text-white hidden flex-col gap-2.5 lg:col-span-2 lg:flex">
-            <div className="dashboard-card font-dm-sans relative h-29 min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl p-4 *:grow">
+            <button
+              type="button"
+              onClick={() => openSheet("statement", 2, { mode: "card" }, false)}
+              className="dashboard-card font-dm-sans relative h-29 min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl p-4 *:grow"
+            >
               <DottedBorderBox strokeColor={"#CECECE2E"} strokeWidth={0.5} />
-              <div className="bg-[linear-gradient(123.04deg,#DFF4FF_1.64%,#A3D9D9_98.52%)] text-[#242424] absolute top-0 -right-2 px-2.5 py-2 text-[10px] font-light uppercase">
-                Coming soon
-              </div>
-              <div className="opacity-30">
+              <div>
                 <img src="/icons/report.svg" alt="Report icon" />
                 <p className="text-white mt-2 text-sm font-medium">
                   Card Statement
@@ -158,7 +160,7 @@ const Cards = () => {
                   View and track transactions from your card
                 </p>
               </div>
-            </div>
+            </button>
             <div className="dashboard-card font-dm-sans relative h-29 min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl p-4 *:grow">
               <DottedBorderBox strokeColor={"#CECECE2E"} strokeWidth={0.5} />
 
