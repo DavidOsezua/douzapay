@@ -56,10 +56,10 @@ const items: {
   },
 
   {
-    title: "My Account",
+    title: "More",
     url: "/dashboard/account",
-    icon: "/icons/account.svg",
-    activeIcon: "/icons/account-active.svg",
+    icon: "/icons/more-horizontal.svg",
+    activeIcon: "/icons/more-horizontal-active.svg",
   },
 ];
 
