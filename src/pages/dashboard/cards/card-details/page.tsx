@@ -10,6 +10,7 @@ import { useGetCardPurchases } from "@/hooks/use-queries";
 import moment from "moment";
 import { useEffect, useState } from "react";
 import TransactionList from "../../_misc/TransactionList";
+import Pagination from "@/components/pagination";
 import { cardColumns } from "../../_misc/cardColumns";
 
 const CardDetails = () => {
@@ -154,10 +155,14 @@ const CardDetails = () => {
               isLoading={isCardLoading}
               transactions={cards?.data ?? []}
               type="cards"
-              currentPage={paginationParams.pageIndex + 1}
-              totalPages={pageCount}
-              handlePageChange={handlePageChange}
             />
+            {pageCount > 1 && (
+              <Pagination
+                currentPage={paginationParams.pageIndex + 1}
+                totalPages={pageCount}
+                onPageChange={handlePageChange}
+              />
+            )}
           </div>
         </div>
       </div>

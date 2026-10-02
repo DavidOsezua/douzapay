@@ -1,7 +1,8 @@
 import moment from "moment";
+import { Loader2 } from "lucide-react";
 import TransactionCardSkeleton from "@/components/skeletons/transaction-card-skeleton";
 import { useSheetStore } from "@/zustand/sheetStore";
-import Pagination from "@/components/pagination";
+import InfiniteScrollSentinel from "@/components/infinite-scroll-sentinel";
 import { useFormatAmountWithCurrency } from "@/hooks/use-format-with-currency";
 import {
   CARD_TRANSACTION_LABELS,
@@ -103,16 +104,17 @@ const TransactionList = ({
   transactions,
   isLoading = false,
   type = "wallets",
-  handlePageChange,
-  totalPages,
-  currentPage,
+  hasMore,
+  onLoadMore,
+  isFetchingMore,
 }: {
   transactions: Transaction[] | CardTransaction[];
   isLoading?: boolean;
   type?: "wallets" | "cards";
-  handlePageChange?: (page: number) => void;
-  totalPages?: number;
-  currentPage?: number;
+  // Omit for a fixed list (the dashboard's recent transactions).
+  hasMore?: boolean;
+  onLoadMore?: () => void;
+  isFetchingMore?: boolean;
 }) => {
   if (isLoading)
     return (
@@ -153,11 +155,15 @@ const TransactionList = ({
         })}
       </div>
 
-      {(totalPages ?? 0) > 1 && (
-        <Pagination
-          currentPage={currentPage ?? 1}
-          totalPages={totalPages ?? 1}
-          onPageChange={handlePageChange as (page: number) => void}
+      {isFetchingMore && (
+        <div className="flex justify-center py-4">
+          <Loader2 className="size-5 animate-spin text-white/60" />
+        </div>
+      )}
+      {hasMore && onLoadMore && (
+        <InfiniteScrollSentinel
+          onLoadMore={onLoadMore}
+          itemCount={transactions.length}
         />
       )}
     </div>
