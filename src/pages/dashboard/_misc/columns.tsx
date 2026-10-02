@@ -130,8 +130,8 @@ export const typeMap: Record<
   },
   "internal-transfer": {
     title: "Internal Transfer",
-    icon: "/icons/transfer.svg",
-    style: "border-[#FF505099] bg-[#FF6E7A]",
+    icon: "/icons/withdrawal.svg",
+    style: "border-[#FF505099] ",
   },
   "card-topup": {
     title: "Card Topup",
