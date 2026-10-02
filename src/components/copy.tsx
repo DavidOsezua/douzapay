@@ -38,10 +38,10 @@ const Copy: FC<CopyProps> = ({
           setTimeout(() => setIsCopied(false), 3000);
           navigator.clipboard.writeText(text);
         }}
-        className="shrink-0 cursor-pointer"
+        className="flex shrink-0 items-center justify-center cursor-pointer"
       >
         {icon ? (
-          <img src={icon} alt="" />
+          <img src={icon} className="size-4" alt="" />
         ) : variant === "white" ? (
           <CopyIcon size={15} color="white" />
         ) : (
