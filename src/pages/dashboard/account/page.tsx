@@ -31,7 +31,7 @@ const MyAccount = () => {
 
   return (
     <div className="text-white">
-      <div className="bg-dark-account text-[#0F1326] mt-4 mx-4 rounded-3xl p-4">
+      <div className="gradient-pink-card text-[#0F1326] mt-4 mx-4 rounded-3xl p-4">
         <div className="flex items-center gap-4">
           <div className="flex size-9 items-center justify-center gap-2 rounded-full bg-[#B4EAFF] font-medium text-[#242424]">
             <span>{user?.firstName?.substring(0, 1)}</span>{" "}

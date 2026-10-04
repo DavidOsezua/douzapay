@@ -379,7 +379,7 @@ const CreateSapphireCard = ({
                     Address
                   </p>
                   <div
-                    className="mb-3 flex w-full overflow-hidden rounded-xl border border-[#8F9DB066] p-0.5"
+                    className="mb-3 flex w-full overflow-hidden rounded-xl border border-dp-stroke p-0.5"
                     style={{
                       background:
                         "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(153, 153, 153, 0.1) 100%)",
@@ -612,7 +612,7 @@ const CreateSapphireCard = ({
                       <FormLabel className="text-white text-xs leading-5 font-normal">
                         I certify that the information I have provided is
                         accurate and that I will abide by all the rules and
-                        requirements related to KrypKard Spend Card.
+                        requirements related to Duozapay Spend Card.
                       </FormLabel>
                     </FormItem>
                   )}
@@ -630,7 +630,7 @@ const CreateSapphireCard = ({
                         />
                       </FormControl>
                       <FormLabel className="text-white text-xs leading-5 font-normal">
-                        I acknowledge that using the KrypKard Spend Card does not
+                        I acknowledge that using the Duozapay Spend Card does not
                         constitute unauthorized solicitation.
                       </FormLabel>
                     </FormItem>

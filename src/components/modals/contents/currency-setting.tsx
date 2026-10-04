@@ -82,7 +82,7 @@ export const SelectPreferredCurrency = ({
           className={`rounded-md border py-4 hover:cursor-pointer ${
             activeOption?.id === currency.id
               ? "bg-dark-primary-main text-[#242424]"
-              : "text-white bg-[#181818B2] border-[#8F9DB066]"
+              : "text-white bg-[#181818B2] border-dp-stroke"
           }`}
         >
           <div className="flex flex-col items-center">

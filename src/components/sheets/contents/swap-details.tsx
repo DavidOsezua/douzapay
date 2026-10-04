@@ -45,7 +45,7 @@ const CopyValue = ({ value }: { value: string }) => (
   </>
 );
 
-const SUPPORT_LINK = "https://t.me/krypkardsupport";
+const SUPPORT_LINK = "https://t.me/duozapaysupport";
 
 // Opens Telegram support with the swap's details already written out.
 const SupportLink = ({
@@ -60,7 +60,7 @@ const SupportLink = ({
   const email = useUser((state) => state.user?.email);
   const amount = formatFromAmount(swap);
   const message = [
-    "Hi KrypKard Support,",
+    "Hi Duozapay Support,",
     "",
     issue,
     "",

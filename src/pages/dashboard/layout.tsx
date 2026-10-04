@@ -77,8 +77,8 @@ const DashboardLayout = () => {
               >
                 <div className="flex flex-col items-center gap-4">
                   <img
-                    src="/images/full-logo-dark.svg"
-                    alt="KrypKard"
+                    src="/images/duozapay-logo.svg"
+                    alt="Duozapay"
                     className="h-10 w-auto"
                   />
                   <Loader2 className="size-7 animate-spin text-[#E1E1E1]" />

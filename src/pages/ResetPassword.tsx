@@ -135,9 +135,9 @@ const ResetPassword = () => {
             className="relative flex w-[320px] flex-col items-start md:w-[400px] lg:w-full lg:max-w-sm"
           >
             <img
-              src="/images/full-logo-dark.svg"
+              src="/images/duozapay-logo.svg"
               className="w-28"
-              alt="for all your card needs"
+              alt="Duozapay"
             />
 
             <Form {...form}>
@@ -164,12 +164,12 @@ const ResetPassword = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem className="mt-4 flex flex-col gap-1">
-                          <FormLabel className="text-xs">
+                          <FormLabel className="text-dp-ink text-xs">
                             Email address
                           </FormLabel>
                           <FormControl>
                             <Input
-                              className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                              className="rounded placeholder:text-[10px] border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                               {...field}
                               type="email"
                               onChange={(e) => {
@@ -208,7 +208,7 @@ const ResetPassword = () => {
                         }
                         setStep(2);
                       }}
-                      className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-6 h-11 w-full"
+                      className="bg-dp-primary text-white hover:bg-dp-primary/90 mt-6 h-11 w-full"
                       type="button"
                     >
                       {isVerifying ? <Throbber /> : "Reset"}
@@ -237,11 +237,11 @@ const ResetPassword = () => {
                       name="password"
                       render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
-                          <FormLabel className="text-xs">Password</FormLabel>
+                          <FormLabel className="text-dp-ink text-xs">Password</FormLabel>
                           <FormControl>
                             <div className="relative">
                               <Input
-                                className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                                className="rounded placeholder:text-[10px] border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                                 type={showPassword ? "text" : "password"}
                                 {...field}
                                 placeholder="Enter your password"
@@ -265,13 +265,13 @@ const ResetPassword = () => {
                       name="confirmPassword"
                       render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
-                          <FormLabel className="text-xs">
+                          <FormLabel className="text-dp-ink text-xs">
                             Confirm password
                           </FormLabel>
                           <FormControl>
                             <div className="relative">
                               <Input
-                                className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                                className="rounded placeholder:text-[10px] border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                                 type={showConfirmPassword ? "text" : "password"}
                                 {...field}
                                 placeholder="Confirm your password"
@@ -295,7 +295,7 @@ const ResetPassword = () => {
 
                     <Button
                       disabled={isGettingOtp}
-                      className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-6 h-11 w-full"
+                      className="bg-dp-primary text-white hover:bg-dp-primary/90 mt-6 h-11 w-full"
                       type="button"
                       onClick={() => handleGetOtp(form.getValues())}
                     >
@@ -329,7 +329,7 @@ const ResetPassword = () => {
                         name="otp"
                         render={({ field }) => (
                           <FormItem className="flex flex-col gap-1">
-                            <FormLabel className="mb-1 text-xs font-normal">
+                            <FormLabel className="text-dp-ink mb-1 text-xs font-normal">
                               Enter verification code
                             </FormLabel>
                             <FormControl>
@@ -367,7 +367,7 @@ const ResetPassword = () => {
 
                       <Button
                         disabled={isResetting}
-                        className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-4 h-11 w-full"
+                        className="bg-dp-primary text-white hover:bg-dp-primary/90 mt-4 h-11 w-full"
                         type="submit"
                       >
                         {isResetting ? <Throbber /> : "Reset"}

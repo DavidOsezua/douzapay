@@ -92,7 +92,7 @@ const StatementDateForm = ({
       return toast.error("End date cannot be earlier than start date");
 
     const scope = mode === "card" && card ? `Card ${card.last4}` : "Wallet";
-    const filename = `KrypKard ${scope} Statement ${startDate} to ${endDate}.pdf`;
+    const filename = `Duozapay ${scope} Statement ${startDate} to ${endDate}.pdf`;
 
     mutate({
       ...(mode === "card" && card ? { cardId: card.id } : {}),
@@ -170,7 +170,7 @@ const StatementDateForm = ({
         />
       </div>
 
-      <div className="sticky right-0 bottom-0 left-0 z-20 mt-8 bg-[#181818] px-0 pt-3 pb-6">
+      <div className="sticky right-0 bottom-0 left-0 z-20 mt-8 bg-dark-background-secondary px-0 pt-3 pb-6">
         {isSlow ? (
           <p className="text-center text-sm font-light text-white/70">
             Your {mode === "card" ? "card" : "wallet"} statement is being

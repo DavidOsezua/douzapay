@@ -54,7 +54,7 @@ const TopBar = ({
   return (
     <>
       <nav
-        className={`font-poppins bg-dark-background-main border-[#6EF7FF2E] sticky inset-x-0 top-0 z-20 flex w-full max-w-screen items-center justify-between border-b px-4 py-4 text-white lg:px-6 ${className}`}
+        className={`font-poppins bg-dark-background-main border-dark-stroke-5 sticky inset-x-0 top-0 z-20 flex w-full max-w-screen items-center justify-between border-b-[0.5px] px-4 py-4 text-white lg:px-6 ${className}`}
       >
         <div className="flex items-center gap-2">
           {backTo && (

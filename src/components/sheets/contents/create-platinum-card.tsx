@@ -510,7 +510,7 @@ const CreatePlatinumCard = ({
                         <FormLabel className="text-white text-xs leading-5 font-normal">
                           I certify that the information I have provided is
                           accurate and that I will abide by all the rules and
-                          requirements related to my KrypKard Spend Card.
+                          requirements related to my Duozapay Spend Card.
                         </FormLabel>
                       </FormItem>
                     )}
@@ -528,7 +528,7 @@ const CreatePlatinumCard = ({
                           />
                         </FormControl>
                         <FormLabel className="text-white text-xs leading-5 font-normal">
-                          I acknowledge that using the KrypKard Spend Card does
+                          I acknowledge that using the Duozapay Spend Card does
                           not constitute unauthorized solicitation.
                         </FormLabel>
                       </FormItem>
@@ -1003,7 +1003,7 @@ const CreatePlatinumCard = ({
                               <FormLabel className="text-white text-xs leading-5 font-normal">
                                 I certify that the information I have provided
                                 is accurate and that I will abide by all the
-                                rules and requirements related to my KrypKard
+                                rules and requirements related to my Duozapay
                                 Spend Card.
                               </FormLabel>
                             </FormItem>
@@ -1022,7 +1022,7 @@ const CreatePlatinumCard = ({
                                 />
                               </FormControl>
                               <FormLabel className="text-white text-xs leading-5 font-normal">
-                                I acknowledge that using the KrypKard Spend Card
+                                I acknowledge that using the Duozapay Spend Card
                                 does not constitute unauthorized solicitation.
                               </FormLabel>
                             </FormItem>

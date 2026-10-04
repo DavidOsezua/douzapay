@@ -1,12 +1,12 @@
-# 💳 KrypKard
+# 💳 Duozapay
 
-KrypKard is a modern digital wallet platform built with **Vite + React**. It allows users to manage stablecoins, create virtual cards, and spend globally via Apple Pay and Google Pay — all in seconds.
+Duozapay is a modern digital wallet platform built with **Vite + React**. It allows users to manage stablecoins, create virtual cards, and spend globally via Apple Pay and Google Pay — all in seconds.
 
 ---
 
 ## ✨ Key Features
 
-- **Instant Card Creation** — No support tickets, no delays. Create and activate your KrypKard instantly.
+- **Instant Card Creation** — No support tickets, no delays. Create and activate your Duozapay instantly.
 - **24/7 Stablecoin Loading** — Top up your wallet anytime.
 - **Global Spending** — Use your card with Apple Pay & Google Pay worldwide.
 - **Modular Architecture** — Built for scalability and whitelabeling.
@@ -94,4 +94,4 @@ npm run typecheck   # Run TypeScript compiler checks (tsc --noEmit)
 
 ### 📄 License
 
-Proprietary — Licensed exclusively for use by KrypKard company. Not open source. All rights reserved.
+Proprietary — Licensed exclusively for use by Duozapay company. Not open source. All rights reserved.

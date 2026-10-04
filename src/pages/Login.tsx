@@ -156,6 +156,13 @@ const Login = () => {
       {onboardingIsOpen && (
         <div className="absolute inset-0 z-10 lg:hidden">
           <LoginBg />
+          {/* Page indicator, vertically centred on the 56px arrow button */}
+          <div
+            aria-hidden="true"
+            className="absolute bottom-10 left-10 flex h-14 items-center"
+          >
+            <div className="bg-dark-primary-main h-3 w-14 rounded-full" />
+          </div>
           <div className="absolute right-6 bottom-10">
             <div className="absolute right-1/2 bottom-1/2 size-18 translate-x-1/2 translate-y-1/2 animate-ping rounded-full bg-[#E1E1E140]" />
             <Button
@@ -168,8 +175,10 @@ const Login = () => {
           </div>
         </div>
       )}
+      {/* THE LEFT DESIGN */}
       <div className="relative flex min-h-dvh">
-        <div className="fixed inset-y-0 left-0 hidden h-screen lg:block">
+        {/*  */}
+        {/* <div className="fixed inset-y-0 left-0 hidden h-screen lg:block">
           <img
             src="/images/auth-img.webp"
             className="h-full w-auto"
@@ -180,7 +189,8 @@ const Login = () => {
             className="absolute bottom-10 left-8 z-10 w-40"
             alt=""
           />
-        </div>
+        </div> */}
+        {/*  */}
 
         <div
           className="fixed inset-y-0 left-0 hidden h-screen lg:block"
@@ -201,22 +211,24 @@ const Login = () => {
             alt="Save money in fractional digital gold."
           />
         </div>
+
+        {/* LOGIN FORM */}
         <div className="relative flex grow flex-col items-center justify-center bg-[#FBFFFF] py-10">
           <form
             onSubmit={form.handleSubmit(onSubmit)}
             className="relative flex w-[320px] flex-col items-start md:w-[400px] lg:w-full lg:max-w-sm"
           >
             <img
-              src="/images/full-logo-dark.svg"
+              src="/images/duozapay-logo.svg"
               className="w-28"
-              alt="for all your card needs"
+              alt="Duozapay"
             />
 
-            <div className="bg-dark-background-light mt-4 inline-flex gap-2 rounded p-0.5">
+            <div className="mt-4 inline-flex gap-2 rounded border-[0.5px] border-border-neutral bg-dp-surface p-0.5">
               <NavLink
                 to="/login"
                 className={({ isActive }) =>
-                  `inline-flex w-24 items-center justify-center rounded px-4 py-2.5 text-sm font-semibold ${isActive ? "bg-[#2F2F2F] text-white" : "text-dark-text-300 hover:bg-black/5"}`
+                  `inline-flex w-24 items-center justify-center rounded px-4 py-2.5 text-sm font-semibold ${isActive ? "bg-dp-primary text-white" : "text-dp-muted hover:bg-black/5"}`
                 }
               >
                 Login
@@ -224,7 +236,7 @@ const Login = () => {
               <NavLink
                 to="/signup"
                 className={({ isActive }) =>
-                  `inline-flex w-24 items-center justify-center rounded px-4 py-2.5 text-sm font-semibold ${isActive ? "bg-[#2F2F2F] text-white" : "text-dark-text-300 hover:bg-black/5"}`
+                  `inline-flex w-24 items-center justify-center rounded px-4 py-2.5 text-sm font-semibold ${isActive ? "bg-dp-primary text-white" : "text-dp-muted hover:bg-black/5"}`
                 }
               >
                 Sign Up
@@ -245,12 +257,12 @@ const Login = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem className="flex flex-col">
-                          <FormLabel className="text-sm">
+                          <FormLabel className="text-dp-ink text-sm">
                             Email address
                           </FormLabel>
                           <FormControl>
                             <Input
-                              className="rounded bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                              className="rounded border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                               type={"email"}
                               {...field}
                               onChange={(e) => {
@@ -272,11 +284,11 @@ const Login = () => {
                       name="password"
                       render={({ field }) => (
                         <FormItem className="flex flex-col">
-                          <FormLabel className="text-sm">Password</FormLabel>
+                          <FormLabel className="text-dp-ink text-sm">Password</FormLabel>
                           <FormControl>
                             <div className="relative">
                               <Input
-                                className="rounded bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                                className="rounded border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                                 type={showPassword ? "text" : "password"}
                                 {...field}
                                 onChange={(e) => {
@@ -313,7 +325,7 @@ const Login = () => {
                     </Link>
 
                     <Button
-                      className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-6 w-full"
+                      className="bg-dp-primary text-white hover:bg-dp-primary/90 mt-6 w-full"
                       type="button"
                       isLoading={isGettingOtp || isVerifying}
                       disabled={isGettingOtp || isVerifying}
@@ -373,7 +385,7 @@ const Login = () => {
                         name="otp"
                         render={({ field }) => (
                           <FormItem className="flex flex-col">
-                            <FormLabel>Enter verification code</FormLabel>
+                            <FormLabel className="text-dp-ink">Enter verification code</FormLabel>
                             <FormControl>
                               <InputOTP
                                 autoFocus
@@ -411,7 +423,7 @@ const Login = () => {
 
                       <Button
                         disabled={isLoggingIn}
-                        className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-6 h-11 w-full"
+                        className="bg-dp-primary text-white hover:bg-dp-primary/90 mt-6 h-11 w-full"
                         type="submit"
                       >
                         {isLoggingIn ? <Throbber /> : "Login"}

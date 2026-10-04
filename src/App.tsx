@@ -79,7 +79,7 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <div className="bg-primary-bg text-primary-500">
+    <div className=" text-primary-500">
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>

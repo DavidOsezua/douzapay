@@ -20,7 +20,7 @@ const Transfer = ({ closeModal }: { closeModal: () => void }) => {
           onClick={() => {
             setOption("card");
           }}
-          className={`flex h-12 cursor-pointer items-center justify-between gap-4 rounded-lg px-2.5 py-2 text-sm ${option == "card" ? "bg-[#181818B2] text-white border border-dark-primary-main" : "border-[#6EF7FF2E] border"}`}
+          className={`flex h-12 cursor-pointer items-center justify-between gap-4 rounded-lg px-2.5 py-2 text-sm ${option == "card" ? "bg-[#181818B2] text-white border border-dp-stroke" : "border-dp-stroke border"}`}
         >
           <span>Transfer to card</span>
           <div
@@ -31,7 +31,7 @@ const Transfer = ({ closeModal }: { closeModal: () => void }) => {
           onClick={() => {
             setOption("wallet");
           }}
-          className={`flex h-12 cursor-pointer items-center justify-between gap-4 rounded-lg px-2.5 py-2 text-sm ${option == "wallet" ? "bg-[#181818B2] text-white border border-dark-primary-main" : "border-[#6EF7FF2E] border"}`}
+          className={`flex h-12 cursor-pointer items-center justify-between gap-4 rounded-lg px-2.5 py-2 text-sm ${option == "wallet" ? "bg-[#181818B2] text-white border border-dp-stroke" : "border-dp-stroke border"}`}
         >
           <span>Transfer to wallet</span>
           <div
@@ -42,10 +42,10 @@ const Transfer = ({ closeModal }: { closeModal: () => void }) => {
           onClick={() => {
             setOption("internal");
           }}
-          className={`flex h-12 cursor-pointer items-center justify-between gap-4 rounded-lg px-2.5 py-2 text-sm ${option == "internal" ? "bg-[#181818B2] text-white border border-dark-primary-main" : "border-[#6EF7FF2E] border"}`}
+          className={`flex h-12 cursor-pointer items-center justify-between gap-4 rounded-lg px-2.5 py-2 text-sm ${option == "internal" ? "bg-[#181818B2] text-white border border-dp-stroke" : "border-dp-stroke border"}`}
         >
           <div className="flex flex-col gap-0.5">
-            <span>Transfer to KrypKard users</span>
+            <span>Transfer to Duozapay users</span>
             <span className="text-xs font-light opacity-70">
               Send via email, instantly and free
             </span>

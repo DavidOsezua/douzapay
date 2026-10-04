@@ -71,7 +71,7 @@ const AutoDeposit = ({
           </div>
           <div>
             <div className="mt-4">
-              <div className="bg-transparent text-white border-[#8F9DB066] mt-2 flex items-center justify-center gap-2 rounded-lg border px-4 py-3 text-sm backdrop-blur-lg">
+              <div className="bg-transparent text-white border-dp-stroke mt-2 flex items-center justify-center gap-2 rounded-lg border px-4 py-3 text-sm backdrop-blur-lg">
                 <span
                   className="max-w-sm shrink overflow-hidden leading-5.5 font-medium text-ellipsis whitespace-nowrap"
                   title={wallet?.address as string}

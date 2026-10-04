@@ -211,7 +211,7 @@ const Withdraw = ({
           >
             <h6>Note</h6>
             <p className="mt-2 font-light">
-              For your security withdrawal from your KrypKard Wallet to your
+              For your security withdrawal from your Duozapay Wallet to your
               external wallet are processed manually and can take 24 hours.
               Please contact the support team with your account details and
               screenshot of your pending withdrawal to have it confirmed

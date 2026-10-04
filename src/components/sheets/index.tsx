@@ -259,7 +259,7 @@ const SideSheet: FC<SideSheetProps> = (props) => {
           width: isMobile ? "100%" : "465px",
           maxWidth: isMobile ? "100%" : "465px",
         }}
-        className={`sheet-content overflow-y-auto border-none px-4 text-white [&>[data-testid='close-button']]:hidden [&>button]:hidden [&>button[aria-label='Close']]:hidden ${activeSheet === "swap-details" ? "bg-[#242424]" : "bg-[#181818]"}`}
+        className={`sheet-content overflow-y-auto border-none px-4 text-white [&>[data-testid='close-button']]:hidden [&>button]:hidden [&>button[aria-label='Close']]:hidden bg-dark-background-secondary`}
         // A Modal (e.g. authenticatorSetup, disableAuthenticator) can be
         // stacked on top of this sheet. It renders outside SheetContent's DOM
         // subtree, so Radix's outside-interaction detection would otherwise

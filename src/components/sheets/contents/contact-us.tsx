@@ -4,11 +4,11 @@ import { ChevronRight } from "lucide-react";
 const ContactUs = () => {
   const { user } = useUser();
   const openTelegram = () => {
-    window.open("https://t.me/krypkardsupport", "_blank", "noopener,noreferrer");
+    window.open("https://t.me/duozapaysupport", "_blank", "noopener,noreferrer");
   };
   const openEmail = () => {
     window.open(
-      "mailto:support@krypkard.com",
+      "mailto:support@duozapay.com",
       "_blank",
       "noopener,noreferrer",
     );
@@ -21,34 +21,34 @@ const ContactUs = () => {
       <h3 className="text-white text-2xl">How can we help you?</h3>
 
       <div className="mt-4">
-        <div className="rounded-lg px-3 py-3">
+        <div className="bg-dark-card-gradient-3 border-dark-stroke-5 rounded-lg border px-3 py-3">
           <div
-            onClick={openEmail}
+            // onClick={openEmail}
             className="flex w-full items-center justify-between py-4 text-sm hover:cursor-pointer"
           >
             <div className="flex items-center gap-4">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#6EF7FF2E]">
-                <img className="size-5" src="/icons/send-email.svg" alt="" />
-              </div>
+              <img
+                className="size-6 shrink-0"
+                src="/icons/contact-email.svg"
+                alt=""
+              />
               <span className="text-white">Send an Email</span>
             </div>
             <ChevronRight size={20} className="text-dark-primary-main" />
           </div>
-          <div className="border-t border-[#6EF7FF2E]" />
+          <div className="border-dark-stroke-5 border-t" />
           <div
-            onClick={openTelegram}
+            // onClick={openTelegram}
             className="flex w-full items-center justify-between py-4 text-sm hover:cursor-pointer"
           >
             <div className="flex items-center gap-4">
-              <div className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#6EF7FF2E]">
-                <img
-                  className="size-5"
-                  src="/icons/send-telegram.svg"
-                  alt=""
-                />
-              </div>
+              <img
+                className="size-6 shrink-0"
+                src="/icons/contact-telegram.svg"
+                alt=""
+              />
               <span className="text-white">
-                Send an Telegram Message
+                Send a Telegram Message
               </span>
             </div>
             <ChevronRight size={20} className="text-dark-primary-main" />

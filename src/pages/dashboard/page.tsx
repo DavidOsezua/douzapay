@@ -102,7 +102,7 @@ const Dashboard = () => {
                 return (
                   <div
                     key={asset.id}
-                    className="border-[#CECECE2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
+                    className="dashboard-card border-dark-stroke-5 flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
                   >
                     <div className="flex items-center gap-1.5">
                       <p className="text-[#A5ACB6] text-[10px]">{label}</p>
@@ -126,7 +126,7 @@ const Dashboard = () => {
             </div>
             {/* MY CARDS */}
             <div
-              className={`thin-scrollbar dashboard-card relative flex h-full flex-col overflow-hidden overflow-x-auto rounded-2xl border border-[#6EF7FF24] p-4 lg:col-span-2`}
+              className={`thin-scrollbar dashboard-card relative flex h-full flex-col overflow-hidden overflow-x-auto rounded-2xl border border-dark-stroke-5 p-4 lg:col-span-2`}
             >
               <div className="text-white mb-4 flex shrink-0 items-center justify-between">
                 <span>My Cards</span>
@@ -176,7 +176,7 @@ const Dashboard = () => {
             {/* END OF MY CARDS */}
             {/* WALLET */}
             <div className="col-start-1 row-end-2 flex flex-col lg:col-span-2 lg:col-start-3 lg:space-y-2">
-              <div className="dashboard-card font-dm-sans text-white relative flex w-full flex-col gap-3 rounded-2xl border border-[#E3F7FF40] p-4 lg:h-full lg:justify-between">
+              <div className="dashboard-card font-dm-sans text-white relative flex w-full flex-col gap-3 rounded-2xl border border-dark-stroke-5 p-4 lg:h-full lg:justify-between">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-2">
@@ -228,7 +228,7 @@ const Dashboard = () => {
                     return (
                       <div
                         key={asset.id}
-                        className="border-[#CECECE2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
+                        className="dashboard-card border-dark-stroke-5 flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
                       >
                         <div className="flex items-center gap-1.5">
                           <p className="text-[#A5ACB6] text-[10px]">

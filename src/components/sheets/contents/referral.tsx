@@ -243,11 +243,11 @@ const ApplicationStatus = ({ submittedAt }: { submittedAt?: string }) => {
               <p className="mt-1 text-[11px] leading-relaxed text-white/55">
                 Email us at{" "}
                 <a
-                  href="mailto:support@krypkard.com"
+                  // href="mailto:support@duozapay.com"
                   className="font-medium"
                   style={{ color: "#E1E1E1" }}
                 >
-                  support@krypkard.com
+                  support@duozapay.com
                 </a>{" "}
                 within 24 hours and we&apos;ll work it in before review.
               </p>
@@ -273,7 +273,7 @@ const NotWhitelisted = () => {
   if (submitted) return <ApplicationStatus />;
 
   const approvalCriteria = [
-    "You have an active KrypKard account in good standing",
+    "You have an active Duozapay account in good standing",
     "You have an audience or network you can refer (community, newsletter, social, business)",
     "You agree to our promotion guidelines and won't spam or misrepresent the product",
   ];
@@ -351,7 +351,7 @@ const NotWhitelisted = () => {
                   referral <span style={{ color: "#E1E1E1" }}>forever</span>.
                 </h2>
                 <p className="mt-2 text-[11px] leading-relaxed text-white/60">
-                  The KrypKard referral program is invitation-based. Apply
+                  The Duozapay referral program is invitation-based. Apply
                   below and our team will review your fit within 2–3 business
                   days.
                 </p>
@@ -522,7 +522,7 @@ const NotWhitelisted = () => {
         >
           <Info className="mt-0.5 size-3.5 shrink-0 text-white/30" />
           <p className="text-[11px] leading-relaxed text-white/40">
-            Approval is at KrypKard&apos;s discretion. We typically respond within
+            Approval is at Duozapay&apos;s discretion. We typically respond within
             2–3 business days. Approved partners get instant access to their
             referral dashboard and code.
           </p>
@@ -531,7 +531,7 @@ const NotWhitelisted = () => {
       {/* end overflow-x-hidden */}
 
       {/* Apply button — sticky bottom */}
-      <div className="sticky right-0 bottom-0 left-0 z-20 bg-[#181818] px-0 pt-3 pb-6">
+      <div className="sticky right-0 bottom-0 left-0 z-20 bg-dark-background-secondary px-0 pt-3 pb-6">
         <button
           disabled={!agreed || isPending}
           onClick={() => applyForReferral()}
@@ -1065,7 +1065,7 @@ const Referral = () => {
       </div>
 
       {/* Share button — fixed to bottom of sheet */}
-      <div className="sticky right-0 bottom-0 left-0 z-20 bg-[#181818] px-0 pt-3 pb-6">
+      <div className="sticky right-0 bottom-0 left-0 z-20 bg-dark-background-secondary px-0 pt-3 pb-6">
         <button
           onClick={() => handleShare(`signup?ref=${referralCode}`)}
           className="flex w-full items-center justify-center gap-2 rounded-full py-2.5 text-sm font-semibold text-[#0f1326] transition-opacity active:opacity-80"

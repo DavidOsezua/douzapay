@@ -53,7 +53,7 @@ const InternalTransferSheet = () => {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "tween", ease: "easeInOut", duration: 0.3 }}
-            className="dark fixed inset-y-0 right-0 z-50 flex h-full flex-col overflow-y-auto bg-[#181818] px-4 text-white shadow-lg"
+            className="dark fixed inset-y-0 right-0 z-50 flex h-full flex-col overflow-y-auto bg-dark-background-secondary px-4 text-white shadow-lg"
             style={{
               width: isMobile ? "100%" : "465px",
               maxWidth: isMobile ? "100%" : "465px",

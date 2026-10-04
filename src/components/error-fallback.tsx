@@ -14,7 +14,7 @@ const ErrorFallback = ({ error, resetErrorBoundary }: ErrorFallbackProps) => {
     <div className="bg-dark-background-main flex min-h-screen flex-col items-center justify-center px-4 py-12">
       <img
         src="/images/logoBig.svg"
-        alt="KrypKard"
+        alt="Duozapay"
         className="mb-8 h-9 opacity-90"
       />
 

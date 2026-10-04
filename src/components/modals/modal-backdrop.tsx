@@ -26,7 +26,7 @@ export const ModalBackdrop = ({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className={`bg-primary-500/20 fixed inset-0 z-30 flex h-dvh items-center justify-center backdrop-blur-lg ${className}`}
+      className={`fixed inset-0 z-30 flex h-dvh items-center justify-center backdrop-blur-lg ${className}`}
       style={style}
       onClick={onClose}
     >

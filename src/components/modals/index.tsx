@@ -1,7 +1,6 @@
 import type { ComponentType, FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FocusScope } from "@radix-ui/react-focus-scope";
-import { X } from "lucide-react";
 import { ModalBackdrop } from "./modal-backdrop";
 import { useModalStore } from "@/zustand/modalStore";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -305,25 +304,22 @@ const Modal: FC = () => {
               initial="initial"
               animate="animate"
               exit="exit"
-              className={`font-urbanist fixed bottom-0 h-auto w-full max-w-full rounded-t-2xl border-t border-t-white/25 px-4 py-4 text-white backdrop-blur-md md:max-w-[400px] md:rounded-2xl lg:static lg:bottom-auto lg:max-w-110 lg:rounded-2xl lg:pb-6 ${zIndexClass}"`}
+              className={`font-urbanist fixed bottom-0 h-auto w-full max-w-full rounded-t-2xl border-t border-t-white/25 px-4 py-4 text-white backdrop-blur-md md:max-w-[400px] md:rounded-2xl lg:static lg:bottom-auto lg:max-w-110 lg:rounded-2xl lg:pb-6 bg-dark-alternate ${zIndexClass}"`}
               style={{
                 pointerEvents: isAboveSheetModal ? "auto" : undefined,
-                background:
-                  "linear-gradient(129.49deg, rgba(58, 58, 58, 0.2) 3.6%, rgba(94, 91, 91, 0.2) 100%)",
               }}
             >
               <div className="absolute top-2 right-1/2 block h-1 w-20 translate-x-1/2 rounded-full bg-[#C4C6C8] lg:hidden" />
               <div className="relative mx-auto text-lg">
                 <button
                   onClick={closeModal}
-                  className={`-top-24 right-1/2 mb-6 flex items-center justify-center text-white transition-all hover:cursor-pointer hover:shadow-[inset_2px_2px_6px_rgba(255,255,255,0.2),inset_-2px_-2px_6px_rgba(0,0,0,0.5)] active:scale-90 lg:absolute lg:mb-0 lg:size-10 lg:translate-x-1/2 lg:rounded-full lg:border lg:border-white/20 lg:bg-white/5 lg:shadow-[inset_2px_2px_6px_rgba(255,255,255,0.2),inset_-2px_-2px_6px_rgba(0,0,0,0.5)] lg:backdrop-blur-md ${isSwapModal ? "lg:short:top-0 lg:short:right-0 lg:short:size-8 lg:short:translate-x-0" : ""}`}
+                  className={`-top-24 right-1/2 mb-6 flex items-center justify-center text-white transition-all hover:cursor-pointer hover:opacity-80 active:scale-90 lg:absolute lg:mb-0 lg:size-10 lg:translate-x-1/2 ${isSwapModal ? "lg:short:top-0 lg:short:right-0 lg:short:size-8 lg:short:translate-x-0" : ""}`}
                 >
                   <img
-                    src="/images/glass-rounded.png"
-                    alt=""
-                    className="absolute inset-0 hidden lg:inline"
+                    src="/icons/modal-close.svg"
+                    alt="Close"
+                    className="size-10 lg:size-full"
                   />
-                  <X className="size-6" />
                 </button>
 
                 <ContentComponent {...contentProps} />

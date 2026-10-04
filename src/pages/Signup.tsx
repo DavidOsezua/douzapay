@@ -172,15 +172,15 @@ const Signup = () => {
             className="relative flex w-[320px] flex-col items-start md:w-[400px] lg:w-full lg:max-w-sm"
           >
             <img
-              src="/images/full-logo-dark.svg"
+              src="/images/duozapay-logo.svg"
               className="w-28"
-              alt="for all your card needs"
+              alt="Duozapay"
             />
-            <div className="bg-dark-background-light mt-4 inline-flex gap-2 rounded p-0.5">
+            <div className="mt-4 inline-flex gap-2 rounded border-[0.5px] border-border-neutral bg-dp-surface p-0.5">
               <NavLink
                 to="/login?o=0"
                 className={({ isActive }) =>
-                  `inline-flex w-24 items-center justify-center rounded px-4 py-2.5 text-sm font-semibold ${isActive ? "bg-[#2F2F2F] text-white" : "text-dark-text-300 hover:bg-black/5"}`
+                  `inline-flex w-24 items-center justify-center rounded px-4 py-2.5 text-sm font-semibold ${isActive ? "bg-dp-primary text-white" : "text-dp-muted hover:bg-black/5"}`
                 }
               >
                 Login
@@ -188,7 +188,7 @@ const Signup = () => {
               <NavLink
                 to="/signup"
                 className={({ isActive }) =>
-                  `inline-flex w-24 items-center justify-center rounded px-4 py-2.5 text-sm font-semibold ${isActive ? "bg-[#2F2F2F] text-white" : "text-dark-text-300 hover:bg-black/5"}`
+                  `inline-flex w-24 items-center justify-center rounded px-4 py-2.5 text-sm font-semibold ${isActive ? "bg-dp-primary text-white" : "text-dp-muted hover:bg-black/5"}`
                 }
               >
                 Sign Up
@@ -211,12 +211,12 @@ const Signup = () => {
                         name="firstName"
                         render={({ field }) => (
                           <FormItem className="flex flex-col gap-1">
-                            <FormLabel className="text-xs">
+                            <FormLabel className="text-dp-ink text-xs">
                               First name
                             </FormLabel>
                             <FormControl>
                               <Input
-                                className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                                className="rounded placeholder:text-[10px] border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                                 {...field}
                                 placeholder="Enter first name"
                               />
@@ -230,12 +230,12 @@ const Signup = () => {
                         name="lastName"
                         render={({ field }) => (
                           <FormItem className="flex flex-col gap-1">
-                            <FormLabel className="text-xs">
+                            <FormLabel className="text-dp-ink text-xs">
                               Enter last name
                             </FormLabel>
                             <FormControl>
                               <Input
-                                className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                                className="rounded placeholder:text-[10px] border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                                 {...field}
                                 placeholder="Enter your last name"
                               />
@@ -250,12 +250,12 @@ const Signup = () => {
                       name="email"
                       render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
-                          <FormLabel className="text-xs">
+                          <FormLabel className="text-dp-ink text-xs">
                             Enter your email
                           </FormLabel>
                           <FormControl>
                             <Input
-                              className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                              className="rounded placeholder:text-[10px] border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                               {...field}
                               onChange={(e) => {
                                 const cleaned = e.target.value
@@ -276,11 +276,11 @@ const Signup = () => {
                       name="password"
                       render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
-                          <FormLabel className="text-xs">Password</FormLabel>
+                          <FormLabel className="text-dp-ink text-xs">Password</FormLabel>
                           <FormControl>
                             <div className="relative">
                               <Input
-                                className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                                className="rounded placeholder:text-[10px] border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                                 type={showPassword ? "text" : "password"}
                                 {...field}
                                 placeholder="Enter your password"
@@ -304,13 +304,13 @@ const Signup = () => {
                       name="confirmPassword"
                       render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
-                          <FormLabel className="text-xs">
+                          <FormLabel className="text-dp-ink text-xs">
                             Confirm password
                           </FormLabel>
                           <FormControl>
                             <div className="relative">
                               <Input
-                                className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                                className="rounded placeholder:text-[10px] border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                                 type={showConfirmPassword ? "text" : "password"}
                                 {...field}
                                 placeholder="Confirm your password"
@@ -336,13 +336,13 @@ const Signup = () => {
                       name="refBy"
                       render={({ field }) => (
                         <FormItem className="flex flex-col gap-1">
-                          <FormLabel className="text-xs">
+                          <FormLabel className="text-dp-ink text-xs">
                             Referral code
                           </FormLabel>
                           <FormControl>
                             <Input
                               disabled={refBy !== ""}
-                              className="rounded placeholder:text-[10px] bg-[linear-gradient(180deg,rgba(255,255,255,0.1)_0%,rgba(153,153,153,0.1)_100%)] border border-[#CECECE2E]"
+                              className="rounded placeholder:text-[10px] border border-border-neutral bg-dp-field text-dp-ink placeholder:text-dp-ink"
                               placeholder="Enter your referral code"
                               {...field}
                               onChange={(e) => {
@@ -358,7 +358,7 @@ const Signup = () => {
 
                     <Button
                       disabled={isVerifying || isGettingOtp}
-                      className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-6 h-11 w-full"
+                      className="bg-dp-primary text-white hover:bg-dp-primary/90 mt-6 h-11 w-full"
                       type="button"
                       onClick={() => handleGetOtp(form.getValues())}
                     >
@@ -403,7 +403,7 @@ const Signup = () => {
                         name="otp"
                         render={({ field }) => (
                           <FormItem className="flex flex-col gap-1">
-                            <FormLabel className="mb-1 text-xs font-normal">
+                            <FormLabel className="text-dp-ink mb-1 text-xs font-normal">
                               Enter verification code
                             </FormLabel>
                             <FormControl>
@@ -441,7 +441,7 @@ const Signup = () => {
 
                       <Button
                         disabled={isRegistering}
-                        className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-4 h-11 w-full"
+                        className="bg-dp-primary text-white hover:bg-dp-primary/90 mt-4 h-11 w-full"
                         type="submit"
                       >
                         {isRegistering ? <Throbber /> : "Verify"}
@@ -520,7 +520,7 @@ const Signup = () => {
                           name="authenticatorOtp"
                           render={({ field }) => (
                             <FormItem className="flex flex-col gap-1">
-                              <FormLabel className="mb-1 text-xs font-normal">
+                              <FormLabel className="text-dp-ink mb-1 text-xs font-normal">
                                 Authenticator code
                               </FormLabel>
                               <FormControl>
@@ -548,7 +548,7 @@ const Signup = () => {
 
                         <Button
                           disabled={isRegistering}
-                          className="bg-[#2F2F2F] text-white hover:bg-[#2F2F2F]/90 mt-4 w-full"
+                          className="bg-dp-primary text-white hover:bg-dp-primary/90 mt-4 w-full"
                           type="submit"
                         >
                           {isRegistering ? <Throbber /> : "Verify"}

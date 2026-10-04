@@ -50,7 +50,7 @@ const Cards = () => {
           className={`relative mt-4 grid w-full grid-cols-1 gap-4 lg:grid-cols-9`}
         >
           <div
-            className="dashboard-card relative col-span-1 row-start-2 h-full min-h-60 overflow-hidden rounded-2xl border border-[#6EF7FF24] p-4 pb-0 lg:col-span-4 lg:row-start-auto"
+            className="dashboard-card relative col-span-1 row-start-2 h-full min-h-60 overflow-hidden rounded-2xl border border-dark-stroke-5 p-4 pb-0 lg:col-span-4 lg:row-start-auto"
             style={{
               backdropFilter: "blur(50px)",
               boxShadow: "0px 4px 17px -1px #BDE9FB33",
@@ -85,7 +85,7 @@ const Cards = () => {
             )}
           </div>
           <div className="text-white flex flex-row gap-2.5 *:grow lg:col-span-3 lg:flex-col">
-            <div className="dashboard-card rounded-xl border border-[#6EF7FF24] p-4 backdrop-blur-sm">
+            <div className="dashboard-card rounded-xl border border-dark-stroke-5 p-4 backdrop-blur-sm">
               <div className="flex items-center justify-between text-[10px]">
                 <img className="size-6" src="/icons/gradient-card.svg" alt="" />
                 <div className="flex gap-2">
@@ -190,7 +190,7 @@ const Cards = () => {
             </div>
           </div>
           <div className="flex items-center gap-2.5 lg:hidden">
-            <div className="dashboard-card min-w-1/2 rounded-2xl border border-[#6EF7FF24] p-4">
+            <div className="dashboard-card min-w-1/2 rounded-2xl border border-dark-stroke-5 p-4">
               <div className="text-white flex items-center gap-4">
                 <div className="flex items-center gap-2">
                   <img

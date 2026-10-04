@@ -58,9 +58,9 @@ const AdminSidebar = () => {
           <div>
             <div className="text-primary-500 flex items-center gap-2.5 px-4 pt-2">
               <img
-                src="/images/full-logo-dark.svg"
+                src="/images/duozapay-logo.svg"
                 className="w-24"
-                alt="KrypKard Logo"
+                alt="Duozapay Logo"
               />
             </div>
             <p className="pl-4 text-xl uppercase">Admin Dashboard</p>

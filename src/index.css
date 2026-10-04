@@ -124,10 +124,12 @@
   /* Dark Background Colors */
   --color-dark-background-main: #000000;
   --color-dark-background-light: #6e6e6e0d;
-  --color-dark-background-secondary: #283968;
+  /* Figma "Dark/Background/Secondary" (was #283968 before the redesign) */
+  --color-dark-background-secondary: #242424;
 
   /* KrypKard gradients */
-  --gradient-pink-card: 123.04deg, #dff4ff 1.64%, #a3d9d9 98.52%;
+  /* Figma "Dark/Card Gradient/2" (end colour was #a3d9d9 before the redesign) */
+  --gradient-pink-card: 123.04deg, #dff4ff 1.64%, #9fa2ff 98.52%;
   --background-image-dark-account: linear-gradient(
     123.04deg,
     #dff4ff 1.64%,
@@ -150,14 +152,18 @@
 
   /* Dark Primary Colors (KrypKard cyan) */
   --color-dark-primary-50: #e3fdff;
-  --color-dark-primary-100: #b8f5fb;
+  /* Figma "Dark/Primary/100" (was #b8f5fb, unused before the redesign) */
+  --color-dark-primary-100: #fff9ed;
   --color-dark-primary-200: #6ef7ff;
   --color-dark-primary-300: #3fd8e8;
   --color-dark-primary-400: #1faab8;
-  --color-dark-primary-main: #e1e1e1;
+  /* Figma "Dark/Primary/Main" (was #e1e1e1 before the redesign) */
+  --color-dark-primary-main: #f4f4f4;
 
   /* Dark Stroke Colors */
   --color-dark-stroke-3: #1a1a1a;
+  /* Figma "Dark/Stroke Color/Stroke 5" */
+  --color-dark-stroke-5: #cecece2e;
 
   /* Dark Success Colors */
   --color-dark-success-200: #4ed79d;
@@ -202,6 +208,23 @@
     130deg,
     rgba(255, 255, 255, 0.5) 15.55%,
     rgba(0, 2, 136, 0) 84.45%
+  );
+
+  /* Duozapay redesign tokens (user side only; admin keeps the tokens above).
+     Figma #DAE1EA borders reuse --color-border-neutral. */
+  --color-dp-ink: #181818;
+  --color-dp-primary: #2f2f2f;
+  --color-dp-muted: #898c99;
+  --color-dp-surface: #fcfeff;
+  --color-dp-field: #ffffffcc;
+  --color-dp-stroke: #8f9db066;
+  /* Figma "Dark/Card Gradient/3" */
+  --color-dark-card-gradient-3: #ebe8f308;
+  /* Figma "Dark/Background/Alternate": modal background + modal close button */
+  --background-image-dark-alternate: linear-gradient(
+    129.49deg,
+    rgba(42, 42, 42, 0.5) 3.6%,
+    rgba(28, 28, 28, 0.5) 100%
   );
 
   --font-mont: "Montserrat", sans-serif;
@@ -363,7 +386,7 @@
 }
 
 .gradient-button {
-  background: #e1e1e1;
+  background: var(--color-dark-primary-main);
   border-radius: 9999px;
   color: #242424;
   height: 44px;
@@ -392,7 +415,7 @@
 }
 
 .recent-transactions-card {
-  background: #ebe8f308;
+  background: var(--color-dark-card-gradient-3);
   backdrop-filter: blur(8px);
 }
 

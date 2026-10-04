@@ -17,7 +17,7 @@ const ActionCell = ({ swap }: { swap: Swap }) => {
 
   return (
     <Button
-      className="text-[#242424] flex h-auto items-center gap-1 rounded-full bg-dark-primary-main px-4 py-2 text-[10px] hover:bg-dark-primary-main/80"
+      className="text-[#242424] flex h-auto items-center gap-1 rounded-full bg-dark-primary-100 px-4 py-2 text-[10px] hover:bg-dark-primary-100/80"
       onClick={() => openSwap(swap)}
     >
       <Text className="size-2.5" />

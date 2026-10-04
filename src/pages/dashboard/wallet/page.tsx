@@ -47,7 +47,7 @@ const Wallet = () => {
         <div className="relative p-4">
           <div className="grid grid-cols-1 gap-2.5 lg:grid-cols-10">
             {/* MY WALLET */}
-            <div className="font-dm-sans dashboard-card text-white relative box-border flex w-full flex-col justify-between gap-y-4 rounded-2xl border border-[#E3F7FF40] p-4 lg:col-span-4 lg:h-full">
+            <div className="font-dm-sans dashboard-card text-white relative box-border flex w-full flex-col justify-between gap-y-4 rounded-2xl border border-dark-stroke-5 p-4 lg:col-span-4 lg:h-full">
               <div>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-medium lg:text-sm">
@@ -87,7 +87,7 @@ const Wallet = () => {
                   return (
                     <div
                       key={asset.id}
-                      className="border-[#CECECE2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
+                      className="dashboard-card border-dark-stroke-5 flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
                     >
                       <div className="flex items-center gap-1.5">
                         <p className="text-[#A5ACB6] text-[10px]">
@@ -168,7 +168,7 @@ const Wallet = () => {
                 return (
                   <div
                     key={asset.id}
-                    className="border-[#CECECE2E] flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
+                    className="dashboard-card border-dark-stroke-5 flex flex-1 flex-col gap-1 rounded-xl border p-2.5"
                   >
                     <div className="flex items-center gap-1.5">
                       <p className="text-[#A5ACB6] text-[10px]">{label}</p>
@@ -192,7 +192,7 @@ const Wallet = () => {
             </div>
 
             <div className="flex flex-col gap-2.5 *:grow lg:col-span-3">
-              <div className="dashboard-card font-dm-sans relative hidden h-29 min-w-1/2 flex-col justify-center space-x-1.5 rounded-2xl border border-[#6EF7FF24] p-4 lg:flex">
+              <div className="dashboard-card font-dm-sans relative hidden h-29 min-w-1/2 flex-col justify-center space-x-1.5 rounded-2xl border border-dark-stroke-5 p-4 lg:flex">
                 <p className="text-white text-sm">Pending balance</p>
                 <p className="text-white mt-2 text-2xl font-medium">
                   {formatAmount(user?.pendingBalance)}
@@ -201,7 +201,7 @@ const Wallet = () => {
               <button
                 type="button"
                 onClick={() => openModal("statementType")}
-                className="dashboard-card font-dm-sans relative min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl border border-[#6EF7FF24] p-4 *:grow lg:h-29"
+                className="dashboard-card font-dm-sans relative min-w-1/2 space-x-1.5 overflow-hidden rounded-2xl border border-dark-stroke-5 p-4 *:grow lg:h-29"
               >
                 <div>
                   <img src="/icons/report.svg" alt="Report icon" />

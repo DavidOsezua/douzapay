@@ -72,7 +72,7 @@ export const cardColumns: ColumnDef<CardTransaction>[] = [
       return (
         <div>
           <Button
-            className="text-primary-500 bg-dark-primary-50 flex h-auto items-center gap-1 rounded-full px-4 py-2 text-xs text-[10px] hover:bg-white"
+            className="text-primary-500 bg-dark-primary-100 flex h-auto items-center gap-1 rounded-full px-4 py-2 text-xs text-[10px] hover:bg-white"
             onClick={() =>
               useSheetStore.getState().openSheet("transaction-details", null, {
                 transactionData: row.original,

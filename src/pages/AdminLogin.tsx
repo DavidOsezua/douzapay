@@ -84,9 +84,9 @@ const AdminLogin = () => {
           >
             <div className="flex items-center gap-2">
               <img
-                src="/images/full-logo-dark.svg"
+                src="/images/duozapay-logo.svg"
                 className="h-auto w-28"
-                alt="KrypKard Logo"
+                alt="Duozapay Logo"
               />
             </div>
 
