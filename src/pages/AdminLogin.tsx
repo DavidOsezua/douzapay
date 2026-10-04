@@ -50,7 +50,7 @@ const AdminLogin = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="flex min-h-dvh">
-        <div className="fixed inset-y-0 left-0 hidden h-screen lg:block">
+        {/* <div className="fixed inset-y-0 left-0 hidden h-screen lg:block">
           <img
             src="/images/auth-img.webp"
             className="h-full w-auto"
@@ -61,7 +61,7 @@ const AdminLogin = () => {
             className="absolute bottom-10 left-8 z-10 w-40"
             alt=""
           />
-        </div>
+        </div> */}
 
         <div className="fixed inset-y-0 left-0 hidden h-screen lg:block">
           <img
