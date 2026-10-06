@@ -124,10 +124,10 @@ const Cards = () => {
                     src="/icons/report.svg"
                     alt="Report icon"
                   />
-                  <p className="text-white mt-1 text-xs font-medium lg:mt-2 lg:text-sm">
+                  <p className="text-white mt-1 text-xs text-left font-medium lg:mt-2 lg:text-sm">
                     Card Statement
                   </p>
-                  <p className="text-white text-[8px] font-light lg:mt-1 lg:text-xs">
+                  <p className="text-white text-[8px] font-light text-left lg:mt-1 lg:text-xs">
                     View and track transactions from your card
                   </p>
                 </div>
@@ -153,10 +153,10 @@ const Cards = () => {
               <DottedBorderBox strokeColor={"#CECECE2E"} strokeWidth={0.5} />
               <div>
                 <img src="/icons/report.svg" alt="Report icon" />
-                <p className="text-white mt-2 text-sm font-medium">
+                <p className="text-white text-left mt-2 text-sm font-medium">
                   Card Statement
                 </p>
-                <p className="text-white mt-1 text-xs font-light">
+                <p className="text-white mt-1 text-left text-xs font-light">
                   View and track transactions from your card
                 </p>
               </div>

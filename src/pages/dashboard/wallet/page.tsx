@@ -205,10 +205,10 @@ const Wallet = () => {
               >
                 <div>
                   <img src="/icons/report.svg" alt="Report icon" />
-                  <p className="text-white mt-2 text-sm font-medium">
+                  <p className="text-white  text-left mt-2 text-sm font-medium">
                     Account Statement
                   </p>
-                  <p className="text-white mt-1 text-[10px] font-light lg:text-xs">
+                  <p className="text-white text-left mt-1 text-[10px] font-light lg:text-xs">
                     View and track transactions from your wallet
                   </p>
                 </div>
