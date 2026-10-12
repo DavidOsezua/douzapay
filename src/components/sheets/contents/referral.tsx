@@ -676,7 +676,7 @@ const Referral = () => {
               </h2>
 
               {/* Description */}
-              <p className="mt-1.5 text-[11px] leading-relaxed text-white/70">
+              <p className="mt-1.5 text-[11px] max-w-[200px] leading-relaxed text-white/70">
                 Get {feePercent}% of every deposit fee from people you refer.
               </p>
 
@@ -723,11 +723,13 @@ const Referral = () => {
             </div>
 
             {/* Right: illustration */}
+            <div className="absolute -top-5 -right-8">
             <img
               src="/images/referral-img.svg"
               alt="Referral illustration"
-              className="w-[42%] shrink-0 self-center object-contain"
+              className=" shrink-0 self-center  object-contain"
             />
+            </div>
           </div>
         </div>
 
